@@ -64,7 +64,7 @@ Commands
 * Revoke system cert
 * Add system cert
 
-Message schema (json format):
+Command Sequence Schema (json format):
 
     [
       {
@@ -88,6 +88,9 @@ of currently valid system certs.
 * /crts - lists all certs
 * /crts/[fingerprint] - PEM encoded cert (self-signed)
 
+Messages are validated before execution. Validation of an added cert may
+happen at execution time.
+
 ## Notes 
 
 The CHub server and client understand System, and only System, broadcasts
@@ -96,3 +99,19 @@ for:
 * CRLs so that we can revoke naughty users. 
 * MRLs (Message Revocation Lists) so that we can revoke naughty messages
 
+## Message schema
+
+    [
+      {
+        "title": "80 chars",
+        "short-description": "255 chars",
+        "description": "1024 chars",
+        "address": "255 chars",
+        "start-time": "iso 8601",
+        "end-time": "iso 8601",
+        "rsvp-by": "iso 8601",
+        "rsvp-ff": "255 chars",
+        "rsvp-email": "255 chars",
+        "image": "30kb (before encoding) base64 encoded"
+      }
+    ]
