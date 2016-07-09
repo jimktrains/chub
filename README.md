@@ -83,10 +83,10 @@ Any system cert being added must be signed by that cert as well as a quorum
 of currently valid system certs.
 
 * /cmd - lists all commands
-* /cmd/<unix timestamp>.<uuid> - a single command sequence
-* /cmd/<unix timestamp>.<uuid>.<signing fingerprint> - PEM encoded signature
+* /cmd/[unix timestamp].[uuid] - a single command sequence
+* /cmd/[unix timestamp].[uuid].[signing fingerprint] - PEM encoded signature
 * /crts - lists all certs
-* /crts/<fingerprint> - PEM encoded cert (self-signed)
+* /crts/[fingerprint] - PEM encoded cert (self-signed)
 
 ## Notes 
 
