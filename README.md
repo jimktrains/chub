@@ -101,7 +101,6 @@ for:
 
 ## Message schema
 
-    [
       {
         "title": "80 chars",
         "short-description": "255 chars",
@@ -112,6 +111,13 @@ for:
         "rsvp-by": "iso 8601",
         "rsvp-ff": "255 chars",
         "rsvp-email": "255 chars",
-        "image": "30kb (before encoding) base64 encoded"
       }
-    ]
+
+An image may be added to a message by adding a .jpg with the same prefix as
+the message.
+
+URLs
+
+* /msg - lists messages
+* /msg/[unix timestamp]-[uuid]
+* /msg/[unix timestamp]-[uuid].jpg
