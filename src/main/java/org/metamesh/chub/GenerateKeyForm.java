@@ -5,32 +5,24 @@
  */
 package org.metamesh.chub;
 
-import org.metamesh.chub.crypto.ECCrypto;
-import org.metamesh.chub.crypto.SymmetricCrypto;
-import org.metamesh.chub.exceptions.EncryptedPEMNoPasswordProvided;
+import org.metamesh.chub.crypto.ECC_Crypto;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
 import java.security.KeyPair;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.Base64;
-import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import org.metamesh.chub.crypto.SymmetricEncryptionType;
-import org.metamesh.chub.crypto.KeyType;
+import org.metamesh.chub.crypto.keys.ChubPrivKey;
+import org.metamesh.chub.crypto.keys.ChubPubKey;
+import org.metamesh.chub.crypto.serialize.PBSerialize;
+import org.metamesh.chub.crypto.util.SymmetricEncryptionType;
+import org.metamesh.chub.proto.Message;
 
 /**
  *
@@ -48,25 +40,27 @@ public class GenerateKeyForm extends javax.swing.JFrame {
         initComponents();
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         fc.addActionListener((ActionEvent e) -> {
-            try {
-                byte[] priv_key = kp.getPrivate().getEncoded();
-                byte[] priv_key_enc = SymmetricCrypto.encrypt(SymmetricEncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536, Password.getPassword(), priv_key);
-                String priv_pem = ECCrypto.toPem(priv_key_enc, Optional.<char[]>of(Password.getPassword()), KeyType.PRIVATE, SymmetricEncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536);
-                String pub_pem = ECCrypto.toPem(priv_key_enc, Optional.<char[]>of(Password.getPassword()), KeyType.PUBLIC, SymmetricEncryptionType.None);
+            ChubPrivKey priv = new ChubPrivKey(CN.getText(), kp.getPrivate());
+            ChubPubKey pub = new ChubPubKey(CN.getText(), kp.getPublic());
+            
+            Message.PrivateKey priv_key_enc = PBSerialize.serialize(SymmetricEncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536, Password.getPassword(), priv);
+            Message.PublicKey pub_key_enc = PBSerialize.serialize(pub);
 
-                String privFilePath = fc.getSelectedFile().getAbsoluteFile() + File.separator + "chub.priv.pem";
-                try (FileOutputStream out = new FileOutputStream(privFilePath)) {
-                    byte a[] = priv_pem.getBytes(StandardCharsets.US_ASCII);
-                    out.write(a);
-                }
-                String pubFilePath = fc.getSelectedFile().getAbsoluteFile() + File.separator + "chub.pub.pem";
-                try (FileOutputStream out = new FileOutputStream(pubFilePath)) {
-                    byte a[] = priv_pem.getBytes(StandardCharsets.US_ASCII);
-                    out.write(a);
-                }
-            } catch (NoSuchAlgorithmException | NoSuchPaddingException | EncryptedPEMNoPasswordProvided | IOException | InvalidKeyException | InvalidKeySpecException | IllegalBlockSizeException | BadPaddingException ex) {
+            String privFilePath = fc.getSelectedFile().getAbsoluteFile() + File.separator + "chub.priv.pb";
+            try (FileOutputStream out = new FileOutputStream(privFilePath)) {
+                byte a[] = priv_key_enc.toByteArray();
+                out.write(a);
+            } catch (IOException ex) {
                 Logger.getLogger(GenerateKeyForm.class.getName()).log(Level.SEVERE, null, ex);
-                showWarningMsg(ex.getLocalizedMessage());
+                showWarningMsg(ex.getMessage());
+            }
+            String pubFilePath = fc.getSelectedFile().getAbsoluteFile() + File.separator + "chub.pub.pb";
+            try (FileOutputStream out = new FileOutputStream(pubFilePath)) {
+                byte a[] = pub_key_enc.toByteArray();
+                out.write(a);
+            } catch (IOException ex) {
+                Logger.getLogger(GenerateKeyForm.class.getName()).log(Level.SEVERE, null, ex);
+                showWarningMsg(ex.getMessage());
             }
         });
     }
@@ -88,6 +82,8 @@ public class GenerateKeyForm extends javax.swing.JFrame {
         GenerateButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         Password = new javax.swing.JPasswordField();
+        CN = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,6 +121,14 @@ public class GenerateKeyForm extends javax.swing.JFrame {
 
         jLabel3.setText("Password:");
 
+        CN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CNActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("CN");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,29 +136,35 @@ public class GenerateKeyForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Public_Key)
-                            .addComponent(Private_Key)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(GenerateButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(SaveButton))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 177, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Public_Key)
+                            .addComponent(Private_Key)
+                            .addComponent(CN))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(CN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Public_Key, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -170,7 +180,7 @@ public class GenerateKeyForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -193,19 +203,18 @@ public class GenerateKeyForm extends javax.swing.JFrame {
     }
 
     private void GenerateButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenerateButtonMousePressed
-        try {
-            kp = ECCrypto.genECKey();
-            Public_Key.setText(Base64.getEncoder().encodeToString(kp.getPublic().getEncoded()));
-            Private_Key.setText(Base64.getEncoder().encodeToString(kp.getPrivate().getEncoded()));
-        } catch (NoSuchAlgorithmException | InvalidAlgorithmParameterException ex) {
-            Logger.getLogger(GenerateKeyForm.class.getName()).log(Level.SEVERE, null, ex);
-            showWarningMsg(ex.getLocalizedMessage());
-        }
+        kp = ECC_Crypto.genECKey();
+        Public_Key.setText(Base64.getEncoder().encodeToString(kp.getPublic().getEncoded()));
+        Private_Key.setText(Base64.getEncoder().encodeToString(kp.getPrivate().getEncoded()));
     }//GEN-LAST:event_GenerateButtonMousePressed
 
     private void SaveButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMousePressed
         fc.showOpenDialog(this);
     }//GEN-LAST:event_SaveButtonMousePressed
+
+    private void CNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,6 +250,7 @@ public class GenerateKeyForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CN;
     private javax.swing.JButton GenerateButton;
     private javax.swing.JPasswordField Password;
     private javax.swing.JTextField Private_Key;
@@ -249,5 +259,6 @@ public class GenerateKeyForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

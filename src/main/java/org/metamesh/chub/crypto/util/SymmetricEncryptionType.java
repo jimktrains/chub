@@ -1,6 +1,7 @@
-package org.metamesh.chub.crypto;
+package org.metamesh.chub.crypto.util;
 
 import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;

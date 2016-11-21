@@ -1,4 +1,4 @@
-package org.metamesh.chub.crypto;
+package org.metamesh.chub.crypto.util;
 
 import javax.crypto.SecretKey;
 
