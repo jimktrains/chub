@@ -1,5 +1,7 @@
 # CHub
 
+*Note*: This application is still in development.
+
 CHub is a Community Hub. It allows trusted "Updaters" to post updates and
 messages to router splash pages. CHub allows any router to listen to
 multiple "Updaters" as well as the "System".  The "System" is useful for
