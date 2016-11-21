@@ -37,7 +37,36 @@ public class ECC_Crypto {
         }
     }
 
-    public static boolean verify(GeneratedMessageV3 value, Message.Signature sig, ChubPubKey pub) {
+    public static boolean verify(Message.SignedMessage sm, ChubPubKey pk)  {
+        GeneratedMessageV3 val;
+
+        switch (sm.getMsgCase()) {
+            case POST:
+                val = sm.getPost();
+                break;
+            case PRIVATEKEY:
+                val = sm.getPrivateKey();
+                break;
+            case PUBLICKEY:
+                val = sm.getPublicKey();
+                break;
+            case SYMMETRICLYENCRYPTEDMESSAGE:
+                val = sm.getSymmetriclyEncryptedMessage();
+                break;
+            case ASYMMETRICLYENCRYPTEDMESSAGE:
+                val = sm.getAsymmetriclyEncryptedMessage();
+                break;
+            case HYBRIDENCRYPTEDMESSAGE:
+                val = sm.getHybridEncryptedMessage();
+                break;
+            case MSG_NOT_SET:
+            default:
+                throw new AssertionError(sm.getMsgCase().name());
+        }
+        return ECC_Crypto.verify(val, sm.getMessageSignature(), pk);
+    }
+    
+    private static boolean verify(GeneratedMessageV3 value, Message.Signature sig, ChubPubKey pub) {
         try {
             if (!sig.getCn().equals(pub.cn)) {
                 return false;
@@ -55,7 +84,11 @@ public class ECC_Crypto {
         }
     }
 
-    public static Message.Signature sign(GeneratedMessageV3 value, ChubPrivKey priv)  {
+    public static Message.Signature sign(Message.Post post, ChubPrivKey priv) {
+        return sign_raw(post, priv);
+    }
+    
+    private static Message.Signature sign_raw(GeneratedMessageV3 value, ChubPrivKey priv)  {
 
         try {
             Signature dsa = Signature.getInstance(Message.SignatureType.SHA512withECDSA.name());

@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import org.metamesh.chub.crypto.ECC_Crypto;
 import org.metamesh.chub.crypto.keys.ChubPubKey;
 import org.metamesh.chub.crypto.serialize.PBSerialize;
 import org.metamesh.chub.proto.Message;
@@ -144,7 +145,7 @@ public class VerifyMessageForm extends javax.swing.JFrame {
                 Message.PublicKey pk = Message.PublicKey.parseFrom(keyfis);
                 ChubPubKey cpk = PBSerialize.deserialize(pk);
 
-                showWarningMsg("Key did" + (PBSerialize.verify(sm, cpk) ? "" : " not") + " sign message");
+                showWarningMsg("Key did" + (ECC_Crypto.verify(sm, cpk) ? "" : " not") + " sign message");
             }
         } catch (IOException ex) {
             Logger.getLogger(VerifyMessageForm.class.getName()).log(Level.SEVERE, null, ex);

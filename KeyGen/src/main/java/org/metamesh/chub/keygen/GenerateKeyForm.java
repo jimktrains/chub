@@ -24,10 +24,6 @@ import org.metamesh.chub.crypto.serialize.PBSerialize;
 import org.metamesh.chub.crypto.util.SymmetricEncryptionType;
 import org.metamesh.chub.proto.Message;
 
-/**
- *
- * @author jameskeener
- */
 public class GenerateKeyForm extends javax.swing.JFrame {
 
     KeyPair kp;

@@ -34,12 +34,10 @@ public class ASymmetricCryptoTest {
     @Test
     public void testSignVerify() {
         Message.Signature sig = ECC_Crypto.sign(post, priv);
-        assertTrue(ECC_Crypto.verify(post, sig, pub));
-    }
-    
-    @Test
-    public void testSignVerifyMessage() {
-        Message.SignedMessage sm = PBSerialize.sign(post, priv);
-        assertTrue(PBSerialize.verify(sm, pub));
+        Message.SignedMessage sm = Message.SignedMessage.newBuilder()
+                .setPost(post)
+                .setMessageSignature(sig)
+                .build();
+        assertTrue(ECC_Crypto.verify(sm, pub));
     }
 }

@@ -25,35 +25,6 @@ import org.metamesh.chub.proto.Message;
 
 public class PBSerialize {
 
-    public static boolean verify(Message.SignedMessage sm, ChubPubKey pk)  {
-        GeneratedMessageV3 val;
-
-        switch (sm.getMsgCase()) {
-            case POST:
-                val = sm.getPost();
-                break;
-            case PRIVATEKEY:
-                val = sm.getPrivateKey();
-                break;
-            case PUBLICKEY:
-                val = sm.getPublicKey();
-                break;
-            case SYMMETRICLYENCRYPTEDMESSAGE:
-                val = sm.getSymmetriclyEncryptedMessage();
-                break;
-            case ASYMMETRICLYENCRYPTEDMESSAGE:
-                val = sm.getAsymmetriclyEncryptedMessage();
-                break;
-            case HYBRIDENCRYPTEDMESSAGE:
-                val = sm.getHybridEncryptedMessage();
-                break;
-            case MSG_NOT_SET:
-            default:
-                throw new AssertionError(sm.getMsgCase().name());
-        }
-        return ECC_Crypto.verify(val, sm.getMessageSignature(), pk);
-    }
-
     public static Message.SignedMessage sign(Message.Post msg, ChubPrivKey pk) {
         Message.Signature sig = ECC_Crypto.sign(msg, pk);
 
