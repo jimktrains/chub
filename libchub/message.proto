@@ -22,6 +22,8 @@ message Post {
   bool all_day = 6;
   fixed64 end_time = 7;
   bytes image = 8;
+  fixed64 rsvp_by = 9;
+  string rsvp_email = 10;
 }
 
 message Signature {
@@ -88,4 +90,5 @@ message SignedMessage {
     HybridEncryptedMessage hybridEncryptedMessage = 7;
   }
   Signature message_signature = 8;
+  fixed64 timestamp = 9;
 }
