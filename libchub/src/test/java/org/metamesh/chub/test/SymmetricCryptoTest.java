@@ -13,11 +13,10 @@ import java.security.spec.InvalidKeySpecException;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.metamesh.chub.crypto.SymmetricCrypto;
-import org.metamesh.chub.crypto.util.SymmetricEncryptionType;
 import org.metamesh.chub.proto.Message;
+import static org.junit.Assert.assertEquals;
 
 public class SymmetricCryptoTest {
     static final byte[] testMessage = "This is a test".getBytes(StandardCharsets.UTF_8);
@@ -26,7 +25,7 @@ public class SymmetricCryptoTest {
     @Test
     public void testSymmetricCrypto() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidKeySpecException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
         
-        Message.SymmetriclyEncryptedMessage enc_msg = SymmetricCrypto.encrypt(SymmetricEncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536, password, testMessage).build();
+        Message.SymmetriclyEncryptedMessage enc_msg = SymmetricCrypto.encrypt(Message.EncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128, password, testMessage).build();
         byte[] dec_msg = SymmetricCrypto.decrypt(password, enc_msg);
         
         int bytes_same = 0;

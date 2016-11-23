@@ -198,16 +198,16 @@ public final class Message {
   public enum EncryptionType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>AES_256_GCM_PBKDF2WithHmacSHA256_65536 = 0;</code>
+     * <code>AES_256_GCM_PBKDF2WithHmacSHA256_65536_128 = 0;</code>
      */
-    AES_256_GCM_PBKDF2WithHmacSHA256_65536(0),
+    AES_256_GCM_PBKDF2WithHmacSHA256_65536_128(0),
     UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>AES_256_GCM_PBKDF2WithHmacSHA256_65536 = 0;</code>
+     * <code>AES_256_GCM_PBKDF2WithHmacSHA256_65536_128 = 0;</code>
      */
-    public static final int AES_256_GCM_PBKDF2WithHmacSHA256_65536_VALUE = 0;
+    public static final int AES_256_GCM_PBKDF2WithHmacSHA256_65536_128_VALUE = 0;
 
 
     public final int getNumber() {
@@ -228,7 +228,7 @@ public final class Message {
 
     public static EncryptionType forNumber(int value) {
       switch (value) {
-        case 0: return AES_256_GCM_PBKDF2WithHmacSHA256_65536;
+        case 0: return AES_256_GCM_PBKDF2WithHmacSHA256_65536_128;
         default: return null;
       }
     }
@@ -282,6 +282,104 @@ public final class Message {
   }
 
   /**
+   * Protobuf enum {@code KeyEncodingType}
+   */
+  public enum KeyEncodingType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>pkcs8 = 0;</code>
+     */
+    pkcs8(0),
+    /**
+     * <code>x509 = 1;</code>
+     */
+    x509(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>pkcs8 = 0;</code>
+     */
+    public static final int pkcs8_VALUE = 0;
+    /**
+     * <code>x509 = 1;</code>
+     */
+    public static final int x509_VALUE = 1;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static KeyEncodingType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static KeyEncodingType forNumber(int value) {
+      switch (value) {
+        case 0: return pkcs8;
+        case 1: return x509;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<KeyEncodingType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        KeyEncodingType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<KeyEncodingType>() {
+            public KeyEncodingType findValueByNumber(int number) {
+              return KeyEncodingType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return org.metamesh.chub.proto.Message.getDescriptor().getEnumTypes().get(3);
+    }
+
+    private static final KeyEncodingType[] VALUES = values();
+
+    public static KeyEncodingType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private KeyEncodingType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:KeyEncodingType)
+  }
+
+  /**
    * Protobuf enum {@code MessageType}
    */
   public enum MessageType
@@ -314,6 +412,10 @@ public final class Message {
      * <code>MessageHybridEncryptedMessage = 6;</code>
      */
     MessageHybridEncryptedMessage(6),
+    /**
+     * <code>MessageReferenceMessage = 7;</code>
+     */
+    MessageReferenceMessage(7),
     /**
      * <code>MessageSymetricKey = 100;</code>
      */
@@ -350,6 +452,10 @@ public final class Message {
      */
     public static final int MessageHybridEncryptedMessage_VALUE = 6;
     /**
+     * <code>MessageReferenceMessage = 7;</code>
+     */
+    public static final int MessageReferenceMessage_VALUE = 7;
+    /**
      * <code>MessageSymetricKey = 100;</code>
      */
     public static final int MessageSymetricKey_VALUE = 100;
@@ -380,6 +486,7 @@ public final class Message {
         case 4: return MessageSymmetriclyEncryptedMessage;
         case 5: return MessageAsymmetriclyEncryptedMessage;
         case 6: return MessageHybridEncryptedMessage;
+        case 7: return MessageReferenceMessage;
         case 100: return MessageSymetricKey;
         default: return null;
       }
@@ -407,7 +514,7 @@ public final class Message {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return org.metamesh.chub.proto.Message.getDescriptor().getEnumTypes().get(3);
+      return org.metamesh.chub.proto.Message.getDescriptor().getEnumTypes().get(4);
     }
 
     private static final MessageType[] VALUES = values();
@@ -496,6 +603,21 @@ public final class Message {
      * <code>optional bytes image = 8;</code>
      */
     com.google.protobuf.ByteString getImage();
+
+    /**
+     * <code>optional fixed64 rsvp_by = 9;</code>
+     */
+    long getRsvpBy();
+
+    /**
+     * <code>optional string rsvp_email = 10;</code>
+     */
+    java.lang.String getRsvpEmail();
+    /**
+     * <code>optional string rsvp_email = 10;</code>
+     */
+    com.google.protobuf.ByteString
+        getRsvpEmailBytes();
   }
   /**
    * Protobuf type {@code Post}
@@ -517,6 +639,8 @@ public final class Message {
       allDay_ = false;
       endTime_ = 0L;
       image_ = com.google.protobuf.ByteString.EMPTY;
+      rsvpBy_ = 0L;
+      rsvpEmail_ = "";
     }
 
     @java.lang.Override
@@ -586,6 +710,17 @@ public final class Message {
             case 66: {
 
               image_ = input.readBytes();
+              break;
+            }
+            case 73: {
+
+              rsvpBy_ = input.readFixed64();
+              break;
+            }
+            case 82: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              rsvpEmail_ = s;
               break;
             }
           }
@@ -783,6 +918,49 @@ public final class Message {
       return image_;
     }
 
+    public static final int RSVP_BY_FIELD_NUMBER = 9;
+    private long rsvpBy_;
+    /**
+     * <code>optional fixed64 rsvp_by = 9;</code>
+     */
+    public long getRsvpBy() {
+      return rsvpBy_;
+    }
+
+    public static final int RSVP_EMAIL_FIELD_NUMBER = 10;
+    private volatile java.lang.Object rsvpEmail_;
+    /**
+     * <code>optional string rsvp_email = 10;</code>
+     */
+    public java.lang.String getRsvpEmail() {
+      java.lang.Object ref = rsvpEmail_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        rsvpEmail_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string rsvp_email = 10;</code>
+     */
+    public com.google.protobuf.ByteString
+        getRsvpEmailBytes() {
+      java.lang.Object ref = rsvpEmail_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        rsvpEmail_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -819,6 +997,12 @@ public final class Message {
       if (!image_.isEmpty()) {
         output.writeBytes(8, image_);
       }
+      if (rsvpBy_ != 0L) {
+        output.writeFixed64(9, rsvpBy_);
+      }
+      if (!getRsvpEmailBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, rsvpEmail_);
+      }
     }
 
     public int getSerializedSize() {
@@ -854,6 +1038,13 @@ public final class Message {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(8, image_);
       }
+      if (rsvpBy_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFixed64Size(9, rsvpBy_);
+      }
+      if (!getRsvpEmailBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, rsvpEmail_);
+      }
       memoizedSize = size;
       return size;
     }
@@ -886,6 +1077,10 @@ public final class Message {
           == other.getEndTime());
       result = result && getImage()
           .equals(other.getImage());
+      result = result && (getRsvpBy()
+          == other.getRsvpBy());
+      result = result && getRsvpEmail()
+          .equals(other.getRsvpEmail());
       return result;
     }
 
@@ -915,6 +1110,11 @@ public final class Message {
           getEndTime());
       hash = (37 * hash) + IMAGE_FIELD_NUMBER;
       hash = (53 * hash) + getImage().hashCode();
+      hash = (37 * hash) + RSVP_BY_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRsvpBy());
+      hash = (37 * hash) + RSVP_EMAIL_FIELD_NUMBER;
+      hash = (53 * hash) + getRsvpEmail().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1049,6 +1249,10 @@ public final class Message {
 
         image_ = com.google.protobuf.ByteString.EMPTY;
 
+        rsvpBy_ = 0L;
+
+        rsvpEmail_ = "";
+
         return this;
       }
 
@@ -1079,6 +1283,8 @@ public final class Message {
         result.allDay_ = allDay_;
         result.endTime_ = endTime_;
         result.image_ = image_;
+        result.rsvpBy_ = rsvpBy_;
+        result.rsvpEmail_ = rsvpEmail_;
         onBuilt();
         return result;
       }
@@ -1147,6 +1353,13 @@ public final class Message {
         }
         if (other.getImage() != com.google.protobuf.ByteString.EMPTY) {
           setImage(other.getImage());
+        }
+        if (other.getRsvpBy() != 0L) {
+          setRsvpBy(other.getRsvpBy());
+        }
+        if (!other.getRsvpEmail().isEmpty()) {
+          rsvpEmail_ = other.rsvpEmail_;
+          onChanged();
         }
         onChanged();
         return this;
@@ -1556,6 +1769,101 @@ public final class Message {
         onChanged();
         return this;
       }
+
+      private long rsvpBy_ ;
+      /**
+       * <code>optional fixed64 rsvp_by = 9;</code>
+       */
+      public long getRsvpBy() {
+        return rsvpBy_;
+      }
+      /**
+       * <code>optional fixed64 rsvp_by = 9;</code>
+       */
+      public Builder setRsvpBy(long value) {
+        
+        rsvpBy_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional fixed64 rsvp_by = 9;</code>
+       */
+      public Builder clearRsvpBy() {
+        
+        rsvpBy_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object rsvpEmail_ = "";
+      /**
+       * <code>optional string rsvp_email = 10;</code>
+       */
+      public java.lang.String getRsvpEmail() {
+        java.lang.Object ref = rsvpEmail_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          rsvpEmail_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string rsvp_email = 10;</code>
+       */
+      public com.google.protobuf.ByteString
+          getRsvpEmailBytes() {
+        java.lang.Object ref = rsvpEmail_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          rsvpEmail_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string rsvp_email = 10;</code>
+       */
+      public Builder setRsvpEmail(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        rsvpEmail_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string rsvp_email = 10;</code>
+       */
+      public Builder clearRsvpEmail() {
+        
+        rsvpEmail_ = getDefaultInstance().getRsvpEmail();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string rsvp_email = 10;</code>
+       */
+      public Builder setRsvpEmailBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        rsvpEmail_ = value;
+        onChanged();
+        return this;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -1610,16 +1918,10 @@ public final class Message {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string cn = 1;</code>
-     */
-    java.lang.String getCn();
-    /**
-     * <code>optional string cn = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getCnBytes();
-
-    /**
+     * <pre>
+     *string cn = 1;
+     * </pre>
+     *
      * <code>optional bytes signature = 2;</code>
      */
     com.google.protobuf.ByteString getSignature();
@@ -1632,6 +1934,24 @@ public final class Message {
      * <code>optional .SignatureType signature_type = 3;</code>
      */
     org.metamesh.chub.proto.Message.SignatureType getSignatureType();
+
+    /**
+     * <code>optional bytes fingerprint = 4;</code>
+     */
+    com.google.protobuf.ByteString getFingerprint();
+
+    /**
+     * <code>optional .MessageReference ref = 5;</code>
+     */
+    boolean hasRef();
+    /**
+     * <code>optional .MessageReference ref = 5;</code>
+     */
+    org.metamesh.chub.proto.Message.MessageReference getRef();
+    /**
+     * <code>optional .MessageReference ref = 5;</code>
+     */
+    org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder();
   }
   /**
    * Protobuf type {@code Signature}
@@ -1645,9 +1965,9 @@ public final class Message {
       super(builder);
     }
     private Signature() {
-      cn_ = "";
       signature_ = com.google.protobuf.ByteString.EMPTY;
       signatureType_ = 0;
+      fingerprint_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
@@ -1675,12 +1995,6 @@ public final class Message {
               }
               break;
             }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              cn_ = s;
-              break;
-            }
             case 18: {
 
               signature_ = input.readBytes();
@@ -1690,6 +2004,24 @@ public final class Message {
               int rawValue = input.readEnum();
 
               signatureType_ = rawValue;
+              break;
+            }
+            case 34: {
+
+              fingerprint_ = input.readBytes();
+              break;
+            }
+            case 42: {
+              org.metamesh.chub.proto.Message.MessageReference.Builder subBuilder = null;
+              if (ref_ != null) {
+                subBuilder = ref_.toBuilder();
+              }
+              ref_ = input.readMessage(org.metamesh.chub.proto.Message.MessageReference.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ref_);
+                ref_ = subBuilder.buildPartial();
+              }
+
               break;
             }
           }
@@ -1715,43 +2047,13 @@ public final class Message {
               org.metamesh.chub.proto.Message.Signature.class, org.metamesh.chub.proto.Message.Signature.Builder.class);
     }
 
-    public static final int CN_FIELD_NUMBER = 1;
-    private volatile java.lang.Object cn_;
-    /**
-     * <code>optional string cn = 1;</code>
-     */
-    public java.lang.String getCn() {
-      java.lang.Object ref = cn_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        cn_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string cn = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getCnBytes() {
-      java.lang.Object ref = cn_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        cn_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     public static final int SIGNATURE_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString signature_;
     /**
+     * <pre>
+     *string cn = 1;
+     * </pre>
+     *
      * <code>optional bytes signature = 2;</code>
      */
     public com.google.protobuf.ByteString getSignature() {
@@ -1774,6 +2076,36 @@ public final class Message {
       return result == null ? org.metamesh.chub.proto.Message.SignatureType.UNRECOGNIZED : result;
     }
 
+    public static final int FINGERPRINT_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString fingerprint_;
+    /**
+     * <code>optional bytes fingerprint = 4;</code>
+     */
+    public com.google.protobuf.ByteString getFingerprint() {
+      return fingerprint_;
+    }
+
+    public static final int REF_FIELD_NUMBER = 5;
+    private org.metamesh.chub.proto.Message.MessageReference ref_;
+    /**
+     * <code>optional .MessageReference ref = 5;</code>
+     */
+    public boolean hasRef() {
+      return ref_ != null;
+    }
+    /**
+     * <code>optional .MessageReference ref = 5;</code>
+     */
+    public org.metamesh.chub.proto.Message.MessageReference getRef() {
+      return ref_ == null ? org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+    }
+    /**
+     * <code>optional .MessageReference ref = 5;</code>
+     */
+    public org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder() {
+      return getRef();
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1786,14 +2118,17 @@ public final class Message {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getCnBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, cn_);
-      }
       if (!signature_.isEmpty()) {
         output.writeBytes(2, signature_);
       }
       if (signatureType_ != org.metamesh.chub.proto.Message.SignatureType.SHA512withECDSA.getNumber()) {
         output.writeEnum(3, signatureType_);
+      }
+      if (!fingerprint_.isEmpty()) {
+        output.writeBytes(4, fingerprint_);
+      }
+      if (ref_ != null) {
+        output.writeMessage(5, getRef());
       }
     }
 
@@ -1802,9 +2137,6 @@ public final class Message {
       if (size != -1) return size;
 
       size = 0;
-      if (!getCnBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, cn_);
-      }
       if (!signature_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, signature_);
@@ -1812,6 +2144,14 @@ public final class Message {
       if (signatureType_ != org.metamesh.chub.proto.Message.SignatureType.SHA512withECDSA.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, signatureType_);
+      }
+      if (!fingerprint_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, fingerprint_);
+      }
+      if (ref_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getRef());
       }
       memoizedSize = size;
       return size;
@@ -1829,11 +2169,16 @@ public final class Message {
       org.metamesh.chub.proto.Message.Signature other = (org.metamesh.chub.proto.Message.Signature) obj;
 
       boolean result = true;
-      result = result && getCn()
-          .equals(other.getCn());
       result = result && getSignature()
           .equals(other.getSignature());
       result = result && signatureType_ == other.signatureType_;
+      result = result && getFingerprint()
+          .equals(other.getFingerprint());
+      result = result && (hasRef() == other.hasRef());
+      if (hasRef()) {
+        result = result && getRef()
+            .equals(other.getRef());
+      }
       return result;
     }
 
@@ -1844,12 +2189,16 @@ public final class Message {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (37 * hash) + CN_FIELD_NUMBER;
-      hash = (53 * hash) + getCn().hashCode();
       hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
       hash = (53 * hash) + getSignature().hashCode();
       hash = (37 * hash) + SIGNATURE_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + signatureType_;
+      hash = (37 * hash) + FINGERPRINT_FIELD_NUMBER;
+      hash = (53 * hash) + getFingerprint().hashCode();
+      if (hasRef()) {
+        hash = (37 * hash) + REF_FIELD_NUMBER;
+        hash = (53 * hash) + getRef().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1968,12 +2317,18 @@ public final class Message {
       }
       public Builder clear() {
         super.clear();
-        cn_ = "";
-
         signature_ = com.google.protobuf.ByteString.EMPTY;
 
         signatureType_ = 0;
 
+        fingerprint_ = com.google.protobuf.ByteString.EMPTY;
+
+        if (refBuilder_ == null) {
+          ref_ = null;
+        } else {
+          ref_ = null;
+          refBuilder_ = null;
+        }
         return this;
       }
 
@@ -1996,9 +2351,14 @@ public final class Message {
 
       public org.metamesh.chub.proto.Message.Signature buildPartial() {
         org.metamesh.chub.proto.Message.Signature result = new org.metamesh.chub.proto.Message.Signature(this);
-        result.cn_ = cn_;
         result.signature_ = signature_;
         result.signatureType_ = signatureType_;
+        result.fingerprint_ = fingerprint_;
+        if (refBuilder_ == null) {
+          result.ref_ = ref_;
+        } else {
+          result.ref_ = refBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -2040,15 +2400,17 @@ public final class Message {
 
       public Builder mergeFrom(org.metamesh.chub.proto.Message.Signature other) {
         if (other == org.metamesh.chub.proto.Message.Signature.getDefaultInstance()) return this;
-        if (!other.getCn().isEmpty()) {
-          cn_ = other.cn_;
-          onChanged();
-        }
         if (other.getSignature() != com.google.protobuf.ByteString.EMPTY) {
           setSignature(other.getSignature());
         }
         if (other.signatureType_ != 0) {
           setSignatureTypeValue(other.getSignatureTypeValue());
+        }
+        if (other.getFingerprint() != com.google.protobuf.ByteString.EMPTY) {
+          setFingerprint(other.getFingerprint());
+        }
+        if (other.hasRef()) {
+          mergeRef(other.getRef());
         }
         onChanged();
         return this;
@@ -2076,83 +2438,22 @@ public final class Message {
         return this;
       }
 
-      private java.lang.Object cn_ = "";
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public java.lang.String getCn() {
-        java.lang.Object ref = cn_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          cn_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getCnBytes() {
-        java.lang.Object ref = cn_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          cn_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public Builder setCn(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        cn_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public Builder clearCn() {
-        
-        cn_ = getDefaultInstance().getCn();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public Builder setCnBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        cn_ = value;
-        onChanged();
-        return this;
-      }
-
       private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional bytes signature = 2;</code>
        */
       public com.google.protobuf.ByteString getSignature() {
         return signature_;
       }
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional bytes signature = 2;</code>
        */
       public Builder setSignature(com.google.protobuf.ByteString value) {
@@ -2165,6 +2466,10 @@ public final class Message {
         return this;
       }
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional bytes signature = 2;</code>
        */
       public Builder clearSignature() {
@@ -2216,6 +2521,152 @@ public final class Message {
         signatureType_ = 0;
         onChanged();
         return this;
+      }
+
+      private com.google.protobuf.ByteString fingerprint_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes fingerprint = 4;</code>
+       */
+      public com.google.protobuf.ByteString getFingerprint() {
+        return fingerprint_;
+      }
+      /**
+       * <code>optional bytes fingerprint = 4;</code>
+       */
+      public Builder setFingerprint(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        fingerprint_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes fingerprint = 4;</code>
+       */
+      public Builder clearFingerprint() {
+        
+        fingerprint_ = getDefaultInstance().getFingerprint();
+        onChanged();
+        return this;
+      }
+
+      private org.metamesh.chub.proto.Message.MessageReference ref_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder> refBuilder_;
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public boolean hasRef() {
+        return refBuilder_ != null || ref_ != null;
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReference getRef() {
+        if (refBuilder_ == null) {
+          return ref_ == null ? org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+        } else {
+          return refBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public Builder setRef(org.metamesh.chub.proto.Message.MessageReference value) {
+        if (refBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ref_ = value;
+          onChanged();
+        } else {
+          refBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public Builder setRef(
+          org.metamesh.chub.proto.Message.MessageReference.Builder builderForValue) {
+        if (refBuilder_ == null) {
+          ref_ = builderForValue.build();
+          onChanged();
+        } else {
+          refBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public Builder mergeRef(org.metamesh.chub.proto.Message.MessageReference value) {
+        if (refBuilder_ == null) {
+          if (ref_ != null) {
+            ref_ =
+              org.metamesh.chub.proto.Message.MessageReference.newBuilder(ref_).mergeFrom(value).buildPartial();
+          } else {
+            ref_ = value;
+          }
+          onChanged();
+        } else {
+          refBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public Builder clearRef() {
+        if (refBuilder_ == null) {
+          ref_ = null;
+          onChanged();
+        } else {
+          ref_ = null;
+          refBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReference.Builder getRefBuilder() {
+        
+        onChanged();
+        return getRefFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder() {
+        if (refBuilder_ != null) {
+          return refBuilder_.getMessageOrBuilder();
+        } else {
+          return ref_ == null ?
+              org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+        }
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder> 
+          getRefFieldBuilder() {
+        if (refBuilder_ == null) {
+          refBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder>(
+                  getRef(),
+                  getParentForChildren(),
+                  isClean());
+          ref_ = null;
+        }
+        return refBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2271,24 +2722,26 @@ public final class Message {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string cn = 1;</code>
-     */
-    java.lang.String getCn();
-    /**
-     * <code>optional string cn = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getCnBytes();
-
-    /**
+     * <pre>
+     *string cn = 1;
+     * </pre>
+     *
      * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
      */
     boolean hasKey();
     /**
+     * <pre>
+     *string cn = 1;
+     * </pre>
+     *
      * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
      */
     org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage getKey();
     /**
+     * <pre>
+     *string cn = 1;
+     * </pre>
+     *
      * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
      */
     org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessageOrBuilder getKeyOrBuilder();
@@ -2303,23 +2756,51 @@ public final class Message {
     org.metamesh.chub.proto.Message.ECCKeyType getType();
 
     /**
-     * <code>optional .EncryptionType encryption_type = 4;</code>
+     * <pre>
+     *EncryptionType encryption_type = 4;
+     * </pre>
+     *
+     * <code>optional .KeyEncodingType encodingType = 5;</code>
      */
-    int getEncryptionTypeValue();
+    int getEncodingTypeValue();
     /**
-     * <code>optional .EncryptionType encryption_type = 4;</code>
+     * <pre>
+     *EncryptionType encryption_type = 4;
+     * </pre>
+     *
+     * <code>optional .KeyEncodingType encodingType = 5;</code>
      */
-    org.metamesh.chub.proto.Message.EncryptionType getEncryptionType();
+    org.metamesh.chub.proto.Message.KeyEncodingType getEncodingType();
 
     /**
-     * <code>optional string encodingType = 5;</code>
+     * <code>optional string name = 6;</code>
      */
-    java.lang.String getEncodingType();
+    java.lang.String getName();
     /**
-     * <code>optional string encodingType = 5;</code>
+     * <code>optional string name = 6;</code>
      */
     com.google.protobuf.ByteString
-        getEncodingTypeBytes();
+        getNameBytes();
+
+    /**
+     * <code>optional string email = 7;</code>
+     */
+    java.lang.String getEmail();
+    /**
+     * <code>optional string email = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getEmailBytes();
+
+    /**
+     * <code>optional string organization = 8;</code>
+     */
+    java.lang.String getOrganization();
+    /**
+     * <code>optional string organization = 8;</code>
+     */
+    com.google.protobuf.ByteString
+        getOrganizationBytes();
   }
   /**
    * Protobuf type {@code PrivateKey}
@@ -2333,10 +2814,11 @@ public final class Message {
       super(builder);
     }
     private PrivateKey() {
-      cn_ = "";
       type_ = 0;
-      encryptionType_ = 0;
-      encodingType_ = "";
+      encodingType_ = 0;
+      name_ = "";
+      email_ = "";
+      organization_ = "";
     }
 
     @java.lang.Override
@@ -2364,12 +2846,6 @@ public final class Message {
               }
               break;
             }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              cn_ = s;
-              break;
-            }
             case 18: {
               org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage.Builder subBuilder = null;
               if (key_ != null) {
@@ -2389,16 +2865,28 @@ public final class Message {
               type_ = rawValue;
               break;
             }
-            case 32: {
+            case 40: {
               int rawValue = input.readEnum();
 
-              encryptionType_ = rawValue;
+              encodingType_ = rawValue;
               break;
             }
-            case 42: {
+            case 50: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              encodingType_ = s;
+              name_ = s;
+              break;
+            }
+            case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              email_ = s;
+              break;
+            }
+            case 66: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              organization_ = s;
               break;
             }
           }
@@ -2424,55 +2912,33 @@ public final class Message {
               org.metamesh.chub.proto.Message.PrivateKey.class, org.metamesh.chub.proto.Message.PrivateKey.Builder.class);
     }
 
-    public static final int CN_FIELD_NUMBER = 1;
-    private volatile java.lang.Object cn_;
-    /**
-     * <code>optional string cn = 1;</code>
-     */
-    public java.lang.String getCn() {
-      java.lang.Object ref = cn_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        cn_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string cn = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getCnBytes() {
-      java.lang.Object ref = cn_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        cn_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     public static final int KEY_FIELD_NUMBER = 2;
     private org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage key_;
     /**
+     * <pre>
+     *string cn = 1;
+     * </pre>
+     *
      * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
      */
     public boolean hasKey() {
       return key_ != null;
     }
     /**
+     * <pre>
+     *string cn = 1;
+     * </pre>
+     *
      * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
      */
     public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage getKey() {
       return key_ == null ? org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage.getDefaultInstance() : key_;
     }
     /**
+     * <pre>
+     *string cn = 1;
+     * </pre>
+     *
      * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
      */
     public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessageOrBuilder getKeyOrBuilder() {
@@ -2495,50 +2961,126 @@ public final class Message {
       return result == null ? org.metamesh.chub.proto.Message.ECCKeyType.UNRECOGNIZED : result;
     }
 
-    public static final int ENCRYPTION_TYPE_FIELD_NUMBER = 4;
-    private int encryptionType_;
+    public static final int ENCODINGTYPE_FIELD_NUMBER = 5;
+    private int encodingType_;
     /**
-     * <code>optional .EncryptionType encryption_type = 4;</code>
+     * <pre>
+     *EncryptionType encryption_type = 4;
+     * </pre>
+     *
+     * <code>optional .KeyEncodingType encodingType = 5;</code>
      */
-    public int getEncryptionTypeValue() {
-      return encryptionType_;
+    public int getEncodingTypeValue() {
+      return encodingType_;
     }
     /**
-     * <code>optional .EncryptionType encryption_type = 4;</code>
+     * <pre>
+     *EncryptionType encryption_type = 4;
+     * </pre>
+     *
+     * <code>optional .KeyEncodingType encodingType = 5;</code>
      */
-    public org.metamesh.chub.proto.Message.EncryptionType getEncryptionType() {
-      org.metamesh.chub.proto.Message.EncryptionType result = org.metamesh.chub.proto.Message.EncryptionType.valueOf(encryptionType_);
-      return result == null ? org.metamesh.chub.proto.Message.EncryptionType.UNRECOGNIZED : result;
+    public org.metamesh.chub.proto.Message.KeyEncodingType getEncodingType() {
+      org.metamesh.chub.proto.Message.KeyEncodingType result = org.metamesh.chub.proto.Message.KeyEncodingType.valueOf(encodingType_);
+      return result == null ? org.metamesh.chub.proto.Message.KeyEncodingType.UNRECOGNIZED : result;
     }
 
-    public static final int ENCODINGTYPE_FIELD_NUMBER = 5;
-    private volatile java.lang.Object encodingType_;
+    public static final int NAME_FIELD_NUMBER = 6;
+    private volatile java.lang.Object name_;
     /**
-     * <code>optional string encodingType = 5;</code>
+     * <code>optional string name = 6;</code>
      */
-    public java.lang.String getEncodingType() {
-      java.lang.Object ref = encodingType_;
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        encodingType_ = s;
+        name_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string encodingType = 5;</code>
+     * <code>optional string name = 6;</code>
      */
     public com.google.protobuf.ByteString
-        getEncodingTypeBytes() {
-      java.lang.Object ref = encodingType_;
+        getNameBytes() {
+      java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        encodingType_ = b;
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int EMAIL_FIELD_NUMBER = 7;
+    private volatile java.lang.Object email_;
+    /**
+     * <code>optional string email = 7;</code>
+     */
+    public java.lang.String getEmail() {
+      java.lang.Object ref = email_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        email_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string email = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getEmailBytes() {
+      java.lang.Object ref = email_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        email_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ORGANIZATION_FIELD_NUMBER = 8;
+    private volatile java.lang.Object organization_;
+    /**
+     * <code>optional string organization = 8;</code>
+     */
+    public java.lang.String getOrganization() {
+      java.lang.Object ref = organization_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        organization_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string organization = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getOrganizationBytes() {
+      java.lang.Object ref = organization_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        organization_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -2557,20 +3099,23 @@ public final class Message {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getCnBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, cn_);
-      }
       if (key_ != null) {
         output.writeMessage(2, getKey());
       }
       if (type_ != org.metamesh.chub.proto.Message.ECCKeyType.secp384r1.getNumber()) {
         output.writeEnum(3, type_);
       }
-      if (encryptionType_ != org.metamesh.chub.proto.Message.EncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536.getNumber()) {
-        output.writeEnum(4, encryptionType_);
+      if (encodingType_ != org.metamesh.chub.proto.Message.KeyEncodingType.pkcs8.getNumber()) {
+        output.writeEnum(5, encodingType_);
       }
-      if (!getEncodingTypeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, encodingType_);
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, name_);
+      }
+      if (!getEmailBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, email_);
+      }
+      if (!getOrganizationBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, organization_);
       }
     }
 
@@ -2579,9 +3124,6 @@ public final class Message {
       if (size != -1) return size;
 
       size = 0;
-      if (!getCnBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, cn_);
-      }
       if (key_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getKey());
@@ -2590,12 +3132,18 @@ public final class Message {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, type_);
       }
-      if (encryptionType_ != org.metamesh.chub.proto.Message.EncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536.getNumber()) {
+      if (encodingType_ != org.metamesh.chub.proto.Message.KeyEncodingType.pkcs8.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, encryptionType_);
+          .computeEnumSize(5, encodingType_);
       }
-      if (!getEncodingTypeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, encodingType_);
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, name_);
+      }
+      if (!getEmailBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, email_);
+      }
+      if (!getOrganizationBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, organization_);
       }
       memoizedSize = size;
       return size;
@@ -2613,17 +3161,19 @@ public final class Message {
       org.metamesh.chub.proto.Message.PrivateKey other = (org.metamesh.chub.proto.Message.PrivateKey) obj;
 
       boolean result = true;
-      result = result && getCn()
-          .equals(other.getCn());
       result = result && (hasKey() == other.hasKey());
       if (hasKey()) {
         result = result && getKey()
             .equals(other.getKey());
       }
       result = result && type_ == other.type_;
-      result = result && encryptionType_ == other.encryptionType_;
-      result = result && getEncodingType()
-          .equals(other.getEncodingType());
+      result = result && encodingType_ == other.encodingType_;
+      result = result && getName()
+          .equals(other.getName());
+      result = result && getEmail()
+          .equals(other.getEmail());
+      result = result && getOrganization()
+          .equals(other.getOrganization());
       return result;
     }
 
@@ -2634,18 +3184,20 @@ public final class Message {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (37 * hash) + CN_FIELD_NUMBER;
-      hash = (53 * hash) + getCn().hashCode();
       if (hasKey()) {
         hash = (37 * hash) + KEY_FIELD_NUMBER;
         hash = (53 * hash) + getKey().hashCode();
       }
       hash = (37 * hash) + TYPE_FIELD_NUMBER;
       hash = (53 * hash) + type_;
-      hash = (37 * hash) + ENCRYPTION_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + encryptionType_;
       hash = (37 * hash) + ENCODINGTYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getEncodingType().hashCode();
+      hash = (53 * hash) + encodingType_;
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+      hash = (53 * hash) + getEmail().hashCode();
+      hash = (37 * hash) + ORGANIZATION_FIELD_NUMBER;
+      hash = (53 * hash) + getOrganization().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2764,8 +3316,6 @@ public final class Message {
       }
       public Builder clear() {
         super.clear();
-        cn_ = "";
-
         if (keyBuilder_ == null) {
           key_ = null;
         } else {
@@ -2774,9 +3324,13 @@ public final class Message {
         }
         type_ = 0;
 
-        encryptionType_ = 0;
+        encodingType_ = 0;
 
-        encodingType_ = "";
+        name_ = "";
+
+        email_ = "";
+
+        organization_ = "";
 
         return this;
       }
@@ -2800,15 +3354,16 @@ public final class Message {
 
       public org.metamesh.chub.proto.Message.PrivateKey buildPartial() {
         org.metamesh.chub.proto.Message.PrivateKey result = new org.metamesh.chub.proto.Message.PrivateKey(this);
-        result.cn_ = cn_;
         if (keyBuilder_ == null) {
           result.key_ = key_;
         } else {
           result.key_ = keyBuilder_.build();
         }
         result.type_ = type_;
-        result.encryptionType_ = encryptionType_;
         result.encodingType_ = encodingType_;
+        result.name_ = name_;
+        result.email_ = email_;
+        result.organization_ = organization_;
         onBuilt();
         return result;
       }
@@ -2850,21 +3405,25 @@ public final class Message {
 
       public Builder mergeFrom(org.metamesh.chub.proto.Message.PrivateKey other) {
         if (other == org.metamesh.chub.proto.Message.PrivateKey.getDefaultInstance()) return this;
-        if (!other.getCn().isEmpty()) {
-          cn_ = other.cn_;
-          onChanged();
-        }
         if (other.hasKey()) {
           mergeKey(other.getKey());
         }
         if (other.type_ != 0) {
           setTypeValue(other.getTypeValue());
         }
-        if (other.encryptionType_ != 0) {
-          setEncryptionTypeValue(other.getEncryptionTypeValue());
+        if (other.encodingType_ != 0) {
+          setEncodingTypeValue(other.getEncodingTypeValue());
         }
-        if (!other.getEncodingType().isEmpty()) {
-          encodingType_ = other.encodingType_;
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        if (!other.getEmail().isEmpty()) {
+          email_ = other.email_;
+          onChanged();
+        }
+        if (!other.getOrganization().isEmpty()) {
+          organization_ = other.organization_;
           onChanged();
         }
         onChanged();
@@ -2893,85 +3452,24 @@ public final class Message {
         return this;
       }
 
-      private java.lang.Object cn_ = "";
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public java.lang.String getCn() {
-        java.lang.Object ref = cn_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          cn_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getCnBytes() {
-        java.lang.Object ref = cn_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          cn_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public Builder setCn(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        cn_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public Builder clearCn() {
-        
-        cn_ = getDefaultInstance().getCn();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public Builder setCnBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        cn_ = value;
-        onChanged();
-        return this;
-      }
-
       private org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage key_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage, org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage.Builder, org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessageOrBuilder> keyBuilder_;
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
        */
       public boolean hasKey() {
         return keyBuilder_ != null || key_ != null;
       }
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
        */
       public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage getKey() {
@@ -2982,6 +3480,10 @@ public final class Message {
         }
       }
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
        */
       public Builder setKey(org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage value) {
@@ -2998,6 +3500,10 @@ public final class Message {
         return this;
       }
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
        */
       public Builder setKey(
@@ -3012,6 +3518,10 @@ public final class Message {
         return this;
       }
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
        */
       public Builder mergeKey(org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage value) {
@@ -3030,6 +3540,10 @@ public final class Message {
         return this;
       }
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
        */
       public Builder clearKey() {
@@ -3044,6 +3558,10 @@ public final class Message {
         return this;
       }
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
        */
       public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage.Builder getKeyBuilder() {
@@ -3052,6 +3570,10 @@ public final class Message {
         return getKeyFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
        */
       public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessageOrBuilder getKeyOrBuilder() {
@@ -3063,6 +3585,10 @@ public final class Message {
         }
       }
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -3123,115 +3649,273 @@ public final class Message {
         return this;
       }
 
-      private int encryptionType_ = 0;
+      private int encodingType_ = 0;
       /**
-       * <code>optional .EncryptionType encryption_type = 4;</code>
+       * <pre>
+       *EncryptionType encryption_type = 4;
+       * </pre>
+       *
+       * <code>optional .KeyEncodingType encodingType = 5;</code>
        */
-      public int getEncryptionTypeValue() {
-        return encryptionType_;
+      public int getEncodingTypeValue() {
+        return encodingType_;
       }
       /**
-       * <code>optional .EncryptionType encryption_type = 4;</code>
+       * <pre>
+       *EncryptionType encryption_type = 4;
+       * </pre>
+       *
+       * <code>optional .KeyEncodingType encodingType = 5;</code>
        */
-      public Builder setEncryptionTypeValue(int value) {
-        encryptionType_ = value;
+      public Builder setEncodingTypeValue(int value) {
+        encodingType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional .EncryptionType encryption_type = 4;</code>
+       * <pre>
+       *EncryptionType encryption_type = 4;
+       * </pre>
+       *
+       * <code>optional .KeyEncodingType encodingType = 5;</code>
        */
-      public org.metamesh.chub.proto.Message.EncryptionType getEncryptionType() {
-        org.metamesh.chub.proto.Message.EncryptionType result = org.metamesh.chub.proto.Message.EncryptionType.valueOf(encryptionType_);
-        return result == null ? org.metamesh.chub.proto.Message.EncryptionType.UNRECOGNIZED : result;
+      public org.metamesh.chub.proto.Message.KeyEncodingType getEncodingType() {
+        org.metamesh.chub.proto.Message.KeyEncodingType result = org.metamesh.chub.proto.Message.KeyEncodingType.valueOf(encodingType_);
+        return result == null ? org.metamesh.chub.proto.Message.KeyEncodingType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .EncryptionType encryption_type = 4;</code>
+       * <pre>
+       *EncryptionType encryption_type = 4;
+       * </pre>
+       *
+       * <code>optional .KeyEncodingType encodingType = 5;</code>
        */
-      public Builder setEncryptionType(org.metamesh.chub.proto.Message.EncryptionType value) {
+      public Builder setEncodingType(org.metamesh.chub.proto.Message.KeyEncodingType value) {
         if (value == null) {
           throw new NullPointerException();
         }
         
-        encryptionType_ = value.getNumber();
+        encodingType_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>optional .EncryptionType encryption_type = 4;</code>
+       * <pre>
+       *EncryptionType encryption_type = 4;
+       * </pre>
+       *
+       * <code>optional .KeyEncodingType encodingType = 5;</code>
        */
-      public Builder clearEncryptionType() {
+      public Builder clearEncodingType() {
         
-        encryptionType_ = 0;
+        encodingType_ = 0;
         onChanged();
         return this;
       }
 
-      private java.lang.Object encodingType_ = "";
+      private java.lang.Object name_ = "";
       /**
-       * <code>optional string encodingType = 5;</code>
+       * <code>optional string name = 6;</code>
        */
-      public java.lang.String getEncodingType() {
-        java.lang.Object ref = encodingType_;
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          encodingType_ = s;
+          name_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string encodingType = 5;</code>
+       * <code>optional string name = 6;</code>
        */
       public com.google.protobuf.ByteString
-          getEncodingTypeBytes() {
-        java.lang.Object ref = encodingType_;
+          getNameBytes() {
+        java.lang.Object ref = name_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          encodingType_ = b;
+          name_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>optional string encodingType = 5;</code>
+       * <code>optional string name = 6;</code>
        */
-      public Builder setEncodingType(
+      public Builder setName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        encodingType_ = value;
+        name_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string encodingType = 5;</code>
+       * <code>optional string name = 6;</code>
        */
-      public Builder clearEncodingType() {
+      public Builder clearName() {
         
-        encodingType_ = getDefaultInstance().getEncodingType();
+        name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string encodingType = 5;</code>
+       * <code>optional string name = 6;</code>
        */
-      public Builder setEncodingTypeBytes(
+      public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        encodingType_ = value;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object email_ = "";
+      /**
+       * <code>optional string email = 7;</code>
+       */
+      public java.lang.String getEmail() {
+        java.lang.Object ref = email_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          email_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string email = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getEmailBytes() {
+        java.lang.Object ref = email_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          email_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string email = 7;</code>
+       */
+      public Builder setEmail(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        email_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string email = 7;</code>
+       */
+      public Builder clearEmail() {
+        
+        email_ = getDefaultInstance().getEmail();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string email = 7;</code>
+       */
+      public Builder setEmailBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        email_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object organization_ = "";
+      /**
+       * <code>optional string organization = 8;</code>
+       */
+      public java.lang.String getOrganization() {
+        java.lang.Object ref = organization_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          organization_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string organization = 8;</code>
+       */
+      public com.google.protobuf.ByteString
+          getOrganizationBytes() {
+        java.lang.Object ref = organization_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          organization_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string organization = 8;</code>
+       */
+      public Builder setOrganization(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        organization_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string organization = 8;</code>
+       */
+      public Builder clearOrganization() {
+        
+        organization_ = getDefaultInstance().getOrganization();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string organization = 8;</code>
+       */
+      public Builder setOrganizationBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        organization_ = value;
         onChanged();
         return this;
       }
@@ -3289,16 +3973,10 @@ public final class Message {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string cn = 1;</code>
-     */
-    java.lang.String getCn();
-    /**
-     * <code>optional string cn = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getCnBytes();
-
-    /**
+     * <pre>
+     *string cn = 1;
+     * </pre>
+     *
      * <code>optional bytes key = 2;</code>
      */
     com.google.protobuf.ByteString getKey();
@@ -3313,19 +3991,31 @@ public final class Message {
     org.metamesh.chub.proto.Message.ECCKeyType getType();
 
     /**
-     * <code>optional string encodingType = 4;</code>
+     * <code>optional .KeyEncodingType encodingType = 4;</code>
      */
-    java.lang.String getEncodingType();
+    int getEncodingTypeValue();
     /**
-     * <code>optional string encodingType = 4;</code>
+     * <code>optional .KeyEncodingType encodingType = 4;</code>
      */
-    com.google.protobuf.ByteString
-        getEncodingTypeBytes();
+    org.metamesh.chub.proto.Message.KeyEncodingType getEncodingType();
 
     /**
      * <code>optional bytes fingerprint = 5;</code>
      */
     com.google.protobuf.ByteString getFingerprint();
+
+    /**
+     * <code>optional .MessageReference ref = 6;</code>
+     */
+    boolean hasRef();
+    /**
+     * <code>optional .MessageReference ref = 6;</code>
+     */
+    org.metamesh.chub.proto.Message.MessageReference getRef();
+    /**
+     * <code>optional .MessageReference ref = 6;</code>
+     */
+    org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder();
   }
   /**
    * Protobuf type {@code PublicKey}
@@ -3339,10 +4029,9 @@ public final class Message {
       super(builder);
     }
     private PublicKey() {
-      cn_ = "";
       key_ = com.google.protobuf.ByteString.EMPTY;
       type_ = 0;
-      encodingType_ = "";
+      encodingType_ = 0;
       fingerprint_ = com.google.protobuf.ByteString.EMPTY;
     }
 
@@ -3371,12 +4060,6 @@ public final class Message {
               }
               break;
             }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              cn_ = s;
-              break;
-            }
             case 18: {
 
               key_ = input.readBytes();
@@ -3388,15 +4071,28 @@ public final class Message {
               type_ = rawValue;
               break;
             }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 32: {
+              int rawValue = input.readEnum();
 
-              encodingType_ = s;
+              encodingType_ = rawValue;
               break;
             }
             case 42: {
 
               fingerprint_ = input.readBytes();
+              break;
+            }
+            case 50: {
+              org.metamesh.chub.proto.Message.MessageReference.Builder subBuilder = null;
+              if (ref_ != null) {
+                subBuilder = ref_.toBuilder();
+              }
+              ref_ = input.readMessage(org.metamesh.chub.proto.Message.MessageReference.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ref_);
+                ref_ = subBuilder.buildPartial();
+              }
+
               break;
             }
           }
@@ -3422,43 +4118,13 @@ public final class Message {
               org.metamesh.chub.proto.Message.PublicKey.class, org.metamesh.chub.proto.Message.PublicKey.Builder.class);
     }
 
-    public static final int CN_FIELD_NUMBER = 1;
-    private volatile java.lang.Object cn_;
-    /**
-     * <code>optional string cn = 1;</code>
-     */
-    public java.lang.String getCn() {
-      java.lang.Object ref = cn_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        cn_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string cn = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getCnBytes() {
-      java.lang.Object ref = cn_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        cn_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     public static final int KEY_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString key_;
     /**
+     * <pre>
+     *string cn = 1;
+     * </pre>
+     *
      * <code>optional bytes key = 2;</code>
      */
     public com.google.protobuf.ByteString getKey() {
@@ -3482,37 +4148,19 @@ public final class Message {
     }
 
     public static final int ENCODINGTYPE_FIELD_NUMBER = 4;
-    private volatile java.lang.Object encodingType_;
+    private int encodingType_;
     /**
-     * <code>optional string encodingType = 4;</code>
+     * <code>optional .KeyEncodingType encodingType = 4;</code>
      */
-    public java.lang.String getEncodingType() {
-      java.lang.Object ref = encodingType_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        encodingType_ = s;
-        return s;
-      }
+    public int getEncodingTypeValue() {
+      return encodingType_;
     }
     /**
-     * <code>optional string encodingType = 4;</code>
+     * <code>optional .KeyEncodingType encodingType = 4;</code>
      */
-    public com.google.protobuf.ByteString
-        getEncodingTypeBytes() {
-      java.lang.Object ref = encodingType_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        encodingType_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public org.metamesh.chub.proto.Message.KeyEncodingType getEncodingType() {
+      org.metamesh.chub.proto.Message.KeyEncodingType result = org.metamesh.chub.proto.Message.KeyEncodingType.valueOf(encodingType_);
+      return result == null ? org.metamesh.chub.proto.Message.KeyEncodingType.UNRECOGNIZED : result;
     }
 
     public static final int FINGERPRINT_FIELD_NUMBER = 5;
@@ -3522,6 +4170,27 @@ public final class Message {
      */
     public com.google.protobuf.ByteString getFingerprint() {
       return fingerprint_;
+    }
+
+    public static final int REF_FIELD_NUMBER = 6;
+    private org.metamesh.chub.proto.Message.MessageReference ref_;
+    /**
+     * <code>optional .MessageReference ref = 6;</code>
+     */
+    public boolean hasRef() {
+      return ref_ != null;
+    }
+    /**
+     * <code>optional .MessageReference ref = 6;</code>
+     */
+    public org.metamesh.chub.proto.Message.MessageReference getRef() {
+      return ref_ == null ? org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+    }
+    /**
+     * <code>optional .MessageReference ref = 6;</code>
+     */
+    public org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder() {
+      return getRef();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3536,20 +4205,20 @@ public final class Message {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getCnBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, cn_);
-      }
       if (!key_.isEmpty()) {
         output.writeBytes(2, key_);
       }
       if (type_ != org.metamesh.chub.proto.Message.ECCKeyType.secp384r1.getNumber()) {
         output.writeEnum(3, type_);
       }
-      if (!getEncodingTypeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, encodingType_);
+      if (encodingType_ != org.metamesh.chub.proto.Message.KeyEncodingType.pkcs8.getNumber()) {
+        output.writeEnum(4, encodingType_);
       }
       if (!fingerprint_.isEmpty()) {
         output.writeBytes(5, fingerprint_);
+      }
+      if (ref_ != null) {
+        output.writeMessage(6, getRef());
       }
     }
 
@@ -3558,9 +4227,6 @@ public final class Message {
       if (size != -1) return size;
 
       size = 0;
-      if (!getCnBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, cn_);
-      }
       if (!key_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, key_);
@@ -3569,12 +4235,17 @@ public final class Message {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, type_);
       }
-      if (!getEncodingTypeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, encodingType_);
+      if (encodingType_ != org.metamesh.chub.proto.Message.KeyEncodingType.pkcs8.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, encodingType_);
       }
       if (!fingerprint_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(5, fingerprint_);
+      }
+      if (ref_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getRef());
       }
       memoizedSize = size;
       return size;
@@ -3592,15 +4263,17 @@ public final class Message {
       org.metamesh.chub.proto.Message.PublicKey other = (org.metamesh.chub.proto.Message.PublicKey) obj;
 
       boolean result = true;
-      result = result && getCn()
-          .equals(other.getCn());
       result = result && getKey()
           .equals(other.getKey());
       result = result && type_ == other.type_;
-      result = result && getEncodingType()
-          .equals(other.getEncodingType());
+      result = result && encodingType_ == other.encodingType_;
       result = result && getFingerprint()
           .equals(other.getFingerprint());
+      result = result && (hasRef() == other.hasRef());
+      if (hasRef()) {
+        result = result && getRef()
+            .equals(other.getRef());
+      }
       return result;
     }
 
@@ -3611,16 +4284,18 @@ public final class Message {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (37 * hash) + CN_FIELD_NUMBER;
-      hash = (53 * hash) + getCn().hashCode();
       hash = (37 * hash) + KEY_FIELD_NUMBER;
       hash = (53 * hash) + getKey().hashCode();
       hash = (37 * hash) + TYPE_FIELD_NUMBER;
       hash = (53 * hash) + type_;
       hash = (37 * hash) + ENCODINGTYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getEncodingType().hashCode();
+      hash = (53 * hash) + encodingType_;
       hash = (37 * hash) + FINGERPRINT_FIELD_NUMBER;
       hash = (53 * hash) + getFingerprint().hashCode();
+      if (hasRef()) {
+        hash = (37 * hash) + REF_FIELD_NUMBER;
+        hash = (53 * hash) + getRef().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3739,16 +4414,20 @@ public final class Message {
       }
       public Builder clear() {
         super.clear();
-        cn_ = "";
-
         key_ = com.google.protobuf.ByteString.EMPTY;
 
         type_ = 0;
 
-        encodingType_ = "";
+        encodingType_ = 0;
 
         fingerprint_ = com.google.protobuf.ByteString.EMPTY;
 
+        if (refBuilder_ == null) {
+          ref_ = null;
+        } else {
+          ref_ = null;
+          refBuilder_ = null;
+        }
         return this;
       }
 
@@ -3771,11 +4450,15 @@ public final class Message {
 
       public org.metamesh.chub.proto.Message.PublicKey buildPartial() {
         org.metamesh.chub.proto.Message.PublicKey result = new org.metamesh.chub.proto.Message.PublicKey(this);
-        result.cn_ = cn_;
         result.key_ = key_;
         result.type_ = type_;
         result.encodingType_ = encodingType_;
         result.fingerprint_ = fingerprint_;
+        if (refBuilder_ == null) {
+          result.ref_ = ref_;
+        } else {
+          result.ref_ = refBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -3817,22 +4500,20 @@ public final class Message {
 
       public Builder mergeFrom(org.metamesh.chub.proto.Message.PublicKey other) {
         if (other == org.metamesh.chub.proto.Message.PublicKey.getDefaultInstance()) return this;
-        if (!other.getCn().isEmpty()) {
-          cn_ = other.cn_;
-          onChanged();
-        }
         if (other.getKey() != com.google.protobuf.ByteString.EMPTY) {
           setKey(other.getKey());
         }
         if (other.type_ != 0) {
           setTypeValue(other.getTypeValue());
         }
-        if (!other.getEncodingType().isEmpty()) {
-          encodingType_ = other.encodingType_;
-          onChanged();
+        if (other.encodingType_ != 0) {
+          setEncodingTypeValue(other.getEncodingTypeValue());
         }
         if (other.getFingerprint() != com.google.protobuf.ByteString.EMPTY) {
           setFingerprint(other.getFingerprint());
+        }
+        if (other.hasRef()) {
+          mergeRef(other.getRef());
         }
         onChanged();
         return this;
@@ -3860,83 +4541,22 @@ public final class Message {
         return this;
       }
 
-      private java.lang.Object cn_ = "";
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public java.lang.String getCn() {
-        java.lang.Object ref = cn_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          cn_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getCnBytes() {
-        java.lang.Object ref = cn_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          cn_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public Builder setCn(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        cn_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public Builder clearCn() {
-        
-        cn_ = getDefaultInstance().getCn();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string cn = 1;</code>
-       */
-      public Builder setCnBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        cn_ = value;
-        onChanged();
-        return this;
-      }
-
       private com.google.protobuf.ByteString key_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional bytes key = 2;</code>
        */
       public com.google.protobuf.ByteString getKey() {
         return key_;
       }
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional bytes key = 2;</code>
        */
       public Builder setKey(com.google.protobuf.ByteString value) {
@@ -3949,6 +4569,10 @@ public final class Message {
         return this;
       }
       /**
+       * <pre>
+       *string cn = 1;
+       * </pre>
+       *
        * <code>optional bytes key = 2;</code>
        */
       public Builder clearKey() {
@@ -4002,71 +4626,46 @@ public final class Message {
         return this;
       }
 
-      private java.lang.Object encodingType_ = "";
+      private int encodingType_ = 0;
       /**
-       * <code>optional string encodingType = 4;</code>
+       * <code>optional .KeyEncodingType encodingType = 4;</code>
        */
-      public java.lang.String getEncodingType() {
-        java.lang.Object ref = encodingType_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          encodingType_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getEncodingTypeValue() {
+        return encodingType_;
       }
       /**
-       * <code>optional string encodingType = 4;</code>
+       * <code>optional .KeyEncodingType encodingType = 4;</code>
        */
-      public com.google.protobuf.ByteString
-          getEncodingTypeBytes() {
-        java.lang.Object ref = encodingType_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          encodingType_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string encodingType = 4;</code>
-       */
-      public Builder setEncodingType(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setEncodingTypeValue(int value) {
         encodingType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string encodingType = 4;</code>
+       * <code>optional .KeyEncodingType encodingType = 4;</code>
+       */
+      public org.metamesh.chub.proto.Message.KeyEncodingType getEncodingType() {
+        org.metamesh.chub.proto.Message.KeyEncodingType result = org.metamesh.chub.proto.Message.KeyEncodingType.valueOf(encodingType_);
+        return result == null ? org.metamesh.chub.proto.Message.KeyEncodingType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>optional .KeyEncodingType encodingType = 4;</code>
+       */
+      public Builder setEncodingType(org.metamesh.chub.proto.Message.KeyEncodingType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        encodingType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .KeyEncodingType encodingType = 4;</code>
        */
       public Builder clearEncodingType() {
         
-        encodingType_ = getDefaultInstance().getEncodingType();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string encodingType = 4;</code>
-       */
-      public Builder setEncodingTypeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        encodingType_ = value;
+        encodingType_ = 0;
         onChanged();
         return this;
       }
@@ -4098,6 +4697,123 @@ public final class Message {
         fingerprint_ = getDefaultInstance().getFingerprint();
         onChanged();
         return this;
+      }
+
+      private org.metamesh.chub.proto.Message.MessageReference ref_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder> refBuilder_;
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public boolean hasRef() {
+        return refBuilder_ != null || ref_ != null;
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReference getRef() {
+        if (refBuilder_ == null) {
+          return ref_ == null ? org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+        } else {
+          return refBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public Builder setRef(org.metamesh.chub.proto.Message.MessageReference value) {
+        if (refBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ref_ = value;
+          onChanged();
+        } else {
+          refBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public Builder setRef(
+          org.metamesh.chub.proto.Message.MessageReference.Builder builderForValue) {
+        if (refBuilder_ == null) {
+          ref_ = builderForValue.build();
+          onChanged();
+        } else {
+          refBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public Builder mergeRef(org.metamesh.chub.proto.Message.MessageReference value) {
+        if (refBuilder_ == null) {
+          if (ref_ != null) {
+            ref_ =
+              org.metamesh.chub.proto.Message.MessageReference.newBuilder(ref_).mergeFrom(value).buildPartial();
+          } else {
+            ref_ = value;
+          }
+          onChanged();
+        } else {
+          refBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public Builder clearRef() {
+        if (refBuilder_ == null) {
+          ref_ = null;
+          onChanged();
+        } else {
+          ref_ = null;
+          refBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReference.Builder getRefBuilder() {
+        
+        onChanged();
+        return getRefFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder() {
+        if (refBuilder_ != null) {
+          return refBuilder_.getMessageOrBuilder();
+        } else {
+          return ref_ == null ?
+              org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+        }
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder> 
+          getRefFieldBuilder() {
+        if (refBuilder_ == null) {
+          refBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder>(
+                  getRef(),
+                  getParentForChildren(),
+                  isClean());
+          ref_ = null;
+        }
+        return refBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4184,6 +4900,19 @@ public final class Message {
      * <code>optional bytes salt = 5;</code>
      */
     com.google.protobuf.ByteString getSalt();
+
+    /**
+     * <code>optional .MessageReference ref = 6;</code>
+     */
+    boolean hasRef();
+    /**
+     * <code>optional .MessageReference ref = 6;</code>
+     */
+    org.metamesh.chub.proto.Message.MessageReference getRef();
+    /**
+     * <code>optional .MessageReference ref = 6;</code>
+     */
+    org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder();
   }
   /**
    * Protobuf type {@code SymmetriclyEncryptedMessage}
@@ -4254,6 +4983,19 @@ public final class Message {
             case 42: {
 
               salt_ = input.readBytes();
+              break;
+            }
+            case 50: {
+              org.metamesh.chub.proto.Message.MessageReference.Builder subBuilder = null;
+              if (ref_ != null) {
+                subBuilder = ref_.toBuilder();
+              }
+              ref_ = input.readMessage(org.metamesh.chub.proto.Message.MessageReference.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ref_);
+                ref_ = subBuilder.buildPartial();
+              }
+
               break;
             }
           }
@@ -4338,6 +5080,27 @@ public final class Message {
       return salt_;
     }
 
+    public static final int REF_FIELD_NUMBER = 6;
+    private org.metamesh.chub.proto.Message.MessageReference ref_;
+    /**
+     * <code>optional .MessageReference ref = 6;</code>
+     */
+    public boolean hasRef() {
+      return ref_ != null;
+    }
+    /**
+     * <code>optional .MessageReference ref = 6;</code>
+     */
+    public org.metamesh.chub.proto.Message.MessageReference getRef() {
+      return ref_ == null ? org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+    }
+    /**
+     * <code>optional .MessageReference ref = 6;</code>
+     */
+    public org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder() {
+      return getRef();
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4353,7 +5116,7 @@ public final class Message {
       if (messageType_ != org.metamesh.chub.proto.Message.MessageType.MessagePost.getNumber()) {
         output.writeEnum(1, messageType_);
       }
-      if (encryptionType_ != org.metamesh.chub.proto.Message.EncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536.getNumber()) {
+      if (encryptionType_ != org.metamesh.chub.proto.Message.EncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128.getNumber()) {
         output.writeEnum(2, encryptionType_);
       }
       if (!msg_.isEmpty()) {
@@ -4364,6 +5127,9 @@ public final class Message {
       }
       if (!salt_.isEmpty()) {
         output.writeBytes(5, salt_);
+      }
+      if (ref_ != null) {
+        output.writeMessage(6, getRef());
       }
     }
 
@@ -4376,7 +5142,7 @@ public final class Message {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, messageType_);
       }
-      if (encryptionType_ != org.metamesh.chub.proto.Message.EncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536.getNumber()) {
+      if (encryptionType_ != org.metamesh.chub.proto.Message.EncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, encryptionType_);
       }
@@ -4391,6 +5157,10 @@ public final class Message {
       if (!salt_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(5, salt_);
+      }
+      if (ref_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getRef());
       }
       memoizedSize = size;
       return size;
@@ -4416,6 +5186,11 @@ public final class Message {
           .equals(other.getIv());
       result = result && getSalt()
           .equals(other.getSalt());
+      result = result && (hasRef() == other.hasRef());
+      if (hasRef()) {
+        result = result && getRef()
+            .equals(other.getRef());
+      }
       return result;
     }
 
@@ -4436,6 +5211,10 @@ public final class Message {
       hash = (53 * hash) + getIv().hashCode();
       hash = (37 * hash) + SALT_FIELD_NUMBER;
       hash = (53 * hash) + getSalt().hashCode();
+      if (hasRef()) {
+        hash = (37 * hash) + REF_FIELD_NUMBER;
+        hash = (53 * hash) + getRef().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4564,6 +5343,12 @@ public final class Message {
 
         salt_ = com.google.protobuf.ByteString.EMPTY;
 
+        if (refBuilder_ == null) {
+          ref_ = null;
+        } else {
+          ref_ = null;
+          refBuilder_ = null;
+        }
         return this;
       }
 
@@ -4591,6 +5376,11 @@ public final class Message {
         result.msg_ = msg_;
         result.iv_ = iv_;
         result.salt_ = salt_;
+        if (refBuilder_ == null) {
+          result.ref_ = ref_;
+        } else {
+          result.ref_ = refBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -4646,6 +5436,9 @@ public final class Message {
         }
         if (other.getSalt() != com.google.protobuf.ByteString.EMPTY) {
           setSalt(other.getSalt());
+        }
+        if (other.hasRef()) {
+          mergeRef(other.getRef());
         }
         onChanged();
         return this;
@@ -4847,6 +5640,123 @@ public final class Message {
         onChanged();
         return this;
       }
+
+      private org.metamesh.chub.proto.Message.MessageReference ref_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder> refBuilder_;
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public boolean hasRef() {
+        return refBuilder_ != null || ref_ != null;
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReference getRef() {
+        if (refBuilder_ == null) {
+          return ref_ == null ? org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+        } else {
+          return refBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public Builder setRef(org.metamesh.chub.proto.Message.MessageReference value) {
+        if (refBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ref_ = value;
+          onChanged();
+        } else {
+          refBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public Builder setRef(
+          org.metamesh.chub.proto.Message.MessageReference.Builder builderForValue) {
+        if (refBuilder_ == null) {
+          ref_ = builderForValue.build();
+          onChanged();
+        } else {
+          refBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public Builder mergeRef(org.metamesh.chub.proto.Message.MessageReference value) {
+        if (refBuilder_ == null) {
+          if (ref_ != null) {
+            ref_ =
+              org.metamesh.chub.proto.Message.MessageReference.newBuilder(ref_).mergeFrom(value).buildPartial();
+          } else {
+            ref_ = value;
+          }
+          onChanged();
+        } else {
+          refBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public Builder clearRef() {
+        if (refBuilder_ == null) {
+          ref_ = null;
+          onChanged();
+        } else {
+          ref_ = null;
+          refBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReference.Builder getRefBuilder() {
+        
+        onChanged();
+        return getRefFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder() {
+        if (refBuilder_ != null) {
+          return refBuilder_.getMessageOrBuilder();
+        } else {
+          return ref_ == null ?
+              org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+        }
+      }
+      /**
+       * <code>optional .MessageReference ref = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder> 
+          getRefFieldBuilder() {
+        if (refBuilder_ == null) {
+          refBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder>(
+                  getRef(),
+                  getParentForChildren(),
+                  isClean());
+          ref_ = null;
+        }
+        return refBuilder_;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -4923,6 +5833,19 @@ public final class Message {
      * <code>optional bytes msg = 4;</code>
      */
     com.google.protobuf.ByteString getMsg();
+
+    /**
+     * <code>optional .MessageReference ref = 5;</code>
+     */
+    boolean hasRef();
+    /**
+     * <code>optional .MessageReference ref = 5;</code>
+     */
+    org.metamesh.chub.proto.Message.MessageReference getRef();
+    /**
+     * <code>optional .MessageReference ref = 5;</code>
+     */
+    org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder();
   }
   /**
    * Protobuf type {@code AsymmetriclyEncryptedMessage}
@@ -4981,6 +5904,19 @@ public final class Message {
             case 34: {
 
               msg_ = input.readBytes();
+              break;
+            }
+            case 42: {
+              org.metamesh.chub.proto.Message.MessageReference.Builder subBuilder = null;
+              if (ref_ != null) {
+                subBuilder = ref_.toBuilder();
+              }
+              ref_ = input.readMessage(org.metamesh.chub.proto.Message.MessageReference.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ref_);
+                ref_ = subBuilder.buildPartial();
+              }
+
               break;
             }
           }
@@ -5065,6 +6001,27 @@ public final class Message {
       return msg_;
     }
 
+    public static final int REF_FIELD_NUMBER = 5;
+    private org.metamesh.chub.proto.Message.MessageReference ref_;
+    /**
+     * <code>optional .MessageReference ref = 5;</code>
+     */
+    public boolean hasRef() {
+      return ref_ != null;
+    }
+    /**
+     * <code>optional .MessageReference ref = 5;</code>
+     */
+    public org.metamesh.chub.proto.Message.MessageReference getRef() {
+      return ref_ == null ? org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+    }
+    /**
+     * <code>optional .MessageReference ref = 5;</code>
+     */
+    public org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder() {
+      return getRef();
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5086,6 +6043,9 @@ public final class Message {
       if (!msg_.isEmpty()) {
         output.writeBytes(4, msg_);
       }
+      if (ref_ != null) {
+        output.writeMessage(5, getRef());
+      }
     }
 
     public int getSerializedSize() {
@@ -5103,6 +6063,10 @@ public final class Message {
       if (!msg_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, msg_);
+      }
+      if (ref_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getRef());
       }
       memoizedSize = size;
       return size;
@@ -5125,6 +6089,11 @@ public final class Message {
           .equals(other.getDestCn());
       result = result && getMsg()
           .equals(other.getMsg());
+      result = result && (hasRef() == other.hasRef());
+      if (hasRef()) {
+        result = result && getRef()
+            .equals(other.getRef());
+      }
       return result;
     }
 
@@ -5141,6 +6110,10 @@ public final class Message {
       hash = (53 * hash) + getDestCn().hashCode();
       hash = (37 * hash) + MSG_FIELD_NUMBER;
       hash = (53 * hash) + getMsg().hashCode();
+      if (hasRef()) {
+        hash = (37 * hash) + REF_FIELD_NUMBER;
+        hash = (53 * hash) + getRef().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5265,6 +6238,12 @@ public final class Message {
 
         msg_ = com.google.protobuf.ByteString.EMPTY;
 
+        if (refBuilder_ == null) {
+          ref_ = null;
+        } else {
+          ref_ = null;
+          refBuilder_ = null;
+        }
         return this;
       }
 
@@ -5290,6 +6269,11 @@ public final class Message {
         result.messageType_ = messageType_;
         result.destCn_ = destCn_;
         result.msg_ = msg_;
+        if (refBuilder_ == null) {
+          result.ref_ = ref_;
+        } else {
+          result.ref_ = refBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -5340,6 +6324,9 @@ public final class Message {
         }
         if (other.getMsg() != com.google.protobuf.ByteString.EMPTY) {
           setMsg(other.getMsg());
+        }
+        if (other.hasRef()) {
+          mergeRef(other.getRef());
         }
         onChanged();
         return this;
@@ -5508,6 +6495,123 @@ public final class Message {
         onChanged();
         return this;
       }
+
+      private org.metamesh.chub.proto.Message.MessageReference ref_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder> refBuilder_;
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public boolean hasRef() {
+        return refBuilder_ != null || ref_ != null;
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReference getRef() {
+        if (refBuilder_ == null) {
+          return ref_ == null ? org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+        } else {
+          return refBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public Builder setRef(org.metamesh.chub.proto.Message.MessageReference value) {
+        if (refBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ref_ = value;
+          onChanged();
+        } else {
+          refBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public Builder setRef(
+          org.metamesh.chub.proto.Message.MessageReference.Builder builderForValue) {
+        if (refBuilder_ == null) {
+          ref_ = builderForValue.build();
+          onChanged();
+        } else {
+          refBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public Builder mergeRef(org.metamesh.chub.proto.Message.MessageReference value) {
+        if (refBuilder_ == null) {
+          if (ref_ != null) {
+            ref_ =
+              org.metamesh.chub.proto.Message.MessageReference.newBuilder(ref_).mergeFrom(value).buildPartial();
+          } else {
+            ref_ = value;
+          }
+          onChanged();
+        } else {
+          refBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public Builder clearRef() {
+        if (refBuilder_ == null) {
+          ref_ = null;
+          onChanged();
+        } else {
+          ref_ = null;
+          refBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReference.Builder getRefBuilder() {
+        
+        onChanged();
+        return getRefFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder() {
+        if (refBuilder_ != null) {
+          return refBuilder_.getMessageOrBuilder();
+        } else {
+          return ref_ == null ?
+              org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+        }
+      }
+      /**
+       * <code>optional .MessageReference ref = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder> 
+          getRefFieldBuilder() {
+        if (refBuilder_ == null) {
+          refBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder>(
+                  getRef(),
+                  getParentForChildren(),
+                  isClean());
+          ref_ = null;
+        }
+        return refBuilder_;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -5586,6 +6690,19 @@ public final class Message {
      * <code>optional .SymmetriclyEncryptedMessage msg = 2;</code>
      */
     org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessageOrBuilder getMsgOrBuilder();
+
+    /**
+     * <code>optional .MessageReference ref = 3;</code>
+     */
+    boolean hasRef();
+    /**
+     * <code>optional .MessageReference ref = 3;</code>
+     */
+    org.metamesh.chub.proto.Message.MessageReference getRef();
+    /**
+     * <code>optional .MessageReference ref = 3;</code>
+     */
+    org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder();
   }
   /**
    * Protobuf type {@code HybridEncryptedMessage}
@@ -5648,6 +6765,19 @@ public final class Message {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(msg_);
                 msg_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              org.metamesh.chub.proto.Message.MessageReference.Builder subBuilder = null;
+              if (ref_ != null) {
+                subBuilder = ref_.toBuilder();
+              }
+              ref_ = input.readMessage(org.metamesh.chub.proto.Message.MessageReference.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ref_);
+                ref_ = subBuilder.buildPartial();
               }
 
               break;
@@ -5717,6 +6847,27 @@ public final class Message {
       return getMsg();
     }
 
+    public static final int REF_FIELD_NUMBER = 3;
+    private org.metamesh.chub.proto.Message.MessageReference ref_;
+    /**
+     * <code>optional .MessageReference ref = 3;</code>
+     */
+    public boolean hasRef() {
+      return ref_ != null;
+    }
+    /**
+     * <code>optional .MessageReference ref = 3;</code>
+     */
+    public org.metamesh.chub.proto.Message.MessageReference getRef() {
+      return ref_ == null ? org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+    }
+    /**
+     * <code>optional .MessageReference ref = 3;</code>
+     */
+    public org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder() {
+      return getRef();
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5735,6 +6886,9 @@ public final class Message {
       if (msg_ != null) {
         output.writeMessage(2, getMsg());
       }
+      if (ref_ != null) {
+        output.writeMessage(3, getRef());
+      }
     }
 
     public int getSerializedSize() {
@@ -5749,6 +6903,10 @@ public final class Message {
       if (msg_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getMsg());
+      }
+      if (ref_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getRef());
       }
       memoizedSize = size;
       return size;
@@ -5776,6 +6934,11 @@ public final class Message {
         result = result && getMsg()
             .equals(other.getMsg());
       }
+      result = result && (hasRef() == other.hasRef());
+      if (hasRef()) {
+        result = result && getRef()
+            .equals(other.getRef());
+      }
       return result;
     }
 
@@ -5793,6 +6956,10 @@ public final class Message {
       if (hasMsg()) {
         hash = (37 * hash) + MSG_FIELD_NUMBER;
         hash = (53 * hash) + getMsg().hashCode();
+      }
+      if (hasRef()) {
+        hash = (37 * hash) + REF_FIELD_NUMBER;
+        hash = (53 * hash) + getRef().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -5924,6 +7091,12 @@ public final class Message {
           msg_ = null;
           msgBuilder_ = null;
         }
+        if (refBuilder_ == null) {
+          ref_ = null;
+        } else {
+          ref_ = null;
+          refBuilder_ = null;
+        }
         return this;
       }
 
@@ -5955,6 +7128,11 @@ public final class Message {
           result.msg_ = msg_;
         } else {
           result.msg_ = msgBuilder_.build();
+        }
+        if (refBuilder_ == null) {
+          result.ref_ = ref_;
+        } else {
+          result.ref_ = refBuilder_.build();
         }
         onBuilt();
         return result;
@@ -6002,6 +7180,9 @@ public final class Message {
         }
         if (other.hasMsg()) {
           mergeMsg(other.getMsg());
+        }
+        if (other.hasRef()) {
+          mergeRef(other.getRef());
         }
         onChanged();
         return this;
@@ -6262,6 +7443,123 @@ public final class Message {
         }
         return msgBuilder_;
       }
+
+      private org.metamesh.chub.proto.Message.MessageReference ref_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder> refBuilder_;
+      /**
+       * <code>optional .MessageReference ref = 3;</code>
+       */
+      public boolean hasRef() {
+        return refBuilder_ != null || ref_ != null;
+      }
+      /**
+       * <code>optional .MessageReference ref = 3;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReference getRef() {
+        if (refBuilder_ == null) {
+          return ref_ == null ? org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+        } else {
+          return refBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .MessageReference ref = 3;</code>
+       */
+      public Builder setRef(org.metamesh.chub.proto.Message.MessageReference value) {
+        if (refBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ref_ = value;
+          onChanged();
+        } else {
+          refBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 3;</code>
+       */
+      public Builder setRef(
+          org.metamesh.chub.proto.Message.MessageReference.Builder builderForValue) {
+        if (refBuilder_ == null) {
+          ref_ = builderForValue.build();
+          onChanged();
+        } else {
+          refBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 3;</code>
+       */
+      public Builder mergeRef(org.metamesh.chub.proto.Message.MessageReference value) {
+        if (refBuilder_ == null) {
+          if (ref_ != null) {
+            ref_ =
+              org.metamesh.chub.proto.Message.MessageReference.newBuilder(ref_).mergeFrom(value).buildPartial();
+          } else {
+            ref_ = value;
+          }
+          onChanged();
+        } else {
+          refBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 3;</code>
+       */
+      public Builder clearRef() {
+        if (refBuilder_ == null) {
+          ref_ = null;
+          onChanged();
+        } else {
+          ref_ = null;
+          refBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference ref = 3;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReference.Builder getRefBuilder() {
+        
+        onChanged();
+        return getRefFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .MessageReference ref = 3;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getRefOrBuilder() {
+        if (refBuilder_ != null) {
+          return refBuilder_.getMessageOrBuilder();
+        } else {
+          return ref_ == null ?
+              org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance() : ref_;
+        }
+      }
+      /**
+       * <code>optional .MessageReference ref = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder> 
+          getRefFieldBuilder() {
+        if (refBuilder_ == null) {
+          refBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder>(
+                  getRef(),
+                  getParentForChildren(),
+                  isClean());
+          ref_ = null;
+        }
+        return refBuilder_;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -6306,6 +7604,438 @@ public final class Message {
     }
 
     public org.metamesh.chub.proto.Message.HybridEncryptedMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface MessageReferenceOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MessageReference)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional bytes id = 1;</code>
+     */
+    com.google.protobuf.ByteString getId();
+  }
+  /**
+   * Protobuf type {@code MessageReference}
+   */
+  public  static final class MessageReference extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:MessageReference)
+      MessageReferenceOrBuilder {
+    // Use MessageReference.newBuilder() to construct.
+    private MessageReference(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private MessageReference() {
+      id_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private MessageReference(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+
+              id_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.metamesh.chub.proto.Message.internal_static_MessageReference_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.metamesh.chub.proto.Message.internal_static_MessageReference_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.metamesh.chub.proto.Message.MessageReference.class, org.metamesh.chub.proto.Message.MessageReference.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString id_;
+    /**
+     * <code>optional bytes id = 1;</code>
+     */
+    public com.google.protobuf.ByteString getId() {
+      return id_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!id_.isEmpty()) {
+        output.writeBytes(1, id_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!id_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, id_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.metamesh.chub.proto.Message.MessageReference)) {
+        return super.equals(obj);
+      }
+      org.metamesh.chub.proto.Message.MessageReference other = (org.metamesh.chub.proto.Message.MessageReference) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.metamesh.chub.proto.Message.MessageReference parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.metamesh.chub.proto.Message.MessageReference parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.metamesh.chub.proto.Message.MessageReference parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.metamesh.chub.proto.Message.MessageReference parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.metamesh.chub.proto.Message.MessageReference parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.metamesh.chub.proto.Message.MessageReference parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.metamesh.chub.proto.Message.MessageReference parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.metamesh.chub.proto.Message.MessageReference parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.metamesh.chub.proto.Message.MessageReference parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.metamesh.chub.proto.Message.MessageReference parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.metamesh.chub.proto.Message.MessageReference prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code MessageReference}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:MessageReference)
+        org.metamesh.chub.proto.Message.MessageReferenceOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.metamesh.chub.proto.Message.internal_static_MessageReference_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.metamesh.chub.proto.Message.internal_static_MessageReference_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.metamesh.chub.proto.Message.MessageReference.class, org.metamesh.chub.proto.Message.MessageReference.Builder.class);
+      }
+
+      // Construct using org.metamesh.chub.proto.Message.MessageReference.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = com.google.protobuf.ByteString.EMPTY;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.metamesh.chub.proto.Message.internal_static_MessageReference_descriptor;
+      }
+
+      public org.metamesh.chub.proto.Message.MessageReference getDefaultInstanceForType() {
+        return org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance();
+      }
+
+      public org.metamesh.chub.proto.Message.MessageReference build() {
+        org.metamesh.chub.proto.Message.MessageReference result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.metamesh.chub.proto.Message.MessageReference buildPartial() {
+        org.metamesh.chub.proto.Message.MessageReference result = new org.metamesh.chub.proto.Message.MessageReference(this);
+        result.id_ = id_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.metamesh.chub.proto.Message.MessageReference) {
+          return mergeFrom((org.metamesh.chub.proto.Message.MessageReference)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.metamesh.chub.proto.Message.MessageReference other) {
+        if (other == org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance()) return this;
+        if (other.getId() != com.google.protobuf.ByteString.EMPTY) {
+          setId(other.getId());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.metamesh.chub.proto.Message.MessageReference parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.metamesh.chub.proto.Message.MessageReference) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private com.google.protobuf.ByteString id_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes id = 1;</code>
+       */
+      public com.google.protobuf.ByteString getId() {
+        return id_;
+      }
+      /**
+       * <code>optional bytes id = 1;</code>
+       */
+      public Builder setId(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:MessageReference)
+    }
+
+    // @@protoc_insertion_point(class_scope:MessageReference)
+    private static final org.metamesh.chub.proto.Message.MessageReference DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.metamesh.chub.proto.Message.MessageReference();
+    }
+
+    public static org.metamesh.chub.proto.Message.MessageReference getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MessageReference>
+        PARSER = new com.google.protobuf.AbstractParser<MessageReference>() {
+      public MessageReference parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new MessageReference(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<MessageReference> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MessageReference> getParserForType() {
+      return PARSER;
+    }
+
+    public org.metamesh.chub.proto.Message.MessageReference getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6379,6 +8109,15 @@ public final class Message {
     org.metamesh.chub.proto.Message.HybridEncryptedMessageOrBuilder getHybridEncryptedMessageOrBuilder();
 
     /**
+     * <code>optional .MessageReference reference = 10;</code>
+     */
+    org.metamesh.chub.proto.Message.MessageReference getReference();
+    /**
+     * <code>optional .MessageReference reference = 10;</code>
+     */
+    org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getReferenceOrBuilder();
+
+    /**
      * <code>optional .Signature message_signature = 8;</code>
      */
     boolean hasMessageSignature();
@@ -6390,6 +8129,11 @@ public final class Message {
      * <code>optional .Signature message_signature = 8;</code>
      */
     org.metamesh.chub.proto.Message.SignatureOrBuilder getMessageSignatureOrBuilder();
+
+    /**
+     * <code>optional fixed64 timestamp = 9;</code>
+     */
+    long getTimestamp();
 
     public org.metamesh.chub.proto.Message.SignedMessage.MsgCase getMsgCase();
   }
@@ -6405,6 +8149,7 @@ public final class Message {
       super(builder);
     }
     private SignedMessage() {
+      timestamp_ = 0L;
     }
 
     @java.lang.Override
@@ -6543,6 +8288,25 @@ public final class Message {
 
               break;
             }
+            case 73: {
+
+              timestamp_ = input.readFixed64();
+              break;
+            }
+            case 82: {
+              org.metamesh.chub.proto.Message.MessageReference.Builder subBuilder = null;
+              if (msgCase_ == 10) {
+                subBuilder = ((org.metamesh.chub.proto.Message.MessageReference) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(org.metamesh.chub.proto.Message.MessageReference.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((org.metamesh.chub.proto.Message.MessageReference) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 10;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -6577,6 +8341,7 @@ public final class Message {
       SYMMETRICLYENCRYPTEDMESSAGE(5),
       ASYMMETRICLYENCRYPTEDMESSAGE(6),
       HYBRIDENCRYPTEDMESSAGE(7),
+      REFERENCE(10),
       MSG_NOT_SET(0);
       private final int value;
       private MsgCase(int value) {
@@ -6599,6 +8364,7 @@ public final class Message {
           case 5: return SYMMETRICLYENCRYPTEDMESSAGE;
           case 6: return ASYMMETRICLYENCRYPTEDMESSAGE;
           case 7: return HYBRIDENCRYPTEDMESSAGE;
+          case 10: return REFERENCE;
           case 0: return MSG_NOT_SET;
           default: return null;
         }
@@ -6754,6 +8520,26 @@ public final class Message {
       return org.metamesh.chub.proto.Message.HybridEncryptedMessage.getDefaultInstance();
     }
 
+    public static final int REFERENCE_FIELD_NUMBER = 10;
+    /**
+     * <code>optional .MessageReference reference = 10;</code>
+     */
+    public org.metamesh.chub.proto.Message.MessageReference getReference() {
+      if (msgCase_ == 10) {
+         return (org.metamesh.chub.proto.Message.MessageReference) msg_;
+      }
+      return org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance();
+    }
+    /**
+     * <code>optional .MessageReference reference = 10;</code>
+     */
+    public org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getReferenceOrBuilder() {
+      if (msgCase_ == 10) {
+         return (org.metamesh.chub.proto.Message.MessageReference) msg_;
+      }
+      return org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance();
+    }
+
     public static final int MESSAGE_SIGNATURE_FIELD_NUMBER = 8;
     private org.metamesh.chub.proto.Message.Signature messageSignature_;
     /**
@@ -6773,6 +8559,15 @@ public final class Message {
      */
     public org.metamesh.chub.proto.Message.SignatureOrBuilder getMessageSignatureOrBuilder() {
       return getMessageSignature();
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 9;
+    private long timestamp_;
+    /**
+     * <code>optional fixed64 timestamp = 9;</code>
+     */
+    public long getTimestamp() {
+      return timestamp_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6810,6 +8605,12 @@ public final class Message {
       }
       if (messageSignature_ != null) {
         output.writeMessage(8, getMessageSignature());
+      }
+      if (timestamp_ != 0L) {
+        output.writeFixed64(9, timestamp_);
+      }
+      if (msgCase_ == 10) {
+        output.writeMessage(10, (org.metamesh.chub.proto.Message.MessageReference) msg_);
       }
     }
 
@@ -6850,6 +8651,14 @@ public final class Message {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, getMessageSignature());
       }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFixed64Size(9, timestamp_);
+      }
+      if (msgCase_ == 10) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, (org.metamesh.chub.proto.Message.MessageReference) msg_);
+      }
       memoizedSize = size;
       return size;
     }
@@ -6871,6 +8680,8 @@ public final class Message {
         result = result && getMessageSignature()
             .equals(other.getMessageSignature());
       }
+      result = result && (getTimestamp()
+          == other.getTimestamp());
       result = result && getMsgCase().equals(
           other.getMsgCase());
       if (!result) return false;
@@ -6903,6 +8714,10 @@ public final class Message {
           result = result && getHybridEncryptedMessage()
               .equals(other.getHybridEncryptedMessage());
           break;
+        case 10:
+          result = result && getReference()
+              .equals(other.getReference());
+          break;
         case 0:
         default:
       }
@@ -6920,6 +8735,9 @@ public final class Message {
         hash = (37 * hash) + MESSAGE_SIGNATURE_FIELD_NUMBER;
         hash = (53 * hash) + getMessageSignature().hashCode();
       }
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
       switch (msgCase_) {
         case 1:
           hash = (37 * hash) + POST_FIELD_NUMBER;
@@ -6948,6 +8766,10 @@ public final class Message {
         case 7:
           hash = (37 * hash) + HYBRIDENCRYPTEDMESSAGE_FIELD_NUMBER;
           hash = (53 * hash) + getHybridEncryptedMessage().hashCode();
+          break;
+        case 10:
+          hash = (37 * hash) + REFERENCE_FIELD_NUMBER;
+          hash = (53 * hash) + getReference().hashCode();
           break;
         case 0:
         default:
@@ -7076,6 +8898,8 @@ public final class Message {
           messageSignature_ = null;
           messageSignatureBuilder_ = null;
         }
+        timestamp_ = 0L;
+
         msgCase_ = 0;
         msg_ = null;
         return this;
@@ -7149,11 +8973,19 @@ public final class Message {
             result.msg_ = hybridEncryptedMessageBuilder_.build();
           }
         }
+        if (msgCase_ == 10) {
+          if (referenceBuilder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = referenceBuilder_.build();
+          }
+        }
         if (messageSignatureBuilder_ == null) {
           result.messageSignature_ = messageSignature_;
         } else {
           result.messageSignature_ = messageSignatureBuilder_.build();
         }
+        result.timestamp_ = timestamp_;
         result.msgCase_ = msgCase_;
         onBuilt();
         return result;
@@ -7199,6 +9031,9 @@ public final class Message {
         if (other.hasMessageSignature()) {
           mergeMessageSignature(other.getMessageSignature());
         }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
         switch (other.getMsgCase()) {
           case POST: {
             mergePost(other.getPost());
@@ -7226,6 +9061,10 @@ public final class Message {
           }
           case HYBRIDENCRYPTEDMESSAGE: {
             mergeHybridEncryptedMessage(other.getHybridEncryptedMessage());
+            break;
+          }
+          case REFERENCE: {
+            mergeReference(other.getReference());
             break;
           }
           case MSG_NOT_SET: {
@@ -8183,6 +10022,136 @@ public final class Message {
         return hybridEncryptedMessageBuilder_;
       }
 
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder> referenceBuilder_;
+      /**
+       * <code>optional .MessageReference reference = 10;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReference getReference() {
+        if (referenceBuilder_ == null) {
+          if (msgCase_ == 10) {
+            return (org.metamesh.chub.proto.Message.MessageReference) msg_;
+          }
+          return org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance();
+        } else {
+          if (msgCase_ == 10) {
+            return referenceBuilder_.getMessage();
+          }
+          return org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .MessageReference reference = 10;</code>
+       */
+      public Builder setReference(org.metamesh.chub.proto.Message.MessageReference value) {
+        if (referenceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          referenceBuilder_.setMessage(value);
+        }
+        msgCase_ = 10;
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference reference = 10;</code>
+       */
+      public Builder setReference(
+          org.metamesh.chub.proto.Message.MessageReference.Builder builderForValue) {
+        if (referenceBuilder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          referenceBuilder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 10;
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference reference = 10;</code>
+       */
+      public Builder mergeReference(org.metamesh.chub.proto.Message.MessageReference value) {
+        if (referenceBuilder_ == null) {
+          if (msgCase_ == 10 &&
+              msg_ != org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance()) {
+            msg_ = org.metamesh.chub.proto.Message.MessageReference.newBuilder((org.metamesh.chub.proto.Message.MessageReference) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 10) {
+            referenceBuilder_.mergeFrom(value);
+          }
+          referenceBuilder_.setMessage(value);
+        }
+        msgCase_ = 10;
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference reference = 10;</code>
+       */
+      public Builder clearReference() {
+        if (referenceBuilder_ == null) {
+          if (msgCase_ == 10) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 10) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          referenceBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .MessageReference reference = 10;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReference.Builder getReferenceBuilder() {
+        return getReferenceFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .MessageReference reference = 10;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getReferenceOrBuilder() {
+        if ((msgCase_ == 10) && (referenceBuilder_ != null)) {
+          return referenceBuilder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 10) {
+            return (org.metamesh.chub.proto.Message.MessageReference) msg_;
+          }
+          return org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .MessageReference reference = 10;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder> 
+          getReferenceFieldBuilder() {
+        if (referenceBuilder_ == null) {
+          if (!(msgCase_ == 10)) {
+            msg_ = org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance();
+          }
+          referenceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder>(
+                  (org.metamesh.chub.proto.Message.MessageReference) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 10;
+        onChanged();;
+        return referenceBuilder_;
+      }
+
       private org.metamesh.chub.proto.Message.Signature messageSignature_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.Signature, org.metamesh.chub.proto.Message.Signature.Builder, org.metamesh.chub.proto.Message.SignatureOrBuilder> messageSignatureBuilder_;
@@ -8299,6 +10268,32 @@ public final class Message {
         }
         return messageSignatureBuilder_;
       }
+
+      private long timestamp_ ;
+      /**
+       * <code>optional fixed64 timestamp = 9;</code>
+       */
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>optional fixed64 timestamp = 9;</code>
+       */
+      public Builder setTimestamp(long value) {
+        
+        timestamp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional fixed64 timestamp = 9;</code>
+       */
+      public Builder clearTimestamp() {
+        
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -8384,6 +10379,11 @@ public final class Message {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_HybridEncryptedMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MessageReference_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_MessageReference_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_SignedMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -8397,48 +10397,58 @@ public final class Message {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rmessage.proto\"\216\001\n\004Post\022\n\n\002id\030\001 \001(\t\022\r\n\005" +
+      "\n\rmessage.proto\"\263\001\n\004Post\022\n\n\002id\030\001 \001(\t\022\r\n\005" +
       "title\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022\020\n\010loca" +
       "tion\030\004 \001(\t\022\022\n\nstart_time\030\005 \001(\006\022\017\n\007all_da" +
       "y\030\006 \001(\010\022\020\n\010end_time\030\007 \001(\006\022\r\n\005image\030\010 \001(\014" +
-      "\"R\n\tSignature\022\n\n\002cn\030\001 \001(\t\022\021\n\tsignature\030\002" +
-      " \001(\014\022&\n\016signature_type\030\003 \001(\0162\016.Signature" +
-      "Type\"\236\001\n\nPrivateKey\022\n\n\002cn\030\001 \001(\t\022)\n\003key\030\002" +
-      " \001(\0132\034.SymmetriclyEncryptedMessage\022\031\n\004ty" +
-      "pe\030\003 \001(\0162\013.ECCKeyType\022(\n\017encryption_type" +
-      "\030\004 \001(\0162\017.EncryptionType\022\024\n\014encodingType\030",
-      "\005 \001(\t\"j\n\tPublicKey\022\n\n\002cn\030\001 \001(\t\022\013\n\003key\030\002 " +
-      "\001(\014\022\031\n\004type\030\003 \001(\0162\013.ECCKeyType\022\024\n\014encodi" +
-      "ngType\030\004 \001(\t\022\023\n\013fingerprint\030\005 \001(\014\"\222\001\n\033Sy" +
-      "mmetriclyEncryptedMessage\022\"\n\014message_typ" +
-      "e\030\001 \001(\0162\014.MessageType\022(\n\017encryption_type" +
-      "\030\002 \001(\0162\017.EncryptionType\022\013\n\003msg\030\003 \001(\014\022\n\n\002" +
-      "iv\030\004 \001(\014\022\014\n\004salt\030\005 \001(\014\"`\n\034AsymmetriclyEn" +
-      "cryptedMessage\022\"\n\014message_type\030\001 \001(\0162\014.M" +
-      "essageType\022\017\n\007dest_cn\030\002 \001(\t\022\013\n\003msg\030\004 \001(\014" +
-      "\"o\n\026HybridEncryptedMessage\022*\n\003key\030\001 \001(\0132",
-      "\035.AsymmetriclyEncryptedMessage\022)\n\003msg\030\002 " +
-      "\001(\0132\034.SymmetriclyEncryptedMessage\"\204\003\n\rSi" +
-      "gnedMessage\022\025\n\004post\030\001 \001(\0132\005.PostH\000\022#\n\rsi" +
-      "gnedMessage\030\002 \001(\0132\n.SignatureH\000\022!\n\npriva" +
-      "teKey\030\003 \001(\0132\013.PrivateKeyH\000\022\037\n\tpublicKey\030" +
-      "\004 \001(\0132\n.PublicKeyH\000\022C\n\033symmetriclyEncryp" +
-      "tedMessage\030\005 \001(\0132\034.SymmetriclyEncryptedM" +
-      "essageH\000\022E\n\034asymmetriclyEncryptedMessage" +
-      "\030\006 \001(\0132\035.AsymmetriclyEncryptedMessageH\000\022" +
-      "9\n\026hybridEncryptedMessage\030\007 \001(\0132\027.Hybrid",
-      "EncryptedMessageH\000\022%\n\021message_signature\030" +
-      "\010 \001(\0132\n.SignatureB\005\n\003msg*$\n\rSignatureTyp" +
-      "e\022\023\n\017SHA512withECDSA\020\000*\033\n\nECCKeyType\022\r\n\t" +
-      "secp384r1\020\000*<\n\016EncryptionType\022*\n&AES_256" +
-      "_GCM_PBKDF2WithHmacSHA256_65536\020\000*\355\001\n\013Me" +
-      "ssageType\022\017\n\013MessagePost\020\000\022\024\n\020MessageSig" +
-      "nature\020\001\022\025\n\021MessagePrivateKey\020\002\022\024\n\020Messa" +
-      "gePublicKey\020\003\022&\n\"MessageSymmetriclyEncry" +
-      "ptedMessage\020\004\022\'\n#MessageAsymmetriclyEncr" +
-      "yptedMessage\020\005\022!\n\035MessageHybridEncrypted",
-      "Message\020\006\022\026\n\022MessageSymetricKey\020dB\"\n\027org" +
-      ".metamesh.chub.protoB\007Messageb\006proto3"
+      "\022\017\n\007rsvp_by\030\t \001(\006\022\022\n\nrsvp_email\030\n \001(\t\"{\n" +
+      "\tSignature\022\021\n\tsignature\030\002 \001(\014\022&\n\016signatu" +
+      "re_type\030\003 \001(\0162\016.SignatureType\022\023\n\013fingerp" +
+      "rint\030\004 \001(\014\022\036\n\003ref\030\005 \001(\0132\021.MessageReferen" +
+      "ce\"\255\001\n\nPrivateKey\022)\n\003key\030\002 \001(\0132\034.Symmetr" +
+      "iclyEncryptedMessage\022\031\n\004type\030\003 \001(\0162\013.ECC",
+      "KeyType\022&\n\014encodingType\030\005 \001(\0162\020.KeyEncod" +
+      "ingType\022\014\n\004name\030\006 \001(\t\022\r\n\005email\030\007 \001(\t\022\024\n\014" +
+      "organization\030\010 \001(\t\"\220\001\n\tPublicKey\022\013\n\003key\030" +
+      "\002 \001(\014\022\031\n\004type\030\003 \001(\0162\013.ECCKeyType\022&\n\014enco" +
+      "dingType\030\004 \001(\0162\020.KeyEncodingType\022\023\n\013fing" +
+      "erprint\030\005 \001(\014\022\036\n\003ref\030\006 \001(\0132\021.MessageRefe" +
+      "rence\"\262\001\n\033SymmetriclyEncryptedMessage\022\"\n" +
+      "\014message_type\030\001 \001(\0162\014.MessageType\022(\n\017enc" +
+      "ryption_type\030\002 \001(\0162\017.EncryptionType\022\013\n\003m" +
+      "sg\030\003 \001(\014\022\n\n\002iv\030\004 \001(\014\022\014\n\004salt\030\005 \001(\014\022\036\n\003re",
+      "f\030\006 \001(\0132\021.MessageReference\"\200\001\n\034Asymmetri" +
+      "clyEncryptedMessage\022\"\n\014message_type\030\001 \001(" +
+      "\0162\014.MessageType\022\017\n\007dest_cn\030\002 \001(\t\022\013\n\003msg\030" +
+      "\004 \001(\014\022\036\n\003ref\030\005 \001(\0132\021.MessageReference\"\217\001" +
+      "\n\026HybridEncryptedMessage\022*\n\003key\030\001 \001(\0132\035." +
+      "AsymmetriclyEncryptedMessage\022)\n\003msg\030\002 \001(" +
+      "\0132\034.SymmetriclyEncryptedMessage\022\036\n\003ref\030\003" +
+      " \001(\0132\021.MessageReference\"\036\n\020MessageRefere" +
+      "nce\022\n\n\002id\030\001 \001(\014\"\277\003\n\rSignedMessage\022\025\n\004pos" +
+      "t\030\001 \001(\0132\005.PostH\000\022#\n\rsignedMessage\030\002 \001(\0132",
+      "\n.SignatureH\000\022!\n\nprivateKey\030\003 \001(\0132\013.Priv" +
+      "ateKeyH\000\022\037\n\tpublicKey\030\004 \001(\0132\n.PublicKeyH" +
+      "\000\022C\n\033symmetriclyEncryptedMessage\030\005 \001(\0132\034" +
+      ".SymmetriclyEncryptedMessageH\000\022E\n\034asymme" +
+      "triclyEncryptedMessage\030\006 \001(\0132\035.Asymmetri" +
+      "clyEncryptedMessageH\000\0229\n\026hybridEncrypted" +
+      "Message\030\007 \001(\0132\027.HybridEncryptedMessageH\000" +
+      "\022&\n\treference\030\n \001(\0132\021.MessageReferenceH\000" +
+      "\022%\n\021message_signature\030\010 \001(\0132\n.Signature\022" +
+      "\021\n\ttimestamp\030\t \001(\006B\005\n\003msg*$\n\rSignatureTy",
+      "pe\022\023\n\017SHA512withECDSA\020\000*\033\n\nECCKeyType\022\r\n" +
+      "\tsecp384r1\020\000*@\n\016EncryptionType\022.\n*AES_25" +
+      "6_GCM_PBKDF2WithHmacSHA256_65536_128\020\000*&" +
+      "\n\017KeyEncodingType\022\t\n\005pkcs8\020\000\022\010\n\004x509\020\001*\212" +
+      "\002\n\013MessageType\022\017\n\013MessagePost\020\000\022\024\n\020Messa" +
+      "geSignature\020\001\022\025\n\021MessagePrivateKey\020\002\022\024\n\020" +
+      "MessagePublicKey\020\003\022&\n\"MessageSymmetricly" +
+      "EncryptedMessage\020\004\022\'\n#MessageAsymmetricl" +
+      "yEncryptedMessage\020\005\022!\n\035MessageHybridEncr" +
+      "yptedMessage\020\006\022\033\n\027MessageReferenceMessag",
+      "e\020\007\022\026\n\022MessageSymetricKey\020dB\"\n\027org.metam" +
+      "esh.chub.protoB\007Messageb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -8457,49 +10467,55 @@ public final class Message {
     internal_static_Post_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Post_descriptor,
-        new java.lang.String[] { "Id", "Title", "Description", "Location", "StartTime", "AllDay", "EndTime", "Image", });
+        new java.lang.String[] { "Id", "Title", "Description", "Location", "StartTime", "AllDay", "EndTime", "Image", "RsvpBy", "RsvpEmail", });
     internal_static_Signature_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Signature_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Signature_descriptor,
-        new java.lang.String[] { "Cn", "Signature", "SignatureType", });
+        new java.lang.String[] { "Signature", "SignatureType", "Fingerprint", "Ref", });
     internal_static_PrivateKey_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_PrivateKey_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PrivateKey_descriptor,
-        new java.lang.String[] { "Cn", "Key", "Type", "EncryptionType", "EncodingType", });
+        new java.lang.String[] { "Key", "Type", "EncodingType", "Name", "Email", "Organization", });
     internal_static_PublicKey_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_PublicKey_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PublicKey_descriptor,
-        new java.lang.String[] { "Cn", "Key", "Type", "EncodingType", "Fingerprint", });
+        new java.lang.String[] { "Key", "Type", "EncodingType", "Fingerprint", "Ref", });
     internal_static_SymmetriclyEncryptedMessage_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_SymmetriclyEncryptedMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SymmetriclyEncryptedMessage_descriptor,
-        new java.lang.String[] { "MessageType", "EncryptionType", "Msg", "Iv", "Salt", });
+        new java.lang.String[] { "MessageType", "EncryptionType", "Msg", "Iv", "Salt", "Ref", });
     internal_static_AsymmetriclyEncryptedMessage_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_AsymmetriclyEncryptedMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AsymmetriclyEncryptedMessage_descriptor,
-        new java.lang.String[] { "MessageType", "DestCn", "Msg", });
+        new java.lang.String[] { "MessageType", "DestCn", "Msg", "Ref", });
     internal_static_HybridEncryptedMessage_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_HybridEncryptedMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_HybridEncryptedMessage_descriptor,
-        new java.lang.String[] { "Key", "Msg", });
-    internal_static_SignedMessage_descriptor =
+        new java.lang.String[] { "Key", "Msg", "Ref", });
+    internal_static_MessageReference_descriptor =
       getDescriptor().getMessageTypes().get(7);
+    internal_static_MessageReference_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_MessageReference_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_SignedMessage_descriptor =
+      getDescriptor().getMessageTypes().get(8);
     internal_static_SignedMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SignedMessage_descriptor,
-        new java.lang.String[] { "Post", "SignedMessage", "PrivateKey", "PublicKey", "SymmetriclyEncryptedMessage", "AsymmetriclyEncryptedMessage", "HybridEncryptedMessage", "MessageSignature", "Msg", });
+        new java.lang.String[] { "Post", "SignedMessage", "PrivateKey", "PublicKey", "SymmetriclyEncryptedMessage", "AsymmetriclyEncryptedMessage", "HybridEncryptedMessage", "Reference", "MessageSignature", "Timestamp", "Msg", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

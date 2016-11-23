@@ -6,12 +6,10 @@
 package org.metamesh.chub.crypto.serialize;
 
 import com.google.protobuf.ByteString;
-import com.google.protobuf.GeneratedMessageV3;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
+import java.security.GeneralSecurityException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.logging.Level;
@@ -20,7 +18,6 @@ import org.metamesh.chub.crypto.ECC_Crypto;
 import org.metamesh.chub.crypto.SymmetricCrypto;
 import org.metamesh.chub.crypto.keys.ChubPrivKey;
 import org.metamesh.chub.crypto.keys.ChubPubKey;
-import org.metamesh.chub.crypto.util.SymmetricEncryptionType;
 import org.metamesh.chub.proto.Message;
 
 public class PBSerialize {
@@ -34,44 +31,70 @@ public class PBSerialize {
                 .build();
     }
 
-    public static Message.SymmetriclyEncryptedMessage encrypt(SymmetricEncryptionType eType, char password[], Message.Post post) {
-        return SymmetricCrypto.encrypt(eType, password, post.toByteArray())
+    public static Message.SymmetriclyEncryptedMessage encrypt(Message.EncryptionType et, char password[], Message.Post post) {
+        return SymmetricCrypto.encrypt(et, password, post.toByteArray())
                 .setMessageType(Message.MessageType.MessagePost)
                 .build();
     }
 
-    public static Message.PrivateKey serialize(SymmetricEncryptionType eType, char password[], ChubPrivKey pk) {
+    public static Message.PrivateKey serialize(ChubPrivKey pk, Message.EncryptionType et, char password[]) {
 
-        Message.SymmetriclyEncryptedMessage priv_enc = SymmetricCrypto.encrypt(eType, password, pk.key.getEncoded())
+        Message.SymmetriclyEncryptedMessage priv_enc = SymmetricCrypto.encrypt(et, password, pk.key.getEncoded())
                 .setMessageType(Message.MessageType.MessagePrivateKey)
                 .build();
 
         Message.PrivateKey mpk = Message.PrivateKey.newBuilder()
                 .setCn(pk.cn)
-                .setEncryptionType(Message.EncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536)
+                .setEncryptionType(Message.EncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128)
                 .setKey(priv_enc)
-                .setEncodingType(pk.key.getFormat())
+                .setEncodingType(keyEncodingFromString(pk.key.getFormat()))
                 .setType(Message.ECCKeyType.secp384r1)
                 .build();
         return mpk;
+    }
+
+    public static Message.KeyEncodingType keyEncodingFromString(String encoding) {
+        switch (encoding) {
+            case "X.509":
+                return Message.KeyEncodingType.x509;
+            case "PKCS#8":
+                return Message.KeyEncodingType.pkcs8;
+            default:
+                throw new AssertionError("Unsupported Key encoding: " + encoding);
+        }
+    }
+
+    public static String stringFromKeyEncoding(Message.KeyEncodingType encoding) {
+        if (encoding.equals(Message.KeyEncodingType.x509)) {
+            return "X.509";
+        }
+        if (encoding.equals(Message.KeyEncodingType.pkcs8)) {
+            return "PKCS#8";
+        }
+
+        throw new AssertionError("Unsupported Key encoding: " + encoding.name());
     }
 
     public static Message.PublicKey serialize(ChubPubKey pk) {
         Message.PublicKey mpk = Message.PublicKey.newBuilder()
                 .setCn(pk.cn)
                 .setKey(ByteString.copyFrom(pk.key.getEncoded()))
-                .setEncodingType(pk.key.getFormat())
+                .setEncodingType(keyEncodingFromString(pk.key.getFormat()))
                 .setType(Message.ECCKeyType.secp384r1)
                 .build();
         return mpk;
     }
 
-    private static final KeyFactory KEY_FACTORY;
-
-    static {
+    public static ChubPubKey deserialize(Message.PublicKey pk) {
         try {
-            KEY_FACTORY = KeyFactory.getInstance("EC");
-        } catch (NoSuchAlgorithmException ex) {
+            byte[] key = pk.getKey().toByteArray();
+            KeySpec kspec = PBSerialize.getKeySpec(pk, key);
+            PublicKey pubkey = ECC_Crypto.KEY_FACTORY.generatePublic(kspec);
+            return new ChubPubKey(pk.getCn(), pubkey, pk.getFingerprint().toByteArray());
+
+        } catch (GeneralSecurityException ex) {
+            Logger.getLogger(PBSerialize.class
+                    .getName()).log(Level.SEVERE, null, ex);
             throw new RuntimeException(ex);
         }
     }
@@ -79,21 +102,31 @@ public class PBSerialize {
     public static ChubPrivKey deserialize(Message.PrivateKey pk, char[] password) {
         try {
             byte[] key = SymmetricCrypto.decrypt(password, pk.getKey());
-            PrivateKey priv_key = (PrivateKey) KEY_FACTORY.generatePrivate(new PKCS8EncodedKeySpec(key));
+            KeySpec kspec = getKeySpec(pk, key);
+            PrivateKey priv_key = ECC_Crypto.KEY_FACTORY.generatePrivate(kspec);
             return new ChubPrivKey(pk.getCn(), priv_key);
-        } catch (InvalidKeySpecException ex) {
-            Logger.getLogger(PBSerialize.class.getName()).log(Level.SEVERE, null, ex);
+
+        } catch (GeneralSecurityException ex) {
+            Logger.getLogger(PBSerialize.class
+                    .getName()).log(Level.SEVERE, null, ex);
             throw new RuntimeException(ex);
         }
     }
 
-    public static ChubPubKey deserialize(Message.PublicKey pk) {
-        try {
-            PublicKey pubkey = (PublicKey) KEY_FACTORY.generatePublic(new X509EncodedKeySpec(pk.getKey().toByteArray()));
-            return new ChubPubKey(pk.getCn(), pubkey, pk.getFingerprint().toByteArray());
-        } catch (InvalidKeySpecException ex) {
-            Logger.getLogger(PBSerialize.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RuntimeException(ex);
+    public static KeySpec getKeySpec(Message.PrivateKey pk, byte[] encodedKey) {
+        if (pk.getEncodingType() == Message.KeyEncodingType.pkcs8) {
+            return new PKCS8EncodedKeySpec(encodedKey);
+        } else {
+            throw new AssertionError(pk.getEncodingType().name() + " is not known for private keys");
         }
     }
+
+    public static KeySpec getKeySpec(Message.PublicKey pk, byte[] encodedKey) {
+        if (pk.getEncodingType() == Message.KeyEncodingType.x509) {
+            return new X509EncodedKeySpec(encodedKey);
+        } else {
+            throw new AssertionError(pk.getEncodingType().name() + " is not known for public keys");
+        }
+    }
+
 }

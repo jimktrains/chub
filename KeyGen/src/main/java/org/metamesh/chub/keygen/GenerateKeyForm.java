@@ -21,53 +21,21 @@ import javax.swing.JOptionPane;
 import org.metamesh.chub.crypto.keys.ChubPrivKey;
 import org.metamesh.chub.crypto.keys.ChubPubKey;
 import org.metamesh.chub.crypto.serialize.PBSerialize;
-import org.metamesh.chub.crypto.util.SymmetricEncryptionType;
 import org.metamesh.chub.proto.Message;
+import org.metamesh.chub.util.Alert;
+import org.metamesh.chub.util.Settings;
 
 public class GenerateKeyForm extends javax.swing.JFrame {
 
     KeyPair kp;
-    private final JFileChooser fc = new JFileChooser();
-    ChubPrivKey priv;
-    ChubPubKey pub;
-
+    private ChubPrivKey priv;
+    private ChubPubKey pub;
     /**
      * Creates new form GenerateKeyForm
      */
-    public GenerateKeyForm() {
+ public GenerateKeyForm() {
         initComponents();
-        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        fc.addActionListener((ActionEvent e) -> {
-
-            Message.PrivateKey priv_key_enc = PBSerialize.serialize(SymmetricEncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536, Password.getPassword(), priv);
-            Message.PublicKey pub_key_enc = PBSerialize.serialize(pub);
-
-            String pathPrefix = fc.getSelectedFile().getAbsoluteFile()
-                    + File.separator
-                    + CN.getText()
-                    + "-"
-                    + priv.fingerprintAsString();
-
-            String privFilePath = pathPrefix + ".priv.pb";
-            try (FileOutputStream out = new FileOutputStream(privFilePath)) {
-                byte a[] = priv_key_enc.toByteArray();
-                out.write(a);
-                String pubFilePath = pathPrefix + ".pub.pb";
-                try (FileOutputStream pubout = new FileOutputStream(pubFilePath)) {
-                    byte b[] = pub_key_enc.toByteArray();
-                    pubout.write(b);
-                    showWarningMsg("Wrote key to " + privFilePath + " and " + pubFilePath);
-                } catch (IOException ex) {
-                    Logger.getLogger(GenerateKeyForm.class.getName()).log(Level.SEVERE, null, ex);
-                    showWarningMsg(ex.getMessage());
-                }
-
-            } catch (IOException ex) {
-                Logger.getLogger(GenerateKeyForm.class.getName()).log(Level.SEVERE, null, ex);
-                showWarningMsg(ex.getMessage());
-            }
-
-        });
+        Settings.initDir();
     }
 
     /**
@@ -210,13 +178,6 @@ public class GenerateKeyForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SaveButtonActionPerformed
 
-    public static void showWarningMsg(String text) {
-        Toolkit.getDefaultToolkit().beep();
-        JOptionPane optionPane = new JOptionPane(text, JOptionPane.WARNING_MESSAGE);
-        JDialog dialog = optionPane.createDialog("Warning!");
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);
-    }
 
     private void GenerateButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenerateButtonMousePressed
         kp = ECC_Crypto.genECKey();
@@ -229,7 +190,41 @@ public class GenerateKeyForm extends javax.swing.JFrame {
     }//GEN-LAST:event_GenerateButtonMousePressed
 
     private void SaveButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMousePressed
-        fc.showOpenDialog(this);
+
+        if (Password.getPassword().length < 4) {
+           Alert.warning("Password must be greater than 4 characters");
+           return;
+        }
+
+        for(String f : Settings.base_dir_file.list()) {
+            if (f.contains(CN.getText() + "-")) {
+                Alert.warning("There is already a key for " + CN.getText());
+                return;
+            }
+        }
+        
+        Message.PrivateKey priv_key_enc = PBSerialize.serialize(priv, Message.EncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128, Password.getPassword());
+        Message.PublicKey pub_key_enc = PBSerialize.serialize(pub);
+
+        String pathPrefix = Settings.base_dir
+                + File.separator
+                + CN.getText()
+                + "-"
+                + priv.fingerprintAsString();
+
+        String privFilePath = pathPrefix + ".priv.pb";
+        String pubFilePath = pathPrefix + ".pub.pb";
+
+        try (FileOutputStream out = new FileOutputStream(privFilePath)) {
+            out.write(priv_key_enc.toByteArray());
+            try (FileOutputStream pubout = new FileOutputStream(pubFilePath)) {
+                pubout.write(pub_key_enc.toByteArray());
+                Alert.warning("Wrote key to " + privFilePath + " and " + pubFilePath);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(GenerateKeyForm.class.getName()).log(Level.SEVERE, null, ex);
+            Alert.warning(ex.getMessage());
+        }
     }//GEN-LAST:event_SaveButtonMousePressed
 
     private void CNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CNActionPerformed

@@ -9,7 +9,12 @@ enum ECCKeyType {
   secp384r1 = 0;
 }
 enum EncryptionType {
-  AES_256_GCM_PBKDF2WithHmacSHA256_65536 = 0;
+  AES_256_GCM_PBKDF2WithHmacSHA256_65536_128 = 0;
+}
+
+enum KeyEncodingType {
+  pkcs8 = 0;
+  x509 = 1;
 }
 
 
@@ -22,27 +27,36 @@ message Post {
   bool all_day = 6;
   fixed64 end_time = 7;
   bytes image = 8;
+  fixed64 rsvp_by = 9;
+  string rsvp_email = 10;
 }
 
 message Signature {
-  string cn = 1;
+  //string cn = 1;
   bytes signature = 2;
   SignatureType signature_type = 3;
+  bytes fingerprint = 4;
+  MessageReference ref = 5;
 }
 
 message PrivateKey {
-  string cn = 1;
+  //string cn = 1;
   SymmetriclyEncryptedMessage key = 2;
   ECCKeyType type = 3;
-  EncryptionType encryption_type = 4;
-  string encodingType = 5;
+  //EncryptionType encryption_type = 4;
+  KeyEncodingType encodingType = 5;
+  string name = 6;
+  string email = 7;
+  string organization = 8;
 }
 
 message PublicKey {
-  string cn = 1;
+  //string cn = 1;
   bytes key = 2;
   ECCKeyType type = 3;
-  string encodingType = 4;
+  KeyEncodingType encodingType = 4;
+  bytes fingerprint = 5;
+  MessageReference ref = 6;
 }
 
 enum MessageType {
@@ -53,6 +67,7 @@ enum MessageType {
   MessageSymmetriclyEncryptedMessage = 4;
   MessageAsymmetriclyEncryptedMessage = 5;
   MessageHybridEncryptedMessage = 6;
+  MessageReferenceMessage = 7;
 
   MessageSymetricKey = 100;
 }
@@ -63,17 +78,24 @@ message SymmetriclyEncryptedMessage {
   bytes msg = 3;
   bytes iv = 4;
   bytes salt = 5;
+  MessageReference ref = 6;
 }
 
 message AsymmetriclyEncryptedMessage {
   MessageType message_type = 1;
   string dest_cn = 2;
   bytes msg = 4;
+  MessageReference ref = 5;
 }
 
 message HybridEncryptedMessage {
   AsymmetriclyEncryptedMessage key = 1;
   SymmetriclyEncryptedMessage msg = 2;
+  MessageReference ref = 3;
+}
+
+message MessageReference {
+  bytes id = 1;
 }
 
 message SignedMessage {
@@ -85,6 +107,8 @@ message SignedMessage {
     SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;
     AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage  = 6;
     HybridEncryptedMessage hybridEncryptedMessage = 7;
+    MessageReference reference = 10;
   }
   Signature message_signature = 8;
+  fixed64 timestamp = 9;
 }

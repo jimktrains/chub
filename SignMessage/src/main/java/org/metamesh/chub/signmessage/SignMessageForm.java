@@ -21,24 +21,25 @@ import org.metamesh.chub.crypto.ECC_Crypto;
 import org.metamesh.chub.crypto.keys.ChubPrivKey;
 import org.metamesh.chub.crypto.serialize.PBSerialize;
 import org.metamesh.chub.proto.Message;
+import org.metamesh.chub.util.Alert;
+import org.metamesh.chub.util.Settings;
 
 public class SignMessageForm extends javax.swing.JFrame {
-
-    private final JFileChooser key_fc = new JFileChooser();
-    private final JFileChooser dest_fc = new JFileChooser();
 
     /**
      * Creates new form SignMessage
      */
     public SignMessageForm() {
         initComponents();
-        key_fc.addActionListener((ActionEvent e) -> {
-            KeyFileLabel.setText("Key path: " + key_fc.getSelectedFile().getAbsolutePath());
-        });
-        dest_fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        dest_fc.addActionListener((ActionEvent e) -> {
-            DestinationLabel.setText("Destination path: " + dest_fc.getSelectedFile().getAbsolutePath());
-        });
+        
+        Settings.initDir();        
+        
+        ComboKeys.removeAllItems();
+        for(String f : Settings.base_dir_file.list()) {
+            if (f.endsWith(".priv.pb")) {
+                ComboKeys.addItem(f);
+            }
+        }
     }
 
     /**
@@ -50,27 +51,18 @@ public class SignMessageForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        SelectKey = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextDescription = new javax.swing.JTextArea();
         SignButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        KeyFileLabel = new javax.swing.JLabel();
-        DestinationButton = new javax.swing.JButton();
-        DestinationLabel = new javax.swing.JLabel();
         TextTitle = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         TextPassword = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
+        ComboKeys = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        SelectKey.setText("Select Private Key");
-        SelectKey.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SelectKeyMouseClicked(evt);
-            }
-        });
 
         TextDescription.setColumns(20);
         TextDescription.setRows(5);
@@ -85,20 +77,13 @@ public class SignMessageForm extends javax.swing.JFrame {
 
         jLabel1.setText("Description");
 
-        KeyFileLabel.setText("Private Key path:");
-
-        DestinationButton.setText("Destination");
-        DestinationButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                DestinationButtonMouseClicked(evt);
-            }
-        });
-
-        DestinationLabel.setText("Dest Path:");
-
         jLabel2.setText("Title");
 
         jLabel3.setText("Pasword:");
+
+        ComboKeys.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel4.setText("Key:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,32 +92,7 @@ public class SignMessageForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SelectKey)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(KeyFileLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TextPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(SignButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(DestinationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(DestinationButton)
-                        .addGap(246, 246, 246))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1)
@@ -140,22 +100,36 @@ public class SignMessageForm extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(TextTitle)))
+                                .addGap(32, 32, 32)
+                                .addComponent(TextTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TextPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(144, 144, 144)
+                .addComponent(SignButton)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ComboKeys, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(SelectKey)
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ComboKeys, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(KeyFileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -164,37 +138,18 @@ public class SignMessageForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DestinationButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(DestinationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SignButton)
-                .addContainerGap())
+                .addComponent(SignButton))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void showWarningMsg(String text) {
-        Toolkit.getDefaultToolkit().beep();
-        JOptionPane optionPane = new JOptionPane(text, JOptionPane.WARNING_MESSAGE);
-        JDialog dialog = optionPane.createDialog("Warning!");
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);
-    }
-
-    private void SelectKeyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectKeyMouseClicked
-        key_fc.showOpenDialog(this);
-    }//GEN-LAST:event_SelectKeyMouseClicked
-
     private void SignButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignButtonMouseClicked
-        File f = key_fc.getSelectedFile();
-        
-        
-        try (FileInputStream fis = new FileInputStream(f)) {    
-            Message.PrivateKey pk = Message.PrivateKey.parseFrom(fis);
+
+        try (FileInputStream priv_key_file = new FileInputStream(new File((String)ComboKeys.getSelectedItem()))) {
+            Message.PrivateKey pk = Message.PrivateKey.parseFrom(priv_key_file);
             ChubPrivKey cpk = PBSerialize.deserialize(pk, TextPassword.getPassword());
-            
+
             String id = UUID.randomUUID().toString();
             Message.Post post = Message.Post.newBuilder()
                     .setId(id)
@@ -202,30 +157,26 @@ public class SignMessageForm extends javax.swing.JFrame {
                     .setDescription(TextDescription.getText())
                     .build();
             Message.Signature sig = ECC_Crypto.sign(post, cpk);
-            
+
             Message.SignedMessage sm = Message.SignedMessage.newBuilder()
                     .setPost(post)
                     .setMessageSignature(sig)
                     .build();
-            
-            String postFilePath = dest_fc.getSelectedFile().getAbsoluteFile() + File.separator + id + ".post.pb";
+
+            String postFilePath = Settings.base_dir + File.separator + id + ".post.pb";
             try (FileOutputStream out = new FileOutputStream(postFilePath)) {
                 byte a[] = sm.toByteArray();
                 out.write(a);
-                showWarningMsg("Written to: " + postFilePath);
+                Alert.warning("Written to: " + postFilePath);
             } catch (IOException ex) {
                 Logger.getLogger(SignMessageForm.class.getName()).log(Level.SEVERE, null, ex);
-                showWarningMsg(ex.getMessage());
+                Alert.warning(ex.getMessage());
             }
         } catch (IOException ex) {
             Logger.getLogger(SignMessageForm.class.getName()).log(Level.SEVERE, null, ex);
-            showWarningMsg(ex.getLocalizedMessage());
+            Alert.warning(ex.getLocalizedMessage());
         }
     }//GEN-LAST:event_SignButtonMouseClicked
-
-    private void DestinationButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DestinationButtonMouseClicked
-        dest_fc.showOpenDialog(this);
-    }//GEN-LAST:event_DestinationButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -262,10 +213,7 @@ public class SignMessageForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton DestinationButton;
-    private javax.swing.JLabel DestinationLabel;
-    private javax.swing.JLabel KeyFileLabel;
-    private javax.swing.JButton SelectKey;
+    private javax.swing.JComboBox<String> ComboKeys;
     private javax.swing.JButton SignButton;
     private javax.swing.JTextArea TextDescription;
     private javax.swing.JPasswordField TextPassword;
@@ -273,6 +221,7 @@ public class SignMessageForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
