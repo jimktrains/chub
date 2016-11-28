@@ -1,0 +1,922 @@
+clang -std=c++14 -Wall -Wextra -Wpedantic -Wsign-conversion -Wold-style-cast -Wsign-promo -Wsign-promo -Wswitch-enum -Weffc++ -Wshadow -Wno-missing-braces -O3 -I /usr/local/include -lstdc++ -L /usr/local/lib -lprotobuf -c main.cc
+clang: warning: -Z-reserved-lib-stdc++: 'linker' input unused
+clang: warning: -lprotobuf: 'linker' input unused
+clang: warning: argument unused during compilation: '-L/usr/local/lib'
+In file included from main.cc:15:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:47:9: warning: 'OSAtomicCompareAndSwap32' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong_explicit(std::memory_order_relaxed) from <atomic> instead [-Wdeprecated-declarations]
+    if (OSAtomicCompareAndSwap32(old_value, new_value,
+        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:502:9: note: 'OSAtomicCompareAndSwap32' has been explicitly marked deprecated here
+bool    OSAtomicCompareAndSwap32( int32_t __oldValue, int32_t __newValue, volatile int32_t *__theValue );
+        ^
+In file included from main.cc:15:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:61:13: warning: 'OSAtomicCompareAndSwap32' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong_explicit(std::memory_order_relaxed) from <atomic> instead [-Wdeprecated-declarations]
+  } while (!OSAtomicCompareAndSwap32(old_value, new_value,
+            ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:502:9: note: 'OSAtomicCompareAndSwap32' has been explicitly marked deprecated here
+bool    OSAtomicCompareAndSwap32( int32_t __oldValue, int32_t __newValue, volatile int32_t *__theValue );
+        ^
+In file included from main.cc:15:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:68:10: warning: 'OSAtomicAdd32' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_fetch_add_explicit(std::memory_order_relaxed) from <atomic> instead [-Wdeprecated-declarations]
+  return OSAtomicAdd32(increment, const_cast<Atomic32*>(ptr));
+         ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:146:9: note: 'OSAtomicAdd32' has been explicitly marked deprecated here
+int32_t OSAtomicAdd32( int32_t __theAmount, volatile int32_t *__theValue );
+        ^
+In file included from main.cc:15:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:73:10: warning: 'OSAtomicAdd32Barrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_fetch_add() from <atomic> instead [-Wdeprecated-declarations]
+  return OSAtomicAdd32Barrier(increment, const_cast<Atomic32*>(ptr));
+         ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:161:9: note: 'OSAtomicAdd32Barrier' has been explicitly marked deprecated here
+int32_t OSAtomicAdd32Barrier( int32_t __theAmount, volatile int32_t *__theValue );
+        ^
+In file included from main.cc:15:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:77:3: warning: 'OSMemoryBarrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_thread_fence() from <atomic> instead [-Wdeprecated-declarations]
+  OSMemoryBarrier();
+  ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:749:9: note: 'OSMemoryBarrier' has been explicitly marked deprecated here
+void    OSMemoryBarrier( void );
+        ^
+In file included from main.cc:15:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:85:9: warning: 'OSAtomicCompareAndSwap32Barrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong() from <atomic> instead [-Wdeprecated-declarations]
+    if (OSAtomicCompareAndSwap32Barrier(old_value, new_value,
+        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:518:9: note: 'OSAtomicCompareAndSwap32Barrier' has been explicitly marked deprecated here
+bool    OSAtomicCompareAndSwap32Barrier( int32_t __oldValue, int32_t __newValue, volatile int32_t *__theValue );
+        ^
+In file included from main.cc:15:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:138:9: warning: 'OSAtomicCompareAndSwap64' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong_explicit(std::memory_order_relaxed) from <atomic> instead [-Wdeprecated-declarations]
+    if (OSAtomicCompareAndSwap64(old_value, new_value,
+        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:628:9: note: 'OSAtomicCompareAndSwap64' has been explicitly marked deprecated here
+bool    OSAtomicCompareAndSwap64( int64_t __oldValue, int64_t __newValue,
+        ^
+In file included from main.cc:15:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:152:13: warning: 'OSAtomicCompareAndSwap64' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong_explicit(std::memory_order_relaxed) from <atomic> instead [-Wdeprecated-declarations]
+  } while (!OSAtomicCompareAndSwap64(old_value, new_value,
+            ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:628:9: note: 'OSAtomicCompareAndSwap64' has been explicitly marked deprecated here
+bool    OSAtomicCompareAndSwap64( int64_t __oldValue, int64_t __newValue,
+        ^
+In file included from main.cc:15:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:159:10: warning: 'OSAtomicAdd64' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_fetch_add_explicit(std::memory_order_relaxed) from <atomic> instead [-Wdeprecated-declarations]
+  return OSAtomicAdd64(increment, reinterpret_cast<volatile int64_t*>(ptr));
+         ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:231:9: note: 'OSAtomicAdd64' has been explicitly marked deprecated here
+int64_t OSAtomicAdd64( int64_t __theAmount,
+        ^
+In file included from main.cc:15:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:164:10: warning: 'OSAtomicAdd64Barrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_fetch_add() from <atomic> instead [-Wdeprecated-declarations]
+  return OSAtomicAdd64Barrier(increment,
+         ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:247:9: note: 'OSAtomicAdd64Barrier' has been explicitly marked deprecated here
+int64_t OSAtomicAdd64Barrier( int64_t __theAmount,
+        ^
+In file included from main.cc:15:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:173:9: warning: 'OSAtomicCompareAndSwap64Barrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong() from <atomic> instead [-Wdeprecated-declarations]
+    if (OSAtomicCompareAndSwap64Barrier(
+        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:645:9: note: 'OSAtomicCompareAndSwap64Barrier' has been explicitly marked deprecated here
+bool    OSAtomicCompareAndSwap64Barrier( int64_t __oldValue, int64_t __newValue,
+        ^
+In file included from main.cc:15:
+In file included from ./message.pb.h:22:
+/usr/local/include/google/protobuf/arena.h:803:22: warning: unused parameter 'arena' [-Wunused-parameter]
+      T* ptr, Arena* arena, google::protobuf::internal::false_type) {
+                     ^
+/usr/local/include/google/protobuf/arena.h:809:10: warning: unused parameter 'ptr' [-Wunused-parameter]
+      T* ptr, Arena* arena, google::protobuf::internal::true_type) {}
+         ^
+/usr/local/include/google/protobuf/arena.h:809:22: warning: unused parameter 'arena' [-Wunused-parameter]
+      T* ptr, Arena* arena, google::protobuf::internal::true_type) {}
+                     ^
+/usr/local/include/google/protobuf/arena.h:844:63: warning: unused parameter 'value' [-Wunused-parameter]
+  static ::google::protobuf::Arena* GetArenaInternal(const T* value, ...) {
+                                                              ^
+In file included from main.cc:15:
+In file included from ./message.pb.h:23:
+In file included from /usr/local/include/google/protobuf/arenastring.h:38:
+/usr/local/include/google/protobuf/stubs/fastmem.h:114:39: warning: implicit conversion changes signedness: 'unsigned int' to 'int' [-Wsign-conversion]
+    int d = static_cast<uint32>(*a++) - static_cast<uint32>(*b++);
+        ~   ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from main.cc:15:
+In file included from ./message.pb.h:25:
+In file included from /usr/local/include/google/protobuf/metadata.h:43:
+/usr/local/include/google/protobuf/unknown_field_set.h:270:21: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  return (*fields_)[index];
+         ~          ^~~~~
+/usr/local/include/google/protobuf/unknown_field_set.h:273:22: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  return &(*fields_)[index];
+          ~          ^~~~~
+/usr/local/include/google/protobuf/unknown_field_set.h:282:50: warning: implicit conversion changes signedness: 'const uint32' (aka 'const unsigned int') to 'int' [-Wsign-conversion]
+inline int UnknownField::number() const { return number_; }
+                                          ~~~~~~ ^~~~~~~
+In file included from main.cc:15:
+In file included from ./message.pb.h:26:
+In file included from /usr/local/include/google/protobuf/message.h:122:
+In file included from /usr/local/include/google/protobuf/descriptor.h:59:
+/usr/local/include/google/protobuf/stubs/shared_ptr.h:441:58: warning: unused parameter 'other' [-Wunused-parameter]
+  enable_shared_from_this(const enable_shared_from_this& other) { }
+                                                         ^
+/usr/local/include/google/protobuf/stubs/shared_ptr.h:442:69: warning: unused parameter 'other' [-Wunused-parameter]
+  enable_shared_from_this& operator=(const enable_shared_from_this& other) {
+                                                                    ^
+In file included from main.cc:15:
+In file included from ./message.pb.h:27:
+/usr/local/include/google/protobuf/repeated_field.h:1561:37: warning: implicit conversion changes signedness: 'unsigned long' to 'int' [-Wsign-conversion]
+  int allocated_bytes = total_size_ * sizeof(void*);
+      ~~~~~~~~~~~~~~~   ~~~~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/repeated_field.h:1561:25: warning: implicit conversion changes signedness: 'const int' to 'unsigned long' [-Wsign-conversion]
+  int allocated_bytes = total_size_ * sizeof(void*);
+                        ^~~~~~~~~~~ ~
+main.cc:22:14: warning: unused parameter 'argc' [-Wunused-parameter]
+int main(int argc, char** argv) {
+             ^
+main.cc:22:27: warning: unused parameter 'argv' [-Wunused-parameter]
+int main(int argc, char** argv) {
+                          ^
+25 warnings generated.
+clang -std=c++14 -Wall -Wextra -Wpedantic -Wsign-conversion -Wold-style-cast -Wsign-promo -Wsign-promo -Wswitch-enum -Weffc++ -Wshadow -Wno-missing-braces -O3 -I /usr/local/include -lstdc++ -L /usr/local/lib -lprotobuf -c message.pb.cc
+clang: warning: -Z-reserved-lib-stdc++: 'linker' input unused
+clang: warning: -lprotobuf: 'linker' input unused
+clang: warning: argument unused during compilation: '-L/usr/local/lib'
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:47:9: warning: 'OSAtomicCompareAndSwap32' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong_explicit(std::memory_order_relaxed) from <atomic> instead [-Wdeprecated-declarations]
+    if (OSAtomicCompareAndSwap32(old_value, new_value,
+        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:502:9: note: 'OSAtomicCompareAndSwap32' has been explicitly marked deprecated here
+bool    OSAtomicCompareAndSwap32( int32_t __oldValue, int32_t __newValue, volatile int32_t *__theValue );
+        ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:61:13: warning: 'OSAtomicCompareAndSwap32' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong_explicit(std::memory_order_relaxed) from <atomic> instead [-Wdeprecated-declarations]
+  } while (!OSAtomicCompareAndSwap32(old_value, new_value,
+            ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:502:9: note: 'OSAtomicCompareAndSwap32' has been explicitly marked deprecated here
+bool    OSAtomicCompareAndSwap32( int32_t __oldValue, int32_t __newValue, volatile int32_t *__theValue );
+        ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:68:10: warning: 'OSAtomicAdd32' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_fetch_add_explicit(std::memory_order_relaxed) from <atomic> instead [-Wdeprecated-declarations]
+  return OSAtomicAdd32(increment, const_cast<Atomic32*>(ptr));
+         ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:146:9: note: 'OSAtomicAdd32' has been explicitly marked deprecated here
+int32_t OSAtomicAdd32( int32_t __theAmount, volatile int32_t *__theValue );
+        ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:73:10: warning: 'OSAtomicAdd32Barrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_fetch_add() from <atomic> instead [-Wdeprecated-declarations]
+  return OSAtomicAdd32Barrier(increment, const_cast<Atomic32*>(ptr));
+         ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:161:9: note: 'OSAtomicAdd32Barrier' has been explicitly marked deprecated here
+int32_t OSAtomicAdd32Barrier( int32_t __theAmount, volatile int32_t *__theValue );
+        ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:77:3: warning: 'OSMemoryBarrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_thread_fence() from <atomic> instead [-Wdeprecated-declarations]
+  OSMemoryBarrier();
+  ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:749:9: note: 'OSMemoryBarrier' has been explicitly marked deprecated here
+void    OSMemoryBarrier( void );
+        ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:85:9: warning: 'OSAtomicCompareAndSwap32Barrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong() from <atomic> instead [-Wdeprecated-declarations]
+    if (OSAtomicCompareAndSwap32Barrier(old_value, new_value,
+        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:518:9: note: 'OSAtomicCompareAndSwap32Barrier' has been explicitly marked deprecated here
+bool    OSAtomicCompareAndSwap32Barrier( int32_t __oldValue, int32_t __newValue, volatile int32_t *__theValue );
+        ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:138:9: warning: 'OSAtomicCompareAndSwap64' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong_explicit(std::memory_order_relaxed) from <atomic> instead [-Wdeprecated-declarations]
+    if (OSAtomicCompareAndSwap64(old_value, new_value,
+        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:628:9: note: 'OSAtomicCompareAndSwap64' has been explicitly marked deprecated here
+bool    OSAtomicCompareAndSwap64( int64_t __oldValue, int64_t __newValue,
+        ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:152:13: warning: 'OSAtomicCompareAndSwap64' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong_explicit(std::memory_order_relaxed) from <atomic> instead [-Wdeprecated-declarations]
+  } while (!OSAtomicCompareAndSwap64(old_value, new_value,
+            ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:628:9: note: 'OSAtomicCompareAndSwap64' has been explicitly marked deprecated here
+bool    OSAtomicCompareAndSwap64( int64_t __oldValue, int64_t __newValue,
+        ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:159:10: warning: 'OSAtomicAdd64' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_fetch_add_explicit(std::memory_order_relaxed) from <atomic> instead [-Wdeprecated-declarations]
+  return OSAtomicAdd64(increment, reinterpret_cast<volatile int64_t*>(ptr));
+         ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:231:9: note: 'OSAtomicAdd64' has been explicitly marked deprecated here
+int64_t OSAtomicAdd64( int64_t __theAmount,
+        ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:164:10: warning: 'OSAtomicAdd64Barrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_fetch_add() from <atomic> instead [-Wdeprecated-declarations]
+  return OSAtomicAdd64Barrier(increment,
+         ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:247:9: note: 'OSAtomicAdd64Barrier' has been explicitly marked deprecated here
+int64_t OSAtomicAdd64Barrier( int64_t __theAmount,
+        ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:22:
+In file included from /usr/local/include/google/protobuf/arena.h:52:
+In file included from /usr/local/include/google/protobuf/stubs/atomic_sequence_num.h:33:
+In file included from /usr/local/include/google/protobuf/stubs/atomicops.h:199:
+/usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h:173:9: warning: 'OSAtomicCompareAndSwap64Barrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong() from <atomic> instead [-Wdeprecated-declarations]
+    if (OSAtomicCompareAndSwap64Barrier(
+        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/OSAtomicDeprecated.h:645:9: note: 'OSAtomicCompareAndSwap64Barrier' has been explicitly marked deprecated here
+bool    OSAtomicCompareAndSwap64Barrier( int64_t __oldValue, int64_t __newValue,
+        ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:22:
+/usr/local/include/google/protobuf/arena.h:803:22: warning: unused parameter 'arena' [-Wunused-parameter]
+      T* ptr, Arena* arena, google::protobuf::internal::false_type) {
+                     ^
+/usr/local/include/google/protobuf/arena.h:809:10: warning: unused parameter 'ptr' [-Wunused-parameter]
+      T* ptr, Arena* arena, google::protobuf::internal::true_type) {}
+         ^
+/usr/local/include/google/protobuf/arena.h:809:22: warning: unused parameter 'arena' [-Wunused-parameter]
+      T* ptr, Arena* arena, google::protobuf::internal::true_type) {}
+                     ^
+/usr/local/include/google/protobuf/arena.h:844:63: warning: unused parameter 'value' [-Wunused-parameter]
+  static ::google::protobuf::Arena* GetArenaInternal(const T* value, ...) {
+                                                              ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:23:
+In file included from /usr/local/include/google/protobuf/arenastring.h:38:
+/usr/local/include/google/protobuf/stubs/fastmem.h:114:39: warning: implicit conversion changes signedness: 'unsigned int' to 'int' [-Wsign-conversion]
+    int d = static_cast<uint32>(*a++) - static_cast<uint32>(*b++);
+        ~   ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:25:
+In file included from /usr/local/include/google/protobuf/metadata.h:43:
+/usr/local/include/google/protobuf/unknown_field_set.h:270:21: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  return (*fields_)[index];
+         ~          ^~~~~
+/usr/local/include/google/protobuf/unknown_field_set.h:273:22: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  return &(*fields_)[index];
+          ~          ^~~~~
+/usr/local/include/google/protobuf/unknown_field_set.h:282:50: warning: implicit conversion changes signedness: 'const uint32' (aka 'const unsigned int') to 'int' [-Wsign-conversion]
+inline int UnknownField::number() const { return number_; }
+                                          ~~~~~~ ^~~~~~~
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:26:
+In file included from /usr/local/include/google/protobuf/message.h:122:
+In file included from /usr/local/include/google/protobuf/descriptor.h:59:
+/usr/local/include/google/protobuf/stubs/shared_ptr.h:441:58: warning: unused parameter 'other' [-Wunused-parameter]
+  enable_shared_from_this(const enable_shared_from_this& other) { }
+                                                         ^
+/usr/local/include/google/protobuf/stubs/shared_ptr.h:442:69: warning: unused parameter 'other' [-Wunused-parameter]
+  enable_shared_from_this& operator=(const enable_shared_from_this& other) {
+                                                                    ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:27:
+/usr/local/include/google/protobuf/repeated_field.h:1561:37: warning: implicit conversion changes signedness: 'unsigned long' to 'int' [-Wsign-conversion]
+  int allocated_bytes = total_size_ * sizeof(void*);
+      ~~~~~~~~~~~~~~~   ~~~~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/repeated_field.h:1561:25: warning: implicit conversion changes signedness: 'const int' to 'unsigned long' [-Wsign-conversion]
+  int allocated_bytes = total_size_ * sizeof(void*);
+                        ^~~~~~~~~~~ ~
+In file included from message.pb.cc:13:
+In file included from /usr/local/include/google/protobuf/wire_format_lite_inl.h:49:
+/usr/local/include/google/protobuf/wire_format_lite.h:632:18: warning: implicit conversion changes signedness: 'int' to 'uint32' (aka 'unsigned int') [-Wsign-conversion]
+    field_number << kTagTypeBits);
+    ~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite.h:691:45: warning: implicit conversion changes signedness: 'int32' (aka 'int') to 'unsigned int' [-Wsign-conversion]
+  return (static_cast<uint32>(n) << 1) ^ (n >> 31);
+                                       ~  ~~^~~~~
+/usr/local/include/google/protobuf/wire_format_lite.h:695:19: warning: implicit conversion changes signedness: 'unsigned int' to 'int32' (aka 'int') [-Wsign-conversion]
+  return (n >> 1) ^ -static_cast<int32>(n & 1);
+  ~~~~~~ ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite.h:695:21: warning: implicit conversion changes signedness: 'int32' (aka 'int') to 'unsigned int' [-Wsign-conversion]
+  return (n >> 1) ^ -static_cast<int32>(n & 1);
+                  ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite.h:700:45: warning: implicit conversion changes signedness: 'int64' (aka 'long long') to 'unsigned long long' [-Wsign-conversion]
+  return (static_cast<uint64>(n) << 1) ^ (n >> 63);
+                                       ~  ~~^~~~~
+/usr/local/include/google/protobuf/wire_format_lite.h:704:19: warning: implicit conversion changes signedness: 'unsigned long long' to 'int64' (aka 'long long') [-Wsign-conversion]
+  return (n >> 1) ^ -static_cast<int64>(n & 1);
+  ~~~~~~ ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite.h:704:21: warning: implicit conversion changes signedness: 'int64' (aka 'long long') to 'unsigned long long' [-Wsign-conversion]
+  return (n >> 1) ^ -static_cast<int64>(n & 1);
+                  ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from message.pb.cc:13:
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:787:5: warning: implicit conversion changes signedness: 'int' to 'uint32' (aka 'unsigned int') [-Wsign-conversion]
+    value.GetCachedSize(), target);
+    ^~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:837:7: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+      io::CodedOutputStream::VarintSize32(static_cast<uint32>(value.size())) +
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:842:7: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+      io::CodedOutputStream::VarintSize32(static_cast<uint32>(value.size())) +
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:869:46: warning: implicit conversion changes signedness: 'int' to 'uint32' (aka 'unsigned int') [-Wsign-conversion]
+  return io::CodedOutputStream::VarintSize32(length) + length;
+         ~~                                  ^~~~~~
+message.pb.cc:249:7: warning: using extended field designator is an extension [-Wextended-offsetof]
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignedMessage, _oneof_case_[0]),
+      ^                                                                         ~~~
+/usr/local/include/google/protobuf/generated_message_reflection.h:592:3: note: expanded from macro 'GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET'
+  __builtin_offsetof(TYPE, FIELD)                             \
+  ^                        ~~~~~
+message.pb.cc:874:10: warning: unused parameter 'deterministic' [-Wunused-parameter]
+    bool deterministic, ::google::protobuf::uint8* target) const {
+         ^
+message.pb.cc:1666:10: warning: unused parameter 'deterministic' [-Wunused-parameter]
+    bool deterministic, ::google::protobuf::uint8* target) const {
+         ^
+message.pb.cc:2251:10: warning: unused parameter 'deterministic' [-Wunused-parameter]
+    bool deterministic, ::google::protobuf::uint8* target) const {
+         ^
+message.pb.cc:2894:10: warning: unused parameter 'deterministic' [-Wunused-parameter]
+    bool deterministic, ::google::protobuf::uint8* target) const {
+         ^
+message.pb.cc:3485:10: warning: unused parameter 'deterministic' [-Wunused-parameter]
+    bool deterministic, ::google::protobuf::uint8* target) const {
+         ^
+message.pb.cc:4080:10: warning: unused parameter 'deterministic' [-Wunused-parameter]
+    bool deterministic, ::google::protobuf::uint8* target) const {
+         ^
+message.pb.cc:4556:10: warning: unused parameter 'deterministic' [-Wunused-parameter]
+    bool deterministic, ::google::protobuf::uint8* target) const {
+         ^
+message.pb.cc:4933:10: warning: unused parameter 'deterministic' [-Wunused-parameter]
+    bool deterministic, ::google::protobuf::uint8* target) const {
+         ^
+message.pb.cc:5445:10: warning: unused parameter 'deterministic' [-Wunused-parameter]
+    bool deterministic, ::google::protobuf::uint8* target) const {
+         ^
+In file included from message.pb.cc:13:
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:275:41: warning: implicit conversion changes signedness: 'unsigned long' to 'const int' [-Wsign-conversion]
+    const int per_value_size = tag_size + sizeof(value);
+              ~~~~~~~~~~~~~~   ~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:310:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<unsigned int, google::protobuf::internal::WireFormatLite::FieldType::TYPE_FIXED32>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(uint32, TYPE_FIXED32)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:275:32: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    const int per_value_size = tag_size + sizeof(value);
+                               ^~~~~~~~ ~
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:27:
+/usr/local/include/google/protobuf/repeated_field.h:1270:53: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        new char[kRepHeaderSize + sizeof(Element) * new_size]);
+                                                  ~ ^~~~~~~~
+/usr/local/include/google/protobuf/repeated_field.h:1098:37: note: in instantiation of member function 'google::protobuf::RepeatedField<unsigned int>::Reserve' requested here
+  if (current_size_ == total_size_) Reserve(total_size_ + 1);
+                                    ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:258:11: note: in instantiation of member function 'google::protobuf::RepeatedField<unsigned int>::Add' requested here
+  values->Add(value);
+          ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:310:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<unsigned int, google::protobuf::internal::WireFormatLite::FieldType::TYPE_FIXED32>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(uint32, TYPE_FIXED32)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:27:
+/usr/local/include/google/protobuf/repeated_field.h:1274:52: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                kRepHeaderSize + sizeof(Element) * new_size));
+                                                 ~ ^~~~~~~~
+/usr/local/include/google/protobuf/repeated_field.h:1333:22: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    memcpy(to, from, array_size * sizeof(Element));
+                     ^~~~~~~~~~ ~
+/usr/local/include/google/protobuf/repeated_field.h:1319:3: note: in instantiation of member function 'google::protobuf::internal::ElementCopier<unsigned int, true>::operator()' requested here
+  internal::ElementCopier<Element>()(to, from, array_size);
+  ^
+/usr/local/include/google/protobuf/repeated_field.h:1313:3: note: in instantiation of member function 'google::protobuf::RepeatedField<unsigned int>::CopyArray' requested here
+  CopyArray(to, from, array_size);
+  ^
+/usr/local/include/google/protobuf/repeated_field.h:1294:5: note: in instantiation of member function 'google::protobuf::RepeatedField<unsigned int>::MoveArray' requested here
+    MoveArray(rep_->elements, old_rep->elements, current_size_);
+    ^
+/usr/local/include/google/protobuf/repeated_field.h:1098:37: note: in instantiation of member function 'google::protobuf::RepeatedField<unsigned int>::Reserve' requested here
+  if (current_size_ == total_size_) Reserve(total_size_ + 1);
+                                    ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:258:11: note: in instantiation of member function 'google::protobuf::RepeatedField<unsigned int>::Add' requested here
+  values->Add(value);
+          ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:310:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<unsigned int, google::protobuf::internal::WireFormatLite::FieldType::TYPE_FIXED32>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(uint32, TYPE_FIXED32)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:275:41: warning: implicit conversion changes signedness: 'unsigned long' to 'const int' [-Wsign-conversion]
+    const int per_value_size = tag_size + sizeof(value);
+              ~~~~~~~~~~~~~~   ~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:311:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<unsigned long long, google::protobuf::internal::WireFormatLite::FieldType::TYPE_FIXED64>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(uint64, TYPE_FIXED64)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:275:32: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    const int per_value_size = tag_size + sizeof(value);
+                               ^~~~~~~~ ~
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:27:
+/usr/local/include/google/protobuf/repeated_field.h:1270:53: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        new char[kRepHeaderSize + sizeof(Element) * new_size]);
+                                                  ~ ^~~~~~~~
+/usr/local/include/google/protobuf/repeated_field.h:1098:37: note: in instantiation of member function 'google::protobuf::RepeatedField<unsigned long long>::Reserve' requested here
+  if (current_size_ == total_size_) Reserve(total_size_ + 1);
+                                    ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:258:11: note: in instantiation of member function 'google::protobuf::RepeatedField<unsigned long long>::Add' requested here
+  values->Add(value);
+          ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:311:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<unsigned long long, google::protobuf::internal::WireFormatLite::FieldType::TYPE_FIXED64>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(uint64, TYPE_FIXED64)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:27:
+/usr/local/include/google/protobuf/repeated_field.h:1274:52: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                kRepHeaderSize + sizeof(Element) * new_size));
+                                                 ~ ^~~~~~~~
+/usr/local/include/google/protobuf/repeated_field.h:1333:22: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    memcpy(to, from, array_size * sizeof(Element));
+                     ^~~~~~~~~~ ~
+/usr/local/include/google/protobuf/repeated_field.h:1319:3: note: in instantiation of member function 'google::protobuf::internal::ElementCopier<unsigned long long, true>::operator()' requested here
+  internal::ElementCopier<Element>()(to, from, array_size);
+  ^
+/usr/local/include/google/protobuf/repeated_field.h:1313:3: note: in instantiation of member function 'google::protobuf::RepeatedField<unsigned long long>::CopyArray' requested here
+  CopyArray(to, from, array_size);
+  ^
+/usr/local/include/google/protobuf/repeated_field.h:1294:5: note: in instantiation of member function 'google::protobuf::RepeatedField<unsigned long long>::MoveArray' requested here
+    MoveArray(rep_->elements, old_rep->elements, current_size_);
+    ^
+/usr/local/include/google/protobuf/repeated_field.h:1098:37: note: in instantiation of member function 'google::protobuf::RepeatedField<unsigned long long>::Reserve' requested here
+  if (current_size_ == total_size_) Reserve(total_size_ + 1);
+                                    ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:258:11: note: in instantiation of member function 'google::protobuf::RepeatedField<unsigned long long>::Add' requested here
+  values->Add(value);
+          ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:311:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<unsigned long long, google::protobuf::internal::WireFormatLite::FieldType::TYPE_FIXED64>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(uint64, TYPE_FIXED64)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:275:41: warning: implicit conversion changes signedness: 'unsigned long' to 'const int' [-Wsign-conversion]
+    const int per_value_size = tag_size + sizeof(value);
+              ~~~~~~~~~~~~~~   ~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:312:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<int, google::protobuf::internal::WireFormatLite::FieldType::TYPE_SFIXED32>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(int32, TYPE_SFIXED32)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:275:32: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    const int per_value_size = tag_size + sizeof(value);
+                               ^~~~~~~~ ~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:275:41: warning: implicit conversion changes signedness: 'unsigned long' to 'const int' [-Wsign-conversion]
+    const int per_value_size = tag_size + sizeof(value);
+              ~~~~~~~~~~~~~~   ~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:313:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<long long, google::protobuf::internal::WireFormatLite::FieldType::TYPE_SFIXED64>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(int64, TYPE_SFIXED64)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:275:32: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    const int per_value_size = tag_size + sizeof(value);
+                               ^~~~~~~~ ~
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:27:
+/usr/local/include/google/protobuf/repeated_field.h:1270:53: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        new char[kRepHeaderSize + sizeof(Element) * new_size]);
+                                                  ~ ^~~~~~~~
+/usr/local/include/google/protobuf/repeated_field.h:1098:37: note: in instantiation of member function 'google::protobuf::RepeatedField<long long>::Reserve' requested here
+  if (current_size_ == total_size_) Reserve(total_size_ + 1);
+                                    ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:258:11: note: in instantiation of member function 'google::protobuf::RepeatedField<long long>::Add' requested here
+  values->Add(value);
+          ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:313:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<long long, google::protobuf::internal::WireFormatLite::FieldType::TYPE_SFIXED64>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(int64, TYPE_SFIXED64)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:27:
+/usr/local/include/google/protobuf/repeated_field.h:1274:52: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                kRepHeaderSize + sizeof(Element) * new_size));
+                                                 ~ ^~~~~~~~
+/usr/local/include/google/protobuf/repeated_field.h:1333:22: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    memcpy(to, from, array_size * sizeof(Element));
+                     ^~~~~~~~~~ ~
+/usr/local/include/google/protobuf/repeated_field.h:1319:3: note: in instantiation of member function 'google::protobuf::internal::ElementCopier<long long, true>::operator()' requested here
+  internal::ElementCopier<Element>()(to, from, array_size);
+  ^
+/usr/local/include/google/protobuf/repeated_field.h:1313:3: note: in instantiation of member function 'google::protobuf::RepeatedField<long long>::CopyArray' requested here
+  CopyArray(to, from, array_size);
+  ^
+/usr/local/include/google/protobuf/repeated_field.h:1294:5: note: in instantiation of member function 'google::protobuf::RepeatedField<long long>::MoveArray' requested here
+    MoveArray(rep_->elements, old_rep->elements, current_size_);
+    ^
+/usr/local/include/google/protobuf/repeated_field.h:1098:37: note: in instantiation of member function 'google::protobuf::RepeatedField<long long>::Reserve' requested here
+  if (current_size_ == total_size_) Reserve(total_size_ + 1);
+                                    ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:258:11: note: in instantiation of member function 'google::protobuf::RepeatedField<long long>::Add' requested here
+  values->Add(value);
+          ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:313:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<long long, google::protobuf::internal::WireFormatLite::FieldType::TYPE_SFIXED64>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(int64, TYPE_SFIXED64)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:275:41: warning: implicit conversion changes signedness: 'unsigned long' to 'const int' [-Wsign-conversion]
+    const int per_value_size = tag_size + sizeof(value);
+              ~~~~~~~~~~~~~~   ~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:314:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<float, google::protobuf::internal::WireFormatLite::FieldType::TYPE_FLOAT>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(float, TYPE_FLOAT)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:275:32: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    const int per_value_size = tag_size + sizeof(value);
+                               ^~~~~~~~ ~
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:27:
+/usr/local/include/google/protobuf/repeated_field.h:1270:53: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        new char[kRepHeaderSize + sizeof(Element) * new_size]);
+                                                  ~ ^~~~~~~~
+/usr/local/include/google/protobuf/repeated_field.h:1098:37: note: in instantiation of member function 'google::protobuf::RepeatedField<float>::Reserve' requested here
+  if (current_size_ == total_size_) Reserve(total_size_ + 1);
+                                    ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:258:11: note: in instantiation of member function 'google::protobuf::RepeatedField<float>::Add' requested here
+  values->Add(value);
+          ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:314:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<float, google::protobuf::internal::WireFormatLite::FieldType::TYPE_FLOAT>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(float, TYPE_FLOAT)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:27:
+/usr/local/include/google/protobuf/repeated_field.h:1274:52: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                kRepHeaderSize + sizeof(Element) * new_size));
+                                                 ~ ^~~~~~~~
+/usr/local/include/google/protobuf/repeated_field.h:1333:22: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    memcpy(to, from, array_size * sizeof(Element));
+                     ^~~~~~~~~~ ~
+/usr/local/include/google/protobuf/repeated_field.h:1319:3: note: in instantiation of member function 'google::protobuf::internal::ElementCopier<float, true>::operator()' requested here
+  internal::ElementCopier<Element>()(to, from, array_size);
+  ^
+/usr/local/include/google/protobuf/repeated_field.h:1313:3: note: in instantiation of member function 'google::protobuf::RepeatedField<float>::CopyArray' requested here
+  CopyArray(to, from, array_size);
+  ^
+/usr/local/include/google/protobuf/repeated_field.h:1294:5: note: in instantiation of member function 'google::protobuf::RepeatedField<float>::MoveArray' requested here
+    MoveArray(rep_->elements, old_rep->elements, current_size_);
+    ^
+/usr/local/include/google/protobuf/repeated_field.h:1098:37: note: in instantiation of member function 'google::protobuf::RepeatedField<float>::Reserve' requested here
+  if (current_size_ == total_size_) Reserve(total_size_ + 1);
+                                    ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:258:11: note: in instantiation of member function 'google::protobuf::RepeatedField<float>::Add' requested here
+  values->Add(value);
+          ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:314:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<float, google::protobuf::internal::WireFormatLite::FieldType::TYPE_FLOAT>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(float, TYPE_FLOAT)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:275:41: warning: implicit conversion changes signedness: 'unsigned long' to 'const int' [-Wsign-conversion]
+    const int per_value_size = tag_size + sizeof(value);
+              ~~~~~~~~~~~~~~   ~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:315:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<double, google::protobuf::internal::WireFormatLite::FieldType::TYPE_DOUBLE>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(double, TYPE_DOUBLE)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:275:32: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    const int per_value_size = tag_size + sizeof(value);
+                               ^~~~~~~~ ~
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:27:
+/usr/local/include/google/protobuf/repeated_field.h:1270:53: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        new char[kRepHeaderSize + sizeof(Element) * new_size]);
+                                                  ~ ^~~~~~~~
+/usr/local/include/google/protobuf/repeated_field.h:1098:37: note: in instantiation of member function 'google::protobuf::RepeatedField<double>::Reserve' requested here
+  if (current_size_ == total_size_) Reserve(total_size_ + 1);
+                                    ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:258:11: note: in instantiation of member function 'google::protobuf::RepeatedField<double>::Add' requested here
+  values->Add(value);
+          ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:315:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<double, google::protobuf::internal::WireFormatLite::FieldType::TYPE_DOUBLE>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(double, TYPE_DOUBLE)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:27:
+/usr/local/include/google/protobuf/repeated_field.h:1274:52: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                kRepHeaderSize + sizeof(Element) * new_size));
+                                                 ~ ^~~~~~~~
+/usr/local/include/google/protobuf/repeated_field.h:1333:22: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    memcpy(to, from, array_size * sizeof(Element));
+                     ^~~~~~~~~~ ~
+/usr/local/include/google/protobuf/repeated_field.h:1319:3: note: in instantiation of member function 'google::protobuf::internal::ElementCopier<double, true>::operator()' requested here
+  internal::ElementCopier<Element>()(to, from, array_size);
+  ^
+/usr/local/include/google/protobuf/repeated_field.h:1313:3: note: in instantiation of member function 'google::protobuf::RepeatedField<double>::CopyArray' requested here
+  CopyArray(to, from, array_size);
+  ^
+/usr/local/include/google/protobuf/repeated_field.h:1294:5: note: in instantiation of member function 'google::protobuf::RepeatedField<double>::MoveArray' requested here
+    MoveArray(rep_->elements, old_rep->elements, current_size_);
+    ^
+/usr/local/include/google/protobuf/repeated_field.h:1098:37: note: in instantiation of member function 'google::protobuf::RepeatedField<double>::Reserve' requested here
+  if (current_size_ == total_size_) Reserve(total_size_ + 1);
+                                    ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:258:11: note: in instantiation of member function 'google::protobuf::RepeatedField<double>::Add' requested here
+  values->Add(value);
+          ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:315:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<double, google::protobuf::internal::WireFormatLite::FieldType::TYPE_DOUBLE>' requested here
+READ_REPEATED_FIXED_SIZE_PRIMITIVE(double, TYPE_DOUBLE)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:305:10: note: expanded from macro 'READ_REPEATED_FIXED_SIZE_PRIMITIVE'
+  return ReadRepeatedFixedSizePrimitive<                                       \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:350:27: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+  const int new_entries = length / sizeof(CType);
+                          ^~~~~~ ~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:415:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadPackedFixedSizePrimitive<unsigned int, google::protobuf::internal::WireFormatLite::FieldType::TYPE_FIXED32>' requested here
+READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE(uint32, TYPE_FIXED32)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:411:10: note: expanded from macro 'READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE'
+  return ReadPackedFixedSizePrimitive<                                         \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:351:37: warning: implicit conversion changes signedness: 'unsigned long' to 'const int' [-Wsign-conversion]
+  const int new_bytes = new_entries * sizeof(CType);
+            ~~~~~~~~~   ~~~~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:351:25: warning: implicit conversion changes signedness: 'const int' to 'unsigned long' [-Wsign-conversion]
+  const int new_bytes = new_entries * sizeof(CType);
+                        ^~~~~~~~~~~ ~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:350:27: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+  const int new_entries = length / sizeof(CType);
+                          ^~~~~~ ~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:416:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadPackedFixedSizePrimitive<unsigned long long, google::protobuf::internal::WireFormatLite::FieldType::TYPE_FIXED64>' requested here
+READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE(uint64, TYPE_FIXED64)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:411:10: note: expanded from macro 'READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE'
+  return ReadPackedFixedSizePrimitive<                                         \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:351:37: warning: implicit conversion changes signedness: 'unsigned long' to 'const int' [-Wsign-conversion]
+  const int new_bytes = new_entries * sizeof(CType);
+            ~~~~~~~~~   ~~~~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:351:25: warning: implicit conversion changes signedness: 'const int' to 'unsigned long' [-Wsign-conversion]
+  const int new_bytes = new_entries * sizeof(CType);
+                        ^~~~~~~~~~~ ~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:350:27: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+  const int new_entries = length / sizeof(CType);
+                          ^~~~~~ ~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:417:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadPackedFixedSizePrimitive<int, google::protobuf::internal::WireFormatLite::FieldType::TYPE_SFIXED32>' requested here
+READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE(int32, TYPE_SFIXED32)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:411:10: note: expanded from macro 'READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE'
+  return ReadPackedFixedSizePrimitive<                                         \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:351:37: warning: implicit conversion changes signedness: 'unsigned long' to 'const int' [-Wsign-conversion]
+  const int new_bytes = new_entries * sizeof(CType);
+            ~~~~~~~~~   ~~~~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:351:25: warning: implicit conversion changes signedness: 'const int' to 'unsigned long' [-Wsign-conversion]
+  const int new_bytes = new_entries * sizeof(CType);
+                        ^~~~~~~~~~~ ~
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:27:
+/usr/local/include/google/protobuf/repeated_field.h:1270:53: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        new char[kRepHeaderSize + sizeof(Element) * new_size]);
+                                                  ~ ^~~~~~~~
+/usr/local/include/google/protobuf/repeated_field.h:1068:5: note: in instantiation of member function 'google::protobuf::RepeatedField<int>::Reserve' requested here
+    Reserve(new_size);
+    ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:375:13: note: in instantiation of member function 'google::protobuf::RepeatedField<int>::Resize' requested here
+    values->Resize(old_entries + new_entries, 0);
+            ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:417:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadPackedFixedSizePrimitive<int, google::protobuf::internal::WireFormatLite::FieldType::TYPE_SFIXED32>' requested here
+READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE(int32, TYPE_SFIXED32)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:411:10: note: expanded from macro 'READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE'
+  return ReadPackedFixedSizePrimitive<                                         \
+         ^
+In file included from message.pb.cc:5:
+In file included from ./message.pb.h:27:
+/usr/local/include/google/protobuf/repeated_field.h:1274:52: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                kRepHeaderSize + sizeof(Element) * new_size));
+                                                 ~ ^~~~~~~~
+/usr/local/include/google/protobuf/repeated_field.h:1333:22: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    memcpy(to, from, array_size * sizeof(Element));
+                     ^~~~~~~~~~ ~
+/usr/local/include/google/protobuf/repeated_field.h:1319:3: note: in instantiation of member function 'google::protobuf::internal::ElementCopier<int, true>::operator()' requested here
+  internal::ElementCopier<Element>()(to, from, array_size);
+  ^
+/usr/local/include/google/protobuf/repeated_field.h:1313:3: note: in instantiation of member function 'google::protobuf::RepeatedField<int>::CopyArray' requested here
+  CopyArray(to, from, array_size);
+  ^
+/usr/local/include/google/protobuf/repeated_field.h:1294:5: note: in instantiation of member function 'google::protobuf::RepeatedField<int>::MoveArray' requested here
+    MoveArray(rep_->elements, old_rep->elements, current_size_);
+    ^
+/usr/local/include/google/protobuf/repeated_field.h:1068:5: note: in instantiation of member function 'google::protobuf::RepeatedField<int>::Reserve' requested here
+    Reserve(new_size);
+    ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:375:13: note: in instantiation of member function 'google::protobuf::RepeatedField<int>::Resize' requested here
+    values->Resize(old_entries + new_entries, 0);
+            ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:417:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadPackedFixedSizePrimitive<int, google::protobuf::internal::WireFormatLite::FieldType::TYPE_SFIXED32>' requested here
+READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE(int32, TYPE_SFIXED32)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:411:10: note: expanded from macro 'READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE'
+  return ReadPackedFixedSizePrimitive<                                         \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:350:27: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+  const int new_entries = length / sizeof(CType);
+                          ^~~~~~ ~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:418:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadPackedFixedSizePrimitive<long long, google::protobuf::internal::WireFormatLite::FieldType::TYPE_SFIXED64>' requested here
+READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE(int64, TYPE_SFIXED64)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:411:10: note: expanded from macro 'READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE'
+  return ReadPackedFixedSizePrimitive<                                         \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:351:37: warning: implicit conversion changes signedness: 'unsigned long' to 'const int' [-Wsign-conversion]
+  const int new_bytes = new_entries * sizeof(CType);
+            ~~~~~~~~~   ~~~~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:351:25: warning: implicit conversion changes signedness: 'const int' to 'unsigned long' [-Wsign-conversion]
+  const int new_bytes = new_entries * sizeof(CType);
+                        ^~~~~~~~~~~ ~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:350:27: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+  const int new_entries = length / sizeof(CType);
+                          ^~~~~~ ~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:419:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadPackedFixedSizePrimitive<float, google::protobuf::internal::WireFormatLite::FieldType::TYPE_FLOAT>' requested here
+READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE(float, TYPE_FLOAT)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:411:10: note: expanded from macro 'READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE'
+  return ReadPackedFixedSizePrimitive<                                         \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:351:37: warning: implicit conversion changes signedness: 'unsigned long' to 'const int' [-Wsign-conversion]
+  const int new_bytes = new_entries * sizeof(CType);
+            ~~~~~~~~~   ~~~~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:351:25: warning: implicit conversion changes signedness: 'const int' to 'unsigned long' [-Wsign-conversion]
+  const int new_bytes = new_entries * sizeof(CType);
+                        ^~~~~~~~~~~ ~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:350:27: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+  const int new_entries = length / sizeof(CType);
+                          ^~~~~~ ~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:420:1: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::ReadPackedFixedSizePrimitive<double, google::protobuf::internal::WireFormatLite::FieldType::TYPE_DOUBLE>' requested here
+READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE(double, TYPE_DOUBLE)
+^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:411:10: note: expanded from macro 'READ_REPEATED_PACKED_FIXED_SIZE_PRIMITIVE'
+  return ReadPackedFixedSizePrimitive<                                         \
+         ^
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:351:37: warning: implicit conversion changes signedness: 'unsigned long' to 'const int' [-Wsign-conversion]
+  const int new_bytes = new_entries * sizeof(CType);
+            ~~~~~~~~~   ~~~~~~~~~~~~^~~~~~~~~~~~~~~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:351:25: warning: implicit conversion changes signedness: 'const int' to 'unsigned long' [-Wsign-conversion]
+  const int new_bytes = new_entries * sizeof(CType);
+                        ^~~~~~~~~~~ ~
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:807:5: warning: implicit conversion changes signedness: 'int' to 'uint32' (aka 'unsigned int') [-Wsign-conversion]
+    value.MessageType_WorkAroundCppLookupDefect::GetCachedSize(), target);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+message.pb.cc:1691:7: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray<MessageReference>' requested here
+      InternalWriteMessageNoVirtualToArray(
+      ^
+In file included from message.pb.cc:13:
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:807:5: warning: implicit conversion changes signedness: 'int' to 'uint32' (aka 'unsigned int') [-Wsign-conversion]
+    value.MessageType_WorkAroundCppLookupDefect::GetCachedSize(), target);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+message.pb.cc:2256:7: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray<SymmetriclyEncryptedMessage>' requested here
+      InternalWriteMessageNoVirtualToArray(
+      ^
+In file included from message.pb.cc:13:
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:807:5: warning: implicit conversion changes signedness: 'int' to 'uint32' (aka 'unsigned int') [-Wsign-conversion]
+    value.MessageType_WorkAroundCppLookupDefect::GetCachedSize(), target);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+message.pb.cc:4561:7: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray<AsymmetriclyEncryptedMessage>' requested here
+      InternalWriteMessageNoVirtualToArray(
+      ^
+In file included from message.pb.cc:13:
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:807:5: warning: implicit conversion changes signedness: 'int' to 'uint32' (aka 'unsigned int') [-Wsign-conversion]
+    value.MessageType_WorkAroundCppLookupDefect::GetCachedSize(), target);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+message.pb.cc:5450:7: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray<Post>' requested here
+      InternalWriteMessageNoVirtualToArray(
+      ^
+In file included from message.pb.cc:13:
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:807:5: warning: implicit conversion changes signedness: 'int' to 'uint32' (aka 'unsigned int') [-Wsign-conversion]
+    value.MessageType_WorkAroundCppLookupDefect::GetCachedSize(), target);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+message.pb.cc:5457:7: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray<Signature>' requested here
+      InternalWriteMessageNoVirtualToArray(
+      ^
+In file included from message.pb.cc:13:
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:807:5: warning: implicit conversion changes signedness: 'int' to 'uint32' (aka 'unsigned int') [-Wsign-conversion]
+    value.MessageType_WorkAroundCppLookupDefect::GetCachedSize(), target);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+message.pb.cc:5464:7: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray<PrivateKey>' requested here
+      InternalWriteMessageNoVirtualToArray(
+      ^
+In file included from message.pb.cc:13:
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:807:5: warning: implicit conversion changes signedness: 'int' to 'uint32' (aka 'unsigned int') [-Wsign-conversion]
+    value.MessageType_WorkAroundCppLookupDefect::GetCachedSize(), target);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+message.pb.cc:5471:7: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray<PublicKey>' requested here
+      InternalWriteMessageNoVirtualToArray(
+      ^
+In file included from message.pb.cc:13:
+/usr/local/include/google/protobuf/wire_format_lite_inl.h:807:5: warning: implicit conversion changes signedness: 'int' to 'uint32' (aka 'unsigned int') [-Wsign-conversion]
+    value.MessageType_WorkAroundCppLookupDefect::GetCachedSize(), target);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+message.pb.cc:5492:7: note: in instantiation of function template specialization 'google::protobuf::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray<HybridEncryptedMessage>' requested here
+      InternalWriteMessageNoVirtualToArray(
+      ^
+100 warnings generated.
+clang -std=c++14 -Wall -Wextra -Wpedantic -Wsign-conversion -Wold-style-cast -Wsign-promo -Wsign-promo -Wswitch-enum -Weffc++ -Wshadow -Wno-missing-braces -O3 -I /usr/local/include -lstdc++ -L /usr/local/lib -lprotobuf -o splashgen main.o message.pb.o

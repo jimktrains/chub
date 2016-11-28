@@ -22,12 +22,10 @@
 #include <google/protobuf/arena.h>
 #include <google/protobuf/arenastring.h>
 #include <google/protobuf/generated_message_util.h>
-#include <google/protobuf/metadata.h>
-#include <google/protobuf/message.h>
+#include <google/protobuf/message_lite.h>
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
-#include <google/protobuf/generated_enum_reflection.h>
-#include <google/protobuf/unknown_field_set.h>
+#include <google/protobuf/generated_enum_util.h>
 // @@protoc_insertion_point(includes)
 
 // Internal implementation detail -- do not call these.
@@ -36,7 +34,9 @@ void protobuf_AssignDesc_message_2eproto();
 void protobuf_ShutdownFile_message_2eproto();
 
 class AsymmetriclyEncryptedMessage;
-class HybridEncryptedMessage;
+class DistinguishedName;
+class Image;
+class KeyId;
 class MessageReference;
 class Post;
 class PrivateKey;
@@ -55,56 +55,27 @@ const SignatureType SignatureType_MIN = SHA512withECDSA;
 const SignatureType SignatureType_MAX = SHA512withECDSA;
 const int SignatureType_ARRAYSIZE = SignatureType_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* SignatureType_descriptor();
-inline const ::std::string& SignatureType_Name(SignatureType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    SignatureType_descriptor(), value);
-}
-inline bool SignatureType_Parse(
-    const ::std::string& name, SignatureType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<SignatureType>(
-    SignatureType_descriptor(), name, value);
-}
-enum ECCKeyType {
+enum AsymmetricKeyType {
   secp384r1 = 0,
-  ECCKeyType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  ECCKeyType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+  secp521r1 = 1,
+  AsymmetricKeyType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  AsymmetricKeyType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
-bool ECCKeyType_IsValid(int value);
-const ECCKeyType ECCKeyType_MIN = secp384r1;
-const ECCKeyType ECCKeyType_MAX = secp384r1;
-const int ECCKeyType_ARRAYSIZE = ECCKeyType_MAX + 1;
+bool AsymmetricKeyType_IsValid(int value);
+const AsymmetricKeyType AsymmetricKeyType_MIN = secp384r1;
+const AsymmetricKeyType AsymmetricKeyType_MAX = secp521r1;
+const int AsymmetricKeyType_ARRAYSIZE = AsymmetricKeyType_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* ECCKeyType_descriptor();
-inline const ::std::string& ECCKeyType_Name(ECCKeyType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    ECCKeyType_descriptor(), value);
-}
-inline bool ECCKeyType_Parse(
-    const ::std::string& name, ECCKeyType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<ECCKeyType>(
-    ECCKeyType_descriptor(), name, value);
-}
-enum EncryptionType {
+enum SymmetricKeyType {
   AES_256_GCM_PBKDF2WithHmacSHA256_65536_128 = 0,
-  EncryptionType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  EncryptionType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+  SymmetricKeyType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  SymmetricKeyType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
-bool EncryptionType_IsValid(int value);
-const EncryptionType EncryptionType_MIN = AES_256_GCM_PBKDF2WithHmacSHA256_65536_128;
-const EncryptionType EncryptionType_MAX = AES_256_GCM_PBKDF2WithHmacSHA256_65536_128;
-const int EncryptionType_ARRAYSIZE = EncryptionType_MAX + 1;
+bool SymmetricKeyType_IsValid(int value);
+const SymmetricKeyType SymmetricKeyType_MIN = AES_256_GCM_PBKDF2WithHmacSHA256_65536_128;
+const SymmetricKeyType SymmetricKeyType_MAX = AES_256_GCM_PBKDF2WithHmacSHA256_65536_128;
+const int SymmetricKeyType_ARRAYSIZE = SymmetricKeyType_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* EncryptionType_descriptor();
-inline const ::std::string& EncryptionType_Name(EncryptionType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    EncryptionType_descriptor(), value);
-}
-inline bool EncryptionType_Parse(
-    const ::std::string& name, EncryptionType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<EncryptionType>(
-    EncryptionType_descriptor(), name, value);
-}
 enum KeyEncodingType {
   pkcs8 = 0,
   x509 = 1,
@@ -116,16 +87,16 @@ const KeyEncodingType KeyEncodingType_MIN = pkcs8;
 const KeyEncodingType KeyEncodingType_MAX = x509;
 const int KeyEncodingType_ARRAYSIZE = KeyEncodingType_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* KeyEncodingType_descriptor();
-inline const ::std::string& KeyEncodingType_Name(KeyEncodingType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    KeyEncodingType_descriptor(), value);
-}
-inline bool KeyEncodingType_Parse(
-    const ::std::string& name, KeyEncodingType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<KeyEncodingType>(
-    KeyEncodingType_descriptor(), name, value);
-}
+enum ImageType {
+  jpeg = 0,
+  ImageType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ImageType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool ImageType_IsValid(int value);
+const ImageType ImageType_MIN = jpeg;
+const ImageType ImageType_MAX = jpeg;
+const int ImageType_ARRAYSIZE = ImageType_MAX + 1;
+
 enum MessageType {
   MessagePost = 0,
   MessageSignature = 1,
@@ -144,19 +115,113 @@ const MessageType MessageType_MIN = MessagePost;
 const MessageType MessageType_MAX = MessageSymetricKey;
 const int MessageType_ARRAYSIZE = MessageType_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* MessageType_descriptor();
-inline const ::std::string& MessageType_Name(MessageType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    MessageType_descriptor(), value);
-}
-inline bool MessageType_Parse(
-    const ::std::string& name, MessageType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<MessageType>(
-    MessageType_descriptor(), name, value);
-}
 // ===================================================================
 
-class Post : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Post) */ {
+class Image : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Image) */ {
+ public:
+  Image();
+  virtual ~Image();
+
+  Image(const Image& from);
+
+  inline Image& operator=(const Image& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const Image& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const Image* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(Image* other);
+
+  // implements Message ----------------------------------------------
+
+  inline Image* New() const { return New(NULL); }
+
+  Image* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const Image& from);
+  void MergeFrom(const Image& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(Image* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional bytes image = 1;
+  void clear_image();
+  static const int kImageFieldNumber = 1;
+  const ::std::string& image() const;
+  void set_image(const ::std::string& value);
+  void set_image(const char* value);
+  void set_image(const void* value, size_t size);
+  ::std::string* mutable_image();
+  ::std::string* release_image();
+  void set_allocated_image(::std::string* image);
+
+  // optional .ImageType imageType = 2;
+  void clear_imagetype();
+  static const int kImageTypeFieldNumber = 2;
+  ::ImageType imagetype() const;
+  void set_imagetype(::ImageType value);
+
+  // @@protoc_insertion_point(class_scope:Image)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr image_;
+  int imagetype_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_message_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_message_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_message_2eproto();
+  friend void protobuf_ShutdownFile_message_2eproto();
+
+  void InitAsDefaultInstance();
+  static Image* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class Post : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Post) */ {
  public:
   Post();
   virtual ~Post();
@@ -168,8 +233,17 @@ class Post : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
     return *this;
   }
 
-  static const ::google::protobuf::Descriptor* descriptor();
   static const Post& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const Post* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
 
   void Swap(Post* other);
 
@@ -178,8 +252,7 @@ class Post : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   inline Post* New() const { return New(NULL); }
 
   Post* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
   void CopyFrom(const Post& from);
   void MergeFrom(const Post& from);
   void Clear();
@@ -190,11 +263,7 @@ class Post : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
+  void DiscardUnknownFields();
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -203,26 +272,26 @@ class Post : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   void InternalSwap(Post* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return _arena_ptr_;
   }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::std::string GetTypeName() const;
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // optional string id = 1;
+  // optional bytes id = 1;
   void clear_id();
   static const int kIdFieldNumber = 1;
   const ::std::string& id() const;
   void set_id(const ::std::string& value);
   void set_id(const char* value);
-  void set_id(const char* value, size_t size);
+  void set_id(const void* value, size_t size);
   ::std::string* mutable_id();
   ::std::string* release_id();
   void set_allocated_id(::std::string* id);
@@ -278,16 +347,14 @@ class Post : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::google::protobuf::uint64 end_time() const;
   void set_end_time(::google::protobuf::uint64 value);
 
-  // optional bytes image = 8;
+  // optional .Image image = 8;
+  bool has_image() const;
   void clear_image();
   static const int kImageFieldNumber = 8;
-  const ::std::string& image() const;
-  void set_image(const ::std::string& value);
-  void set_image(const char* value);
-  void set_image(const void* value, size_t size);
-  ::std::string* mutable_image();
-  ::std::string* release_image();
-  void set_allocated_image(::std::string* image);
+  const ::Image& image() const;
+  ::Image* mutable_image();
+  ::Image* release_image();
+  void set_allocated_image(::Image* image);
 
   // optional fixed64 rsvp_by = 9;
   void clear_rsvp_by();
@@ -309,7 +376,9 @@ class Post : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   // @@protoc_insertion_point(class_scope:Post)
  private:
 
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr id_;
   ::google::protobuf::internal::ArenaStringPtr title_;
@@ -317,12 +386,16 @@ class Post : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::google::protobuf::internal::ArenaStringPtr location_;
   ::google::protobuf::uint64 start_time_;
   ::google::protobuf::uint64 end_time_;
-  ::google::protobuf::internal::ArenaStringPtr image_;
+  ::Image* image_;
   ::google::protobuf::uint64 rsvp_by_;
   ::google::protobuf::internal::ArenaStringPtr rsvp_email_;
   bool all_day_;
   mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_message_2eproto_impl();
+  #else
   friend void  protobuf_AddDesc_message_2eproto();
+  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -331,7 +404,7 @@ class Post : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
 };
 // -------------------------------------------------------------------
 
-class Signature : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Signature) */ {
+class Signature : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Signature) */ {
  public:
   Signature();
   virtual ~Signature();
@@ -343,8 +416,17 @@ class Signature : public ::google::protobuf::Message /* @@protoc_insertion_point
     return *this;
   }
 
-  static const ::google::protobuf::Descriptor* descriptor();
   static const Signature& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const Signature* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
 
   void Swap(Signature* other);
 
@@ -353,8 +435,7 @@ class Signature : public ::google::protobuf::Message /* @@protoc_insertion_point
   inline Signature* New() const { return New(NULL); }
 
   Signature* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
   void CopyFrom(const Signature& from);
   void MergeFrom(const Signature& from);
   void Clear();
@@ -365,11 +446,7 @@ class Signature : public ::google::protobuf::Message /* @@protoc_insertion_point
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
+  void DiscardUnknownFields();
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -378,14 +455,14 @@ class Signature : public ::google::protobuf::Message /* @@protoc_insertion_point
   void InternalSwap(Signature* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return _arena_ptr_;
   }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::std::string GetTypeName() const;
 
   // nested types ----------------------------------------------------
 
@@ -408,37 +485,43 @@ class Signature : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::SignatureType signature_type() const;
   void set_signature_type(::SignatureType value);
 
-  // optional bytes fingerprint = 4;
-  void clear_fingerprint();
-  static const int kFingerprintFieldNumber = 4;
-  const ::std::string& fingerprint() const;
-  void set_fingerprint(const ::std::string& value);
-  void set_fingerprint(const char* value);
-  void set_fingerprint(const void* value, size_t size);
-  ::std::string* mutable_fingerprint();
-  ::std::string* release_fingerprint();
-  void set_allocated_fingerprint(::std::string* fingerprint);
+  // optional bytes id = 5;
+  void clear_id();
+  static const int kIdFieldNumber = 5;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  void set_id(const char* value);
+  void set_id(const void* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
 
-  // optional .MessageReference ref = 5;
-  bool has_ref() const;
-  void clear_ref();
-  static const int kRefFieldNumber = 5;
-  const ::MessageReference& ref() const;
-  ::MessageReference* mutable_ref();
-  ::MessageReference* release_ref();
-  void set_allocated_ref(::MessageReference* ref);
+  // optional .KeyId key_id = 6;
+  bool has_key_id() const;
+  void clear_key_id();
+  static const int kKeyIdFieldNumber = 6;
+  const ::KeyId& key_id() const;
+  ::KeyId* mutable_key_id();
+  ::KeyId* release_key_id();
+  void set_allocated_key_id(::KeyId* key_id);
 
   // @@protoc_insertion_point(class_scope:Signature)
  private:
 
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr signature_;
-  ::google::protobuf::internal::ArenaStringPtr fingerprint_;
-  ::MessageReference* ref_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
+  ::KeyId* key_id_;
   int signature_type_;
   mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_message_2eproto_impl();
+  #else
   friend void  protobuf_AddDesc_message_2eproto();
+  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -447,7 +530,302 @@ class Signature : public ::google::protobuf::Message /* @@protoc_insertion_point
 };
 // -------------------------------------------------------------------
 
-class PrivateKey : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PrivateKey) */ {
+class DistinguishedName : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:DistinguishedName) */ {
+ public:
+  DistinguishedName();
+  virtual ~DistinguishedName();
+
+  DistinguishedName(const DistinguishedName& from);
+
+  inline DistinguishedName& operator=(const DistinguishedName& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const DistinguishedName& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const DistinguishedName* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(DistinguishedName* other);
+
+  // implements Message ----------------------------------------------
+
+  inline DistinguishedName* New() const { return New(NULL); }
+
+  DistinguishedName* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const DistinguishedName& from);
+  void MergeFrom(const DistinguishedName& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(DistinguishedName* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string country = 1;
+  void clear_country();
+  static const int kCountryFieldNumber = 1;
+  const ::std::string& country() const;
+  void set_country(const ::std::string& value);
+  void set_country(const char* value);
+  void set_country(const char* value, size_t size);
+  ::std::string* mutable_country();
+  ::std::string* release_country();
+  void set_allocated_country(::std::string* country);
+
+  // optional string organization = 2;
+  void clear_organization();
+  static const int kOrganizationFieldNumber = 2;
+  const ::std::string& organization() const;
+  void set_organization(const ::std::string& value);
+  void set_organization(const char* value);
+  void set_organization(const char* value, size_t size);
+  ::std::string* mutable_organization();
+  ::std::string* release_organization();
+  void set_allocated_organization(::std::string* organization);
+
+  // optional string organizational_unit = 3;
+  void clear_organizational_unit();
+  static const int kOrganizationalUnitFieldNumber = 3;
+  const ::std::string& organizational_unit() const;
+  void set_organizational_unit(const ::std::string& value);
+  void set_organizational_unit(const char* value);
+  void set_organizational_unit(const char* value, size_t size);
+  ::std::string* mutable_organizational_unit();
+  ::std::string* release_organizational_unit();
+  void set_allocated_organizational_unit(::std::string* organizational_unit);
+
+  // optional string distinguished_name_qualifier = 4;
+  void clear_distinguished_name_qualifier();
+  static const int kDistinguishedNameQualifierFieldNumber = 4;
+  const ::std::string& distinguished_name_qualifier() const;
+  void set_distinguished_name_qualifier(const ::std::string& value);
+  void set_distinguished_name_qualifier(const char* value);
+  void set_distinguished_name_qualifier(const char* value, size_t size);
+  ::std::string* mutable_distinguished_name_qualifier();
+  ::std::string* release_distinguished_name_qualifier();
+  void set_allocated_distinguished_name_qualifier(::std::string* distinguished_name_qualifier);
+
+  // optional string state = 5;
+  void clear_state();
+  static const int kStateFieldNumber = 5;
+  const ::std::string& state() const;
+  void set_state(const ::std::string& value);
+  void set_state(const char* value);
+  void set_state(const char* value, size_t size);
+  ::std::string* mutable_state();
+  ::std::string* release_state();
+  void set_allocated_state(::std::string* state);
+
+  // optional string common_name = 6;
+  void clear_common_name();
+  static const int kCommonNameFieldNumber = 6;
+  const ::std::string& common_name() const;
+  void set_common_name(const ::std::string& value);
+  void set_common_name(const char* value);
+  void set_common_name(const char* value, size_t size);
+  ::std::string* mutable_common_name();
+  ::std::string* release_common_name();
+  void set_allocated_common_name(::std::string* common_name);
+
+  // optional string serial_number = 7;
+  void clear_serial_number();
+  static const int kSerialNumberFieldNumber = 7;
+  const ::std::string& serial_number() const;
+  void set_serial_number(const ::std::string& value);
+  void set_serial_number(const char* value);
+  void set_serial_number(const char* value, size_t size);
+  ::std::string* mutable_serial_number();
+  ::std::string* release_serial_number();
+  void set_allocated_serial_number(::std::string* serial_number);
+
+  // optional string email = 8;
+  void clear_email();
+  static const int kEmailFieldNumber = 8;
+  const ::std::string& email() const;
+  void set_email(const ::std::string& value);
+  void set_email(const char* value);
+  void set_email(const char* value, size_t size);
+  ::std::string* mutable_email();
+  ::std::string* release_email();
+  void set_allocated_email(::std::string* email);
+
+  // @@protoc_insertion_point(class_scope:DistinguishedName)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr country_;
+  ::google::protobuf::internal::ArenaStringPtr organization_;
+  ::google::protobuf::internal::ArenaStringPtr organizational_unit_;
+  ::google::protobuf::internal::ArenaStringPtr distinguished_name_qualifier_;
+  ::google::protobuf::internal::ArenaStringPtr state_;
+  ::google::protobuf::internal::ArenaStringPtr common_name_;
+  ::google::protobuf::internal::ArenaStringPtr serial_number_;
+  ::google::protobuf::internal::ArenaStringPtr email_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_message_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_message_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_message_2eproto();
+  friend void protobuf_ShutdownFile_message_2eproto();
+
+  void InitAsDefaultInstance();
+  static DistinguishedName* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class KeyId : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:KeyId) */ {
+ public:
+  KeyId();
+  virtual ~KeyId();
+
+  KeyId(const KeyId& from);
+
+  inline KeyId& operator=(const KeyId& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const KeyId& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const KeyId* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(KeyId* other);
+
+  // implements Message ----------------------------------------------
+
+  inline KeyId* New() const { return New(NULL); }
+
+  KeyId* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const KeyId& from);
+  void MergeFrom(const KeyId& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(KeyId* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional bytes fingerprint_sha512 = 1;
+  void clear_fingerprint_sha512();
+  static const int kFingerprintSha512FieldNumber = 1;
+  const ::std::string& fingerprint_sha512() const;
+  void set_fingerprint_sha512(const ::std::string& value);
+  void set_fingerprint_sha512(const char* value);
+  void set_fingerprint_sha512(const void* value, size_t size);
+  ::std::string* mutable_fingerprint_sha512();
+  ::std::string* release_fingerprint_sha512();
+  void set_allocated_fingerprint_sha512(::std::string* fingerprint_sha512);
+
+  // optional .DistinguishedName dn = 2;
+  bool has_dn() const;
+  void clear_dn();
+  static const int kDnFieldNumber = 2;
+  const ::DistinguishedName& dn() const;
+  ::DistinguishedName* mutable_dn();
+  ::DistinguishedName* release_dn();
+  void set_allocated_dn(::DistinguishedName* dn);
+
+  // optional .AsymmetricKeyType type = 3;
+  void clear_type();
+  static const int kTypeFieldNumber = 3;
+  ::AsymmetricKeyType type() const;
+  void set_type(::AsymmetricKeyType value);
+
+  // @@protoc_insertion_point(class_scope:KeyId)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr fingerprint_sha512_;
+  ::DistinguishedName* dn_;
+  int type_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_message_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_message_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_message_2eproto();
+  friend void protobuf_ShutdownFile_message_2eproto();
+
+  void InitAsDefaultInstance();
+  static KeyId* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class PrivateKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:PrivateKey) */ {
  public:
   PrivateKey();
   virtual ~PrivateKey();
@@ -459,8 +837,17 @@ class PrivateKey : public ::google::protobuf::Message /* @@protoc_insertion_poin
     return *this;
   }
 
-  static const ::google::protobuf::Descriptor* descriptor();
   static const PrivateKey& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const PrivateKey* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
 
   void Swap(PrivateKey* other);
 
@@ -469,8 +856,7 @@ class PrivateKey : public ::google::protobuf::Message /* @@protoc_insertion_poin
   inline PrivateKey* New() const { return New(NULL); }
 
   PrivateKey* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
   void CopyFrom(const PrivateKey& from);
   void MergeFrom(const PrivateKey& from);
   void Clear();
@@ -481,11 +867,7 @@ class PrivateKey : public ::google::protobuf::Message /* @@protoc_insertion_poin
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
+  void DiscardUnknownFields();
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -494,14 +876,14 @@ class PrivateKey : public ::google::protobuf::Message /* @@protoc_insertion_poin
   void InternalSwap(PrivateKey* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return _arena_ptr_;
   }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::std::string GetTypeName() const;
 
   // nested types ----------------------------------------------------
 
@@ -516,64 +898,49 @@ class PrivateKey : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::SymmetriclyEncryptedMessage* release_key();
   void set_allocated_key(::SymmetriclyEncryptedMessage* key);
 
-  // optional .ECCKeyType type = 3;
-  void clear_type();
-  static const int kTypeFieldNumber = 3;
-  ::ECCKeyType type() const;
-  void set_type(::ECCKeyType value);
-
   // optional .KeyEncodingType encodingType = 5;
   void clear_encodingtype();
   static const int kEncodingTypeFieldNumber = 5;
   ::KeyEncodingType encodingtype() const;
   void set_encodingtype(::KeyEncodingType value);
 
-  // optional string name = 6;
-  void clear_name();
-  static const int kNameFieldNumber = 6;
-  const ::std::string& name() const;
-  void set_name(const ::std::string& value);
-  void set_name(const char* value);
-  void set_name(const char* value, size_t size);
-  ::std::string* mutable_name();
-  ::std::string* release_name();
-  void set_allocated_name(::std::string* name);
+  // optional .KeyId key_id = 6;
+  bool has_key_id() const;
+  void clear_key_id();
+  static const int kKeyIdFieldNumber = 6;
+  const ::KeyId& key_id() const;
+  ::KeyId* mutable_key_id();
+  ::KeyId* release_key_id();
+  void set_allocated_key_id(::KeyId* key_id);
 
-  // optional string email = 7;
-  void clear_email();
-  static const int kEmailFieldNumber = 7;
-  const ::std::string& email() const;
-  void set_email(const ::std::string& value);
-  void set_email(const char* value);
-  void set_email(const char* value, size_t size);
-  ::std::string* mutable_email();
-  ::std::string* release_email();
-  void set_allocated_email(::std::string* email);
-
-  // optional string organization = 8;
-  void clear_organization();
-  static const int kOrganizationFieldNumber = 8;
-  const ::std::string& organization() const;
-  void set_organization(const ::std::string& value);
-  void set_organization(const char* value);
-  void set_organization(const char* value, size_t size);
-  ::std::string* mutable_organization();
-  ::std::string* release_organization();
-  void set_allocated_organization(::std::string* organization);
+  // optional bytes id = 7;
+  void clear_id();
+  static const int kIdFieldNumber = 7;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  void set_id(const char* value);
+  void set_id(const void* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
 
   // @@protoc_insertion_point(class_scope:PrivateKey)
  private:
 
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
   bool _is_default_instance_;
   ::SymmetriclyEncryptedMessage* key_;
-  int type_;
+  ::KeyId* key_id_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
   int encodingtype_;
-  ::google::protobuf::internal::ArenaStringPtr name_;
-  ::google::protobuf::internal::ArenaStringPtr email_;
-  ::google::protobuf::internal::ArenaStringPtr organization_;
   mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_message_2eproto_impl();
+  #else
   friend void  protobuf_AddDesc_message_2eproto();
+  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -582,7 +949,7 @@ class PrivateKey : public ::google::protobuf::Message /* @@protoc_insertion_poin
 };
 // -------------------------------------------------------------------
 
-class PublicKey : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PublicKey) */ {
+class PublicKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:PublicKey) */ {
  public:
   PublicKey();
   virtual ~PublicKey();
@@ -594,8 +961,17 @@ class PublicKey : public ::google::protobuf::Message /* @@protoc_insertion_point
     return *this;
   }
 
-  static const ::google::protobuf::Descriptor* descriptor();
   static const PublicKey& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const PublicKey* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
 
   void Swap(PublicKey* other);
 
@@ -604,8 +980,7 @@ class PublicKey : public ::google::protobuf::Message /* @@protoc_insertion_point
   inline PublicKey* New() const { return New(NULL); }
 
   PublicKey* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
   void CopyFrom(const PublicKey& from);
   void MergeFrom(const PublicKey& from);
   void Clear();
@@ -616,11 +991,7 @@ class PublicKey : public ::google::protobuf::Message /* @@protoc_insertion_point
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
+  void DiscardUnknownFields();
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -629,14 +1000,14 @@ class PublicKey : public ::google::protobuf::Message /* @@protoc_insertion_point
   void InternalSwap(PublicKey* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return _arena_ptr_;
   }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::std::string GetTypeName() const;
 
   // nested types ----------------------------------------------------
 
@@ -653,50 +1024,49 @@ class PublicKey : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::std::string* release_key();
   void set_allocated_key(::std::string* key);
 
-  // optional .ECCKeyType type = 3;
-  void clear_type();
-  static const int kTypeFieldNumber = 3;
-  ::ECCKeyType type() const;
-  void set_type(::ECCKeyType value);
-
   // optional .KeyEncodingType encodingType = 4;
   void clear_encodingtype();
   static const int kEncodingTypeFieldNumber = 4;
   ::KeyEncodingType encodingtype() const;
   void set_encodingtype(::KeyEncodingType value);
 
-  // optional bytes fingerprint = 5;
-  void clear_fingerprint();
-  static const int kFingerprintFieldNumber = 5;
-  const ::std::string& fingerprint() const;
-  void set_fingerprint(const ::std::string& value);
-  void set_fingerprint(const char* value);
-  void set_fingerprint(const void* value, size_t size);
-  ::std::string* mutable_fingerprint();
-  ::std::string* release_fingerprint();
-  void set_allocated_fingerprint(::std::string* fingerprint);
+  // optional .KeyId key_id = 5;
+  bool has_key_id() const;
+  void clear_key_id();
+  static const int kKeyIdFieldNumber = 5;
+  const ::KeyId& key_id() const;
+  ::KeyId* mutable_key_id();
+  ::KeyId* release_key_id();
+  void set_allocated_key_id(::KeyId* key_id);
 
-  // optional .MessageReference ref = 6;
-  bool has_ref() const;
-  void clear_ref();
-  static const int kRefFieldNumber = 6;
-  const ::MessageReference& ref() const;
-  ::MessageReference* mutable_ref();
-  ::MessageReference* release_ref();
-  void set_allocated_ref(::MessageReference* ref);
+  // optional bytes id = 6;
+  void clear_id();
+  static const int kIdFieldNumber = 6;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  void set_id(const char* value);
+  void set_id(const void* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
 
   // @@protoc_insertion_point(class_scope:PublicKey)
  private:
 
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr key_;
-  int type_;
+  ::KeyId* key_id_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
   int encodingtype_;
-  ::google::protobuf::internal::ArenaStringPtr fingerprint_;
-  ::MessageReference* ref_;
   mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_message_2eproto_impl();
+  #else
   friend void  protobuf_AddDesc_message_2eproto();
+  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -705,7 +1075,7 @@ class PublicKey : public ::google::protobuf::Message /* @@protoc_insertion_point
 };
 // -------------------------------------------------------------------
 
-class SymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:SymmetriclyEncryptedMessage) */ {
+class SymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:SymmetriclyEncryptedMessage) */ {
  public:
   SymmetriclyEncryptedMessage();
   virtual ~SymmetriclyEncryptedMessage();
@@ -717,8 +1087,17 @@ class SymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@prot
     return *this;
   }
 
-  static const ::google::protobuf::Descriptor* descriptor();
   static const SymmetriclyEncryptedMessage& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const SymmetriclyEncryptedMessage* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
 
   void Swap(SymmetriclyEncryptedMessage* other);
 
@@ -727,8 +1106,7 @@ class SymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@prot
   inline SymmetriclyEncryptedMessage* New() const { return New(NULL); }
 
   SymmetriclyEncryptedMessage* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
   void CopyFrom(const SymmetriclyEncryptedMessage& from);
   void MergeFrom(const SymmetriclyEncryptedMessage& from);
   void Clear();
@@ -739,11 +1117,7 @@ class SymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@prot
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
+  void DiscardUnknownFields();
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -752,14 +1126,14 @@ class SymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@prot
   void InternalSwap(SymmetriclyEncryptedMessage* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return _arena_ptr_;
   }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::std::string GetTypeName() const;
 
   // nested types ----------------------------------------------------
 
@@ -771,11 +1145,11 @@ class SymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@prot
   ::MessageType message_type() const;
   void set_message_type(::MessageType value);
 
-  // optional .EncryptionType encryption_type = 2;
+  // optional .SymmetricKeyType encryption_type = 2;
   void clear_encryption_type();
   static const int kEncryptionTypeFieldNumber = 2;
-  ::EncryptionType encryption_type() const;
-  void set_encryption_type(::EncryptionType value);
+  ::SymmetricKeyType encryption_type() const;
+  void set_encryption_type(::SymmetricKeyType value);
 
   // optional bytes msg = 3;
   void clear_msg();
@@ -810,28 +1184,36 @@ class SymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@prot
   ::std::string* release_salt();
   void set_allocated_salt(::std::string* salt);
 
-  // optional .MessageReference ref = 6;
-  bool has_ref() const;
-  void clear_ref();
-  static const int kRefFieldNumber = 6;
-  const ::MessageReference& ref() const;
-  ::MessageReference* mutable_ref();
-  ::MessageReference* release_ref();
-  void set_allocated_ref(::MessageReference* ref);
+  // optional bytes id = 6;
+  void clear_id();
+  static const int kIdFieldNumber = 6;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  void set_id(const char* value);
+  void set_id(const void* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
 
   // @@protoc_insertion_point(class_scope:SymmetriclyEncryptedMessage)
  private:
 
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
   bool _is_default_instance_;
   int message_type_;
   int encryption_type_;
   ::google::protobuf::internal::ArenaStringPtr msg_;
   ::google::protobuf::internal::ArenaStringPtr iv_;
   ::google::protobuf::internal::ArenaStringPtr salt_;
-  ::MessageReference* ref_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
   mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_message_2eproto_impl();
+  #else
   friend void  protobuf_AddDesc_message_2eproto();
+  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -840,7 +1222,7 @@ class SymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@prot
 };
 // -------------------------------------------------------------------
 
-class AsymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:AsymmetriclyEncryptedMessage) */ {
+class AsymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:AsymmetriclyEncryptedMessage) */ {
  public:
   AsymmetriclyEncryptedMessage();
   virtual ~AsymmetriclyEncryptedMessage();
@@ -852,8 +1234,17 @@ class AsymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@pro
     return *this;
   }
 
-  static const ::google::protobuf::Descriptor* descriptor();
   static const AsymmetriclyEncryptedMessage& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const AsymmetriclyEncryptedMessage* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
 
   void Swap(AsymmetriclyEncryptedMessage* other);
 
@@ -862,8 +1253,7 @@ class AsymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@pro
   inline AsymmetriclyEncryptedMessage* New() const { return New(NULL); }
 
   AsymmetriclyEncryptedMessage* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
   void CopyFrom(const AsymmetriclyEncryptedMessage& from);
   void MergeFrom(const AsymmetriclyEncryptedMessage& from);
   void Clear();
@@ -874,11 +1264,7 @@ class AsymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@pro
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
+  void DiscardUnknownFields();
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -887,14 +1273,14 @@ class AsymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@pro
   void InternalSwap(AsymmetriclyEncryptedMessage* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return _arena_ptr_;
   }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::std::string GetTypeName() const;
 
   // nested types ----------------------------------------------------
 
@@ -906,16 +1292,14 @@ class AsymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@pro
   ::MessageType message_type() const;
   void set_message_type(::MessageType value);
 
-  // optional string dest_cn = 2;
-  void clear_dest_cn();
-  static const int kDestCnFieldNumber = 2;
-  const ::std::string& dest_cn() const;
-  void set_dest_cn(const ::std::string& value);
-  void set_dest_cn(const char* value);
-  void set_dest_cn(const char* value, size_t size);
-  ::std::string* mutable_dest_cn();
-  ::std::string* release_dest_cn();
-  void set_allocated_dest_cn(::std::string* dest_cn);
+  // optional .KeyId dest_key = 2;
+  bool has_dest_key() const;
+  void clear_dest_key();
+  static const int kDestKeyFieldNumber = 2;
+  const ::KeyId& dest_key() const;
+  ::KeyId* mutable_dest_key();
+  ::KeyId* release_dest_key();
+  void set_allocated_dest_key(::KeyId* dest_key);
 
   // optional bytes msg = 4;
   void clear_msg();
@@ -928,26 +1312,34 @@ class AsymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@pro
   ::std::string* release_msg();
   void set_allocated_msg(::std::string* msg);
 
-  // optional .MessageReference ref = 5;
-  bool has_ref() const;
-  void clear_ref();
-  static const int kRefFieldNumber = 5;
-  const ::MessageReference& ref() const;
-  ::MessageReference* mutable_ref();
-  ::MessageReference* release_ref();
-  void set_allocated_ref(::MessageReference* ref);
+  // optional bytes id = 5;
+  void clear_id();
+  static const int kIdFieldNumber = 5;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  void set_id(const char* value);
+  void set_id(const void* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
 
   // @@protoc_insertion_point(class_scope:AsymmetriclyEncryptedMessage)
  private:
 
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
   bool _is_default_instance_;
-  ::google::protobuf::internal::ArenaStringPtr dest_cn_;
+  ::KeyId* dest_key_;
   ::google::protobuf::internal::ArenaStringPtr msg_;
-  ::MessageReference* ref_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
   int message_type_;
   mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_message_2eproto_impl();
+  #else
   friend void  protobuf_AddDesc_message_2eproto();
+  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -956,112 +1348,7 @@ class AsymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@pro
 };
 // -------------------------------------------------------------------
 
-class HybridEncryptedMessage : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:HybridEncryptedMessage) */ {
- public:
-  HybridEncryptedMessage();
-  virtual ~HybridEncryptedMessage();
-
-  HybridEncryptedMessage(const HybridEncryptedMessage& from);
-
-  inline HybridEncryptedMessage& operator=(const HybridEncryptedMessage& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const HybridEncryptedMessage& default_instance();
-
-  void Swap(HybridEncryptedMessage* other);
-
-  // implements Message ----------------------------------------------
-
-  inline HybridEncryptedMessage* New() const { return New(NULL); }
-
-  HybridEncryptedMessage* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const HybridEncryptedMessage& from);
-  void MergeFrom(const HybridEncryptedMessage& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(HybridEncryptedMessage* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional .AsymmetriclyEncryptedMessage key = 1;
-  bool has_key() const;
-  void clear_key();
-  static const int kKeyFieldNumber = 1;
-  const ::AsymmetriclyEncryptedMessage& key() const;
-  ::AsymmetriclyEncryptedMessage* mutable_key();
-  ::AsymmetriclyEncryptedMessage* release_key();
-  void set_allocated_key(::AsymmetriclyEncryptedMessage* key);
-
-  // optional .SymmetriclyEncryptedMessage msg = 2;
-  bool has_msg() const;
-  void clear_msg();
-  static const int kMsgFieldNumber = 2;
-  const ::SymmetriclyEncryptedMessage& msg() const;
-  ::SymmetriclyEncryptedMessage* mutable_msg();
-  ::SymmetriclyEncryptedMessage* release_msg();
-  void set_allocated_msg(::SymmetriclyEncryptedMessage* msg);
-
-  // optional .MessageReference ref = 3;
-  bool has_ref() const;
-  void clear_ref();
-  static const int kRefFieldNumber = 3;
-  const ::MessageReference& ref() const;
-  ::MessageReference* mutable_ref();
-  ::MessageReference* release_ref();
-  void set_allocated_ref(::MessageReference* ref);
-
-  // @@protoc_insertion_point(class_scope:HybridEncryptedMessage)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  bool _is_default_instance_;
-  ::AsymmetriclyEncryptedMessage* key_;
-  ::SymmetriclyEncryptedMessage* msg_;
-  ::MessageReference* ref_;
-  mutable int _cached_size_;
-  friend void  protobuf_AddDesc_message_2eproto();
-  friend void protobuf_AssignDesc_message_2eproto();
-  friend void protobuf_ShutdownFile_message_2eproto();
-
-  void InitAsDefaultInstance();
-  static HybridEncryptedMessage* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class MessageReference : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MessageReference) */ {
+class MessageReference : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:MessageReference) */ {
  public:
   MessageReference();
   virtual ~MessageReference();
@@ -1073,8 +1360,17 @@ class MessageReference : public ::google::protobuf::Message /* @@protoc_insertio
     return *this;
   }
 
-  static const ::google::protobuf::Descriptor* descriptor();
   static const MessageReference& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MessageReference* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
 
   void Swap(MessageReference* other);
 
@@ -1083,8 +1379,7 @@ class MessageReference : public ::google::protobuf::Message /* @@protoc_insertio
   inline MessageReference* New() const { return New(NULL); }
 
   MessageReference* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
   void CopyFrom(const MessageReference& from);
   void MergeFrom(const MessageReference& from);
   void Clear();
@@ -1095,11 +1390,7 @@ class MessageReference : public ::google::protobuf::Message /* @@protoc_insertio
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
+  void DiscardUnknownFields();
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -1108,14 +1399,14 @@ class MessageReference : public ::google::protobuf::Message /* @@protoc_insertio
   void InternalSwap(MessageReference* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return _arena_ptr_;
   }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::std::string GetTypeName() const;
 
   // nested types ----------------------------------------------------
 
@@ -1135,11 +1426,17 @@ class MessageReference : public ::google::protobuf::Message /* @@protoc_insertio
   // @@protoc_insertion_point(class_scope:MessageReference)
  private:
 
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr id_;
   mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_message_2eproto_impl();
+  #else
   friend void  protobuf_AddDesc_message_2eproto();
+  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -1148,7 +1445,7 @@ class MessageReference : public ::google::protobuf::Message /* @@protoc_insertio
 };
 // -------------------------------------------------------------------
 
-class SignedMessage : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:SignedMessage) */ {
+class SignedMessage : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:SignedMessage) */ {
  public:
   SignedMessage();
   virtual ~SignedMessage();
@@ -1160,7 +1457,6 @@ class SignedMessage : public ::google::protobuf::Message /* @@protoc_insertion_p
     return *this;
   }
 
-  static const ::google::protobuf::Descriptor* descriptor();
   static const SignedMessage& default_instance();
 
   enum MsgCase {
@@ -1170,10 +1466,19 @@ class SignedMessage : public ::google::protobuf::Message /* @@protoc_insertion_p
     kPublicKey = 4,
     kSymmetriclyEncryptedMessage = 5,
     kAsymmetriclyEncryptedMessage = 6,
-    kHybridEncryptedMessage = 7,
     kReference = 10,
     MSG_NOT_SET = 0,
   };
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const SignedMessage* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
 
   void Swap(SignedMessage* other);
 
@@ -1182,8 +1487,7 @@ class SignedMessage : public ::google::protobuf::Message /* @@protoc_insertion_p
   inline SignedMessage* New() const { return New(NULL); }
 
   SignedMessage* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
   void CopyFrom(const SignedMessage& from);
   void MergeFrom(const SignedMessage& from);
   void Clear();
@@ -1194,11 +1498,7 @@ class SignedMessage : public ::google::protobuf::Message /* @@protoc_insertion_p
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
+  void DiscardUnknownFields();
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -1207,14 +1507,14 @@ class SignedMessage : public ::google::protobuf::Message /* @@protoc_insertion_p
   void InternalSwap(SignedMessage* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return _arena_ptr_;
   }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::std::string GetTypeName() const;
 
   // nested types ----------------------------------------------------
 
@@ -1274,15 +1574,6 @@ class SignedMessage : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::AsymmetriclyEncryptedMessage* release_asymmetriclyencryptedmessage();
   void set_allocated_asymmetriclyencryptedmessage(::AsymmetriclyEncryptedMessage* asymmetriclyencryptedmessage);
 
-  // optional .HybridEncryptedMessage hybridEncryptedMessage = 7;
-  bool has_hybridencryptedmessage() const;
-  void clear_hybridencryptedmessage();
-  static const int kHybridEncryptedMessageFieldNumber = 7;
-  const ::HybridEncryptedMessage& hybridencryptedmessage() const;
-  ::HybridEncryptedMessage* mutable_hybridencryptedmessage();
-  ::HybridEncryptedMessage* release_hybridencryptedmessage();
-  void set_allocated_hybridencryptedmessage(::HybridEncryptedMessage* hybridencryptedmessage);
-
   // optional .MessageReference reference = 10;
   bool has_reference() const;
   void clear_reference();
@@ -1307,6 +1598,17 @@ class SignedMessage : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::google::protobuf::uint64 timestamp() const;
   void set_timestamp(::google::protobuf::uint64 value);
 
+  // optional bytes id = 11;
+  void clear_id();
+  static const int kIdFieldNumber = 11;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  void set_id(const char* value);
+  void set_id(const void* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
+
   MsgCase msg_case() const;
   // @@protoc_insertion_point(class_scope:SignedMessage)
  private:
@@ -1316,17 +1618,19 @@ class SignedMessage : public ::google::protobuf::Message /* @@protoc_insertion_p
   inline void set_has_publickey();
   inline void set_has_symmetriclyencryptedmessage();
   inline void set_has_asymmetriclyencryptedmessage();
-  inline void set_has_hybridencryptedmessage();
   inline void set_has_reference();
 
   inline bool has_msg() const;
   void clear_msg();
   inline void clear_has_msg();
 
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
   bool _is_default_instance_;
   ::Signature* message_signature_;
   ::google::protobuf::uint64 timestamp_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
   union MsgUnion {
     MsgUnion() {}
     ::Post* post_;
@@ -1335,13 +1639,16 @@ class SignedMessage : public ::google::protobuf::Message /* @@protoc_insertion_p
     ::PublicKey* publickey_;
     ::SymmetriclyEncryptedMessage* symmetriclyencryptedmessage_;
     ::AsymmetriclyEncryptedMessage* asymmetriclyencryptedmessage_;
-    ::HybridEncryptedMessage* hybridencryptedmessage_;
     ::MessageReference* reference_;
   } msg_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
 
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_message_2eproto_impl();
+  #else
   friend void  protobuf_AddDesc_message_2eproto();
+  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -1354,9 +1661,71 @@ class SignedMessage : public ::google::protobuf::Message /* @@protoc_insertion_p
 // ===================================================================
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
+// Image
+
+// optional bytes image = 1;
+inline void Image::clear_image() {
+  image_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Image::image() const {
+  // @@protoc_insertion_point(field_get:Image.image)
+  return image_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Image::set_image(const ::std::string& value) {
+  
+  image_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Image.image)
+}
+inline void Image::set_image(const char* value) {
+  
+  image_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Image.image)
+}
+inline void Image::set_image(const void* value, size_t size) {
+  
+  image_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Image.image)
+}
+inline ::std::string* Image::mutable_image() {
+  
+  // @@protoc_insertion_point(field_mutable:Image.image)
+  return image_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Image::release_image() {
+  // @@protoc_insertion_point(field_release:Image.image)
+  
+  return image_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Image::set_allocated_image(::std::string* image) {
+  if (image != NULL) {
+    
+  } else {
+    
+  }
+  image_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), image);
+  // @@protoc_insertion_point(field_set_allocated:Image.image)
+}
+
+// optional .ImageType imageType = 2;
+inline void Image::clear_imagetype() {
+  imagetype_ = 0;
+}
+inline ::ImageType Image::imagetype() const {
+  // @@protoc_insertion_point(field_get:Image.imageType)
+  return static_cast< ::ImageType >(imagetype_);
+}
+inline void Image::set_imagetype(::ImageType value) {
+  
+  imagetype_ = value;
+  // @@protoc_insertion_point(field_set:Image.imageType)
+}
+
+// -------------------------------------------------------------------
+
 // Post
 
-// optional string id = 1;
+// optional bytes id = 1;
 inline void Post::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1374,7 +1743,7 @@ inline void Post::set_id(const char* value) {
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:Post.id)
 }
-inline void Post::set_id(const char* value, size_t size) {
+inline void Post::set_id(const void* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -1574,47 +1943,45 @@ inline void Post::set_end_time(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:Post.end_time)
 }
 
-// optional bytes image = 8;
+// optional .Image image = 8;
+inline bool Post::has_image() const {
+  return !_is_default_instance_ && image_ != NULL;
+}
 inline void Post::clear_image() {
-  image_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == NULL && image_ != NULL) delete image_;
+  image_ = NULL;
 }
-inline const ::std::string& Post::image() const {
+inline const ::Image& Post::image() const {
   // @@protoc_insertion_point(field_get:Post.image)
-  return image_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return image_ != NULL ? *image_ : *default_instance().image_;
+#else
+  return image_ != NULL ? *image_ : *default_instance_->image_;
+#endif
 }
-inline void Post::set_image(const ::std::string& value) {
+inline ::Image* Post::mutable_image() {
   
-  image_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Post.image)
-}
-inline void Post::set_image(const char* value) {
-  
-  image_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Post.image)
-}
-inline void Post::set_image(const void* value, size_t size) {
-  
-  image_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Post.image)
-}
-inline ::std::string* Post::mutable_image() {
-  
+  if (image_ == NULL) {
+    image_ = new ::Image;
+  }
   // @@protoc_insertion_point(field_mutable:Post.image)
-  return image_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return image_;
 }
-inline ::std::string* Post::release_image() {
+inline ::Image* Post::release_image() {
   // @@protoc_insertion_point(field_release:Post.image)
   
-  return image_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::Image* temp = image_;
+  image_ = NULL;
+  return temp;
 }
-inline void Post::set_allocated_image(::std::string* image) {
-  if (image != NULL) {
+inline void Post::set_allocated_image(::Image* image) {
+  delete image_;
+  image_ = image;
+  if (image) {
     
   } else {
     
   }
-  image_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), image);
   // @@protoc_insertion_point(field_set_allocated:Post.image)
 }
 
@@ -1738,86 +2105,550 @@ inline void Signature::set_signature_type(::SignatureType value) {
   // @@protoc_insertion_point(field_set:Signature.signature_type)
 }
 
-// optional bytes fingerprint = 4;
-inline void Signature::clear_fingerprint() {
-  fingerprint_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// optional bytes id = 5;
+inline void Signature::clear_id() {
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& Signature::fingerprint() const {
-  // @@protoc_insertion_point(field_get:Signature.fingerprint)
-  return fingerprint_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline const ::std::string& Signature::id() const {
+  // @@protoc_insertion_point(field_get:Signature.id)
+  return id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void Signature::set_fingerprint(const ::std::string& value) {
+inline void Signature::set_id(const ::std::string& value) {
   
-  fingerprint_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Signature.fingerprint)
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Signature.id)
 }
-inline void Signature::set_fingerprint(const char* value) {
+inline void Signature::set_id(const char* value) {
   
-  fingerprint_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Signature.fingerprint)
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Signature.id)
 }
-inline void Signature::set_fingerprint(const void* value, size_t size) {
+inline void Signature::set_id(const void* value, size_t size) {
   
-  fingerprint_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Signature.fingerprint)
+  // @@protoc_insertion_point(field_set_pointer:Signature.id)
 }
-inline ::std::string* Signature::mutable_fingerprint() {
+inline ::std::string* Signature::mutable_id() {
   
-  // @@protoc_insertion_point(field_mutable:Signature.fingerprint)
-  return fingerprint_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:Signature.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* Signature::release_fingerprint() {
-  // @@protoc_insertion_point(field_release:Signature.fingerprint)
+inline ::std::string* Signature::release_id() {
+  // @@protoc_insertion_point(field_release:Signature.id)
   
-  return fingerprint_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void Signature::set_allocated_fingerprint(::std::string* fingerprint) {
-  if (fingerprint != NULL) {
+inline void Signature::set_allocated_id(::std::string* id) {
+  if (id != NULL) {
     
   } else {
     
   }
-  fingerprint_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), fingerprint);
-  // @@protoc_insertion_point(field_set_allocated:Signature.fingerprint)
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:Signature.id)
 }
 
-// optional .MessageReference ref = 5;
-inline bool Signature::has_ref() const {
-  return !_is_default_instance_ && ref_ != NULL;
+// optional .KeyId key_id = 6;
+inline bool Signature::has_key_id() const {
+  return !_is_default_instance_ && key_id_ != NULL;
 }
-inline void Signature::clear_ref() {
-  if (GetArenaNoVirtual() == NULL && ref_ != NULL) delete ref_;
-  ref_ = NULL;
+inline void Signature::clear_key_id() {
+  if (GetArenaNoVirtual() == NULL && key_id_ != NULL) delete key_id_;
+  key_id_ = NULL;
 }
-inline const ::MessageReference& Signature::ref() const {
-  // @@protoc_insertion_point(field_get:Signature.ref)
-  return ref_ != NULL ? *ref_ : *default_instance_->ref_;
+inline const ::KeyId& Signature::key_id() const {
+  // @@protoc_insertion_point(field_get:Signature.key_id)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return key_id_ != NULL ? *key_id_ : *default_instance().key_id_;
+#else
+  return key_id_ != NULL ? *key_id_ : *default_instance_->key_id_;
+#endif
 }
-inline ::MessageReference* Signature::mutable_ref() {
+inline ::KeyId* Signature::mutable_key_id() {
   
-  if (ref_ == NULL) {
-    ref_ = new ::MessageReference;
+  if (key_id_ == NULL) {
+    key_id_ = new ::KeyId;
   }
-  // @@protoc_insertion_point(field_mutable:Signature.ref)
-  return ref_;
+  // @@protoc_insertion_point(field_mutable:Signature.key_id)
+  return key_id_;
 }
-inline ::MessageReference* Signature::release_ref() {
-  // @@protoc_insertion_point(field_release:Signature.ref)
+inline ::KeyId* Signature::release_key_id() {
+  // @@protoc_insertion_point(field_release:Signature.key_id)
   
-  ::MessageReference* temp = ref_;
-  ref_ = NULL;
+  ::KeyId* temp = key_id_;
+  key_id_ = NULL;
   return temp;
 }
-inline void Signature::set_allocated_ref(::MessageReference* ref) {
-  delete ref_;
-  ref_ = ref;
-  if (ref) {
+inline void Signature::set_allocated_key_id(::KeyId* key_id) {
+  delete key_id_;
+  key_id_ = key_id;
+  if (key_id) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:Signature.ref)
+  // @@protoc_insertion_point(field_set_allocated:Signature.key_id)
+}
+
+// -------------------------------------------------------------------
+
+// DistinguishedName
+
+// optional string country = 1;
+inline void DistinguishedName::clear_country() {
+  country_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& DistinguishedName::country() const {
+  // @@protoc_insertion_point(field_get:DistinguishedName.country)
+  return country_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_country(const ::std::string& value) {
+  
+  country_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:DistinguishedName.country)
+}
+inline void DistinguishedName::set_country(const char* value) {
+  
+  country_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:DistinguishedName.country)
+}
+inline void DistinguishedName::set_country(const char* value, size_t size) {
+  
+  country_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:DistinguishedName.country)
+}
+inline ::std::string* DistinguishedName::mutable_country() {
+  
+  // @@protoc_insertion_point(field_mutable:DistinguishedName.country)
+  return country_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DistinguishedName::release_country() {
+  // @@protoc_insertion_point(field_release:DistinguishedName.country)
+  
+  return country_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_allocated_country(::std::string* country) {
+  if (country != NULL) {
+    
+  } else {
+    
+  }
+  country_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), country);
+  // @@protoc_insertion_point(field_set_allocated:DistinguishedName.country)
+}
+
+// optional string organization = 2;
+inline void DistinguishedName::clear_organization() {
+  organization_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& DistinguishedName::organization() const {
+  // @@protoc_insertion_point(field_get:DistinguishedName.organization)
+  return organization_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_organization(const ::std::string& value) {
+  
+  organization_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:DistinguishedName.organization)
+}
+inline void DistinguishedName::set_organization(const char* value) {
+  
+  organization_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:DistinguishedName.organization)
+}
+inline void DistinguishedName::set_organization(const char* value, size_t size) {
+  
+  organization_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:DistinguishedName.organization)
+}
+inline ::std::string* DistinguishedName::mutable_organization() {
+  
+  // @@protoc_insertion_point(field_mutable:DistinguishedName.organization)
+  return organization_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DistinguishedName::release_organization() {
+  // @@protoc_insertion_point(field_release:DistinguishedName.organization)
+  
+  return organization_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_allocated_organization(::std::string* organization) {
+  if (organization != NULL) {
+    
+  } else {
+    
+  }
+  organization_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), organization);
+  // @@protoc_insertion_point(field_set_allocated:DistinguishedName.organization)
+}
+
+// optional string organizational_unit = 3;
+inline void DistinguishedName::clear_organizational_unit() {
+  organizational_unit_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& DistinguishedName::organizational_unit() const {
+  // @@protoc_insertion_point(field_get:DistinguishedName.organizational_unit)
+  return organizational_unit_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_organizational_unit(const ::std::string& value) {
+  
+  organizational_unit_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:DistinguishedName.organizational_unit)
+}
+inline void DistinguishedName::set_organizational_unit(const char* value) {
+  
+  organizational_unit_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:DistinguishedName.organizational_unit)
+}
+inline void DistinguishedName::set_organizational_unit(const char* value, size_t size) {
+  
+  organizational_unit_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:DistinguishedName.organizational_unit)
+}
+inline ::std::string* DistinguishedName::mutable_organizational_unit() {
+  
+  // @@protoc_insertion_point(field_mutable:DistinguishedName.organizational_unit)
+  return organizational_unit_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DistinguishedName::release_organizational_unit() {
+  // @@protoc_insertion_point(field_release:DistinguishedName.organizational_unit)
+  
+  return organizational_unit_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_allocated_organizational_unit(::std::string* organizational_unit) {
+  if (organizational_unit != NULL) {
+    
+  } else {
+    
+  }
+  organizational_unit_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), organizational_unit);
+  // @@protoc_insertion_point(field_set_allocated:DistinguishedName.organizational_unit)
+}
+
+// optional string distinguished_name_qualifier = 4;
+inline void DistinguishedName::clear_distinguished_name_qualifier() {
+  distinguished_name_qualifier_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& DistinguishedName::distinguished_name_qualifier() const {
+  // @@protoc_insertion_point(field_get:DistinguishedName.distinguished_name_qualifier)
+  return distinguished_name_qualifier_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_distinguished_name_qualifier(const ::std::string& value) {
+  
+  distinguished_name_qualifier_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:DistinguishedName.distinguished_name_qualifier)
+}
+inline void DistinguishedName::set_distinguished_name_qualifier(const char* value) {
+  
+  distinguished_name_qualifier_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:DistinguishedName.distinguished_name_qualifier)
+}
+inline void DistinguishedName::set_distinguished_name_qualifier(const char* value, size_t size) {
+  
+  distinguished_name_qualifier_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:DistinguishedName.distinguished_name_qualifier)
+}
+inline ::std::string* DistinguishedName::mutable_distinguished_name_qualifier() {
+  
+  // @@protoc_insertion_point(field_mutable:DistinguishedName.distinguished_name_qualifier)
+  return distinguished_name_qualifier_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DistinguishedName::release_distinguished_name_qualifier() {
+  // @@protoc_insertion_point(field_release:DistinguishedName.distinguished_name_qualifier)
+  
+  return distinguished_name_qualifier_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_allocated_distinguished_name_qualifier(::std::string* distinguished_name_qualifier) {
+  if (distinguished_name_qualifier != NULL) {
+    
+  } else {
+    
+  }
+  distinguished_name_qualifier_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), distinguished_name_qualifier);
+  // @@protoc_insertion_point(field_set_allocated:DistinguishedName.distinguished_name_qualifier)
+}
+
+// optional string state = 5;
+inline void DistinguishedName::clear_state() {
+  state_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& DistinguishedName::state() const {
+  // @@protoc_insertion_point(field_get:DistinguishedName.state)
+  return state_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_state(const ::std::string& value) {
+  
+  state_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:DistinguishedName.state)
+}
+inline void DistinguishedName::set_state(const char* value) {
+  
+  state_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:DistinguishedName.state)
+}
+inline void DistinguishedName::set_state(const char* value, size_t size) {
+  
+  state_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:DistinguishedName.state)
+}
+inline ::std::string* DistinguishedName::mutable_state() {
+  
+  // @@protoc_insertion_point(field_mutable:DistinguishedName.state)
+  return state_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DistinguishedName::release_state() {
+  // @@protoc_insertion_point(field_release:DistinguishedName.state)
+  
+  return state_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_allocated_state(::std::string* state) {
+  if (state != NULL) {
+    
+  } else {
+    
+  }
+  state_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), state);
+  // @@protoc_insertion_point(field_set_allocated:DistinguishedName.state)
+}
+
+// optional string common_name = 6;
+inline void DistinguishedName::clear_common_name() {
+  common_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& DistinguishedName::common_name() const {
+  // @@protoc_insertion_point(field_get:DistinguishedName.common_name)
+  return common_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_common_name(const ::std::string& value) {
+  
+  common_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:DistinguishedName.common_name)
+}
+inline void DistinguishedName::set_common_name(const char* value) {
+  
+  common_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:DistinguishedName.common_name)
+}
+inline void DistinguishedName::set_common_name(const char* value, size_t size) {
+  
+  common_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:DistinguishedName.common_name)
+}
+inline ::std::string* DistinguishedName::mutable_common_name() {
+  
+  // @@protoc_insertion_point(field_mutable:DistinguishedName.common_name)
+  return common_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DistinguishedName::release_common_name() {
+  // @@protoc_insertion_point(field_release:DistinguishedName.common_name)
+  
+  return common_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_allocated_common_name(::std::string* common_name) {
+  if (common_name != NULL) {
+    
+  } else {
+    
+  }
+  common_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), common_name);
+  // @@protoc_insertion_point(field_set_allocated:DistinguishedName.common_name)
+}
+
+// optional string serial_number = 7;
+inline void DistinguishedName::clear_serial_number() {
+  serial_number_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& DistinguishedName::serial_number() const {
+  // @@protoc_insertion_point(field_get:DistinguishedName.serial_number)
+  return serial_number_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_serial_number(const ::std::string& value) {
+  
+  serial_number_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:DistinguishedName.serial_number)
+}
+inline void DistinguishedName::set_serial_number(const char* value) {
+  
+  serial_number_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:DistinguishedName.serial_number)
+}
+inline void DistinguishedName::set_serial_number(const char* value, size_t size) {
+  
+  serial_number_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:DistinguishedName.serial_number)
+}
+inline ::std::string* DistinguishedName::mutable_serial_number() {
+  
+  // @@protoc_insertion_point(field_mutable:DistinguishedName.serial_number)
+  return serial_number_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DistinguishedName::release_serial_number() {
+  // @@protoc_insertion_point(field_release:DistinguishedName.serial_number)
+  
+  return serial_number_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_allocated_serial_number(::std::string* serial_number) {
+  if (serial_number != NULL) {
+    
+  } else {
+    
+  }
+  serial_number_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), serial_number);
+  // @@protoc_insertion_point(field_set_allocated:DistinguishedName.serial_number)
+}
+
+// optional string email = 8;
+inline void DistinguishedName::clear_email() {
+  email_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& DistinguishedName::email() const {
+  // @@protoc_insertion_point(field_get:DistinguishedName.email)
+  return email_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_email(const ::std::string& value) {
+  
+  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:DistinguishedName.email)
+}
+inline void DistinguishedName::set_email(const char* value) {
+  
+  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:DistinguishedName.email)
+}
+inline void DistinguishedName::set_email(const char* value, size_t size) {
+  
+  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:DistinguishedName.email)
+}
+inline ::std::string* DistinguishedName::mutable_email() {
+  
+  // @@protoc_insertion_point(field_mutable:DistinguishedName.email)
+  return email_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DistinguishedName::release_email() {
+  // @@protoc_insertion_point(field_release:DistinguishedName.email)
+  
+  return email_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DistinguishedName::set_allocated_email(::std::string* email) {
+  if (email != NULL) {
+    
+  } else {
+    
+  }
+  email_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), email);
+  // @@protoc_insertion_point(field_set_allocated:DistinguishedName.email)
+}
+
+// -------------------------------------------------------------------
+
+// KeyId
+
+// optional bytes fingerprint_sha512 = 1;
+inline void KeyId::clear_fingerprint_sha512() {
+  fingerprint_sha512_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& KeyId::fingerprint_sha512() const {
+  // @@protoc_insertion_point(field_get:KeyId.fingerprint_sha512)
+  return fingerprint_sha512_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void KeyId::set_fingerprint_sha512(const ::std::string& value) {
+  
+  fingerprint_sha512_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:KeyId.fingerprint_sha512)
+}
+inline void KeyId::set_fingerprint_sha512(const char* value) {
+  
+  fingerprint_sha512_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:KeyId.fingerprint_sha512)
+}
+inline void KeyId::set_fingerprint_sha512(const void* value, size_t size) {
+  
+  fingerprint_sha512_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:KeyId.fingerprint_sha512)
+}
+inline ::std::string* KeyId::mutable_fingerprint_sha512() {
+  
+  // @@protoc_insertion_point(field_mutable:KeyId.fingerprint_sha512)
+  return fingerprint_sha512_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* KeyId::release_fingerprint_sha512() {
+  // @@protoc_insertion_point(field_release:KeyId.fingerprint_sha512)
+  
+  return fingerprint_sha512_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void KeyId::set_allocated_fingerprint_sha512(::std::string* fingerprint_sha512) {
+  if (fingerprint_sha512 != NULL) {
+    
+  } else {
+    
+  }
+  fingerprint_sha512_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), fingerprint_sha512);
+  // @@protoc_insertion_point(field_set_allocated:KeyId.fingerprint_sha512)
+}
+
+// optional .DistinguishedName dn = 2;
+inline bool KeyId::has_dn() const {
+  return !_is_default_instance_ && dn_ != NULL;
+}
+inline void KeyId::clear_dn() {
+  if (GetArenaNoVirtual() == NULL && dn_ != NULL) delete dn_;
+  dn_ = NULL;
+}
+inline const ::DistinguishedName& KeyId::dn() const {
+  // @@protoc_insertion_point(field_get:KeyId.dn)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return dn_ != NULL ? *dn_ : *default_instance().dn_;
+#else
+  return dn_ != NULL ? *dn_ : *default_instance_->dn_;
+#endif
+}
+inline ::DistinguishedName* KeyId::mutable_dn() {
+  
+  if (dn_ == NULL) {
+    dn_ = new ::DistinguishedName;
+  }
+  // @@protoc_insertion_point(field_mutable:KeyId.dn)
+  return dn_;
+}
+inline ::DistinguishedName* KeyId::release_dn() {
+  // @@protoc_insertion_point(field_release:KeyId.dn)
+  
+  ::DistinguishedName* temp = dn_;
+  dn_ = NULL;
+  return temp;
+}
+inline void KeyId::set_allocated_dn(::DistinguishedName* dn) {
+  delete dn_;
+  dn_ = dn;
+  if (dn) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:KeyId.dn)
+}
+
+// optional .AsymmetricKeyType type = 3;
+inline void KeyId::clear_type() {
+  type_ = 0;
+}
+inline ::AsymmetricKeyType KeyId::type() const {
+  // @@protoc_insertion_point(field_get:KeyId.type)
+  return static_cast< ::AsymmetricKeyType >(type_);
+}
+inline void KeyId::set_type(::AsymmetricKeyType value) {
+  
+  type_ = value;
+  // @@protoc_insertion_point(field_set:KeyId.type)
 }
 
 // -------------------------------------------------------------------
@@ -1834,7 +2665,11 @@ inline void PrivateKey::clear_key() {
 }
 inline const ::SymmetriclyEncryptedMessage& PrivateKey::key() const {
   // @@protoc_insertion_point(field_get:PrivateKey.key)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return key_ != NULL ? *key_ : *default_instance().key_;
+#else
   return key_ != NULL ? *key_ : *default_instance_->key_;
+#endif
 }
 inline ::SymmetriclyEncryptedMessage* PrivateKey::mutable_key() {
   
@@ -1862,20 +2697,6 @@ inline void PrivateKey::set_allocated_key(::SymmetriclyEncryptedMessage* key) {
   // @@protoc_insertion_point(field_set_allocated:PrivateKey.key)
 }
 
-// optional .ECCKeyType type = 3;
-inline void PrivateKey::clear_type() {
-  type_ = 0;
-}
-inline ::ECCKeyType PrivateKey::type() const {
-  // @@protoc_insertion_point(field_get:PrivateKey.type)
-  return static_cast< ::ECCKeyType >(type_);
-}
-inline void PrivateKey::set_type(::ECCKeyType value) {
-  
-  type_ = value;
-  // @@protoc_insertion_point(field_set:PrivateKey.type)
-}
-
 // optional .KeyEncodingType encodingType = 5;
 inline void PrivateKey::clear_encodingtype() {
   encodingtype_ = 0;
@@ -1890,136 +2711,90 @@ inline void PrivateKey::set_encodingtype(::KeyEncodingType value) {
   // @@protoc_insertion_point(field_set:PrivateKey.encodingType)
 }
 
-// optional string name = 6;
-inline void PrivateKey::clear_name() {
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// optional .KeyId key_id = 6;
+inline bool PrivateKey::has_key_id() const {
+  return !_is_default_instance_ && key_id_ != NULL;
 }
-inline const ::std::string& PrivateKey::name() const {
-  // @@protoc_insertion_point(field_get:PrivateKey.name)
-  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void PrivateKey::clear_key_id() {
+  if (GetArenaNoVirtual() == NULL && key_id_ != NULL) delete key_id_;
+  key_id_ = NULL;
 }
-inline void PrivateKey::set_name(const ::std::string& value) {
+inline const ::KeyId& PrivateKey::key_id() const {
+  // @@protoc_insertion_point(field_get:PrivateKey.key_id)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return key_id_ != NULL ? *key_id_ : *default_instance().key_id_;
+#else
+  return key_id_ != NULL ? *key_id_ : *default_instance_->key_id_;
+#endif
+}
+inline ::KeyId* PrivateKey::mutable_key_id() {
   
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PrivateKey.name)
+  if (key_id_ == NULL) {
+    key_id_ = new ::KeyId;
+  }
+  // @@protoc_insertion_point(field_mutable:PrivateKey.key_id)
+  return key_id_;
 }
-inline void PrivateKey::set_name(const char* value) {
+inline ::KeyId* PrivateKey::release_key_id() {
+  // @@protoc_insertion_point(field_release:PrivateKey.key_id)
   
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PrivateKey.name)
+  ::KeyId* temp = key_id_;
+  key_id_ = NULL;
+  return temp;
 }
-inline void PrivateKey::set_name(const char* value, size_t size) {
-  
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PrivateKey.name)
-}
-inline ::std::string* PrivateKey::mutable_name() {
-  
-  // @@protoc_insertion_point(field_mutable:PrivateKey.name)
-  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* PrivateKey::release_name() {
-  // @@protoc_insertion_point(field_release:PrivateKey.name)
-  
-  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void PrivateKey::set_allocated_name(::std::string* name) {
-  if (name != NULL) {
+inline void PrivateKey::set_allocated_key_id(::KeyId* key_id) {
+  delete key_id_;
+  key_id_ = key_id;
+  if (key_id) {
     
   } else {
     
   }
-  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:PrivateKey.name)
+  // @@protoc_insertion_point(field_set_allocated:PrivateKey.key_id)
 }
 
-// optional string email = 7;
-inline void PrivateKey::clear_email() {
-  email_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// optional bytes id = 7;
+inline void PrivateKey::clear_id() {
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& PrivateKey::email() const {
-  // @@protoc_insertion_point(field_get:PrivateKey.email)
-  return email_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline const ::std::string& PrivateKey::id() const {
+  // @@protoc_insertion_point(field_get:PrivateKey.id)
+  return id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void PrivateKey::set_email(const ::std::string& value) {
+inline void PrivateKey::set_id(const ::std::string& value) {
   
-  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PrivateKey.email)
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:PrivateKey.id)
 }
-inline void PrivateKey::set_email(const char* value) {
+inline void PrivateKey::set_id(const char* value) {
   
-  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PrivateKey.email)
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:PrivateKey.id)
 }
-inline void PrivateKey::set_email(const char* value, size_t size) {
+inline void PrivateKey::set_id(const void* value, size_t size) {
   
-  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PrivateKey.email)
+  // @@protoc_insertion_point(field_set_pointer:PrivateKey.id)
 }
-inline ::std::string* PrivateKey::mutable_email() {
+inline ::std::string* PrivateKey::mutable_id() {
   
-  // @@protoc_insertion_point(field_mutable:PrivateKey.email)
-  return email_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:PrivateKey.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* PrivateKey::release_email() {
-  // @@protoc_insertion_point(field_release:PrivateKey.email)
+inline ::std::string* PrivateKey::release_id() {
+  // @@protoc_insertion_point(field_release:PrivateKey.id)
   
-  return email_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void PrivateKey::set_allocated_email(::std::string* email) {
-  if (email != NULL) {
+inline void PrivateKey::set_allocated_id(::std::string* id) {
+  if (id != NULL) {
     
   } else {
     
   }
-  email_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), email);
-  // @@protoc_insertion_point(field_set_allocated:PrivateKey.email)
-}
-
-// optional string organization = 8;
-inline void PrivateKey::clear_organization() {
-  organization_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& PrivateKey::organization() const {
-  // @@protoc_insertion_point(field_get:PrivateKey.organization)
-  return organization_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void PrivateKey::set_organization(const ::std::string& value) {
-  
-  organization_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PrivateKey.organization)
-}
-inline void PrivateKey::set_organization(const char* value) {
-  
-  organization_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PrivateKey.organization)
-}
-inline void PrivateKey::set_organization(const char* value, size_t size) {
-  
-  organization_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PrivateKey.organization)
-}
-inline ::std::string* PrivateKey::mutable_organization() {
-  
-  // @@protoc_insertion_point(field_mutable:PrivateKey.organization)
-  return organization_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* PrivateKey::release_organization() {
-  // @@protoc_insertion_point(field_release:PrivateKey.organization)
-  
-  return organization_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void PrivateKey::set_allocated_organization(::std::string* organization) {
-  if (organization != NULL) {
-    
-  } else {
-    
-  }
-  organization_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), organization);
-  // @@protoc_insertion_point(field_set_allocated:PrivateKey.organization)
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:PrivateKey.id)
 }
 
 // -------------------------------------------------------------------
@@ -2070,20 +2845,6 @@ inline void PublicKey::set_allocated_key(::std::string* key) {
   // @@protoc_insertion_point(field_set_allocated:PublicKey.key)
 }
 
-// optional .ECCKeyType type = 3;
-inline void PublicKey::clear_type() {
-  type_ = 0;
-}
-inline ::ECCKeyType PublicKey::type() const {
-  // @@protoc_insertion_point(field_get:PublicKey.type)
-  return static_cast< ::ECCKeyType >(type_);
-}
-inline void PublicKey::set_type(::ECCKeyType value) {
-  
-  type_ = value;
-  // @@protoc_insertion_point(field_set:PublicKey.type)
-}
-
 // optional .KeyEncodingType encodingType = 4;
 inline void PublicKey::clear_encodingtype() {
   encodingtype_ = 0;
@@ -2098,86 +2859,90 @@ inline void PublicKey::set_encodingtype(::KeyEncodingType value) {
   // @@protoc_insertion_point(field_set:PublicKey.encodingType)
 }
 
-// optional bytes fingerprint = 5;
-inline void PublicKey::clear_fingerprint() {
-  fingerprint_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// optional .KeyId key_id = 5;
+inline bool PublicKey::has_key_id() const {
+  return !_is_default_instance_ && key_id_ != NULL;
 }
-inline const ::std::string& PublicKey::fingerprint() const {
-  // @@protoc_insertion_point(field_get:PublicKey.fingerprint)
-  return fingerprint_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void PublicKey::clear_key_id() {
+  if (GetArenaNoVirtual() == NULL && key_id_ != NULL) delete key_id_;
+  key_id_ = NULL;
 }
-inline void PublicKey::set_fingerprint(const ::std::string& value) {
+inline const ::KeyId& PublicKey::key_id() const {
+  // @@protoc_insertion_point(field_get:PublicKey.key_id)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return key_id_ != NULL ? *key_id_ : *default_instance().key_id_;
+#else
+  return key_id_ != NULL ? *key_id_ : *default_instance_->key_id_;
+#endif
+}
+inline ::KeyId* PublicKey::mutable_key_id() {
   
-  fingerprint_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PublicKey.fingerprint)
-}
-inline void PublicKey::set_fingerprint(const char* value) {
-  
-  fingerprint_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PublicKey.fingerprint)
-}
-inline void PublicKey::set_fingerprint(const void* value, size_t size) {
-  
-  fingerprint_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PublicKey.fingerprint)
-}
-inline ::std::string* PublicKey::mutable_fingerprint() {
-  
-  // @@protoc_insertion_point(field_mutable:PublicKey.fingerprint)
-  return fingerprint_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* PublicKey::release_fingerprint() {
-  // @@protoc_insertion_point(field_release:PublicKey.fingerprint)
-  
-  return fingerprint_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void PublicKey::set_allocated_fingerprint(::std::string* fingerprint) {
-  if (fingerprint != NULL) {
-    
-  } else {
-    
+  if (key_id_ == NULL) {
+    key_id_ = new ::KeyId;
   }
-  fingerprint_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), fingerprint);
-  // @@protoc_insertion_point(field_set_allocated:PublicKey.fingerprint)
+  // @@protoc_insertion_point(field_mutable:PublicKey.key_id)
+  return key_id_;
 }
-
-// optional .MessageReference ref = 6;
-inline bool PublicKey::has_ref() const {
-  return !_is_default_instance_ && ref_ != NULL;
-}
-inline void PublicKey::clear_ref() {
-  if (GetArenaNoVirtual() == NULL && ref_ != NULL) delete ref_;
-  ref_ = NULL;
-}
-inline const ::MessageReference& PublicKey::ref() const {
-  // @@protoc_insertion_point(field_get:PublicKey.ref)
-  return ref_ != NULL ? *ref_ : *default_instance_->ref_;
-}
-inline ::MessageReference* PublicKey::mutable_ref() {
+inline ::KeyId* PublicKey::release_key_id() {
+  // @@protoc_insertion_point(field_release:PublicKey.key_id)
   
-  if (ref_ == NULL) {
-    ref_ = new ::MessageReference;
-  }
-  // @@protoc_insertion_point(field_mutable:PublicKey.ref)
-  return ref_;
-}
-inline ::MessageReference* PublicKey::release_ref() {
-  // @@protoc_insertion_point(field_release:PublicKey.ref)
-  
-  ::MessageReference* temp = ref_;
-  ref_ = NULL;
+  ::KeyId* temp = key_id_;
+  key_id_ = NULL;
   return temp;
 }
-inline void PublicKey::set_allocated_ref(::MessageReference* ref) {
-  delete ref_;
-  ref_ = ref;
-  if (ref) {
+inline void PublicKey::set_allocated_key_id(::KeyId* key_id) {
+  delete key_id_;
+  key_id_ = key_id;
+  if (key_id) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:PublicKey.ref)
+  // @@protoc_insertion_point(field_set_allocated:PublicKey.key_id)
+}
+
+// optional bytes id = 6;
+inline void PublicKey::clear_id() {
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& PublicKey::id() const {
+  // @@protoc_insertion_point(field_get:PublicKey.id)
+  return id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PublicKey::set_id(const ::std::string& value) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:PublicKey.id)
+}
+inline void PublicKey::set_id(const char* value) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:PublicKey.id)
+}
+inline void PublicKey::set_id(const void* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:PublicKey.id)
+}
+inline ::std::string* PublicKey::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:PublicKey.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PublicKey::release_id() {
+  // @@protoc_insertion_point(field_release:PublicKey.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PublicKey::set_allocated_id(::std::string* id) {
+  if (id != NULL) {
+    
+  } else {
+    
+  }
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:PublicKey.id)
 }
 
 // -------------------------------------------------------------------
@@ -2198,15 +2963,15 @@ inline void SymmetriclyEncryptedMessage::set_message_type(::MessageType value) {
   // @@protoc_insertion_point(field_set:SymmetriclyEncryptedMessage.message_type)
 }
 
-// optional .EncryptionType encryption_type = 2;
+// optional .SymmetricKeyType encryption_type = 2;
 inline void SymmetriclyEncryptedMessage::clear_encryption_type() {
   encryption_type_ = 0;
 }
-inline ::EncryptionType SymmetriclyEncryptedMessage::encryption_type() const {
+inline ::SymmetricKeyType SymmetriclyEncryptedMessage::encryption_type() const {
   // @@protoc_insertion_point(field_get:SymmetriclyEncryptedMessage.encryption_type)
-  return static_cast< ::EncryptionType >(encryption_type_);
+  return static_cast< ::SymmetricKeyType >(encryption_type_);
 }
-inline void SymmetriclyEncryptedMessage::set_encryption_type(::EncryptionType value) {
+inline void SymmetriclyEncryptedMessage::set_encryption_type(::SymmetricKeyType value) {
   
   encryption_type_ = value;
   // @@protoc_insertion_point(field_set:SymmetriclyEncryptedMessage.encryption_type)
@@ -2344,42 +3109,48 @@ inline void SymmetriclyEncryptedMessage::set_allocated_salt(::std::string* salt)
   // @@protoc_insertion_point(field_set_allocated:SymmetriclyEncryptedMessage.salt)
 }
 
-// optional .MessageReference ref = 6;
-inline bool SymmetriclyEncryptedMessage::has_ref() const {
-  return !_is_default_instance_ && ref_ != NULL;
+// optional bytes id = 6;
+inline void SymmetriclyEncryptedMessage::clear_id() {
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void SymmetriclyEncryptedMessage::clear_ref() {
-  if (GetArenaNoVirtual() == NULL && ref_ != NULL) delete ref_;
-  ref_ = NULL;
+inline const ::std::string& SymmetriclyEncryptedMessage::id() const {
+  // @@protoc_insertion_point(field_get:SymmetriclyEncryptedMessage.id)
+  return id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::MessageReference& SymmetriclyEncryptedMessage::ref() const {
-  // @@protoc_insertion_point(field_get:SymmetriclyEncryptedMessage.ref)
-  return ref_ != NULL ? *ref_ : *default_instance_->ref_;
-}
-inline ::MessageReference* SymmetriclyEncryptedMessage::mutable_ref() {
+inline void SymmetriclyEncryptedMessage::set_id(const ::std::string& value) {
   
-  if (ref_ == NULL) {
-    ref_ = new ::MessageReference;
-  }
-  // @@protoc_insertion_point(field_mutable:SymmetriclyEncryptedMessage.ref)
-  return ref_;
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:SymmetriclyEncryptedMessage.id)
 }
-inline ::MessageReference* SymmetriclyEncryptedMessage::release_ref() {
-  // @@protoc_insertion_point(field_release:SymmetriclyEncryptedMessage.ref)
+inline void SymmetriclyEncryptedMessage::set_id(const char* value) {
   
-  ::MessageReference* temp = ref_;
-  ref_ = NULL;
-  return temp;
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:SymmetriclyEncryptedMessage.id)
 }
-inline void SymmetriclyEncryptedMessage::set_allocated_ref(::MessageReference* ref) {
-  delete ref_;
-  ref_ = ref;
-  if (ref) {
+inline void SymmetriclyEncryptedMessage::set_id(const void* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:SymmetriclyEncryptedMessage.id)
+}
+inline ::std::string* SymmetriclyEncryptedMessage::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:SymmetriclyEncryptedMessage.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SymmetriclyEncryptedMessage::release_id() {
+  // @@protoc_insertion_point(field_release:SymmetriclyEncryptedMessage.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SymmetriclyEncryptedMessage::set_allocated_id(::std::string* id) {
+  if (id != NULL) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:SymmetriclyEncryptedMessage.ref)
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:SymmetriclyEncryptedMessage.id)
 }
 
 // -------------------------------------------------------------------
@@ -2400,48 +3171,46 @@ inline void AsymmetriclyEncryptedMessage::set_message_type(::MessageType value) 
   // @@protoc_insertion_point(field_set:AsymmetriclyEncryptedMessage.message_type)
 }
 
-// optional string dest_cn = 2;
-inline void AsymmetriclyEncryptedMessage::clear_dest_cn() {
-  dest_cn_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// optional .KeyId dest_key = 2;
+inline bool AsymmetriclyEncryptedMessage::has_dest_key() const {
+  return !_is_default_instance_ && dest_key_ != NULL;
 }
-inline const ::std::string& AsymmetriclyEncryptedMessage::dest_cn() const {
-  // @@protoc_insertion_point(field_get:AsymmetriclyEncryptedMessage.dest_cn)
-  return dest_cn_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void AsymmetriclyEncryptedMessage::clear_dest_key() {
+  if (GetArenaNoVirtual() == NULL && dest_key_ != NULL) delete dest_key_;
+  dest_key_ = NULL;
 }
-inline void AsymmetriclyEncryptedMessage::set_dest_cn(const ::std::string& value) {
+inline const ::KeyId& AsymmetriclyEncryptedMessage::dest_key() const {
+  // @@protoc_insertion_point(field_get:AsymmetriclyEncryptedMessage.dest_key)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return dest_key_ != NULL ? *dest_key_ : *default_instance().dest_key_;
+#else
+  return dest_key_ != NULL ? *dest_key_ : *default_instance_->dest_key_;
+#endif
+}
+inline ::KeyId* AsymmetriclyEncryptedMessage::mutable_dest_key() {
   
-  dest_cn_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:AsymmetriclyEncryptedMessage.dest_cn)
+  if (dest_key_ == NULL) {
+    dest_key_ = new ::KeyId;
+  }
+  // @@protoc_insertion_point(field_mutable:AsymmetriclyEncryptedMessage.dest_key)
+  return dest_key_;
 }
-inline void AsymmetriclyEncryptedMessage::set_dest_cn(const char* value) {
+inline ::KeyId* AsymmetriclyEncryptedMessage::release_dest_key() {
+  // @@protoc_insertion_point(field_release:AsymmetriclyEncryptedMessage.dest_key)
   
-  dest_cn_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:AsymmetriclyEncryptedMessage.dest_cn)
+  ::KeyId* temp = dest_key_;
+  dest_key_ = NULL;
+  return temp;
 }
-inline void AsymmetriclyEncryptedMessage::set_dest_cn(const char* value, size_t size) {
-  
-  dest_cn_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:AsymmetriclyEncryptedMessage.dest_cn)
-}
-inline ::std::string* AsymmetriclyEncryptedMessage::mutable_dest_cn() {
-  
-  // @@protoc_insertion_point(field_mutable:AsymmetriclyEncryptedMessage.dest_cn)
-  return dest_cn_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* AsymmetriclyEncryptedMessage::release_dest_cn() {
-  // @@protoc_insertion_point(field_release:AsymmetriclyEncryptedMessage.dest_cn)
-  
-  return dest_cn_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void AsymmetriclyEncryptedMessage::set_allocated_dest_cn(::std::string* dest_cn) {
-  if (dest_cn != NULL) {
+inline void AsymmetriclyEncryptedMessage::set_allocated_dest_key(::KeyId* dest_key) {
+  delete dest_key_;
+  dest_key_ = dest_key;
+  if (dest_key) {
     
   } else {
     
   }
-  dest_cn_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), dest_cn);
-  // @@protoc_insertion_point(field_set_allocated:AsymmetriclyEncryptedMessage.dest_cn)
+  // @@protoc_insertion_point(field_set_allocated:AsymmetriclyEncryptedMessage.dest_key)
 }
 
 // optional bytes msg = 4;
@@ -2488,160 +3257,48 @@ inline void AsymmetriclyEncryptedMessage::set_allocated_msg(::std::string* msg) 
   // @@protoc_insertion_point(field_set_allocated:AsymmetriclyEncryptedMessage.msg)
 }
 
-// optional .MessageReference ref = 5;
-inline bool AsymmetriclyEncryptedMessage::has_ref() const {
-  return !_is_default_instance_ && ref_ != NULL;
+// optional bytes id = 5;
+inline void AsymmetriclyEncryptedMessage::clear_id() {
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void AsymmetriclyEncryptedMessage::clear_ref() {
-  if (GetArenaNoVirtual() == NULL && ref_ != NULL) delete ref_;
-  ref_ = NULL;
+inline const ::std::string& AsymmetriclyEncryptedMessage::id() const {
+  // @@protoc_insertion_point(field_get:AsymmetriclyEncryptedMessage.id)
+  return id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::MessageReference& AsymmetriclyEncryptedMessage::ref() const {
-  // @@protoc_insertion_point(field_get:AsymmetriclyEncryptedMessage.ref)
-  return ref_ != NULL ? *ref_ : *default_instance_->ref_;
-}
-inline ::MessageReference* AsymmetriclyEncryptedMessage::mutable_ref() {
+inline void AsymmetriclyEncryptedMessage::set_id(const ::std::string& value) {
   
-  if (ref_ == NULL) {
-    ref_ = new ::MessageReference;
-  }
-  // @@protoc_insertion_point(field_mutable:AsymmetriclyEncryptedMessage.ref)
-  return ref_;
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:AsymmetriclyEncryptedMessage.id)
 }
-inline ::MessageReference* AsymmetriclyEncryptedMessage::release_ref() {
-  // @@protoc_insertion_point(field_release:AsymmetriclyEncryptedMessage.ref)
+inline void AsymmetriclyEncryptedMessage::set_id(const char* value) {
   
-  ::MessageReference* temp = ref_;
-  ref_ = NULL;
-  return temp;
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:AsymmetriclyEncryptedMessage.id)
 }
-inline void AsymmetriclyEncryptedMessage::set_allocated_ref(::MessageReference* ref) {
-  delete ref_;
-  ref_ = ref;
-  if (ref) {
+inline void AsymmetriclyEncryptedMessage::set_id(const void* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:AsymmetriclyEncryptedMessage.id)
+}
+inline ::std::string* AsymmetriclyEncryptedMessage::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:AsymmetriclyEncryptedMessage.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* AsymmetriclyEncryptedMessage::release_id() {
+  // @@protoc_insertion_point(field_release:AsymmetriclyEncryptedMessage.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void AsymmetriclyEncryptedMessage::set_allocated_id(::std::string* id) {
+  if (id != NULL) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:AsymmetriclyEncryptedMessage.ref)
-}
-
-// -------------------------------------------------------------------
-
-// HybridEncryptedMessage
-
-// optional .AsymmetriclyEncryptedMessage key = 1;
-inline bool HybridEncryptedMessage::has_key() const {
-  return !_is_default_instance_ && key_ != NULL;
-}
-inline void HybridEncryptedMessage::clear_key() {
-  if (GetArenaNoVirtual() == NULL && key_ != NULL) delete key_;
-  key_ = NULL;
-}
-inline const ::AsymmetriclyEncryptedMessage& HybridEncryptedMessage::key() const {
-  // @@protoc_insertion_point(field_get:HybridEncryptedMessage.key)
-  return key_ != NULL ? *key_ : *default_instance_->key_;
-}
-inline ::AsymmetriclyEncryptedMessage* HybridEncryptedMessage::mutable_key() {
-  
-  if (key_ == NULL) {
-    key_ = new ::AsymmetriclyEncryptedMessage;
-  }
-  // @@protoc_insertion_point(field_mutable:HybridEncryptedMessage.key)
-  return key_;
-}
-inline ::AsymmetriclyEncryptedMessage* HybridEncryptedMessage::release_key() {
-  // @@protoc_insertion_point(field_release:HybridEncryptedMessage.key)
-  
-  ::AsymmetriclyEncryptedMessage* temp = key_;
-  key_ = NULL;
-  return temp;
-}
-inline void HybridEncryptedMessage::set_allocated_key(::AsymmetriclyEncryptedMessage* key) {
-  delete key_;
-  key_ = key;
-  if (key) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_set_allocated:HybridEncryptedMessage.key)
-}
-
-// optional .SymmetriclyEncryptedMessage msg = 2;
-inline bool HybridEncryptedMessage::has_msg() const {
-  return !_is_default_instance_ && msg_ != NULL;
-}
-inline void HybridEncryptedMessage::clear_msg() {
-  if (GetArenaNoVirtual() == NULL && msg_ != NULL) delete msg_;
-  msg_ = NULL;
-}
-inline const ::SymmetriclyEncryptedMessage& HybridEncryptedMessage::msg() const {
-  // @@protoc_insertion_point(field_get:HybridEncryptedMessage.msg)
-  return msg_ != NULL ? *msg_ : *default_instance_->msg_;
-}
-inline ::SymmetriclyEncryptedMessage* HybridEncryptedMessage::mutable_msg() {
-  
-  if (msg_ == NULL) {
-    msg_ = new ::SymmetriclyEncryptedMessage;
-  }
-  // @@protoc_insertion_point(field_mutable:HybridEncryptedMessage.msg)
-  return msg_;
-}
-inline ::SymmetriclyEncryptedMessage* HybridEncryptedMessage::release_msg() {
-  // @@protoc_insertion_point(field_release:HybridEncryptedMessage.msg)
-  
-  ::SymmetriclyEncryptedMessage* temp = msg_;
-  msg_ = NULL;
-  return temp;
-}
-inline void HybridEncryptedMessage::set_allocated_msg(::SymmetriclyEncryptedMessage* msg) {
-  delete msg_;
-  msg_ = msg;
-  if (msg) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_set_allocated:HybridEncryptedMessage.msg)
-}
-
-// optional .MessageReference ref = 3;
-inline bool HybridEncryptedMessage::has_ref() const {
-  return !_is_default_instance_ && ref_ != NULL;
-}
-inline void HybridEncryptedMessage::clear_ref() {
-  if (GetArenaNoVirtual() == NULL && ref_ != NULL) delete ref_;
-  ref_ = NULL;
-}
-inline const ::MessageReference& HybridEncryptedMessage::ref() const {
-  // @@protoc_insertion_point(field_get:HybridEncryptedMessage.ref)
-  return ref_ != NULL ? *ref_ : *default_instance_->ref_;
-}
-inline ::MessageReference* HybridEncryptedMessage::mutable_ref() {
-  
-  if (ref_ == NULL) {
-    ref_ = new ::MessageReference;
-  }
-  // @@protoc_insertion_point(field_mutable:HybridEncryptedMessage.ref)
-  return ref_;
-}
-inline ::MessageReference* HybridEncryptedMessage::release_ref() {
-  // @@protoc_insertion_point(field_release:HybridEncryptedMessage.ref)
-  
-  ::MessageReference* temp = ref_;
-  ref_ = NULL;
-  return temp;
-}
-inline void HybridEncryptedMessage::set_allocated_ref(::MessageReference* ref) {
-  delete ref_;
-  ref_ = ref;
-  if (ref) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_set_allocated:HybridEncryptedMessage.ref)
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:AsymmetriclyEncryptedMessage.id)
 }
 
 // -------------------------------------------------------------------
@@ -2984,54 +3641,6 @@ inline void SignedMessage::set_allocated_asymmetriclyencryptedmessage(::Asymmetr
   // @@protoc_insertion_point(field_set_allocated:SignedMessage.asymmetriclyEncryptedMessage)
 }
 
-// optional .HybridEncryptedMessage hybridEncryptedMessage = 7;
-inline bool SignedMessage::has_hybridencryptedmessage() const {
-  return msg_case() == kHybridEncryptedMessage;
-}
-inline void SignedMessage::set_has_hybridencryptedmessage() {
-  _oneof_case_[0] = kHybridEncryptedMessage;
-}
-inline void SignedMessage::clear_hybridencryptedmessage() {
-  if (has_hybridencryptedmessage()) {
-    delete msg_.hybridencryptedmessage_;
-    clear_has_msg();
-  }
-}
-inline  const ::HybridEncryptedMessage& SignedMessage::hybridencryptedmessage() const {
-  // @@protoc_insertion_point(field_get:SignedMessage.hybridEncryptedMessage)
-  return has_hybridencryptedmessage()
-      ? *msg_.hybridencryptedmessage_
-      : ::HybridEncryptedMessage::default_instance();
-}
-inline ::HybridEncryptedMessage* SignedMessage::mutable_hybridencryptedmessage() {
-  if (!has_hybridencryptedmessage()) {
-    clear_msg();
-    set_has_hybridencryptedmessage();
-    msg_.hybridencryptedmessage_ = new ::HybridEncryptedMessage;
-  }
-  // @@protoc_insertion_point(field_mutable:SignedMessage.hybridEncryptedMessage)
-  return msg_.hybridencryptedmessage_;
-}
-inline ::HybridEncryptedMessage* SignedMessage::release_hybridencryptedmessage() {
-  // @@protoc_insertion_point(field_release:SignedMessage.hybridEncryptedMessage)
-  if (has_hybridencryptedmessage()) {
-    clear_has_msg();
-    ::HybridEncryptedMessage* temp = msg_.hybridencryptedmessage_;
-    msg_.hybridencryptedmessage_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void SignedMessage::set_allocated_hybridencryptedmessage(::HybridEncryptedMessage* hybridencryptedmessage) {
-  clear_msg();
-  if (hybridencryptedmessage) {
-    set_has_hybridencryptedmessage();
-    msg_.hybridencryptedmessage_ = hybridencryptedmessage;
-  }
-  // @@protoc_insertion_point(field_set_allocated:SignedMessage.hybridEncryptedMessage)
-}
-
 // optional .MessageReference reference = 10;
 inline bool SignedMessage::has_reference() const {
   return msg_case() == kReference;
@@ -3090,7 +3699,11 @@ inline void SignedMessage::clear_message_signature() {
 }
 inline const ::Signature& SignedMessage::message_signature() const {
   // @@protoc_insertion_point(field_get:SignedMessage.message_signature)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return message_signature_ != NULL ? *message_signature_ : *default_instance().message_signature_;
+#else
   return message_signature_ != NULL ? *message_signature_ : *default_instance_->message_signature_;
+#endif
 }
 inline ::Signature* SignedMessage::mutable_message_signature() {
   
@@ -3132,6 +3745,50 @@ inline void SignedMessage::set_timestamp(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:SignedMessage.timestamp)
 }
 
+// optional bytes id = 11;
+inline void SignedMessage::clear_id() {
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& SignedMessage::id() const {
+  // @@protoc_insertion_point(field_get:SignedMessage.id)
+  return id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SignedMessage::set_id(const ::std::string& value) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:SignedMessage.id)
+}
+inline void SignedMessage::set_id(const char* value) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:SignedMessage.id)
+}
+inline void SignedMessage::set_id(const void* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:SignedMessage.id)
+}
+inline ::std::string* SignedMessage::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:SignedMessage.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SignedMessage::release_id() {
+  // @@protoc_insertion_point(field_release:SignedMessage.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SignedMessage::set_allocated_id(::std::string* id) {
+  if (id != NULL) {
+    
+  } else {
+    
+  }
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:SignedMessage.id)
+}
+
 inline bool SignedMessage::has_msg() const {
   return msg_case() != MSG_NOT_SET;
 }
@@ -3158,6 +3815,10 @@ inline SignedMessage::MsgCase SignedMessage::msg_case() const {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -3166,30 +3827,11 @@ namespace google {
 namespace protobuf {
 
 template <> struct is_proto_enum< ::SignatureType> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::SignatureType>() {
-  return ::SignatureType_descriptor();
-}
-template <> struct is_proto_enum< ::ECCKeyType> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::ECCKeyType>() {
-  return ::ECCKeyType_descriptor();
-}
-template <> struct is_proto_enum< ::EncryptionType> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::EncryptionType>() {
-  return ::EncryptionType_descriptor();
-}
+template <> struct is_proto_enum< ::AsymmetricKeyType> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::SymmetricKeyType> : ::google::protobuf::internal::true_type {};
 template <> struct is_proto_enum< ::KeyEncodingType> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::KeyEncodingType>() {
-  return ::KeyEncodingType_descriptor();
-}
+template <> struct is_proto_enum< ::ImageType> : ::google::protobuf::internal::true_type {};
 template <> struct is_proto_enum< ::MessageType> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::MessageType>() {
-  return ::MessageType_descriptor();
-}
 
 }  // namespace protobuf
 }  // namespace google
