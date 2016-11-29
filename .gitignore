@@ -1,5 +1,5 @@
-.dep.inc
-.sw[op]
+*.dep.inc
+*.sw[op]
 .DS_Store
 target
 
