@@ -1,8 +1,10 @@
 CXX = clang
 CXXFLAG = -std=c++14 -Wall -Wextra -Wpedantic -Wsign-conversion \
-				  -Wold-style-cast -Wsign-promo -Wsign-promo -Wswitch-enum \
-					-Weffc++ -Wshadow -Wno-missing-braces -O3 \
-					-I /usr/local/include -lstdc++ -L /usr/local/lib -lprotobuf
+	  -Wold-style-cast -Wsign-promo -Wsign-promo -Wswitch-enum \
+	  -Weffc++ -Wshadow -Wno-missing-braces -g \
+	  -I /usr/local/include -lstdc++ -L /usr/local/lib \
+	  -L /usr/local/Cellar/boost/1.62.0/lib \
+	  -lprotobuf
 
 %.o: %.cc
 	${CXX} ${CXXFLAG} -c $?

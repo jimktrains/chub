@@ -22,10 +22,12 @@
 #include <google/protobuf/arena.h>
 #include <google/protobuf/arenastring.h>
 #include <google/protobuf/generated_message_util.h>
-#include <google/protobuf/message_lite.h>
+#include <google/protobuf/metadata.h>
+#include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
-#include <google/protobuf/generated_enum_util.h>
+#include <google/protobuf/generated_enum_reflection.h>
+#include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
 // Internal implementation detail -- do not call these.
@@ -55,6 +57,16 @@ const SignatureType SignatureType_MIN = SHA512withECDSA;
 const SignatureType SignatureType_MAX = SHA512withECDSA;
 const int SignatureType_ARRAYSIZE = SignatureType_MAX + 1;
 
+const ::google::protobuf::EnumDescriptor* SignatureType_descriptor();
+inline const ::std::string& SignatureType_Name(SignatureType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    SignatureType_descriptor(), value);
+}
+inline bool SignatureType_Parse(
+    const ::std::string& name, SignatureType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<SignatureType>(
+    SignatureType_descriptor(), name, value);
+}
 enum AsymmetricKeyType {
   secp384r1 = 0,
   secp521r1 = 1,
@@ -66,6 +78,16 @@ const AsymmetricKeyType AsymmetricKeyType_MIN = secp384r1;
 const AsymmetricKeyType AsymmetricKeyType_MAX = secp521r1;
 const int AsymmetricKeyType_ARRAYSIZE = AsymmetricKeyType_MAX + 1;
 
+const ::google::protobuf::EnumDescriptor* AsymmetricKeyType_descriptor();
+inline const ::std::string& AsymmetricKeyType_Name(AsymmetricKeyType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    AsymmetricKeyType_descriptor(), value);
+}
+inline bool AsymmetricKeyType_Parse(
+    const ::std::string& name, AsymmetricKeyType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<AsymmetricKeyType>(
+    AsymmetricKeyType_descriptor(), name, value);
+}
 enum SymmetricKeyType {
   AES_256_GCM_PBKDF2WithHmacSHA256_65536_128 = 0,
   SymmetricKeyType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
@@ -76,6 +98,16 @@ const SymmetricKeyType SymmetricKeyType_MIN = AES_256_GCM_PBKDF2WithHmacSHA256_6
 const SymmetricKeyType SymmetricKeyType_MAX = AES_256_GCM_PBKDF2WithHmacSHA256_65536_128;
 const int SymmetricKeyType_ARRAYSIZE = SymmetricKeyType_MAX + 1;
 
+const ::google::protobuf::EnumDescriptor* SymmetricKeyType_descriptor();
+inline const ::std::string& SymmetricKeyType_Name(SymmetricKeyType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    SymmetricKeyType_descriptor(), value);
+}
+inline bool SymmetricKeyType_Parse(
+    const ::std::string& name, SymmetricKeyType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<SymmetricKeyType>(
+    SymmetricKeyType_descriptor(), name, value);
+}
 enum KeyEncodingType {
   pkcs8 = 0,
   x509 = 1,
@@ -87,6 +119,16 @@ const KeyEncodingType KeyEncodingType_MIN = pkcs8;
 const KeyEncodingType KeyEncodingType_MAX = x509;
 const int KeyEncodingType_ARRAYSIZE = KeyEncodingType_MAX + 1;
 
+const ::google::protobuf::EnumDescriptor* KeyEncodingType_descriptor();
+inline const ::std::string& KeyEncodingType_Name(KeyEncodingType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    KeyEncodingType_descriptor(), value);
+}
+inline bool KeyEncodingType_Parse(
+    const ::std::string& name, KeyEncodingType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<KeyEncodingType>(
+    KeyEncodingType_descriptor(), name, value);
+}
 enum ImageType {
   jpeg = 0,
   ImageType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
@@ -97,6 +139,16 @@ const ImageType ImageType_MIN = jpeg;
 const ImageType ImageType_MAX = jpeg;
 const int ImageType_ARRAYSIZE = ImageType_MAX + 1;
 
+const ::google::protobuf::EnumDescriptor* ImageType_descriptor();
+inline const ::std::string& ImageType_Name(ImageType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ImageType_descriptor(), value);
+}
+inline bool ImageType_Parse(
+    const ::std::string& name, ImageType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ImageType>(
+    ImageType_descriptor(), name, value);
+}
 enum MessageType {
   MessagePost = 0,
   MessageSignature = 1,
@@ -115,9 +167,19 @@ const MessageType MessageType_MIN = MessagePost;
 const MessageType MessageType_MAX = MessageSymetricKey;
 const int MessageType_ARRAYSIZE = MessageType_MAX + 1;
 
+const ::google::protobuf::EnumDescriptor* MessageType_descriptor();
+inline const ::std::string& MessageType_Name(MessageType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    MessageType_descriptor(), value);
+}
+inline bool MessageType_Parse(
+    const ::std::string& name, MessageType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<MessageType>(
+    MessageType_descriptor(), name, value);
+}
 // ===================================================================
 
-class Image : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Image) */ {
+class Image : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Image) */ {
  public:
   Image();
   virtual ~Image();
@@ -129,17 +191,8 @@ class Image : public ::google::protobuf::MessageLite /* @@protoc_insertion_point
     return *this;
   }
 
+  static const ::google::protobuf::Descriptor* descriptor();
   static const Image& default_instance();
-
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  // Returns the internal default instance pointer. This function can
-  // return NULL thus should not be used by the user. This is intended
-  // for Protobuf internal code. Please use default_instance() declared
-  // above instead.
-  static inline const Image* internal_default_instance() {
-    return default_instance_;
-  }
-  #endif
 
   void Swap(Image* other);
 
@@ -148,7 +201,8 @@ class Image : public ::google::protobuf::MessageLite /* @@protoc_insertion_point
   inline Image* New() const { return New(NULL); }
 
   Image* New(::google::protobuf::Arena* arena) const;
-  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
   void CopyFrom(const Image& from);
   void MergeFrom(const Image& from);
   void Clear();
@@ -159,7 +213,11 @@ class Image : public ::google::protobuf::MessageLite /* @@protoc_insertion_point
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  void DiscardUnknownFields();
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -168,14 +226,14 @@ class Image : public ::google::protobuf::MessageLite /* @@protoc_insertion_point
   void InternalSwap(Image* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _arena_ptr_;
+    return _internal_metadata_.arena();
   }
-  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
-    return _arena_ptr_;
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
   }
   public:
 
-  ::std::string GetTypeName() const;
+  ::google::protobuf::Metadata GetMetadata() const;
 
   // nested types ----------------------------------------------------
 
@@ -201,18 +259,12 @@ class Image : public ::google::protobuf::MessageLite /* @@protoc_insertion_point
   // @@protoc_insertion_point(class_scope:Image)
  private:
 
-  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
-  ::google::protobuf::Arena* _arena_ptr_;
-
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr image_;
   int imagetype_;
   mutable int _cached_size_;
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  friend void  protobuf_AddDesc_message_2eproto_impl();
-  #else
   friend void  protobuf_AddDesc_message_2eproto();
-  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -221,7 +273,7 @@ class Image : public ::google::protobuf::MessageLite /* @@protoc_insertion_point
 };
 // -------------------------------------------------------------------
 
-class Post : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Post) */ {
+class Post : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Post) */ {
  public:
   Post();
   virtual ~Post();
@@ -233,17 +285,8 @@ class Post : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(
     return *this;
   }
 
+  static const ::google::protobuf::Descriptor* descriptor();
   static const Post& default_instance();
-
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  // Returns the internal default instance pointer. This function can
-  // return NULL thus should not be used by the user. This is intended
-  // for Protobuf internal code. Please use default_instance() declared
-  // above instead.
-  static inline const Post* internal_default_instance() {
-    return default_instance_;
-  }
-  #endif
 
   void Swap(Post* other);
 
@@ -252,7 +295,8 @@ class Post : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(
   inline Post* New() const { return New(NULL); }
 
   Post* New(::google::protobuf::Arena* arena) const;
-  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
   void CopyFrom(const Post& from);
   void MergeFrom(const Post& from);
   void Clear();
@@ -263,7 +307,11 @@ class Post : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  void DiscardUnknownFields();
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -272,14 +320,14 @@ class Post : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(
   void InternalSwap(Post* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _arena_ptr_;
+    return _internal_metadata_.arena();
   }
-  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
-    return _arena_ptr_;
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
   }
   public:
 
-  ::std::string GetTypeName() const;
+  ::google::protobuf::Metadata GetMetadata() const;
 
   // nested types ----------------------------------------------------
 
@@ -373,12 +421,16 @@ class Post : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(
   ::std::string* release_rsvp_email();
   void set_allocated_rsvp_email(::std::string* rsvp_email);
 
+  // optional fixed64 timestamp = 11;
+  void clear_timestamp();
+  static const int kTimestampFieldNumber = 11;
+  ::google::protobuf::uint64 timestamp() const;
+  void set_timestamp(::google::protobuf::uint64 value);
+
   // @@protoc_insertion_point(class_scope:Post)
  private:
 
-  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
-  ::google::protobuf::Arena* _arena_ptr_;
-
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr id_;
   ::google::protobuf::internal::ArenaStringPtr title_;
@@ -389,13 +441,10 @@ class Post : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(
   ::Image* image_;
   ::google::protobuf::uint64 rsvp_by_;
   ::google::protobuf::internal::ArenaStringPtr rsvp_email_;
+  ::google::protobuf::uint64 timestamp_;
   bool all_day_;
   mutable int _cached_size_;
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  friend void  protobuf_AddDesc_message_2eproto_impl();
-  #else
   friend void  protobuf_AddDesc_message_2eproto();
-  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -404,7 +453,7 @@ class Post : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(
 };
 // -------------------------------------------------------------------
 
-class Signature : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Signature) */ {
+class Signature : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Signature) */ {
  public:
   Signature();
   virtual ~Signature();
@@ -416,17 +465,8 @@ class Signature : public ::google::protobuf::MessageLite /* @@protoc_insertion_p
     return *this;
   }
 
+  static const ::google::protobuf::Descriptor* descriptor();
   static const Signature& default_instance();
-
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  // Returns the internal default instance pointer. This function can
-  // return NULL thus should not be used by the user. This is intended
-  // for Protobuf internal code. Please use default_instance() declared
-  // above instead.
-  static inline const Signature* internal_default_instance() {
-    return default_instance_;
-  }
-  #endif
 
   void Swap(Signature* other);
 
@@ -435,7 +475,8 @@ class Signature : public ::google::protobuf::MessageLite /* @@protoc_insertion_p
   inline Signature* New() const { return New(NULL); }
 
   Signature* New(::google::protobuf::Arena* arena) const;
-  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
   void CopyFrom(const Signature& from);
   void MergeFrom(const Signature& from);
   void Clear();
@@ -446,7 +487,11 @@ class Signature : public ::google::protobuf::MessageLite /* @@protoc_insertion_p
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  void DiscardUnknownFields();
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -455,14 +500,14 @@ class Signature : public ::google::protobuf::MessageLite /* @@protoc_insertion_p
   void InternalSwap(Signature* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _arena_ptr_;
+    return _internal_metadata_.arena();
   }
-  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
-    return _arena_ptr_;
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
   }
   public:
 
-  ::std::string GetTypeName() const;
+  ::google::protobuf::Metadata GetMetadata() const;
 
   // nested types ----------------------------------------------------
 
@@ -508,20 +553,14 @@ class Signature : public ::google::protobuf::MessageLite /* @@protoc_insertion_p
   // @@protoc_insertion_point(class_scope:Signature)
  private:
 
-  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
-  ::google::protobuf::Arena* _arena_ptr_;
-
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr signature_;
   ::google::protobuf::internal::ArenaStringPtr id_;
   ::KeyId* key_id_;
   int signature_type_;
   mutable int _cached_size_;
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  friend void  protobuf_AddDesc_message_2eproto_impl();
-  #else
   friend void  protobuf_AddDesc_message_2eproto();
-  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -530,7 +569,7 @@ class Signature : public ::google::protobuf::MessageLite /* @@protoc_insertion_p
 };
 // -------------------------------------------------------------------
 
-class DistinguishedName : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:DistinguishedName) */ {
+class DistinguishedName : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:DistinguishedName) */ {
  public:
   DistinguishedName();
   virtual ~DistinguishedName();
@@ -542,17 +581,8 @@ class DistinguishedName : public ::google::protobuf::MessageLite /* @@protoc_ins
     return *this;
   }
 
+  static const ::google::protobuf::Descriptor* descriptor();
   static const DistinguishedName& default_instance();
-
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  // Returns the internal default instance pointer. This function can
-  // return NULL thus should not be used by the user. This is intended
-  // for Protobuf internal code. Please use default_instance() declared
-  // above instead.
-  static inline const DistinguishedName* internal_default_instance() {
-    return default_instance_;
-  }
-  #endif
 
   void Swap(DistinguishedName* other);
 
@@ -561,7 +591,8 @@ class DistinguishedName : public ::google::protobuf::MessageLite /* @@protoc_ins
   inline DistinguishedName* New() const { return New(NULL); }
 
   DistinguishedName* New(::google::protobuf::Arena* arena) const;
-  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
   void CopyFrom(const DistinguishedName& from);
   void MergeFrom(const DistinguishedName& from);
   void Clear();
@@ -572,7 +603,11 @@ class DistinguishedName : public ::google::protobuf::MessageLite /* @@protoc_ins
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  void DiscardUnknownFields();
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -581,14 +616,14 @@ class DistinguishedName : public ::google::protobuf::MessageLite /* @@protoc_ins
   void InternalSwap(DistinguishedName* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _arena_ptr_;
+    return _internal_metadata_.arena();
   }
-  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
-    return _arena_ptr_;
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
   }
   public:
 
-  ::std::string GetTypeName() const;
+  ::google::protobuf::Metadata GetMetadata() const;
 
   // nested types ----------------------------------------------------
 
@@ -685,9 +720,7 @@ class DistinguishedName : public ::google::protobuf::MessageLite /* @@protoc_ins
   // @@protoc_insertion_point(class_scope:DistinguishedName)
  private:
 
-  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
-  ::google::protobuf::Arena* _arena_ptr_;
-
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr country_;
   ::google::protobuf::internal::ArenaStringPtr organization_;
@@ -698,11 +731,7 @@ class DistinguishedName : public ::google::protobuf::MessageLite /* @@protoc_ins
   ::google::protobuf::internal::ArenaStringPtr serial_number_;
   ::google::protobuf::internal::ArenaStringPtr email_;
   mutable int _cached_size_;
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  friend void  protobuf_AddDesc_message_2eproto_impl();
-  #else
   friend void  protobuf_AddDesc_message_2eproto();
-  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -711,7 +740,7 @@ class DistinguishedName : public ::google::protobuf::MessageLite /* @@protoc_ins
 };
 // -------------------------------------------------------------------
 
-class KeyId : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:KeyId) */ {
+class KeyId : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KeyId) */ {
  public:
   KeyId();
   virtual ~KeyId();
@@ -723,17 +752,8 @@ class KeyId : public ::google::protobuf::MessageLite /* @@protoc_insertion_point
     return *this;
   }
 
+  static const ::google::protobuf::Descriptor* descriptor();
   static const KeyId& default_instance();
-
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  // Returns the internal default instance pointer. This function can
-  // return NULL thus should not be used by the user. This is intended
-  // for Protobuf internal code. Please use default_instance() declared
-  // above instead.
-  static inline const KeyId* internal_default_instance() {
-    return default_instance_;
-  }
-  #endif
 
   void Swap(KeyId* other);
 
@@ -742,7 +762,8 @@ class KeyId : public ::google::protobuf::MessageLite /* @@protoc_insertion_point
   inline KeyId* New() const { return New(NULL); }
 
   KeyId* New(::google::protobuf::Arena* arena) const;
-  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
   void CopyFrom(const KeyId& from);
   void MergeFrom(const KeyId& from);
   void Clear();
@@ -753,7 +774,11 @@ class KeyId : public ::google::protobuf::MessageLite /* @@protoc_insertion_point
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  void DiscardUnknownFields();
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -762,14 +787,14 @@ class KeyId : public ::google::protobuf::MessageLite /* @@protoc_insertion_point
   void InternalSwap(KeyId* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _arena_ptr_;
+    return _internal_metadata_.arena();
   }
-  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
-    return _arena_ptr_;
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
   }
   public:
 
-  ::std::string GetTypeName() const;
+  ::google::protobuf::Metadata GetMetadata() const;
 
   // nested types ----------------------------------------------------
 
@@ -804,19 +829,13 @@ class KeyId : public ::google::protobuf::MessageLite /* @@protoc_insertion_point
   // @@protoc_insertion_point(class_scope:KeyId)
  private:
 
-  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
-  ::google::protobuf::Arena* _arena_ptr_;
-
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr fingerprint_sha512_;
   ::DistinguishedName* dn_;
   int type_;
   mutable int _cached_size_;
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  friend void  protobuf_AddDesc_message_2eproto_impl();
-  #else
   friend void  protobuf_AddDesc_message_2eproto();
-  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -825,7 +844,7 @@ class KeyId : public ::google::protobuf::MessageLite /* @@protoc_insertion_point
 };
 // -------------------------------------------------------------------
 
-class PrivateKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:PrivateKey) */ {
+class PrivateKey : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PrivateKey) */ {
  public:
   PrivateKey();
   virtual ~PrivateKey();
@@ -837,17 +856,8 @@ class PrivateKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_
     return *this;
   }
 
+  static const ::google::protobuf::Descriptor* descriptor();
   static const PrivateKey& default_instance();
-
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  // Returns the internal default instance pointer. This function can
-  // return NULL thus should not be used by the user. This is intended
-  // for Protobuf internal code. Please use default_instance() declared
-  // above instead.
-  static inline const PrivateKey* internal_default_instance() {
-    return default_instance_;
-  }
-  #endif
 
   void Swap(PrivateKey* other);
 
@@ -856,7 +866,8 @@ class PrivateKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_
   inline PrivateKey* New() const { return New(NULL); }
 
   PrivateKey* New(::google::protobuf::Arena* arena) const;
-  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
   void CopyFrom(const PrivateKey& from);
   void MergeFrom(const PrivateKey& from);
   void Clear();
@@ -867,7 +878,11 @@ class PrivateKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  void DiscardUnknownFields();
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -876,14 +891,14 @@ class PrivateKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_
   void InternalSwap(PrivateKey* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _arena_ptr_;
+    return _internal_metadata_.arena();
   }
-  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
-    return _arena_ptr_;
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
   }
   public:
 
-  ::std::string GetTypeName() const;
+  ::google::protobuf::Metadata GetMetadata() const;
 
   // nested types ----------------------------------------------------
 
@@ -927,20 +942,14 @@ class PrivateKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_
   // @@protoc_insertion_point(class_scope:PrivateKey)
  private:
 
-  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
-  ::google::protobuf::Arena* _arena_ptr_;
-
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::SymmetriclyEncryptedMessage* key_;
   ::KeyId* key_id_;
   ::google::protobuf::internal::ArenaStringPtr id_;
   int encodingtype_;
   mutable int _cached_size_;
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  friend void  protobuf_AddDesc_message_2eproto_impl();
-  #else
   friend void  protobuf_AddDesc_message_2eproto();
-  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -949,7 +958,7 @@ class PrivateKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_
 };
 // -------------------------------------------------------------------
 
-class PublicKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:PublicKey) */ {
+class PublicKey : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PublicKey) */ {
  public:
   PublicKey();
   virtual ~PublicKey();
@@ -961,17 +970,8 @@ class PublicKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_p
     return *this;
   }
 
+  static const ::google::protobuf::Descriptor* descriptor();
   static const PublicKey& default_instance();
-
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  // Returns the internal default instance pointer. This function can
-  // return NULL thus should not be used by the user. This is intended
-  // for Protobuf internal code. Please use default_instance() declared
-  // above instead.
-  static inline const PublicKey* internal_default_instance() {
-    return default_instance_;
-  }
-  #endif
 
   void Swap(PublicKey* other);
 
@@ -980,7 +980,8 @@ class PublicKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_p
   inline PublicKey* New() const { return New(NULL); }
 
   PublicKey* New(::google::protobuf::Arena* arena) const;
-  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
   void CopyFrom(const PublicKey& from);
   void MergeFrom(const PublicKey& from);
   void Clear();
@@ -991,7 +992,11 @@ class PublicKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_p
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  void DiscardUnknownFields();
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -1000,14 +1005,14 @@ class PublicKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_p
   void InternalSwap(PublicKey* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _arena_ptr_;
+    return _internal_metadata_.arena();
   }
-  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
-    return _arena_ptr_;
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
   }
   public:
 
-  ::std::string GetTypeName() const;
+  ::google::protobuf::Metadata GetMetadata() const;
 
   // nested types ----------------------------------------------------
 
@@ -1053,20 +1058,14 @@ class PublicKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_p
   // @@protoc_insertion_point(class_scope:PublicKey)
  private:
 
-  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
-  ::google::protobuf::Arena* _arena_ptr_;
-
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr key_;
   ::KeyId* key_id_;
   ::google::protobuf::internal::ArenaStringPtr id_;
   int encodingtype_;
   mutable int _cached_size_;
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  friend void  protobuf_AddDesc_message_2eproto_impl();
-  #else
   friend void  protobuf_AddDesc_message_2eproto();
-  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -1075,7 +1074,7 @@ class PublicKey : public ::google::protobuf::MessageLite /* @@protoc_insertion_p
 };
 // -------------------------------------------------------------------
 
-class SymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:SymmetriclyEncryptedMessage) */ {
+class SymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:SymmetriclyEncryptedMessage) */ {
  public:
   SymmetriclyEncryptedMessage();
   virtual ~SymmetriclyEncryptedMessage();
@@ -1087,17 +1086,8 @@ class SymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @@
     return *this;
   }
 
+  static const ::google::protobuf::Descriptor* descriptor();
   static const SymmetriclyEncryptedMessage& default_instance();
-
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  // Returns the internal default instance pointer. This function can
-  // return NULL thus should not be used by the user. This is intended
-  // for Protobuf internal code. Please use default_instance() declared
-  // above instead.
-  static inline const SymmetriclyEncryptedMessage* internal_default_instance() {
-    return default_instance_;
-  }
-  #endif
 
   void Swap(SymmetriclyEncryptedMessage* other);
 
@@ -1106,7 +1096,8 @@ class SymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @@
   inline SymmetriclyEncryptedMessage* New() const { return New(NULL); }
 
   SymmetriclyEncryptedMessage* New(::google::protobuf::Arena* arena) const;
-  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
   void CopyFrom(const SymmetriclyEncryptedMessage& from);
   void MergeFrom(const SymmetriclyEncryptedMessage& from);
   void Clear();
@@ -1117,7 +1108,11 @@ class SymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @@
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  void DiscardUnknownFields();
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -1126,14 +1121,14 @@ class SymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @@
   void InternalSwap(SymmetriclyEncryptedMessage* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _arena_ptr_;
+    return _internal_metadata_.arena();
   }
-  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
-    return _arena_ptr_;
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
   }
   public:
 
-  ::std::string GetTypeName() const;
+  ::google::protobuf::Metadata GetMetadata() const;
 
   // nested types ----------------------------------------------------
 
@@ -1198,9 +1193,7 @@ class SymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @@
   // @@protoc_insertion_point(class_scope:SymmetriclyEncryptedMessage)
  private:
 
-  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
-  ::google::protobuf::Arena* _arena_ptr_;
-
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   int message_type_;
   int encryption_type_;
@@ -1209,11 +1202,7 @@ class SymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @@
   ::google::protobuf::internal::ArenaStringPtr salt_;
   ::google::protobuf::internal::ArenaStringPtr id_;
   mutable int _cached_size_;
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  friend void  protobuf_AddDesc_message_2eproto_impl();
-  #else
   friend void  protobuf_AddDesc_message_2eproto();
-  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -1222,7 +1211,7 @@ class SymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @@
 };
 // -------------------------------------------------------------------
 
-class AsymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:AsymmetriclyEncryptedMessage) */ {
+class AsymmetriclyEncryptedMessage : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:AsymmetriclyEncryptedMessage) */ {
  public:
   AsymmetriclyEncryptedMessage();
   virtual ~AsymmetriclyEncryptedMessage();
@@ -1234,17 +1223,8 @@ class AsymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @
     return *this;
   }
 
+  static const ::google::protobuf::Descriptor* descriptor();
   static const AsymmetriclyEncryptedMessage& default_instance();
-
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  // Returns the internal default instance pointer. This function can
-  // return NULL thus should not be used by the user. This is intended
-  // for Protobuf internal code. Please use default_instance() declared
-  // above instead.
-  static inline const AsymmetriclyEncryptedMessage* internal_default_instance() {
-    return default_instance_;
-  }
-  #endif
 
   void Swap(AsymmetriclyEncryptedMessage* other);
 
@@ -1253,7 +1233,8 @@ class AsymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @
   inline AsymmetriclyEncryptedMessage* New() const { return New(NULL); }
 
   AsymmetriclyEncryptedMessage* New(::google::protobuf::Arena* arena) const;
-  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
   void CopyFrom(const AsymmetriclyEncryptedMessage& from);
   void MergeFrom(const AsymmetriclyEncryptedMessage& from);
   void Clear();
@@ -1264,7 +1245,11 @@ class AsymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  void DiscardUnknownFields();
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -1273,14 +1258,14 @@ class AsymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @
   void InternalSwap(AsymmetriclyEncryptedMessage* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _arena_ptr_;
+    return _internal_metadata_.arena();
   }
-  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
-    return _arena_ptr_;
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
   }
   public:
 
-  ::std::string GetTypeName() const;
+  ::google::protobuf::Metadata GetMetadata() const;
 
   // nested types ----------------------------------------------------
 
@@ -1326,20 +1311,14 @@ class AsymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @
   // @@protoc_insertion_point(class_scope:AsymmetriclyEncryptedMessage)
  private:
 
-  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
-  ::google::protobuf::Arena* _arena_ptr_;
-
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::KeyId* dest_key_;
   ::google::protobuf::internal::ArenaStringPtr msg_;
   ::google::protobuf::internal::ArenaStringPtr id_;
   int message_type_;
   mutable int _cached_size_;
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  friend void  protobuf_AddDesc_message_2eproto_impl();
-  #else
   friend void  protobuf_AddDesc_message_2eproto();
-  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -1348,7 +1327,7 @@ class AsymmetriclyEncryptedMessage : public ::google::protobuf::MessageLite /* @
 };
 // -------------------------------------------------------------------
 
-class MessageReference : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:MessageReference) */ {
+class MessageReference : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MessageReference) */ {
  public:
   MessageReference();
   virtual ~MessageReference();
@@ -1360,17 +1339,8 @@ class MessageReference : public ::google::protobuf::MessageLite /* @@protoc_inse
     return *this;
   }
 
+  static const ::google::protobuf::Descriptor* descriptor();
   static const MessageReference& default_instance();
-
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  // Returns the internal default instance pointer. This function can
-  // return NULL thus should not be used by the user. This is intended
-  // for Protobuf internal code. Please use default_instance() declared
-  // above instead.
-  static inline const MessageReference* internal_default_instance() {
-    return default_instance_;
-  }
-  #endif
 
   void Swap(MessageReference* other);
 
@@ -1379,7 +1349,8 @@ class MessageReference : public ::google::protobuf::MessageLite /* @@protoc_inse
   inline MessageReference* New() const { return New(NULL); }
 
   MessageReference* New(::google::protobuf::Arena* arena) const;
-  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
   void CopyFrom(const MessageReference& from);
   void MergeFrom(const MessageReference& from);
   void Clear();
@@ -1390,7 +1361,11 @@ class MessageReference : public ::google::protobuf::MessageLite /* @@protoc_inse
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  void DiscardUnknownFields();
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -1399,22 +1374,28 @@ class MessageReference : public ::google::protobuf::MessageLite /* @@protoc_inse
   void InternalSwap(MessageReference* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _arena_ptr_;
+    return _internal_metadata_.arena();
   }
-  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
-    return _arena_ptr_;
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
   }
   public:
 
-  ::std::string GetTypeName() const;
+  ::google::protobuf::Metadata GetMetadata() const;
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // optional bytes id = 1;
+  // optional .MessageType type = 1;
+  void clear_type();
+  static const int kTypeFieldNumber = 1;
+  ::MessageType type() const;
+  void set_type(::MessageType value);
+
+  // optional bytes id = 2;
   void clear_id();
-  static const int kIdFieldNumber = 1;
+  static const int kIdFieldNumber = 2;
   const ::std::string& id() const;
   void set_id(const ::std::string& value);
   void set_id(const char* value);
@@ -1426,17 +1407,12 @@ class MessageReference : public ::google::protobuf::MessageLite /* @@protoc_inse
   // @@protoc_insertion_point(class_scope:MessageReference)
  private:
 
-  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
-  ::google::protobuf::Arena* _arena_ptr_;
-
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr id_;
+  int type_;
   mutable int _cached_size_;
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  friend void  protobuf_AddDesc_message_2eproto_impl();
-  #else
   friend void  protobuf_AddDesc_message_2eproto();
-  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -1445,7 +1421,7 @@ class MessageReference : public ::google::protobuf::MessageLite /* @@protoc_inse
 };
 // -------------------------------------------------------------------
 
-class SignedMessage : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:SignedMessage) */ {
+class SignedMessage : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:SignedMessage) */ {
  public:
   SignedMessage();
   virtual ~SignedMessage();
@@ -1457,6 +1433,7 @@ class SignedMessage : public ::google::protobuf::MessageLite /* @@protoc_inserti
     return *this;
   }
 
+  static const ::google::protobuf::Descriptor* descriptor();
   static const SignedMessage& default_instance();
 
   enum MsgCase {
@@ -1470,16 +1447,6 @@ class SignedMessage : public ::google::protobuf::MessageLite /* @@protoc_inserti
     MSG_NOT_SET = 0,
   };
 
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  // Returns the internal default instance pointer. This function can
-  // return NULL thus should not be used by the user. This is intended
-  // for Protobuf internal code. Please use default_instance() declared
-  // above instead.
-  static inline const SignedMessage* internal_default_instance() {
-    return default_instance_;
-  }
-  #endif
-
   void Swap(SignedMessage* other);
 
   // implements Message ----------------------------------------------
@@ -1487,7 +1454,8 @@ class SignedMessage : public ::google::protobuf::MessageLite /* @@protoc_inserti
   inline SignedMessage* New() const { return New(NULL); }
 
   SignedMessage* New(::google::protobuf::Arena* arena) const;
-  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
   void CopyFrom(const SignedMessage& from);
   void MergeFrom(const SignedMessage& from);
   void Clear();
@@ -1498,7 +1466,11 @@ class SignedMessage : public ::google::protobuf::MessageLite /* @@protoc_inserti
       ::google::protobuf::io::CodedInputStream* input);
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const;
-  void DiscardUnknownFields();
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
   int GetCachedSize() const { return _cached_size_; }
   private:
   void SharedCtor();
@@ -1507,14 +1479,14 @@ class SignedMessage : public ::google::protobuf::MessageLite /* @@protoc_inserti
   void InternalSwap(SignedMessage* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _arena_ptr_;
+    return _internal_metadata_.arena();
   }
-  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
-    return _arena_ptr_;
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
   }
   public:
 
-  ::std::string GetTypeName() const;
+  ::google::protobuf::Metadata GetMetadata() const;
 
   // nested types ----------------------------------------------------
 
@@ -1624,9 +1596,7 @@ class SignedMessage : public ::google::protobuf::MessageLite /* @@protoc_inserti
   void clear_msg();
   inline void clear_has_msg();
 
-  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
-  ::google::protobuf::Arena* _arena_ptr_;
-
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::Signature* message_signature_;
   ::google::protobuf::uint64 timestamp_;
@@ -1644,11 +1614,7 @@ class SignedMessage : public ::google::protobuf::MessageLite /* @@protoc_inserti
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
 
-  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  friend void  protobuf_AddDesc_message_2eproto_impl();
-  #else
   friend void  protobuf_AddDesc_message_2eproto();
-  #endif
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
@@ -1953,11 +1919,7 @@ inline void Post::clear_image() {
 }
 inline const ::Image& Post::image() const {
   // @@protoc_insertion_point(field_get:Post.image)
-#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  return image_ != NULL ? *image_ : *default_instance().image_;
-#else
   return image_ != NULL ? *image_ : *default_instance_->image_;
-#endif
 }
 inline ::Image* Post::mutable_image() {
   
@@ -2041,6 +2003,20 @@ inline void Post::set_allocated_rsvp_email(::std::string* rsvp_email) {
   }
   rsvp_email_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), rsvp_email);
   // @@protoc_insertion_point(field_set_allocated:Post.rsvp_email)
+}
+
+// optional fixed64 timestamp = 11;
+inline void Post::clear_timestamp() {
+  timestamp_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 Post::timestamp() const {
+  // @@protoc_insertion_point(field_get:Post.timestamp)
+  return timestamp_;
+}
+inline void Post::set_timestamp(::google::protobuf::uint64 value) {
+  
+  timestamp_ = value;
+  // @@protoc_insertion_point(field_set:Post.timestamp)
 }
 
 // -------------------------------------------------------------------
@@ -2159,11 +2135,7 @@ inline void Signature::clear_key_id() {
 }
 inline const ::KeyId& Signature::key_id() const {
   // @@protoc_insertion_point(field_get:Signature.key_id)
-#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  return key_id_ != NULL ? *key_id_ : *default_instance().key_id_;
-#else
   return key_id_ != NULL ? *key_id_ : *default_instance_->key_id_;
-#endif
 }
 inline ::KeyId* Signature::mutable_key_id() {
   
@@ -2605,11 +2577,7 @@ inline void KeyId::clear_dn() {
 }
 inline const ::DistinguishedName& KeyId::dn() const {
   // @@protoc_insertion_point(field_get:KeyId.dn)
-#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  return dn_ != NULL ? *dn_ : *default_instance().dn_;
-#else
   return dn_ != NULL ? *dn_ : *default_instance_->dn_;
-#endif
 }
 inline ::DistinguishedName* KeyId::mutable_dn() {
   
@@ -2665,11 +2633,7 @@ inline void PrivateKey::clear_key() {
 }
 inline const ::SymmetriclyEncryptedMessage& PrivateKey::key() const {
   // @@protoc_insertion_point(field_get:PrivateKey.key)
-#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  return key_ != NULL ? *key_ : *default_instance().key_;
-#else
   return key_ != NULL ? *key_ : *default_instance_->key_;
-#endif
 }
 inline ::SymmetriclyEncryptedMessage* PrivateKey::mutable_key() {
   
@@ -2721,11 +2685,7 @@ inline void PrivateKey::clear_key_id() {
 }
 inline const ::KeyId& PrivateKey::key_id() const {
   // @@protoc_insertion_point(field_get:PrivateKey.key_id)
-#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  return key_id_ != NULL ? *key_id_ : *default_instance().key_id_;
-#else
   return key_id_ != NULL ? *key_id_ : *default_instance_->key_id_;
-#endif
 }
 inline ::KeyId* PrivateKey::mutable_key_id() {
   
@@ -2869,11 +2829,7 @@ inline void PublicKey::clear_key_id() {
 }
 inline const ::KeyId& PublicKey::key_id() const {
   // @@protoc_insertion_point(field_get:PublicKey.key_id)
-#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  return key_id_ != NULL ? *key_id_ : *default_instance().key_id_;
-#else
   return key_id_ != NULL ? *key_id_ : *default_instance_->key_id_;
-#endif
 }
 inline ::KeyId* PublicKey::mutable_key_id() {
   
@@ -3181,11 +3137,7 @@ inline void AsymmetriclyEncryptedMessage::clear_dest_key() {
 }
 inline const ::KeyId& AsymmetriclyEncryptedMessage::dest_key() const {
   // @@protoc_insertion_point(field_get:AsymmetriclyEncryptedMessage.dest_key)
-#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  return dest_key_ != NULL ? *dest_key_ : *default_instance().dest_key_;
-#else
   return dest_key_ != NULL ? *dest_key_ : *default_instance_->dest_key_;
-#endif
 }
 inline ::KeyId* AsymmetriclyEncryptedMessage::mutable_dest_key() {
   
@@ -3305,7 +3257,21 @@ inline void AsymmetriclyEncryptedMessage::set_allocated_id(::std::string* id) {
 
 // MessageReference
 
-// optional bytes id = 1;
+// optional .MessageType type = 1;
+inline void MessageReference::clear_type() {
+  type_ = 0;
+}
+inline ::MessageType MessageReference::type() const {
+  // @@protoc_insertion_point(field_get:MessageReference.type)
+  return static_cast< ::MessageType >(type_);
+}
+inline void MessageReference::set_type(::MessageType value) {
+  
+  type_ = value;
+  // @@protoc_insertion_point(field_set:MessageReference.type)
+}
+
+// optional bytes id = 2;
 inline void MessageReference::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3699,11 +3665,7 @@ inline void SignedMessage::clear_message_signature() {
 }
 inline const ::Signature& SignedMessage::message_signature() const {
   // @@protoc_insertion_point(field_get:SignedMessage.message_signature)
-#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  return message_signature_ != NULL ? *message_signature_ : *default_instance().message_signature_;
-#else
   return message_signature_ != NULL ? *message_signature_ : *default_instance_->message_signature_;
-#endif
 }
 inline ::Signature* SignedMessage::mutable_message_signature() {
   
@@ -3827,11 +3789,35 @@ namespace google {
 namespace protobuf {
 
 template <> struct is_proto_enum< ::SignatureType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::SignatureType>() {
+  return ::SignatureType_descriptor();
+}
 template <> struct is_proto_enum< ::AsymmetricKeyType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::AsymmetricKeyType>() {
+  return ::AsymmetricKeyType_descriptor();
+}
 template <> struct is_proto_enum< ::SymmetricKeyType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::SymmetricKeyType>() {
+  return ::SymmetricKeyType_descriptor();
+}
 template <> struct is_proto_enum< ::KeyEncodingType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::KeyEncodingType>() {
+  return ::KeyEncodingType_descriptor();
+}
 template <> struct is_proto_enum< ::ImageType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::ImageType>() {
+  return ::ImageType_descriptor();
+}
 template <> struct is_proto_enum< ::MessageType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::MessageType>() {
+  return ::MessageType_descriptor();
+}
 
 }  // namespace protobuf
 }  // namespace google
