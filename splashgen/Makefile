@@ -2,7 +2,10 @@ CXX = clang
 CXXFLAG = -std=c++14 -Wall -Wextra -Wpedantic -Wsign-conversion \
 	  -Wold-style-cast -Wsign-promo -Wsign-promo -Wswitch-enum \
 	  -Weffc++ -Wshadow -Wno-missing-braces -g \
-	  -I /usr/local/include -lstdc++ -L /usr/local/lib \
+	  -I /usr/local/include -lstdc++ \
+	  -I /usr/local/Cellar/cryptopp/5.6.5/include \
+	  -L /usr/local/Cellar/cryptopp/5.6.5/lib -lcryptopp \
+	  -L /usr/local/lib \
 	  -L /usr/local/Cellar/boost/1.62.0/lib \
 	  -lprotobuf
 
