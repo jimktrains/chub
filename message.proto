@@ -28,8 +28,8 @@ message Image {
 }
 
 message Post {
-   bytes id = 1;
-   string title = 2;
+  bytes id = 1;
+  string title = 2;
   string description = 3;
   string location = 4;
   fixed64 start_time = 5;
@@ -38,6 +38,7 @@ message Post {
   Image image = 8;
   fixed64 rsvp_by = 9;
   string rsvp_email = 10;
+  fixed64 timestamp = 11;
 }
 
 message Signature {
@@ -121,7 +122,8 @@ message AsymmetriclyEncryptedMessage {
 //}
 
 message MessageReference {
-   bytes id = 1;
+   MessageType type = 1;
+   bytes id = 2;
 }
 
 message SignedMessage {
@@ -139,3 +141,4 @@ message SignedMessage {
   fixed64 timestamp = 9;
   bytes id = 11;
 }
+

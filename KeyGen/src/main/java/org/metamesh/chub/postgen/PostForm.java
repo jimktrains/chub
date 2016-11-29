@@ -10,10 +10,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.UUID;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.metamesh.chub.crypto.ECC_Crypto;
 import org.metamesh.chub.crypto.keys.ChubPrivKey;
 import org.metamesh.chub.crypto.serialize.PBSerialize;
 import org.metamesh.chub.proto.Message;
@@ -134,28 +133,23 @@ public class PostForm extends javax.swing.JPanel {
 
     private void SignButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignButtonMouseClicked
 
-        try (FileInputStream priv_key_file = new FileInputStream(new File((String) ComboKeys.getSelectedItem()))) {
+        try (FileInputStream priv_key_file = new FileInputStream(StoredKeys.openKey((String) ComboKeys.getSelectedItem()))) {
             Message.PrivateKey pk = Message.PrivateKey.parseFrom(priv_key_file);
             ChubPrivKey cpk = PBSerialize.deserialize(pk, TextPassword.getPassword());
 
-            String id = UUID.randomUUID().toString();
             Message.Post post = Message.Post.newBuilder()
                     .setId(ByteString.copyFrom(UUIDHelper.randomUUID()))
                     .setTitle(TextTitle.getText())
                     .setDescription(TextDescription.getText())
+                    .setTimestamp(new Date().getTime())
                     .build();
-            Message.Signature sig = ECC_Crypto.sign(post, cpk);
+            Message.SignedMessage sm = PBSerialize.sign(post, cpk);
 
-            Message.SignedMessage sm = Message.SignedMessage.newBuilder()
-                    .setPost(post)
-                    .setMessageSignature(sig)
-                    .build();
-
-            String postFilePath = Settings.base_dir + File.separator + id + ".post.pb";
+            String postFilePath = Settings.base_dir + File.separator + UUIDHelper.bytes2UUID(sm.getId().toByteArray()) + ".post.pb";
             try (FileOutputStream out = new FileOutputStream(postFilePath)) {
                 byte a[] = sm.toByteArray();
                 out.write(a);
-                Alert.warning("Written to: " + postFilePath);
+                Alert.info("Written to: " + postFilePath);
             } catch (IOException ex) {
                 Logger.getLogger(PostForm.class.getName()).log(Level.SEVERE, null, ex);
                 Alert.warning(ex.getMessage());

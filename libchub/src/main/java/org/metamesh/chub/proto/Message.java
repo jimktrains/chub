@@ -1243,6 +1243,11 @@ public final class Message {
      */
     com.google.protobuf.ByteString
         getRsvpEmailBytes();
+
+    /**
+     * <code>optional fixed64 timestamp = 11;</code>
+     */
+    long getTimestamp();
   }
   /**
    * Protobuf type {@code Post}
@@ -1265,6 +1270,7 @@ public final class Message {
       endTime_ = 0L;
       rsvpBy_ = 0L;
       rsvpEmail_ = "";
+      timestamp_ = 0L;
     }
 
     @java.lang.Override
@@ -1352,6 +1358,11 @@ public final class Message {
               java.lang.String s = input.readStringRequireUtf8();
 
               rsvpEmail_ = s;
+              break;
+            }
+            case 89: {
+
+              timestamp_ = input.readFixed64();
               break;
             }
           }
@@ -1579,6 +1590,15 @@ public final class Message {
       }
     }
 
+    public static final int TIMESTAMP_FIELD_NUMBER = 11;
+    private long timestamp_;
+    /**
+     * <code>optional fixed64 timestamp = 11;</code>
+     */
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1620,6 +1640,9 @@ public final class Message {
       }
       if (!getRsvpEmailBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 10, rsvpEmail_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeFixed64(11, timestamp_);
       }
     }
 
@@ -1664,6 +1687,10 @@ public final class Message {
       if (!getRsvpEmailBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, rsvpEmail_);
       }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFixed64Size(11, timestamp_);
+      }
       memoizedSize = size;
       return size;
     }
@@ -1703,6 +1730,8 @@ public final class Message {
           == other.getRsvpBy());
       result = result && getRsvpEmail()
           .equals(other.getRsvpEmail());
+      result = result && (getTimestamp()
+          == other.getTimestamp());
       return result;
     }
 
@@ -1739,6 +1768,9 @@ public final class Message {
           getRsvpBy());
       hash = (37 * hash) + RSVP_EMAIL_FIELD_NUMBER;
       hash = (53 * hash) + getRsvpEmail().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1881,6 +1913,8 @@ public final class Message {
 
         rsvpEmail_ = "";
 
+        timestamp_ = 0L;
+
         return this;
       }
 
@@ -1917,6 +1951,7 @@ public final class Message {
         }
         result.rsvpBy_ = rsvpBy_;
         result.rsvpEmail_ = rsvpEmail_;
+        result.timestamp_ = timestamp_;
         onBuilt();
         return result;
       }
@@ -1991,6 +2026,9 @@ public final class Message {
         if (!other.getRsvpEmail().isEmpty()) {
           rsvpEmail_ = other.rsvpEmail_;
           onChanged();
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
         }
         onChanged();
         return this;
@@ -2540,6 +2578,32 @@ public final class Message {
   checkByteStringIsUtf8(value);
         
         rsvpEmail_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>optional fixed64 timestamp = 11;</code>
+       */
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>optional fixed64 timestamp = 11;</code>
+       */
+      public Builder setTimestamp(long value) {
+        
+        timestamp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional fixed64 timestamp = 11;</code>
+       */
+      public Builder clearTimestamp() {
+        
+        timestamp_ = 0L;
         onChanged();
         return this;
       }
@@ -9056,7 +9120,16 @@ public final class Message {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional bytes id = 1;</code>
+     * <code>optional .MessageType type = 1;</code>
+     */
+    int getTypeValue();
+    /**
+     * <code>optional .MessageType type = 1;</code>
+     */
+    org.metamesh.chub.proto.Message.MessageType getType();
+
+    /**
+     * <code>optional bytes id = 2;</code>
      */
     com.google.protobuf.ByteString getId();
   }
@@ -9072,6 +9145,7 @@ public final class Message {
       super(builder);
     }
     private MessageReference() {
+      type_ = 0;
       id_ = com.google.protobuf.ByteString.EMPTY;
     }
 
@@ -9100,7 +9174,13 @@ public final class Message {
               }
               break;
             }
-            case 10: {
+            case 8: {
+              int rawValue = input.readEnum();
+
+              type_ = rawValue;
+              break;
+            }
+            case 18: {
 
               id_ = input.readBytes();
               break;
@@ -9128,10 +9208,26 @@ public final class Message {
               org.metamesh.chub.proto.Message.MessageReference.class, org.metamesh.chub.proto.Message.MessageReference.Builder.class);
     }
 
-    public static final int ID_FIELD_NUMBER = 1;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
+    /**
+     * <code>optional .MessageType type = 1;</code>
+     */
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>optional .MessageType type = 1;</code>
+     */
+    public org.metamesh.chub.proto.Message.MessageType getType() {
+      org.metamesh.chub.proto.Message.MessageType result = org.metamesh.chub.proto.Message.MessageType.valueOf(type_);
+      return result == null ? org.metamesh.chub.proto.Message.MessageType.UNRECOGNIZED : result;
+    }
+
+    public static final int ID_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString id_;
     /**
-     * <code>optional bytes id = 1;</code>
+     * <code>optional bytes id = 2;</code>
      */
     public com.google.protobuf.ByteString getId() {
       return id_;
@@ -9149,8 +9245,11 @@ public final class Message {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (type_ != org.metamesh.chub.proto.Message.MessageType.MessagePost.getNumber()) {
+        output.writeEnum(1, type_);
+      }
       if (!id_.isEmpty()) {
-        output.writeBytes(1, id_);
+        output.writeBytes(2, id_);
       }
     }
 
@@ -9159,9 +9258,13 @@ public final class Message {
       if (size != -1) return size;
 
       size = 0;
+      if (type_ != org.metamesh.chub.proto.Message.MessageType.MessagePost.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, type_);
+      }
       if (!id_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, id_);
+          .computeBytesSize(2, id_);
       }
       memoizedSize = size;
       return size;
@@ -9179,6 +9282,7 @@ public final class Message {
       org.metamesh.chub.proto.Message.MessageReference other = (org.metamesh.chub.proto.Message.MessageReference) obj;
 
       boolean result = true;
+      result = result && type_ == other.type_;
       result = result && getId()
           .equals(other.getId());
       return result;
@@ -9191,6 +9295,8 @@ public final class Message {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + type_;
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -9311,6 +9417,8 @@ public final class Message {
       }
       public Builder clear() {
         super.clear();
+        type_ = 0;
+
         id_ = com.google.protobuf.ByteString.EMPTY;
 
         return this;
@@ -9335,6 +9443,7 @@ public final class Message {
 
       public org.metamesh.chub.proto.Message.MessageReference buildPartial() {
         org.metamesh.chub.proto.Message.MessageReference result = new org.metamesh.chub.proto.Message.MessageReference(this);
+        result.type_ = type_;
         result.id_ = id_;
         onBuilt();
         return result;
@@ -9377,6 +9486,9 @@ public final class Message {
 
       public Builder mergeFrom(org.metamesh.chub.proto.Message.MessageReference other) {
         if (other == org.metamesh.chub.proto.Message.MessageReference.getDefaultInstance()) return this;
+        if (other.type_ != 0) {
+          setTypeValue(other.getTypeValue());
+        }
         if (other.getId() != com.google.protobuf.ByteString.EMPTY) {
           setId(other.getId());
         }
@@ -9406,15 +9518,59 @@ public final class Message {
         return this;
       }
 
+      private int type_ = 0;
+      /**
+       * <code>optional .MessageType type = 1;</code>
+       */
+      public int getTypeValue() {
+        return type_;
+      }
+      /**
+       * <code>optional .MessageType type = 1;</code>
+       */
+      public Builder setTypeValue(int value) {
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .MessageType type = 1;</code>
+       */
+      public org.metamesh.chub.proto.Message.MessageType getType() {
+        org.metamesh.chub.proto.Message.MessageType result = org.metamesh.chub.proto.Message.MessageType.valueOf(type_);
+        return result == null ? org.metamesh.chub.proto.Message.MessageType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>optional .MessageType type = 1;</code>
+       */
+      public Builder setType(org.metamesh.chub.proto.Message.MessageType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .MessageType type = 1;</code>
+       */
+      public Builder clearType() {
+        
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.ByteString id_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes id = 1;</code>
+       * <code>optional bytes id = 2;</code>
        */
       public com.google.protobuf.ByteString getId() {
         return id_;
       }
       /**
-       * <code>optional bytes id = 1;</code>
+       * <code>optional bytes id = 2;</code>
        */
       public Builder setId(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -9426,7 +9582,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bytes id = 1;</code>
+       * <code>optional bytes id = 2;</code>
        */
       public Builder clearId() {
         
@@ -11763,59 +11919,61 @@ public final class Message {
   static {
     java.lang.String[] descriptorData = {
       "\n\rmessage.proto\"5\n\005Image\022\r\n\005image\030\001 \001(\014\022" +
-      "\035\n\timageType\030\002 \001(\0162\n.ImageType\"\273\001\n\004Post\022" +
+      "\035\n\timageType\030\002 \001(\0162\n.ImageType\"\316\001\n\004Post\022" +
       "\n\n\002id\030\001 \001(\014\022\r\n\005title\030\002 \001(\t\022\023\n\013descriptio" +
       "n\030\003 \001(\t\022\020\n\010location\030\004 \001(\t\022\022\n\nstart_time\030" +
       "\005 \001(\006\022\017\n\007all_day\030\006 \001(\010\022\020\n\010end_time\030\007 \001(\006" +
       "\022\025\n\005image\030\010 \001(\0132\006.Image\022\017\n\007rsvp_by\030\t \001(\006" +
-      "\022\022\n\nrsvp_email\030\n \001(\t\"j\n\tSignature\022\021\n\tsig" +
-      "nature\030\002 \001(\014\022&\n\016signature_type\030\003 \001(\0162\016.S" +
-      "ignatureType\022\n\n\002id\030\005 \001(\014\022\026\n\006key_id\030\006 \001(\013" +
-      "2\006.KeyId\"\307\001\n\021DistinguishedName\022\017\n\007countr",
-      "y\030\001 \001(\t\022\024\n\014organization\030\002 \001(\t\022\033\n\023organiz" +
-      "ational_unit\030\003 \001(\t\022$\n\034distinguished_name" +
-      "_qualifier\030\004 \001(\t\022\r\n\005state\030\005 \001(\t\022\023\n\013commo" +
-      "n_name\030\006 \001(\t\022\025\n\rserial_number\030\007 \001(\t\022\r\n\005e" +
-      "mail\030\010 \001(\t\"e\n\005KeyId\022\032\n\022fingerprint_sha51" +
-      "2\030\001 \001(\014\022\036\n\002dn\030\002 \001(\0132\022.DistinguishedName\022" +
-      " \n\004type\030\003 \001(\0162\022.AsymmetricKeyType\"\203\001\n\nPr" +
-      "ivateKey\022)\n\003key\030\002 \001(\0132\034.SymmetriclyEncry" +
-      "ptedMessage\022&\n\014encodingType\030\005 \001(\0162\020.KeyE" +
-      "ncodingType\022\026\n\006key_id\030\006 \001(\0132\006.KeyId\022\n\n\002i",
-      "d\030\007 \001(\014\"d\n\tPublicKey\022\013\n\003key\030\002 \001(\014\022&\n\014enc" +
-      "odingType\030\004 \001(\0162\020.KeyEncodingType\022\026\n\006key" +
-      "_id\030\005 \001(\0132\006.KeyId\022\n\n\002id\030\006 \001(\014\"\240\001\n\033Symmet" +
-      "riclyEncryptedMessage\022\"\n\014message_type\030\001 " +
-      "\001(\0162\014.MessageType\022*\n\017encryption_type\030\002 \001" +
-      "(\0162\021.SymmetricKeyType\022\013\n\003msg\030\003 \001(\014\022\n\n\002iv" +
-      "\030\004 \001(\014\022\014\n\004salt\030\005 \001(\014\022\n\n\002id\030\006 \001(\014\"u\n\034Asym" +
-      "metriclyEncryptedMessage\022\"\n\014message_type" +
-      "\030\001 \001(\0162\014.MessageType\022\030\n\010dest_key\030\002 \001(\0132\006" +
-      ".KeyId\022\013\n\003msg\030\004 \001(\014\022\n\n\002id\030\005 \001(\014\"\036\n\020Messa",
-      "geReference\022\n\n\002id\030\001 \001(\014\"\220\003\n\rSignedMessag" +
-      "e\022\025\n\004post\030\001 \001(\0132\005.PostH\000\022#\n\rsignedMessag" +
-      "e\030\002 \001(\0132\n.SignatureH\000\022!\n\nprivateKey\030\003 \001(" +
-      "\0132\013.PrivateKeyH\000\022\037\n\tpublicKey\030\004 \001(\0132\n.Pu" +
-      "blicKeyH\000\022C\n\033symmetriclyEncryptedMessage" +
-      "\030\005 \001(\0132\034.SymmetriclyEncryptedMessageH\000\022E" +
-      "\n\034asymmetriclyEncryptedMessage\030\006 \001(\0132\035.A" +
-      "symmetriclyEncryptedMessageH\000\022&\n\treferen" +
-      "ce\030\n \001(\0132\021.MessageReferenceH\000\022%\n\021message" +
-      "_signature\030\010 \001(\0132\n.Signature\022\021\n\ttimestam",
-      "p\030\t \001(\006\022\n\n\002id\030\013 \001(\014B\005\n\003msg*$\n\rSignatureT" +
-      "ype\022\023\n\017SHA512withECDSA\020\000*1\n\021AsymmetricKe" +
-      "yType\022\r\n\tsecp384r1\020\000\022\r\n\tsecp521r1\020\001*B\n\020S" +
-      "ymmetricKeyType\022.\n*AES_256_GCM_PBKDF2Wit" +
-      "hHmacSHA256_65536_128\020\000*&\n\017KeyEncodingTy" +
-      "pe\022\t\n\005pkcs8\020\000\022\010\n\004x509\020\001*\025\n\tImageType\022\010\n\004" +
-      "jpeg\020\000*\212\002\n\013MessageType\022\017\n\013MessagePost\020\000\022" +
-      "\024\n\020MessageSignature\020\001\022\025\n\021MessagePrivateK" +
-      "ey\020\002\022\024\n\020MessagePublicKey\020\003\022&\n\"MessageSym" +
-      "metriclyEncryptedMessage\020\004\022\'\n#MessageAsy",
-      "mmetriclyEncryptedMessage\020\005\022!\n\035MessageHy" +
-      "bridEncryptedMessage\020\006\022\033\n\027MessageReferen" +
-      "ceMessage\020\007\022\026\n\022MessageSymetricKey\020dB\"\n\027o" +
-      "rg.metamesh.chub.protoB\007Messageb\006proto3"
+      "\022\022\n\nrsvp_email\030\n \001(\t\022\021\n\ttimestamp\030\013 \001(\006\"" +
+      "j\n\tSignature\022\021\n\tsignature\030\002 \001(\014\022&\n\016signa" +
+      "ture_type\030\003 \001(\0162\016.SignatureType\022\n\n\002id\030\005 " +
+      "\001(\014\022\026\n\006key_id\030\006 \001(\0132\006.KeyId\"\307\001\n\021Distingu",
+      "ishedName\022\017\n\007country\030\001 \001(\t\022\024\n\014organizati" +
+      "on\030\002 \001(\t\022\033\n\023organizational_unit\030\003 \001(\t\022$\n" +
+      "\034distinguished_name_qualifier\030\004 \001(\t\022\r\n\005s" +
+      "tate\030\005 \001(\t\022\023\n\013common_name\030\006 \001(\t\022\025\n\rseria" +
+      "l_number\030\007 \001(\t\022\r\n\005email\030\010 \001(\t\"e\n\005KeyId\022\032" +
+      "\n\022fingerprint_sha512\030\001 \001(\014\022\036\n\002dn\030\002 \001(\0132\022" +
+      ".DistinguishedName\022 \n\004type\030\003 \001(\0162\022.Asymm" +
+      "etricKeyType\"\203\001\n\nPrivateKey\022)\n\003key\030\002 \001(\013" +
+      "2\034.SymmetriclyEncryptedMessage\022&\n\014encodi" +
+      "ngType\030\005 \001(\0162\020.KeyEncodingType\022\026\n\006key_id",
+      "\030\006 \001(\0132\006.KeyId\022\n\n\002id\030\007 \001(\014\"d\n\tPublicKey\022" +
+      "\013\n\003key\030\002 \001(\014\022&\n\014encodingType\030\004 \001(\0162\020.Key" +
+      "EncodingType\022\026\n\006key_id\030\005 \001(\0132\006.KeyId\022\n\n\002" +
+      "id\030\006 \001(\014\"\240\001\n\033SymmetriclyEncryptedMessage" +
+      "\022\"\n\014message_type\030\001 \001(\0162\014.MessageType\022*\n\017" +
+      "encryption_type\030\002 \001(\0162\021.SymmetricKeyType" +
+      "\022\013\n\003msg\030\003 \001(\014\022\n\n\002iv\030\004 \001(\014\022\014\n\004salt\030\005 \001(\014\022" +
+      "\n\n\002id\030\006 \001(\014\"u\n\034AsymmetriclyEncryptedMess" +
+      "age\022\"\n\014message_type\030\001 \001(\0162\014.MessageType\022" +
+      "\030\n\010dest_key\030\002 \001(\0132\006.KeyId\022\013\n\003msg\030\004 \001(\014\022\n",
+      "\n\002id\030\005 \001(\014\":\n\020MessageReference\022\032\n\004type\030\001" +
+      " \001(\0162\014.MessageType\022\n\n\002id\030\002 \001(\014\"\220\003\n\rSigne" +
+      "dMessage\022\025\n\004post\030\001 \001(\0132\005.PostH\000\022#\n\rsigne" +
+      "dMessage\030\002 \001(\0132\n.SignatureH\000\022!\n\nprivateK" +
+      "ey\030\003 \001(\0132\013.PrivateKeyH\000\022\037\n\tpublicKey\030\004 \001" +
+      "(\0132\n.PublicKeyH\000\022C\n\033symmetriclyEncrypted" +
+      "Message\030\005 \001(\0132\034.SymmetriclyEncryptedMess" +
+      "ageH\000\022E\n\034asymmetriclyEncryptedMessage\030\006 " +
+      "\001(\0132\035.AsymmetriclyEncryptedMessageH\000\022&\n\t" +
+      "reference\030\n \001(\0132\021.MessageReferenceH\000\022%\n\021",
+      "message_signature\030\010 \001(\0132\n.Signature\022\021\n\tt" +
+      "imestamp\030\t \001(\006\022\n\n\002id\030\013 \001(\014B\005\n\003msg*$\n\rSig" +
+      "natureType\022\023\n\017SHA512withECDSA\020\000*1\n\021Asymm" +
+      "etricKeyType\022\r\n\tsecp384r1\020\000\022\r\n\tsecp521r1" +
+      "\020\001*B\n\020SymmetricKeyType\022.\n*AES_256_GCM_PB" +
+      "KDF2WithHmacSHA256_65536_128\020\000*&\n\017KeyEnc" +
+      "odingType\022\t\n\005pkcs8\020\000\022\010\n\004x509\020\001*\025\n\tImageT" +
+      "ype\022\010\n\004jpeg\020\000*\212\002\n\013MessageType\022\017\n\013Message" +
+      "Post\020\000\022\024\n\020MessageSignature\020\001\022\025\n\021MessageP" +
+      "rivateKey\020\002\022\024\n\020MessagePublicKey\020\003\022&\n\"Mes",
+      "sageSymmetriclyEncryptedMessage\020\004\022\'\n#Mes" +
+      "sageAsymmetriclyEncryptedMessage\020\005\022!\n\035Me" +
+      "ssageHybridEncryptedMessage\020\006\022\033\n\027Message" +
+      "ReferenceMessage\020\007\022\026\n\022MessageSymetricKey" +
+      "\020dB\"\n\027org.metamesh.chub.protoB\007Messageb\006" +
+      "proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -11840,7 +11998,7 @@ public final class Message {
     internal_static_Post_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Post_descriptor,
-        new java.lang.String[] { "Id", "Title", "Description", "Location", "StartTime", "AllDay", "EndTime", "Image", "RsvpBy", "RsvpEmail", });
+        new java.lang.String[] { "Id", "Title", "Description", "Location", "StartTime", "AllDay", "EndTime", "Image", "RsvpBy", "RsvpEmail", "Timestamp", });
     internal_static_Signature_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_Signature_fieldAccessorTable = new
@@ -11888,7 +12046,7 @@ public final class Message {
     internal_static_MessageReference_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_MessageReference_descriptor,
-        new java.lang.String[] { "Id", });
+        new java.lang.String[] { "Type", "Id", });
     internal_static_SignedMessage_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_SignedMessage_fieldAccessorTable = new

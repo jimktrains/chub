@@ -9,12 +9,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.KeyPair;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static org.bouncycastle.asn1.x500.style.RFC4519Style.c;
 import org.metamesh.chub.crypto.ECC_Crypto;
 import org.metamesh.chub.crypto.keys.ChubPrivKey;
 import org.metamesh.chub.crypto.keys.ChubPubKey;
@@ -36,16 +35,20 @@ public class GenerateKeyForm extends javax.swing.JPanel {
         initComponents();
     }
 
-    private final List<Consumer<KeyGenEvent>> keyGenListerns = new CopyOnWriteArrayList();
+    private final List<Consumer<KeyGenEvent>> keyGenListeners = new ArrayList<>();
 
     public void addGeneratedListener(Consumer<KeyGenEvent> c) {
-        keyGenListerns.add(c);
+        System.out.println("addGeneratedListener" + c);
+        keyGenListeners.add(c);
     }
 
     private void triggerGenerated() {
         KeyGenEvent e = new KeyGenEvent();
-        keyGenListerns.stream()
+        System.out.println("triggerGenerated");
+        System.out.println("triggerGenerated "  + keyGenListeners.size());
+        keyGenListeners.stream()
                 .forEach((c) -> {
+                    System.out.println(c);
                     c.accept(e);
                 });
     }

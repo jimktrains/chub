@@ -9,14 +9,17 @@ public class PostGenerator {
     public static void main(String args[]) {
         if (StoredKeys.listKeys().isEmpty()) {
             GenerateKeyDialog diag = new GenerateKeyDialog();
-            diag.setModal(true);
-            diag.setVisible(true);
             
             diag.generateKeyForm.addGeneratedListener((c) -> {
                 System.out.println("GENERATED");
                 diag.dispatchEvent(new WindowEvent(diag, WindowEvent.WINDOW_CLOSING));
                 PostTabbedFrame.load();
             });
+            
+            diag.setModal(true);
+            diag.setVisible(true);
+            
+            
         } else {
             PostTabbedFrame.load();
         }

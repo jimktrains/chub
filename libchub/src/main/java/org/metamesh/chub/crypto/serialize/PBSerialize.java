@@ -13,7 +13,7 @@ import java.security.PublicKey;
 import java.security.spec.KeySpec;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.UUID;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.metamesh.chub.crypto.ECC_Crypto;
@@ -32,6 +32,7 @@ public class PBSerialize {
                 .setPost(msg)
                 .setMessageSignature(sig)
                 .setId(ByteString.copyFrom(UUIDHelper.randomUUID()))
+                .setTimestamp((new Date()).getTime() / 1000)
                 .build();
     }
 
