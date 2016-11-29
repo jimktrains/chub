@@ -13,27 +13,24 @@ import java.security.spec.InvalidKeySpecException;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import org.bouncycastle.util.Arrays;
 import org.junit.Test;
 import org.metamesh.chub.crypto.SymmetricCrypto;
 import org.metamesh.chub.proto.Message;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SymmetricCryptoTest {
+
     static final byte[] testMessage = "This is a test".getBytes(StandardCharsets.UTF_8);
     static final char[] password = "\\/\\/007!!!!".toCharArray();
 
     @Test
     public void testSymmetricCrypto() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidKeySpecException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
-        
-        Message.SymmetriclyEncryptedMessage enc_msg = SymmetricCrypto.encrypt(Message.EncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128, password, testMessage).build();
+
+        Message.SymmetriclyEncryptedMessage enc_msg = SymmetricCrypto.encrypt(Message.SymmetricKeyType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128, password, testMessage).build();
         byte[] dec_msg = SymmetricCrypto.decrypt(password, enc_msg);
-        
-        int bytes_same = 0;
-        assertEquals(testMessage.length, dec_msg.length);
-        
-        for(int i = 0; i < testMessage.length; i++) {
-            if (testMessage[i] == dec_msg[i]) bytes_same++;
-        }
-        assertEquals(dec_msg.length, bytes_same);
+
+        assertTrue(Arrays.areEqual(testMessage, dec_msg));
     }
+
 }

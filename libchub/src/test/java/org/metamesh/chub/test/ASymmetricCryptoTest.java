@@ -5,32 +5,37 @@
  */
 package org.metamesh.chub.test;
 
+import com.google.protobuf.ByteString;
 import java.security.KeyPair;
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.metamesh.chub.crypto.ECC_Crypto;
 import org.metamesh.chub.crypto.keys.ChubPrivKey;
 import org.metamesh.chub.crypto.keys.ChubPubKey;
-import org.metamesh.chub.crypto.serialize.PBSerialize;
 import org.metamesh.chub.proto.Message;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertTrue;
 
 public class ASymmetricCryptoTest {
 
     static final String testMessage = "This is a test";
     static final Message.Post post;
+    static final Message.DistinguishedName dn;
+
+    static final KeyPair kp = ECC_Crypto.genECKey();
+
     static {
         post = Message.Post.newBuilder()
                 .setTitle(testMessage)
                 .build();
+        dn = Message.DistinguishedName
+                        .newBuilder()
+                        .setCommonName(testMessage)
+                        .build();
     }
     static final char[] password = "\\/\\/007!!!!".toCharArray();
+    static final ChubPrivKey priv = new ChubPrivKey(dn, kp);
+    static final ChubPubKey pub = new ChubPubKey(dn, kp);
 
-    static final KeyPair kp = ECC_Crypto.genECKey();
-    
-    static final ChubPrivKey priv = new ChubPrivKey("testcn", kp.getPrivate());
-    static final ChubPubKey pub = new ChubPubKey("testcn", kp.getPublic(), priv.fingerprint());
-    
     @Test
     public void testSignVerify() {
         Message.Signature sig = ECC_Crypto.sign(post, priv);

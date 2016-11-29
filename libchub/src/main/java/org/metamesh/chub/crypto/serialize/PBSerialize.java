@@ -7,11 +7,13 @@ package org.metamesh.chub.crypto.serialize;
 
 import com.google.protobuf.ByteString;
 import java.security.GeneralSecurityException;
+import java.security.Key;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.KeySpec;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.metamesh.chub.crypto.ECC_Crypto;
@@ -19,6 +21,7 @@ import org.metamesh.chub.crypto.SymmetricCrypto;
 import org.metamesh.chub.crypto.keys.ChubPrivKey;
 import org.metamesh.chub.crypto.keys.ChubPubKey;
 import org.metamesh.chub.proto.Message;
+import org.metamesh.chub.util.UUIDHelper;
 
 public class PBSerialize {
 
@@ -28,32 +31,38 @@ public class PBSerialize {
         return Message.SignedMessage.newBuilder()
                 .setPost(msg)
                 .setMessageSignature(sig)
+                .setId(ByteString.copyFrom(UUIDHelper.randomUUID()))
                 .build();
     }
 
-    public static Message.SymmetriclyEncryptedMessage encrypt(Message.EncryptionType et, char password[], Message.Post post) {
+    public static Message.SymmetriclyEncryptedMessage encrypt(Message.SymmetricKeyType et, char password[], Message.Post post) {
         return SymmetricCrypto.encrypt(et, password, post.toByteArray())
                 .setMessageType(Message.MessageType.MessagePost)
+                .setId(ByteString.copyFrom(UUIDHelper.randomUUID()))
                 .build();
     }
 
-    public static Message.PrivateKey serialize(ChubPrivKey pk, Message.EncryptionType et, char password[]) {
+    public static Message.PrivateKey serialize(ChubPrivKey pk, Message.SymmetricKeyType et, char password[]) {
 
         Message.SymmetriclyEncryptedMessage priv_enc = SymmetricCrypto.encrypt(et, password, pk.key.getEncoded())
                 .setMessageType(Message.MessageType.MessagePrivateKey)
+                .setId(ByteString.copyFrom(UUIDHelper.randomUUID()))
                 .build();
 
-        Message.PrivateKey mpk = Message.PrivateKey.newBuilder()
-                .setCn(pk.cn)
-                .setEncryptionType(Message.EncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128)
+        Message.PrivateKey mpk = Message.PrivateKey
+                .newBuilder()
+                .setEncodingType(keyEncoding(pk.key))
+                .setId(ByteString.copyFrom(UUIDHelper.randomUUID()))
                 .setKey(priv_enc)
-                .setEncodingType(keyEncodingFromString(pk.key.getFormat()))
-                .setType(Message.ECCKeyType.secp384r1)
+                .setKeyId(pk.kid)
                 .build();
         return mpk;
+
     }
 
-    public static Message.KeyEncodingType keyEncodingFromString(String encoding) {
+    public static Message.KeyEncodingType keyEncoding(Key k) {
+        String encoding = k.getFormat();
+
         switch (encoding) {
             case "X.509":
                 return Message.KeyEncodingType.x509;
@@ -76,11 +85,13 @@ public class PBSerialize {
     }
 
     public static Message.PublicKey serialize(ChubPubKey pk) {
-        Message.PublicKey mpk = Message.PublicKey.newBuilder()
-                .setCn(pk.cn)
+        Message.PublicKey mpk = Message.PublicKey
+                .newBuilder()
+                .setEncodingType(keyEncoding(pk.key))
+                .setId(ByteString.copyFrom(UUIDHelper.randomUUID()))
                 .setKey(ByteString.copyFrom(pk.key.getEncoded()))
-                .setEncodingType(keyEncodingFromString(pk.key.getFormat()))
-                .setType(Message.ECCKeyType.secp384r1)
+                .setKeyId(pk.kid)
+                .setId(ByteString.copyFrom(UUIDHelper.randomUUID()))
                 .build();
         return mpk;
     }
@@ -90,7 +101,7 @@ public class PBSerialize {
             byte[] key = pk.getKey().toByteArray();
             KeySpec kspec = PBSerialize.getKeySpec(pk, key);
             PublicKey pubkey = ECC_Crypto.KEY_FACTORY.generatePublic(kspec);
-            return new ChubPubKey(pk.getCn(), pubkey, pk.getFingerprint().toByteArray());
+            return new ChubPubKey(pk.getKeyId(), pubkey);
 
         } catch (GeneralSecurityException ex) {
             Logger.getLogger(PBSerialize.class
@@ -104,11 +115,9 @@ public class PBSerialize {
             byte[] key = SymmetricCrypto.decrypt(password, pk.getKey());
             KeySpec kspec = getKeySpec(pk, key);
             PrivateKey priv_key = ECC_Crypto.KEY_FACTORY.generatePrivate(kspec);
-            return new ChubPrivKey(pk.getCn(), priv_key);
-
+            return new ChubPrivKey(pk.getKeyId(), priv_key);
         } catch (GeneralSecurityException ex) {
-            Logger.getLogger(PBSerialize.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PBSerialize.class.getName()).log(Level.SEVERE, null, ex);
             throw new RuntimeException(ex);
         }
     }

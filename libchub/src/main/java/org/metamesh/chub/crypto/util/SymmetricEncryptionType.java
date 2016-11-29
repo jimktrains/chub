@@ -82,7 +82,7 @@ public enum SymmetricEncryptionType {
         return salt;
     }
 
-    public static SymmetricEncryptionType from(Message.EncryptionType et) {
+    public static SymmetricEncryptionType from(Message.SymmetricKeyType et) {
         switch (et) {
             case AES_256_GCM_PBKDF2WithHmacSHA256_65536_128:
                 return SymmetricEncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128;
@@ -92,10 +92,10 @@ public enum SymmetricEncryptionType {
         }
     }
 
-    public Message.EncryptionType to() {
+    public Message.SymmetricKeyType to() {
         switch (this) {
             case AES_256_GCM_PBKDF2WithHmacSHA256_65536_128:
-                return Message.EncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128;
+                return Message.SymmetricKeyType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128;
             case None:
             default:
                 throw new AssertionError(this.name());

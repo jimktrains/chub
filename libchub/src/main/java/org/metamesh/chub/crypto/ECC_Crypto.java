@@ -34,7 +34,7 @@ public class ECC_Crypto {
     public static KeyPair genECKey() {
         try {
             SecureRandom random = SecureRandom.getInstanceStrong();
-            ECGenParameterSpec algoParms = new ECGenParameterSpec(Message.ECCKeyType.secp384r1.name());
+            ECGenParameterSpec algoParms = new ECGenParameterSpec(Message.AsymmetricKeyType.secp384r1.name());
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance("EC");
             keyGen.initialize(algoParms, random);
 
@@ -65,9 +65,6 @@ public class ECC_Crypto {
             case ASYMMETRICLYENCRYPTEDMESSAGE:
                 val = sm.getAsymmetriclyEncryptedMessage();
                 break;
-            case HYBRIDENCRYPTEDMESSAGE:
-                val = sm.getHybridEncryptedMessage();
-                break;
             case MSG_NOT_SET:
             default:
                 throw new AssertionError(sm.getMsgCase().name());
@@ -77,10 +74,6 @@ public class ECC_Crypto {
 
     private static boolean verify(GeneratedMessageV3 value, Message.Signature sig, ChubPubKey pub) {
         try {
-            if (!sig.getCn().equals(pub.cn)) {
-                return false;
-            }
-
             Signature dsa = Signature.getInstance(sig.getSignatureType().name());
 
             dsa.initVerify(pub.key);
@@ -108,7 +101,7 @@ public class ECC_Crypto {
             byte[] realSig = dsa.sign();
             Message.Signature sig = Message.Signature.newBuilder()
                     .setSignature(ByteString.copyFrom(realSig))
-                    .setCn(priv.cn)
+                    .setKeyId(priv.kid)
                     .setSignatureType(Message.SignatureType.SHA512withECDSA)
                     .build();
             return sig;

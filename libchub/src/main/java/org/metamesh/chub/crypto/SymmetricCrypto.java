@@ -18,7 +18,7 @@ import org.metamesh.chub.proto.Message;
 
 public class SymmetricCrypto {
     
-    public static Message.SymmetriclyEncryptedMessage.Builder encrypt(Message.EncryptionType et, char password[], byte src[]) {
+    public static Message.SymmetriclyEncryptedMessage.Builder encrypt(Message.SymmetricKeyType et, char password[], byte src[]) {
         
         try {
             SymmetricEncryptionType eType = SymmetricEncryptionType.from(et);
