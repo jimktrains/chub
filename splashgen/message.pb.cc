@@ -413,21 +413,22 @@ void protobuf_AddDesc_message_2eproto() {
     "\001(\0132\035.AsymmetriclyEncryptedMessageH\000\022&\n\t"
     "reference\030\n \001(\0132\021.MessageReferenceH\000\022%\n\021"
     "message_signature\030\010 \001(\0132\n.Signature\022\021\n\tt"
-    "imestamp\030\t \001(\006\022\n\n\002id\030\013 \001(\014B\005\n\003msg*$\n\rSig"
-    "natureType\022\023\n\017SHA512withECDSA\020\000*1\n\021Asymm"
-    "etricKeyType\022\r\n\tsecp384r1\020\000\022\r\n\tsecp521r1"
-    "\020\001*B\n\020SymmetricKeyType\022.\n*AES_256_GCM_PB"
-    "KDF2WithHmacSHA256_65536_128\020\000*&\n\017KeyEnc"
-    "odingType\022\t\n\005pkcs8\020\000\022\010\n\004x509\020\001*\025\n\tImageT"
-    "ype\022\010\n\004jpeg\020\000*\212\002\n\013MessageType\022\017\n\013Message"
-    "Post\020\000\022\024\n\020MessageSignature\020\001\022\025\n\021MessageP"
-    "rivateKey\020\002\022\024\n\020MessagePublicKey\020\003\022&\n\"Mes"
-    "sageSymmetriclyEncryptedMessage\020\004\022\'\n#Mes"
-    "sageAsymmetriclyEncryptedMessage\020\005\022!\n\035Me"
-    "ssageHybridEncryptedMessage\020\006\022\033\n\027Message"
-    "ReferenceMessage\020\007\022\026\n\022MessageSymetricKey"
-    "\020dB\"\n\027org.metamesh.chub.protoB\007Messageb\006"
-    "proto3", 2206);
+    "imestamp\030\t \001(\006\022\n\n\002id\030\013 \001(\014B\005\n\003msg*;\n\rSig"
+    "natureType\022\023\n\017SHA512withECDSA\020\000\022\025\n\021SHA51"
+    "2withEd25519\020\001*@\n\021AsymmetricKeyType\022\r\n\ts"
+    "ecp384r1\020\000\022\r\n\tsecp521r1\020\001\022\r\n\tEdDSA_256\020\002"
+    "*B\n\020SymmetricKeyType\022.\n*AES_256_GCM_PBKD"
+    "F2WithHmacSHA256_65536_128\020\000*&\n\017KeyEncod"
+    "ingType\022\t\n\005pkcs8\020\000\022\010\n\004x509\020\001*\025\n\tImageTyp"
+    "e\022\010\n\004jpeg\020\000*\212\002\n\013MessageType\022\017\n\013MessagePo"
+    "st\020\000\022\024\n\020MessageSignature\020\001\022\025\n\021MessagePri"
+    "vateKey\020\002\022\024\n\020MessagePublicKey\020\003\022&\n\"Messa"
+    "geSymmetriclyEncryptedMessage\020\004\022\'\n#Messa"
+    "geAsymmetriclyEncryptedMessage\020\005\022!\n\035Mess"
+    "ageHybridEncryptedMessage\020\006\022\033\n\027MessageRe"
+    "ferenceMessage\020\007\022\026\n\022MessageSymetricKey\020d"
+    "B\"\n\027org.metamesh.chub.protoB\007Messageb\006pr"
+    "oto3", 2244);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "message.proto", &protobuf_RegisterTypes);
   Image::default_instance_ = new Image();
@@ -469,6 +470,7 @@ const ::google::protobuf::EnumDescriptor* SignatureType_descriptor() {
 bool SignatureType_IsValid(int value) {
   switch(value) {
     case 0:
+    case 1:
       return true;
     default:
       return false;
@@ -483,6 +485,7 @@ bool AsymmetricKeyType_IsValid(int value) {
   switch(value) {
     case 0:
     case 1:
+    case 2:
       return true;
     default:
       return false;

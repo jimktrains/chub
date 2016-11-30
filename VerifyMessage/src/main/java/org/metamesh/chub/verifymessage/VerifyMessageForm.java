@@ -19,10 +19,6 @@ import org.metamesh.chub.crypto.keys.ChubPubKey;
 import org.metamesh.chub.crypto.serialize.PBSerialize;
 import org.metamesh.chub.proto.Message;
 
-/**
- *
- * @author jameskeener
- */
 public class VerifyMessageForm extends javax.swing.JFrame {
 
     private final JFileChooser key_fc = new JFileChooser();

@@ -23,6 +23,10 @@ public final class Message {
      * <code>SHA512withECDSA = 0;</code>
      */
     SHA512withECDSA(0),
+    /**
+     * <code>SHA512withEd25519 = 1;</code>
+     */
+    SHA512withEd25519(1),
     UNRECOGNIZED(-1),
     ;
 
@@ -30,6 +34,10 @@ public final class Message {
      * <code>SHA512withECDSA = 0;</code>
      */
     public static final int SHA512withECDSA_VALUE = 0;
+    /**
+     * <code>SHA512withEd25519 = 1;</code>
+     */
+    public static final int SHA512withEd25519_VALUE = 1;
 
 
     public final int getNumber() {
@@ -51,6 +59,7 @@ public final class Message {
     public static SignatureType forNumber(int value) {
       switch (value) {
         case 0: return SHA512withECDSA;
+        case 1: return SHA512withEd25519;
         default: return null;
       }
     }
@@ -116,6 +125,10 @@ public final class Message {
      * <code>secp521r1 = 1;</code>
      */
     secp521r1(1),
+    /**
+     * <code>EdDSA_256 = 2;</code>
+     */
+    EdDSA_256(2),
     UNRECOGNIZED(-1),
     ;
 
@@ -127,6 +140,10 @@ public final class Message {
      * <code>secp521r1 = 1;</code>
      */
     public static final int secp521r1_VALUE = 1;
+    /**
+     * <code>EdDSA_256 = 2;</code>
+     */
+    public static final int EdDSA_256_VALUE = 2;
 
 
     public final int getNumber() {
@@ -149,6 +166,7 @@ public final class Message {
       switch (value) {
         case 0: return secp384r1;
         case 1: return secp521r1;
+        case 2: return EdDSA_256;
         default: return null;
       }
     }
@@ -11959,21 +11977,22 @@ public final class Message {
       "\001(\0132\035.AsymmetriclyEncryptedMessageH\000\022&\n\t" +
       "reference\030\n \001(\0132\021.MessageReferenceH\000\022%\n\021",
       "message_signature\030\010 \001(\0132\n.Signature\022\021\n\tt" +
-      "imestamp\030\t \001(\006\022\n\n\002id\030\013 \001(\014B\005\n\003msg*$\n\rSig" +
-      "natureType\022\023\n\017SHA512withECDSA\020\000*1\n\021Asymm" +
-      "etricKeyType\022\r\n\tsecp384r1\020\000\022\r\n\tsecp521r1" +
-      "\020\001*B\n\020SymmetricKeyType\022.\n*AES_256_GCM_PB" +
-      "KDF2WithHmacSHA256_65536_128\020\000*&\n\017KeyEnc" +
-      "odingType\022\t\n\005pkcs8\020\000\022\010\n\004x509\020\001*\025\n\tImageT" +
-      "ype\022\010\n\004jpeg\020\000*\212\002\n\013MessageType\022\017\n\013Message" +
-      "Post\020\000\022\024\n\020MessageSignature\020\001\022\025\n\021MessageP" +
-      "rivateKey\020\002\022\024\n\020MessagePublicKey\020\003\022&\n\"Mes",
-      "sageSymmetriclyEncryptedMessage\020\004\022\'\n#Mes" +
-      "sageAsymmetriclyEncryptedMessage\020\005\022!\n\035Me" +
-      "ssageHybridEncryptedMessage\020\006\022\033\n\027Message" +
-      "ReferenceMessage\020\007\022\026\n\022MessageSymetricKey" +
-      "\020dB\"\n\027org.metamesh.chub.protoB\007Messageb\006" +
-      "proto3"
+      "imestamp\030\t \001(\006\022\n\n\002id\030\013 \001(\014B\005\n\003msg*;\n\rSig" +
+      "natureType\022\023\n\017SHA512withECDSA\020\000\022\025\n\021SHA51" +
+      "2withEd25519\020\001*@\n\021AsymmetricKeyType\022\r\n\ts" +
+      "ecp384r1\020\000\022\r\n\tsecp521r1\020\001\022\r\n\tEdDSA_256\020\002" +
+      "*B\n\020SymmetricKeyType\022.\n*AES_256_GCM_PBKD" +
+      "F2WithHmacSHA256_65536_128\020\000*&\n\017KeyEncod" +
+      "ingType\022\t\n\005pkcs8\020\000\022\010\n\004x509\020\001*\025\n\tImageTyp" +
+      "e\022\010\n\004jpeg\020\000*\212\002\n\013MessageType\022\017\n\013MessagePo" +
+      "st\020\000\022\024\n\020MessageSignature\020\001\022\025\n\021MessagePri",
+      "vateKey\020\002\022\024\n\020MessagePublicKey\020\003\022&\n\"Messa" +
+      "geSymmetriclyEncryptedMessage\020\004\022\'\n#Messa" +
+      "geAsymmetriclyEncryptedMessage\020\005\022!\n\035Mess" +
+      "ageHybridEncryptedMessage\020\006\022\033\n\027MessageRe" +
+      "ferenceMessage\020\007\022\026\n\022MessageSymetricKey\020d" +
+      "B\"\n\027org.metamesh.chub.protoB\007Messageb\006pr" +
+      "oto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

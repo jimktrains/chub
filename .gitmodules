@@ -1,0 +1,3 @@
+[submodule "splashgen/ed25519"]
+	path = splashgen/ed25519
+	url = git@github.com:orlp/ed25519.git

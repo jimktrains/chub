@@ -49,12 +49,13 @@ class SymmetriclyEncryptedMessage;
 
 enum SignatureType {
   SHA512withECDSA = 0,
+  SHA512withEd25519 = 1,
   SignatureType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   SignatureType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool SignatureType_IsValid(int value);
 const SignatureType SignatureType_MIN = SHA512withECDSA;
-const SignatureType SignatureType_MAX = SHA512withECDSA;
+const SignatureType SignatureType_MAX = SHA512withEd25519;
 const int SignatureType_ARRAYSIZE = SignatureType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* SignatureType_descriptor();
@@ -70,12 +71,13 @@ inline bool SignatureType_Parse(
 enum AsymmetricKeyType {
   secp384r1 = 0,
   secp521r1 = 1,
+  EdDSA_256 = 2,
   AsymmetricKeyType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   AsymmetricKeyType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool AsymmetricKeyType_IsValid(int value);
 const AsymmetricKeyType AsymmetricKeyType_MIN = secp384r1;
-const AsymmetricKeyType AsymmetricKeyType_MAX = secp521r1;
+const AsymmetricKeyType AsymmetricKeyType_MAX = EdDSA_256;
 const int AsymmetricKeyType_ARRAYSIZE = AsymmetricKeyType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* AsymmetricKeyType_descriptor();

@@ -3,16 +3,15 @@ package org.metamesh.chub.crypto;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.GeneratedMessageV3;
 import java.security.GeneralSecurityException;
-import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.security.Security;
 import java.security.Signature;
 import java.security.SignatureException;
-import java.security.spec.ECGenParameterSpec;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.metamesh.chub.crypto.keys.ChubPrivKey;
@@ -24,8 +23,12 @@ public class ECC_Crypto {
     public static final KeyFactory KEY_FACTORY;
 
     static {
+        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
+        Security.addProvider(new net.i2p.crypto.eddsa.EdDSASecurityProvider());
+    }
+    static {
         try {
-            KEY_FACTORY = KeyFactory.getInstance("EC");
+            KEY_FACTORY = KeyFactory.getInstance("EdDSA");
         } catch (NoSuchAlgorithmException ex) {
             throw new RuntimeException(ex);
         }
@@ -34,9 +37,11 @@ public class ECC_Crypto {
     public static KeyPair genECKey() {
         try {
             SecureRandom random = SecureRandom.getInstanceStrong();
-            ECGenParameterSpec algoParms = new ECGenParameterSpec(Message.AsymmetricKeyType.secp384r1.name());
-            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("EC");
-            keyGen.initialize(algoParms, random);
+            
+//            ECGenParameterSpec algoParms = new ECGenParameterSpec("KeyFactory.EdDSA");
+            
+            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("EdDSA");
+            keyGen.initialize(256, random);
 
             KeyPair pair = keyGen.generateKeyPair();
             return pair;
@@ -74,7 +79,7 @@ public class ECC_Crypto {
 
     private static boolean verify(GeneratedMessageV3 value, Message.Signature sig, ChubPubKey pub) {
         try {
-            Signature dsa = Signature.getInstance(sig.getSignatureType().name());
+            Signature dsa = Signature.getInstance(Message.SignatureType.SHA512withEd25519.name());
 
             dsa.initVerify(pub.key);
             dsa.update(value.toByteArray());
@@ -93,7 +98,7 @@ public class ECC_Crypto {
     private static Message.Signature sign_raw(GeneratedMessageV3 value, ChubPrivKey priv) {
 
         try {
-            Signature dsa = Signature.getInstance(Message.SignatureType.SHA512withECDSA.name());
+            Signature dsa = Signature.getInstance(Message.SignatureType.SHA512withEd25519.name());
 
             dsa.initSign(priv.key);
             dsa.update(value.toByteArray());
@@ -102,7 +107,7 @@ public class ECC_Crypto {
             Message.Signature sig = Message.Signature.newBuilder()
                     .setSignature(ByteString.copyFrom(realSig))
                     .setKeyId(priv.kid)
-                    .setSignatureType(Message.SignatureType.SHA512withECDSA)
+                    .setSignatureType(Message.SignatureType.SHA512withEd25519)
                     .build();
             return sig;
         } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException ex) {

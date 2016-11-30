@@ -4,10 +4,12 @@ option java_outer_classname = "Message";
 
 enum SignatureType {
   SHA512withECDSA = 0;
+  SHA512withEd25519 = 1;
 }
 enum AsymmetricKeyType {
   secp384r1 = 0;
 	secp521r1 = 1;
+  EdDSA_256 = 2;
 }
 enum SymmetricKeyType {
   AES_256_GCM_PBKDF2WithHmacSHA256_65536_128 = 0;
