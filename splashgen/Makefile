@@ -27,7 +27,7 @@ ed25519.a: ed25519/src/add_scalar.o ed25519/src/fe.o ed25519/src/ge.o ed25519/sr
 	ar cr $@ $?
 	
 build: main.o message.pb.o ed25519.a #../../libeddsa/build/lib/libeddsa-static.a
-	${CXX} ${CXXFLAG} -o splashgen $?
+	${CXX} ${CXXFLAG} -o splashgen.exe $?
 
 clean:
-	rm -f *.o splashgen *.s ed25519/src/*.o
+	rm -f *.o splashgen.exe *.s ed25519/src/*.o
