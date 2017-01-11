@@ -1,6 +1,12 @@
 
 #include <fstream> 
 #include <iostream>
+#include <dirent.h>
+
+//#include <plustache_types.hpp>
+//#include <template.hpp>
+//using PlustacheTypes::ObjectType;
+//using Plustache::template_t;
 
 #include "ed25519/src/ed25519.h"
 
@@ -9,34 +15,43 @@
 #include "utils.h"
 #include "exceptions.h"
 
+
 using namespace org::metamesh::chub;
 
+//void recurse(std::string start_path, auto callback) {
+//    DIR *dir;
+//    struct dirent *ent;
+//    if ((dir = opendir(start_path)) != NULL) {
+//        /* print all the files and directories within directory */
+//        while ((ent = readdir(dir)) != NULL) {
+//            
+//            callback(ent->d_name);
+//        }
+//        closedir(dir);
+//    } else {
+//        /* could not open directory */
+//        perror("");
+//        return EXIT_FAILURE;
+//    }
+//}
+
+/*
+ * Grab messages from server
+ *  /chub/YYYY/MM/DD/<uuid>.<msg>.pb
+ * Authenticate message against admin
+ * 
+ * 
+ */
 int main(int argc, char** argv) {
+    std::string test_pubkey("/Users/jameskeener/chub/jim@jimkeener.com-266hHqDrb.k0P3wLWqCJ02rZTHqBEGEct4fCxxH5xSyFV0TPq9Jb5T2gu6H8oH2.eFqYEg16wd14YH9fvYH3VQ--.pub.pb");
+    auto pk = loadProtoBufFromFile<PublicKey>(test_pubkey);
 
-    std::ifstream pubkeyfile;
-    pubkeyfile.open("/Users/jameskeener/chub/jim@jimkeener.com-266hHqDrb.k0P3wLWqCJ02rZTHqBEGEct4fCxxH5xSyFV0TPq9Jb5T2gu6H8oH2.eFqYEg16wd14YH9fvYH3VQ--.pub.pb", std::ifstream::in);
-    PublicKey pk;
-    pk.ParseFromIstream(&pubkeyfile);
+    std::string test_post("/Users/jameskeener/chub/3d256bfd-5737-47f8-874b-6dc5f687b573.post.pb");
+    auto sm = loadProtoBufFromFile<SignedMessage>(test_post);
 
-    std::ifstream post_file;
-    post_file.open("/Users/jameskeener/chub/3d256bfd-5737-47f8-874b-6dc5f687b573.post.pb", std::ifstream::in);
-    SignedMessage sm;
-    sm.ParseFromIstream(&post_file);
+    std::cout << bytes2uuid2string(sm.id()) << "\t" << sm.post().title() << std::endl;
 
-    std::cout << *bytes2uuid2string(sm.id()) << "\t" << sm.post().title() << std::endl;
-    std::string serpost = sm.post().SerializeAsString();
-
-    std::string sig = sm.message_signature().signature();
-    std::cout << "Sig length: " << sig.length() << std::endl;
-    std::cout << "Key length: " << (pk.key().length() - ASN1_PREFIX_LENGTH) << std::endl;
-
-    std::cout << ed25519_verify(
-            reinterpret_cast<const unsigned char*> (sig.c_str()),
-            reinterpret_cast<const unsigned char*> (serpost.c_str()),
-            serpost.length(),
-            PublicKeyToBytes(pk)
-            ) << std::endl;
-
+    std::cout << verify(sm, pk) << std::endl;
 
     return 0;
 }

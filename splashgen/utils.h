@@ -5,6 +5,8 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_io.hpp>
 
+#include "ed25519/src/ed25519.h"
+
 #include "message.pb.h"
 #include "exceptions.h"
 
@@ -21,7 +23,7 @@ namespace org {
                 0x03, 0x21, 0x00
             };
 
-            const unsigned char* PublicKeyToBytes(PublicKey pk) {
+            const unsigned char* PublicKeyToBytes(const PublicKey pk) {
                 if (pk.key().length() != 47) throw new PublicKeyNotCorrectLength;
                 if (pk.encodingtype() != KeyEncodingType::x509) throw new PublicKeyNotX509;
                 if (std::memcmp(ASN1_PREFIX, pk.key().c_str(), ASN1_PREFIX_LENGTH) != 0) throw new PublicKeyx509PrefixInvalid;
@@ -29,19 +31,43 @@ namespace org {
                 return reinterpret_cast<const unsigned char*> (pk.key().c_str() + ASN1_PREFIX_LENGTH);
             }
 
-            std::unique_ptr<boost::uuids::uuid> bytes2uuid(std::string bytes) {
+            // These are so small that copying them isn't much more terrible
+            // than copying the pointer
+
+            boost::uuids::uuid bytes2uuid(const std::string bytes) {
                 if (bytes.length() != 16) throw new InvalidUUIDBytes;
 
-                std::unique_ptr<boost::uuids::uuid> u = std::make_unique<boost::uuids::uuid>();
+                boost::uuids::uuid u;
 
-                memcpy(u.get(), bytes.c_str(), 16);
+                memcpy(&u, bytes.c_str(), 16);
 
                 return u;
             }
 
-            std::unique_ptr<std::string> bytes2uuid2string(std::string bytes) {
-                std::unique_ptr<std::string> s = std::make_unique<std::string>(boost::uuids::to_string(*bytes2uuid(bytes)));
+            std::string bytes2uuid2string(const std::string bytes) {
+                std::string s = boost::uuids::to_string(bytes2uuid(bytes));
                 return s;
+            }
+
+            bool verify(const SignedMessage &sm, const PublicKey &pk) {
+                std::string serpost = sm.post().SerializeAsString();
+
+                std::string sig = sm.message_signature().signature();
+                return ed25519_verify(
+                        reinterpret_cast<const unsigned char*> (sig.c_str()),
+                        reinterpret_cast<const unsigned char*> (serpost.c_str()),
+                        serpost.length(),
+                        PublicKeyToBytes(pk)
+                        );
+            }
+
+            template<typename T>
+            T loadProtoBufFromFile(const std::string &filename) {
+                std::ifstream pubkeyfile;
+                pubkeyfile.open(filename, std::ifstream::in);
+                T pk;
+                pk.ParseFromIstream(&pubkeyfile);
+                return pk;
             }
         }
     }
