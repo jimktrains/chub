@@ -1,6 +1,8 @@
 #pragma once
 
 #include <cstring>
+#include <boost/optional.hpp>
+using boost::optional;
 
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_io.hpp>
@@ -9,6 +11,10 @@
 
 #include "message.pb.h"
 #include "exceptions.h"
+
+
+#include <template.hpp>
+using PlustacheTypes::ObjectType;
 
 namespace org {
     namespace metamesh {
@@ -62,12 +68,22 @@ namespace org {
             }
 
             template<typename T>
-            T loadProtoBufFromFile(const std::string &filename) {
+            optional<T> loadProtoBufFromFile(const std::string &filename) {
                 std::ifstream pubkeyfile;
                 pubkeyfile.open(filename, std::ifstream::in);
                 T pk;
-                pk.ParseFromIstream(&pubkeyfile);
-                return pk;
+                auto res = pk.ParseFromIstream(&pubkeyfile);
+                if (res) {
+                    return pk;
+                }
+                return {};
+            }
+            
+            ObjectType postToObjectType(Post p) {
+                ObjectType c;
+                c["title"] = p.title();
+                c["test"] = "testsdsdsds";
+                return c;
             }
         }
     }

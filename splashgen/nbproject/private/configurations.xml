@@ -24,14 +24,12 @@
         </df>
         <in>test.c</in>
       </df>
-      <df name="webdav">
-        <in>WebdavClient.cc</in>
-        <in>WebdavClient.h</in>
-      </df>
       <in>exceptions.h</in>
       <in>main.cc</in>
+      <in>manifest.h</in>
       <in>message.pb.cc</in>
       <in>message.pb.h</in>
+      <in>progoptions.h</in>
       <in>utils.h</in>
     </df>
   </logicalFolder>

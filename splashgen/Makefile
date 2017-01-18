@@ -1,13 +1,14 @@
 CXX = clang
-CXXFLAG = -std=c++14 -Wall -Wextra -Wpedantic -Wsign-conversion \
+CXXFLAG = -std=c++1z -Wall -Wextra -Wpedantic -Wsign-conversion \
 	  -Wold-style-cast -Wsign-promo -Wsign-promo -Wswitch-enum \
 	  -Weffc++ -Wshadow -Wno-missing-braces -g \
 	  -I /usr/local/include \
 	  -L /usr/local/lib \
 	  -I /usr/local/Cellar/plustache/0.3.0/include \
-	-I /usr/local/Cellar/plustache/0.3.0/ \
+	  -I /usr/local/Cellar/plustache/0.3.0/ \
 	  -L /usr/local/Cellar/plustache/0.3.0/lib \
-	  -lprotobuf -lstdc++ -lplustache
+	  -lprotobuf -lstdc++ -lplustache -lboost_regex -lboost_filesystem \
+	  -lboost_system -lboost_program_options
 
 CC = clang
 CFLAG = -std=c11 -Wall -Wextra -Wpedantic -Wsign-conversion \

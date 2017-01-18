@@ -1,12 +1,22 @@
 
 #include <fstream> 
 #include <iostream>
-#include <dirent.h>
+#include <algorithm>
 
-//#include <plustache_types.hpp>
-//#include <template.hpp>
-//using PlustacheTypes::ObjectType;
-//using Plustache::template_t;
+#include <boost/optional.hpp>
+using boost::optional;
+
+#include <plustache_types.hpp>
+#include <template.hpp>
+#include <context.hpp>
+using PlustacheTypes::ObjectType;
+using PlustacheTypes::CollectionType;
+using Plustache::template_t;
+using Plustache::Context;
+
+#include <boost/filesystem.hpp>
+namespace fs = boost::filesystem;
+
 
 #include "ed25519/src/ed25519.h"
 
@@ -14,26 +24,10 @@
 
 #include "utils.h"
 #include "exceptions.h"
-
+#include "progoptions.h"
+#include "manifest.h"
 
 using namespace org::metamesh::chub;
-
-//void recurse(std::string start_path, auto callback) {
-//    DIR *dir;
-//    struct dirent *ent;
-//    if ((dir = opendir(start_path)) != NULL) {
-//        /* print all the files and directories within directory */
-//        while ((ent = readdir(dir)) != NULL) {
-//            
-//            callback(ent->d_name);
-//        }
-//        closedir(dir);
-//    } else {
-//        /* could not open directory */
-//        perror("");
-//        return EXIT_FAILURE;
-//    }
-//}
 
 /*
  * Grab messages from server
@@ -43,15 +37,90 @@ using namespace org::metamesh::chub;
  * 
  */
 int main(int argc, char** argv) {
+    auto vm = parse_options(argc, argv);
+
     std::string test_pubkey("/Users/jameskeener/chub/jim@jimkeener.com-266hHqDrb.k0P3wLWqCJ02rZTHqBEGEct4fCxxH5xSyFV0TPq9Jb5T2gu6H8oH2.eFqYEg16wd14YH9fvYH3VQ--.pub.pb");
-    auto pk = loadProtoBufFromFile<PublicKey>(test_pubkey);
+    auto pk = *loadProtoBufFromFile<PublicKey>(test_pubkey);
+//    std::string test_post("/Users/jameskeener/chub/3d256bfd-5737-47f8-874b-6dc5f687b573.post.pb");
+//    auto sm = loadProtoBufFromFile<SignedMessage>(test_post);
+//    std::cout << bytes2uuid2string(sm.id()) << '\t' << sm.post().title() << '\t';
+//    std::cout << (verify(sm, pk) ? "" : "in") << "valid-message" << std::endl;
+    
+    std::ifstream manifest(vm.work_dir + "/manifest");
+    auto old_manifest = Manifest::fromStream(manifest);
+    auto new_manifest = Manifest::fromDirectory(vm.msg_dir);
+    auto diff = Manifest::diff(new_manifest, old_manifest);
+    std::vector<SignedMessage> sms;
+    
+    std::vector<optional<SignedMessage>> old_osms;
+    std::transform(old_manifest.begin(), old_manifest.end(), std::back_inserter(old_osms), [](const auto & mi) { 
+        return loadProtoBufFromFile<SignedMessage>(mi.filename);
+    });
+    
+    /* remove the files that didn't parse correctly 
+     */
+    old_osms.erase(std::remove_if(old_osms.begin(), old_osms.end(), [](const auto & sm) {
+        return !sm;
+    }), old_osms.end());
+ 
+    
+    /* unwraps the optional so that the rest of the application doesn't 
+     * need to worry about it
+     */
+    std::transform(old_osms.begin(), old_osms.end(), std::back_inserter(sms), [](auto & sm){
+        return *sm;
+    });
+    
+    
+    
+    std::cout << "Difference:" << std::endl;
+    for (auto d : diff) {
+        std::cout << d.filename << std::endl;
+    }
+    
+    std::vector<optional<SignedMessage>> osms;
+    std::transform(diff.begin(), diff.end(), std::back_inserter(osms), [](const auto & mi) { 
+        return loadProtoBufFromFile<SignedMessage>(mi.filename);
+    });
+    
+    /* remove the files that didn't parse correctly 
+     */
+    osms.erase(std::remove_if(osms.begin(), osms.end(), [](const auto & sm) {
+        return !sm;
+    }), osms.end());
+ 
+    
+    /* unwraps the optional so that the rest of the application doesn't 
+     * need to worry about it
+     */
+    std::transform(osms.begin(), osms.end(), std::back_inserter(sms), [](auto & sm){
+        return *sm;
+    });
+    
+    for(auto sm : sms) {
+        std::cout << bytes2uuid2string(sm.id()) << '\t' << sm.post().title() << '\t'
+                  << (verify(sm, pk) ? "" : "in") << "valid-message" << std::endl;
+        
+        if (sm.has_post()) {
+            
+        }
+        else {
+            
+        }
+    }
+    
+    CollectionType c;
+    std::transform(sms.begin(), sms.end(), std::back_inserter(c), [](const auto & sm) { return postToObjectType(sm.post()); } );
+    
+    Context ctx;
+    ctx.add("posts", c);
+    
+    template_t t;
+    std::cout << ctx.get("posts")[0]["title"] << std::endl;
+    std::string tplate("{{# posts}}<h1>{{title}}</h1>{{/ posts}}");
 
-    std::string test_post("/Users/jameskeener/chub/3d256bfd-5737-47f8-874b-6dc5f687b573.post.pb");
-    auto sm = loadProtoBufFromFile<SignedMessage>(test_post);
-
-    std::cout << bytes2uuid2string(sm.id()) << "\t" << sm.post().title() << std::endl;
-
-    std::cout << verify(sm, pk) << std::endl;
-
+    std::string result = t.render(tplate, ctx);
+    
+    std::cout << result << std::endl;
     return 0;
 }

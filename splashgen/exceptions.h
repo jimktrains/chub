@@ -15,6 +15,9 @@ namespace org {
 
             struct InvalidUUIDBytes {
             };
+            
+            struct InvalidMessage {
+            };
         }
     }
 }
