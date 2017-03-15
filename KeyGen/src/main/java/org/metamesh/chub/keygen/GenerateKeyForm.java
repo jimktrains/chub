@@ -5,6 +5,8 @@
  */
 package org.metamesh.chub.keygen;
 
+import com.github.sardine.Sardine;
+import com.github.sardine.SardineFactory;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -45,7 +47,7 @@ public class GenerateKeyForm extends javax.swing.JPanel {
     private void triggerGenerated() {
         KeyGenEvent e = new KeyGenEvent();
         System.out.println("triggerGenerated");
-        System.out.println("triggerGenerated "  + keyGenListeners.size());
+        System.out.println("triggerGenerated " + keyGenListeners.size());
         keyGenListeners.stream()
                 .forEach((c) -> {
                     System.out.println(c);
@@ -210,19 +212,32 @@ public class GenerateKeyForm extends javax.swing.JPanel {
         Message.PrivateKey priv_key_enc = PBSerialize.serialize(priv, Message.SymmetricKeyType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128, Password.getPassword());
         Message.PublicKey pub_key_enc = PBSerialize.serialize(pub);
 
-        String pathPrefix = Settings.base_dir
-                + File.separator
-                + email.getText()
+        String base_filename = email.getText()
                 + "-"
                 + priv.fingerprintAsString();
+        String pathPrefix = Settings.base_dir
+                + File.separator;
 
-        String privFilePath = pathPrefix + ".priv.pb";
-        String pubFilePath = pathPrefix + ".pub.pb";
+        String privFilePathbase = base_filename + ".priv.pb";
+        String pubFilePathbase = base_filename + ".pub.pb";
 
+        String privFilePath = pathPrefix + privFilePathbase;
+        String pubFilePath = pathPrefix + pubFilePathbase;
+
+        String davPrefix = "http://localhost/webdav/keys/";
+        
+        Sardine sardine = SardineFactory.begin();
+        
+        
         try (FileOutputStream out = new FileOutputStream(privFilePath)) {
-            out.write(priv_key_enc.toByteArray());
+            sardine.createDirectory(davPrefix);
+            byte[] bytes = priv_key_enc.toByteArray();
+            sardine.put(davPrefix + privFilePathbase, bytes);
+            out.write(bytes);
             try (FileOutputStream pubout = new FileOutputStream(pubFilePath)) {
-                pubout.write(pub_key_enc.toByteArray());
+                bytes = pub_key_enc.toByteArray();
+                pubout.write(bytes);
+                sardine.put(davPrefix + pubFilePathbase, bytes);
                 Alert.warning("Wrote key to " + privFilePath + " and " + pubFilePath);
                 triggerGenerated();
             }
@@ -233,7 +248,7 @@ public class GenerateKeyForm extends javax.swing.JPanel {
     }//GEN-LAST:event_SaveButtonMousePressed
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
-      System.out.println("ACTION");
+        System.out.println("ACTION");
     }//GEN-LAST:event_SaveButtonActionPerformed
 
 

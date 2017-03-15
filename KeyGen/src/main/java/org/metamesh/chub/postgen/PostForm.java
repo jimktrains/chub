@@ -5,16 +5,25 @@
  */
 package org.metamesh.chub.postgen;
 
+import com.github.sardine.Sardine;
+import com.github.sardine.SardineFactory;
 import com.google.protobuf.ByteString;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.jdatepicker.DatePicker;
-import org.jdatepicker.JDatePicker;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import org.metamesh.chub.crypto.keys.ChubPrivKey;
 import org.metamesh.chub.crypto.serialize.PBSerialize;
 import org.metamesh.chub.proto.Message;
@@ -24,6 +33,9 @@ import org.metamesh.chub.util.StoredKeys;
 import org.metamesh.chub.util.UUIDHelper;
 
 public class PostForm extends javax.swing.JPanel {
+
+    JFileChooser fc = new JFileChooser();
+    BufferedImage image;
 
     /**
      * Creates new form GeneratePost
@@ -38,6 +50,41 @@ public class PostForm extends javax.swing.JPanel {
                 .forEach((f) -> {
                     ComboKeys.addItem(f);
                 });
+        fc.addActionListener((ActionEvent e) -> {
+            try {
+                image = ImageIO.read(fc.getSelectedFile());
+                int w = 300;
+                int h = (int) ((((double) image.getHeight(this)) / ((double) image.getWidth(this))) * 300);
+                image = toBufferedImage(image.getScaledInstance(w, h, Image.SCALE_SMOOTH));
+                ImagePreview.setIcon(new ImageIcon(image));
+            } catch (IOException ex) {
+                Logger.getLogger(PostForm.class.getName()).log(Level.SEVERE, null, ex);
+                Alert.warning(ex.getMessage());
+            }
+        });
+    }
+
+    /**
+     * Converts a given Image into a BufferedImage
+     *
+     * @param img The Image to be converted
+     * @return The converted BufferedImage
+     */
+    private static BufferedImage toBufferedImage(Image img) {
+        if (img instanceof BufferedImage) {
+            return (BufferedImage) img;
+        }
+
+        // Create a buffered image with transparency
+        BufferedImage bimage = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_RGB);
+
+        // Draw the image on to the buffered image
+        Graphics2D bGr = bimage.createGraphics();
+        bGr.drawImage(img, 0, 0, null);
+        bGr.dispose();
+
+        // Return the buffered image
+        return bimage;
     }
 
     /**
@@ -58,7 +105,14 @@ public class PostForm extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         TextDescription = new javax.swing.JTextArea();
         SignButton = new javax.swing.JButton();
-        jDatePicker1 = new org.jdatepicker.JDatePicker();
+        startDatePicker = new org.jdatepicker.JDatePicker();
+        jLabel1 = new javax.swing.JLabel();
+        endDatePicker = new org.jdatepicker.JDatePicker();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        ImageSelectionBtn = new javax.swing.JButton();
+        ImagePreview = new javax.swing.JLabel();
 
         ComboKeys.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -72,71 +126,127 @@ public class PostForm extends javax.swing.JPanel {
         TextDescription.setRows(5);
         jScrollPane1.setViewportView(TextDescription);
 
-        SignButton.setText("Sign");
+        SignButton.setText("Generate Post");
         SignButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SignButtonMouseClicked(evt);
             }
         });
+        SignButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Start Date");
+
+        jLabel5.setText("End Date");
+
+        jLabel6.setText("Body:");
+
+        jLabel7.setText("Picture");
+
+        ImageSelectionBtn.setText("Select");
+        ImageSelectionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ImageSelectionBtnMouseClicked(evt);
+            }
+        });
+
+        ImagePreview.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(130, Short.MAX_VALUE)
-                .addComponent(jDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(SignButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel2)
-                                .addGap(32, 32, 32)
-                                .addComponent(TextTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(TextPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(138, 138, 138)
-                            .addComponent(SignButton)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(ComboKeys, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGap(19, 19, 19)))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(ImageSelectionBtn))
+                            .addComponent(jScrollPane1))
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(startDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel7))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(endDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ImagePreview)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(TextPassword, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(TextTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ComboKeys, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(57, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(jDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(240, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ComboKeys, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(TextPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(TextTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2))
-                    .addGap(28, 28, 28)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(SignButton)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(TextPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TextTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ComboKeys, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(startDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(endDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(ImageSelectionBtn)
+                    .addComponent(ImagePreview))
+                .addGap(11, 11, 11)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SignButton)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -146,17 +256,41 @@ public class PostForm extends javax.swing.JPanel {
             Message.PrivateKey pk = Message.PrivateKey.parseFrom(priv_key_file);
             ChubPrivKey cpk = PBSerialize.deserialize(pk, TextPassword.getPassword());
 
-            Message.Post post = Message.Post.newBuilder()
+//            Date start = ((GregorianCalendar) (startDatePicker.getJDateInstantPanel().getModel().getValue())).getTime();
+//            Date end = ((GregorianCalendar) (endDatePicker.getJDateInstantPanel().getModel().getValue())).getTime();
+            Message.Post.Builder pb = Message.Post.newBuilder()
                     .setId(ByteString.copyFrom(UUIDHelper.randomUUID()))
                     .setTitle(TextTitle.getText())
                     .setDescription(TextDescription.getText())
-                    .setTimestamp(new Date().getTime())
-                    .build();
-            Message.SignedMessage sm = PBSerialize.sign(post, cpk);
+                    //                    .setStartTime(start.getTime())
+                    //                    .setStartTime(end.getTime())
+                    .setTimestamp(new Date().getTime());
+            if (image != null) {
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "jpg", baos);
+                baos.flush();
 
-            String postFilePath = Settings.base_dir + File.separator + UUIDHelper.bytes2UUID(sm.getId().toByteArray()) + ".post.pb";
+                ByteString bs = ByteString.copyFrom(baos.toByteArray());
+
+                pb.setImage(Message.Image.newBuilder()
+                        .setImage(bs)
+                        .setImageType(Message.ImageType.jpeg)
+                );
+            }
+            Message.Post post = pb.build();
+            Message.SignedMessage sm = PBSerialize.sign(post, cpk);
+            String davPrefix = "http://localhost/webdav/posts/";
+
+            Sardine sardine = SardineFactory.begin();
+            String base_name = UUIDHelper.bytes2UUID(sm.getId().toByteArray()) + ".post.pb";
+            String postFilePath = Settings.base_dir + File.separator + base_name;
             try (FileOutputStream out = new FileOutputStream(postFilePath)) {
                 byte a[] = sm.toByteArray();
+
+
+//                sardine.createDirectory(davPrefix);
+                System.out.println(davPrefix + base_name);
+                sardine.put(davPrefix + base_name , a);
                 out.write(a);
                 Alert.info("Written to: " + postFilePath);
             } catch (IOException ex) {
@@ -169,18 +303,34 @@ public class PostForm extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_SignButtonMouseClicked
 
+    private void SignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SignButtonActionPerformed
+
+    private void ImageSelectionBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ImageSelectionBtnMouseClicked
+
+        fc.showOpenDialog(this);
+    }//GEN-LAST:event_ImageSelectionBtnMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboKeys;
+    private javax.swing.JLabel ImagePreview;
+    private javax.swing.JButton ImageSelectionBtn;
     private javax.swing.JButton SignButton;
     private javax.swing.JTextArea TextDescription;
     private javax.swing.JPasswordField TextPassword;
     private javax.swing.JTextField TextTitle;
-    private org.jdatepicker.JDatePicker jDatePicker1;
+    private org.jdatepicker.JDatePicker endDatePicker;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private org.jdatepicker.JDatePicker startDatePicker;
     // End of variables declaration//GEN-END:variables
 
 }
