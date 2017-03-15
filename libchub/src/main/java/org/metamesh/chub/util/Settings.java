@@ -26,6 +26,9 @@ public class Settings {
     static {
         base_dir = System.getProperty("user.home") + File.separator + "chub";
         base_dir_file = new File(base_dir);
+        if (!base_dir_file.exists()) {
+            base_dir_file.mkdir();
+        }
         prop_file_path = base_dir + File.separator + "chub.ini";
         props_file = new File(prop_file_path);
     }

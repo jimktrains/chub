@@ -1,5 +1,5 @@
 CXX = clang
-CXXFLAG = -std=c++1z -Wall -Wextra -Wpedantic -Wsign-conversion \
+CXXFLAG = -std=c++14 -Wall -Wextra -Wpedantic -Wsign-conversion \
 	  -Wold-style-cast -Wsign-promo -Wsign-promo -Wswitch-enum \
 	  -Weffc++ -Wshadow -Wno-missing-braces -g \
 	  -I /usr/local/include \

@@ -1,0 +1,12 @@
+./.DS_Store notvalid
+./.ycm_extra_conf.py notvalid
+./Makefile notvalid
+./ed25519.a notvalid
+./exceptions.h notvalid
+./main.cc notvalid
+./manifest notvalid
+./message.pb.cc notvalid
+./message.pb.h notvalid
+./splashgen.exe notvalid
+./utils.h notvalid
+./test.post.pb valid
