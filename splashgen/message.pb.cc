@@ -16,43 +16,28 @@
 #include <google/protobuf/reflection_ops.h>
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
-
-namespace {
-
-const ::google::protobuf::Descriptor* Image_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Image_reflection_ = NULL;
-const ::google::protobuf::Descriptor* Post_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Post_reflection_ = NULL;
-const ::google::protobuf::Descriptor* Signature_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Signature_reflection_ = NULL;
-const ::google::protobuf::Descriptor* DistinguishedName_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  DistinguishedName_reflection_ = NULL;
-const ::google::protobuf::Descriptor* KeyId_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  KeyId_reflection_ = NULL;
-const ::google::protobuf::Descriptor* PrivateKey_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  PrivateKey_reflection_ = NULL;
-const ::google::protobuf::Descriptor* PublicKey_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  PublicKey_reflection_ = NULL;
-const ::google::protobuf::Descriptor* SymmetriclyEncryptedMessage_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  SymmetriclyEncryptedMessage_reflection_ = NULL;
-const ::google::protobuf::Descriptor* AsymmetriclyEncryptedMessage_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  AsymmetriclyEncryptedMessage_reflection_ = NULL;
-const ::google::protobuf::Descriptor* MessageReference_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  MessageReference_reflection_ = NULL;
-const ::google::protobuf::Descriptor* SignedMessage_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  SignedMessage_reflection_ = NULL;
-struct SignedMessageOneofInstance {
+class ImageDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Image> {
+} _Image_default_instance_;
+class PostDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Post> {
+} _Post_default_instance_;
+class SignatureDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Signature> {
+} _Signature_default_instance_;
+class DistinguishedNameDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<DistinguishedName> {
+} _DistinguishedName_default_instance_;
+class KeyIdDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<KeyId> {
+} _KeyId_default_instance_;
+class PrivateKeyDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<PrivateKey> {
+} _PrivateKey_default_instance_;
+class PublicKeyDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<PublicKey> {
+} _PublicKey_default_instance_;
+class SymmetriclyEncryptedMessageDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<SymmetriclyEncryptedMessage> {
+} _SymmetriclyEncryptedMessage_default_instance_;
+class AsymmetriclyEncryptedMessageDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<AsymmetriclyEncryptedMessage> {
+} _AsymmetriclyEncryptedMessage_default_instance_;
+class MessageReferenceDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<MessageReference> {
+} _MessageReference_default_instance_;
+class SignedMessageDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<SignedMessage> {
+  public:
   const ::Post* post_;
   const ::Signature* signedmessage_;
   const ::PrivateKey* privatekey_;
@@ -60,415 +45,338 @@ struct SignedMessageOneofInstance {
   const ::SymmetriclyEncryptedMessage* symmetriclyencryptedmessage_;
   const ::AsymmetriclyEncryptedMessage* asymmetriclyencryptedmessage_;
   const ::MessageReference* reference_;
-}* SignedMessage_default_oneof_instance_ = NULL;
-const ::google::protobuf::EnumDescriptor* SignatureType_descriptor_ = NULL;
-const ::google::protobuf::EnumDescriptor* AsymmetricKeyType_descriptor_ = NULL;
-const ::google::protobuf::EnumDescriptor* SymmetricKeyType_descriptor_ = NULL;
-const ::google::protobuf::EnumDescriptor* KeyEncodingType_descriptor_ = NULL;
-const ::google::protobuf::EnumDescriptor* ImageType_descriptor_ = NULL;
-const ::google::protobuf::EnumDescriptor* MessageType_descriptor_ = NULL;
+} _SignedMessage_default_instance_;
 
-}  // namespace
+namespace protobuf_message_2eproto {
 
-
-void protobuf_AssignDesc_message_2eproto() GOOGLE_ATTRIBUTE_COLD;
-void protobuf_AssignDesc_message_2eproto() {
-  protobuf_AddDesc_message_2eproto();
-  const ::google::protobuf::FileDescriptor* file =
-    ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
-      "message.proto");
-  GOOGLE_CHECK(file != NULL);
-  Image_descriptor_ = file->message_type(0);
-  static const int Image_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Image, image_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Image, imagetype_),
-  };
-  Image_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      Image_descriptor_,
-      Image::default_instance_,
-      Image_offsets_,
-      -1,
-      -1,
-      -1,
-      sizeof(Image),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Image, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Image, _is_default_instance_));
-  Post_descriptor_ = file->message_type(1);
-  static const int Post_offsets_[11] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, id_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, title_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, description_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, location_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, start_time_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, all_day_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, end_time_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, image_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, rsvp_by_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, rsvp_email_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, timestamp_),
-  };
-  Post_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      Post_descriptor_,
-      Post::default_instance_,
-      Post_offsets_,
-      -1,
-      -1,
-      -1,
-      sizeof(Post),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, _is_default_instance_));
-  Signature_descriptor_ = file->message_type(2);
-  static const int Signature_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Signature, signature_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Signature, signature_type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Signature, id_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Signature, key_id_),
-  };
-  Signature_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      Signature_descriptor_,
-      Signature::default_instance_,
-      Signature_offsets_,
-      -1,
-      -1,
-      -1,
-      sizeof(Signature),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Signature, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Signature, _is_default_instance_));
-  DistinguishedName_descriptor_ = file->message_type(3);
-  static const int DistinguishedName_offsets_[8] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, country_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, organization_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, organizational_unit_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, distinguished_name_qualifier_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, state_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, common_name_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, serial_number_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, email_),
-  };
-  DistinguishedName_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      DistinguishedName_descriptor_,
-      DistinguishedName::default_instance_,
-      DistinguishedName_offsets_,
-      -1,
-      -1,
-      -1,
-      sizeof(DistinguishedName),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, _is_default_instance_));
-  KeyId_descriptor_ = file->message_type(4);
-  static const int KeyId_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyId, fingerprint_sha512_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyId, dn_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyId, type_),
-  };
-  KeyId_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      KeyId_descriptor_,
-      KeyId::default_instance_,
-      KeyId_offsets_,
-      -1,
-      -1,
-      -1,
-      sizeof(KeyId),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyId, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyId, _is_default_instance_));
-  PrivateKey_descriptor_ = file->message_type(5);
-  static const int PrivateKey_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PrivateKey, key_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PrivateKey, encodingtype_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PrivateKey, key_id_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PrivateKey, id_),
-  };
-  PrivateKey_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      PrivateKey_descriptor_,
-      PrivateKey::default_instance_,
-      PrivateKey_offsets_,
-      -1,
-      -1,
-      -1,
-      sizeof(PrivateKey),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PrivateKey, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PrivateKey, _is_default_instance_));
-  PublicKey_descriptor_ = file->message_type(6);
-  static const int PublicKey_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PublicKey, key_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PublicKey, encodingtype_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PublicKey, key_id_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PublicKey, id_),
-  };
-  PublicKey_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      PublicKey_descriptor_,
-      PublicKey::default_instance_,
-      PublicKey_offsets_,
-      -1,
-      -1,
-      -1,
-      sizeof(PublicKey),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PublicKey, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PublicKey, _is_default_instance_));
-  SymmetriclyEncryptedMessage_descriptor_ = file->message_type(7);
-  static const int SymmetriclyEncryptedMessage_offsets_[6] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, message_type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, encryption_type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, msg_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, iv_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, salt_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, id_),
-  };
-  SymmetriclyEncryptedMessage_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      SymmetriclyEncryptedMessage_descriptor_,
-      SymmetriclyEncryptedMessage::default_instance_,
-      SymmetriclyEncryptedMessage_offsets_,
-      -1,
-      -1,
-      -1,
-      sizeof(SymmetriclyEncryptedMessage),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, _is_default_instance_));
-  AsymmetriclyEncryptedMessage_descriptor_ = file->message_type(8);
-  static const int AsymmetriclyEncryptedMessage_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AsymmetriclyEncryptedMessage, message_type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AsymmetriclyEncryptedMessage, dest_key_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AsymmetriclyEncryptedMessage, msg_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AsymmetriclyEncryptedMessage, id_),
-  };
-  AsymmetriclyEncryptedMessage_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      AsymmetriclyEncryptedMessage_descriptor_,
-      AsymmetriclyEncryptedMessage::default_instance_,
-      AsymmetriclyEncryptedMessage_offsets_,
-      -1,
-      -1,
-      -1,
-      sizeof(AsymmetriclyEncryptedMessage),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AsymmetriclyEncryptedMessage, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AsymmetriclyEncryptedMessage, _is_default_instance_));
-  MessageReference_descriptor_ = file->message_type(9);
-  static const int MessageReference_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageReference, type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageReference, id_),
-  };
-  MessageReference_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      MessageReference_descriptor_,
-      MessageReference::default_instance_,
-      MessageReference_offsets_,
-      -1,
-      -1,
-      -1,
-      sizeof(MessageReference),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageReference, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageReference, _is_default_instance_));
-  SignedMessage_descriptor_ = file->message_type(10);
-  static const int SignedMessage_offsets_[11] = {
-    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(SignedMessage_default_oneof_instance_, post_),
-    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(SignedMessage_default_oneof_instance_, signedmessage_),
-    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(SignedMessage_default_oneof_instance_, privatekey_),
-    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(SignedMessage_default_oneof_instance_, publickey_),
-    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(SignedMessage_default_oneof_instance_, symmetriclyencryptedmessage_),
-    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(SignedMessage_default_oneof_instance_, asymmetriclyencryptedmessage_),
-    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(SignedMessage_default_oneof_instance_, reference_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignedMessage, message_signature_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignedMessage, timestamp_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignedMessage, id_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignedMessage, msg_),
-  };
-  SignedMessage_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      SignedMessage_descriptor_,
-      SignedMessage::default_instance_,
-      SignedMessage_offsets_,
-      -1,
-      -1,
-      -1,
-      SignedMessage_default_oneof_instance_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignedMessage, _oneof_case_[0]),
-      sizeof(SignedMessage),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignedMessage, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignedMessage, _is_default_instance_));
-  SignatureType_descriptor_ = file->enum_type(0);
-  AsymmetricKeyType_descriptor_ = file->enum_type(1);
-  SymmetricKeyType_descriptor_ = file->enum_type(2);
-  KeyEncodingType_descriptor_ = file->enum_type(3);
-  ImageType_descriptor_ = file->enum_type(4);
-  MessageType_descriptor_ = file->enum_type(5);
-}
 
 namespace {
 
-GOOGLE_PROTOBUF_DECLARE_ONCE(protobuf_AssignDescriptors_once_);
-inline void protobuf_AssignDescriptorsOnce() {
-  ::google::protobuf::GoogleOnceInit(&protobuf_AssignDescriptors_once_,
-                 &protobuf_AssignDesc_message_2eproto);
+::google::protobuf::Metadata file_level_metadata[11];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[6];
+
+}  // namespace
+
+const ::google::protobuf::uint32 TableStruct::offsets[] = {
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Image, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Image, image_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Image, imagetype_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, title_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, description_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, location_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, start_time_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, all_day_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, end_time_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, image_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, rsvp_by_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, rsvp_email_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Post, timestamp_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Signature, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Signature, signature_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Signature, signature_type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Signature, id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Signature, key_id_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, country_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, organization_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, organizational_unit_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, distinguished_name_qualifier_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, state_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, common_name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, serial_number_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DistinguishedName, email_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyId, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyId, fingerprint_sha512_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyId, dn_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyId, type_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PrivateKey, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PrivateKey, key_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PrivateKey, encodingtype_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PrivateKey, key_id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PrivateKey, id_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PublicKey, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PublicKey, key_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PublicKey, encodingtype_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PublicKey, key_id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PublicKey, id_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, message_type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, encryption_type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, msg_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, iv_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, salt_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SymmetriclyEncryptedMessage, id_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AsymmetriclyEncryptedMessage, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AsymmetriclyEncryptedMessage, message_type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AsymmetriclyEncryptedMessage, dest_key_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AsymmetriclyEncryptedMessage, msg_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AsymmetriclyEncryptedMessage, id_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageReference, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageReference, type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageReference, id_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignedMessage, _internal_metadata_),
+  ~0u,  // no _extensions_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignedMessage, _oneof_case_[0]),
+  PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET((&_SignedMessage_default_instance_), post_),
+  PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET((&_SignedMessage_default_instance_), signedmessage_),
+  PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET((&_SignedMessage_default_instance_), privatekey_),
+  PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET((&_SignedMessage_default_instance_), publickey_),
+  PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET((&_SignedMessage_default_instance_), symmetriclyencryptedmessage_),
+  PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET((&_SignedMessage_default_instance_), asymmetriclyencryptedmessage_),
+  PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET((&_SignedMessage_default_instance_), reference_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignedMessage, message_signature_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignedMessage, timestamp_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignedMessage, id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignedMessage, msg_),
+};
+
+static const ::google::protobuf::internal::MigrationSchema schemas[] = {
+  { 0, -1, sizeof(Image)},
+  { 6, -1, sizeof(Post)},
+  { 21, -1, sizeof(Signature)},
+  { 29, -1, sizeof(DistinguishedName)},
+  { 41, -1, sizeof(KeyId)},
+  { 48, -1, sizeof(PrivateKey)},
+  { 56, -1, sizeof(PublicKey)},
+  { 64, -1, sizeof(SymmetriclyEncryptedMessage)},
+  { 74, -1, sizeof(AsymmetriclyEncryptedMessage)},
+  { 82, -1, sizeof(MessageReference)},
+  { 88, -1, sizeof(SignedMessage)},
+};
+
+static ::google::protobuf::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::google::protobuf::Message*>(&_Image_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_Post_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_Signature_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_DistinguishedName_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_KeyId_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_PrivateKey_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_PublicKey_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_SymmetriclyEncryptedMessage_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_AsymmetriclyEncryptedMessage_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_MessageReference_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_SignedMessage_default_instance_),
+};
+
+namespace {
+
+void protobuf_AssignDescriptors() {
+  AddDescriptors();
+  ::google::protobuf::MessageFactory* factory = NULL;
+  AssignDescriptors(
+      "message.proto", schemas, file_default_instances, TableStruct::offsets, factory,
+      file_level_metadata, file_level_enum_descriptors, NULL);
+}
+
+void protobuf_AssignDescriptorsOnce() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &protobuf_AssignDescriptors);
 }
 
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      Image_descriptor_, &Image::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      Post_descriptor_, &Post::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      Signature_descriptor_, &Signature::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      DistinguishedName_descriptor_, &DistinguishedName::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      KeyId_descriptor_, &KeyId::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      PrivateKey_descriptor_, &PrivateKey::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      PublicKey_descriptor_, &PublicKey::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      SymmetriclyEncryptedMessage_descriptor_, &SymmetriclyEncryptedMessage::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      AsymmetriclyEncryptedMessage_descriptor_, &AsymmetriclyEncryptedMessage::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      MessageReference_descriptor_, &MessageReference::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      SignedMessage_descriptor_, &SignedMessage::default_instance());
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 11);
 }
 
 }  // namespace
 
-void protobuf_ShutdownFile_message_2eproto() {
-  delete Image::default_instance_;
-  delete Image_reflection_;
-  delete Post::default_instance_;
-  delete Post_reflection_;
-  delete Signature::default_instance_;
-  delete Signature_reflection_;
-  delete DistinguishedName::default_instance_;
-  delete DistinguishedName_reflection_;
-  delete KeyId::default_instance_;
-  delete KeyId_reflection_;
-  delete PrivateKey::default_instance_;
-  delete PrivateKey_reflection_;
-  delete PublicKey::default_instance_;
-  delete PublicKey_reflection_;
-  delete SymmetriclyEncryptedMessage::default_instance_;
-  delete SymmetriclyEncryptedMessage_reflection_;
-  delete AsymmetriclyEncryptedMessage::default_instance_;
-  delete AsymmetriclyEncryptedMessage_reflection_;
-  delete MessageReference::default_instance_;
-  delete MessageReference_reflection_;
-  delete SignedMessage::default_instance_;
-  delete SignedMessage_default_oneof_instance_;
-  delete SignedMessage_reflection_;
+void TableStruct::Shutdown() {
+  _Image_default_instance_.Shutdown();
+  delete file_level_metadata[0].reflection;
+  _Post_default_instance_.Shutdown();
+  delete file_level_metadata[1].reflection;
+  _Signature_default_instance_.Shutdown();
+  delete file_level_metadata[2].reflection;
+  _DistinguishedName_default_instance_.Shutdown();
+  delete file_level_metadata[3].reflection;
+  _KeyId_default_instance_.Shutdown();
+  delete file_level_metadata[4].reflection;
+  _PrivateKey_default_instance_.Shutdown();
+  delete file_level_metadata[5].reflection;
+  _PublicKey_default_instance_.Shutdown();
+  delete file_level_metadata[6].reflection;
+  _SymmetriclyEncryptedMessage_default_instance_.Shutdown();
+  delete file_level_metadata[7].reflection;
+  _AsymmetriclyEncryptedMessage_default_instance_.Shutdown();
+  delete file_level_metadata[8].reflection;
+  _MessageReference_default_instance_.Shutdown();
+  delete file_level_metadata[9].reflection;
+  _SignedMessage_default_instance_.Shutdown();
+  delete file_level_metadata[10].reflection;
 }
 
-void protobuf_AddDesc_message_2eproto() GOOGLE_ATTRIBUTE_COLD;
-void protobuf_AddDesc_message_2eproto() {
-  static bool already_here = false;
-  if (already_here) return;
-  already_here = true;
+void TableStruct::InitDefaultsImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\rmessage.proto\"5\n\005Image\022\r\n\005image\030\001 \001(\014\022"
-    "\035\n\timageType\030\002 \001(\0162\n.ImageType\"\316\001\n\004Post\022"
-    "\n\n\002id\030\001 \001(\014\022\r\n\005title\030\002 \001(\t\022\023\n\013descriptio"
-    "n\030\003 \001(\t\022\020\n\010location\030\004 \001(\t\022\022\n\nstart_time\030"
-    "\005 \001(\006\022\017\n\007all_day\030\006 \001(\010\022\020\n\010end_time\030\007 \001(\006"
-    "\022\025\n\005image\030\010 \001(\0132\006.Image\022\017\n\007rsvp_by\030\t \001(\006"
-    "\022\022\n\nrsvp_email\030\n \001(\t\022\021\n\ttimestamp\030\013 \001(\006\""
-    "j\n\tSignature\022\021\n\tsignature\030\002 \001(\014\022&\n\016signa"
-    "ture_type\030\003 \001(\0162\016.SignatureType\022\n\n\002id\030\005 "
-    "\001(\014\022\026\n\006key_id\030\006 \001(\0132\006.KeyId\"\307\001\n\021Distingu"
-    "ishedName\022\017\n\007country\030\001 \001(\t\022\024\n\014organizati"
-    "on\030\002 \001(\t\022\033\n\023organizational_unit\030\003 \001(\t\022$\n"
-    "\034distinguished_name_qualifier\030\004 \001(\t\022\r\n\005s"
-    "tate\030\005 \001(\t\022\023\n\013common_name\030\006 \001(\t\022\025\n\rseria"
-    "l_number\030\007 \001(\t\022\r\n\005email\030\010 \001(\t\"e\n\005KeyId\022\032"
-    "\n\022fingerprint_sha512\030\001 \001(\014\022\036\n\002dn\030\002 \001(\0132\022"
-    ".DistinguishedName\022 \n\004type\030\003 \001(\0162\022.Asymm"
-    "etricKeyType\"\203\001\n\nPrivateKey\022)\n\003key\030\002 \001(\013"
-    "2\034.SymmetriclyEncryptedMessage\022&\n\014encodi"
-    "ngType\030\005 \001(\0162\020.KeyEncodingType\022\026\n\006key_id"
-    "\030\006 \001(\0132\006.KeyId\022\n\n\002id\030\007 \001(\014\"d\n\tPublicKey\022"
-    "\013\n\003key\030\002 \001(\014\022&\n\014encodingType\030\004 \001(\0162\020.Key"
-    "EncodingType\022\026\n\006key_id\030\005 \001(\0132\006.KeyId\022\n\n\002"
-    "id\030\006 \001(\014\"\240\001\n\033SymmetriclyEncryptedMessage"
-    "\022\"\n\014message_type\030\001 \001(\0162\014.MessageType\022*\n\017"
-    "encryption_type\030\002 \001(\0162\021.SymmetricKeyType"
-    "\022\013\n\003msg\030\003 \001(\014\022\n\n\002iv\030\004 \001(\014\022\014\n\004salt\030\005 \001(\014\022"
-    "\n\n\002id\030\006 \001(\014\"u\n\034AsymmetriclyEncryptedMess"
-    "age\022\"\n\014message_type\030\001 \001(\0162\014.MessageType\022"
-    "\030\n\010dest_key\030\002 \001(\0132\006.KeyId\022\013\n\003msg\030\004 \001(\014\022\n"
-    "\n\002id\030\005 \001(\014\":\n\020MessageReference\022\032\n\004type\030\001"
-    " \001(\0162\014.MessageType\022\n\n\002id\030\002 \001(\014\"\220\003\n\rSigne"
-    "dMessage\022\025\n\004post\030\001 \001(\0132\005.PostH\000\022#\n\rsigne"
-    "dMessage\030\002 \001(\0132\n.SignatureH\000\022!\n\nprivateK"
-    "ey\030\003 \001(\0132\013.PrivateKeyH\000\022\037\n\tpublicKey\030\004 \001"
-    "(\0132\n.PublicKeyH\000\022C\n\033symmetriclyEncrypted"
-    "Message\030\005 \001(\0132\034.SymmetriclyEncryptedMess"
-    "ageH\000\022E\n\034asymmetriclyEncryptedMessage\030\006 "
-    "\001(\0132\035.AsymmetriclyEncryptedMessageH\000\022&\n\t"
-    "reference\030\n \001(\0132\021.MessageReferenceH\000\022%\n\021"
-    "message_signature\030\010 \001(\0132\n.Signature\022\021\n\tt"
-    "imestamp\030\t \001(\006\022\n\n\002id\030\013 \001(\014B\005\n\003msg*;\n\rSig"
-    "natureType\022\023\n\017SHA512withECDSA\020\000\022\025\n\021SHA51"
-    "2withEd25519\020\001*@\n\021AsymmetricKeyType\022\r\n\ts"
-    "ecp384r1\020\000\022\r\n\tsecp521r1\020\001\022\r\n\tEdDSA_256\020\002"
-    "*B\n\020SymmetricKeyType\022.\n*AES_256_GCM_PBKD"
-    "F2WithHmacSHA256_65536_128\020\000*&\n\017KeyEncod"
-    "ingType\022\t\n\005pkcs8\020\000\022\010\n\004x509\020\001*\025\n\tImageTyp"
-    "e\022\010\n\004jpeg\020\000*\212\002\n\013MessageType\022\017\n\013MessagePo"
-    "st\020\000\022\024\n\020MessageSignature\020\001\022\025\n\021MessagePri"
-    "vateKey\020\002\022\024\n\020MessagePublicKey\020\003\022&\n\"Messa"
-    "geSymmetriclyEncryptedMessage\020\004\022\'\n#Messa"
-    "geAsymmetriclyEncryptedMessage\020\005\022!\n\035Mess"
-    "ageHybridEncryptedMessage\020\006\022\033\n\027MessageRe"
-    "ferenceMessage\020\007\022\026\n\022MessageSymetricKey\020d"
-    "B\"\n\027org.metamesh.chub.protoB\007Messageb\006pr"
-    "oto3", 2244);
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
-    "message.proto", &protobuf_RegisterTypes);
-  Image::default_instance_ = new Image();
-  Post::default_instance_ = new Post();
-  Signature::default_instance_ = new Signature();
-  DistinguishedName::default_instance_ = new DistinguishedName();
-  KeyId::default_instance_ = new KeyId();
-  PrivateKey::default_instance_ = new PrivateKey();
-  PublicKey::default_instance_ = new PublicKey();
-  SymmetriclyEncryptedMessage::default_instance_ = new SymmetriclyEncryptedMessage();
-  AsymmetriclyEncryptedMessage::default_instance_ = new AsymmetriclyEncryptedMessage();
-  MessageReference::default_instance_ = new MessageReference();
-  SignedMessage::default_instance_ = new SignedMessage();
-  SignedMessage_default_oneof_instance_ = new SignedMessageOneofInstance();
-  Image::default_instance_->InitAsDefaultInstance();
-  Post::default_instance_->InitAsDefaultInstance();
-  Signature::default_instance_->InitAsDefaultInstance();
-  DistinguishedName::default_instance_->InitAsDefaultInstance();
-  KeyId::default_instance_->InitAsDefaultInstance();
-  PrivateKey::default_instance_->InitAsDefaultInstance();
-  PublicKey::default_instance_->InitAsDefaultInstance();
-  SymmetriclyEncryptedMessage::default_instance_->InitAsDefaultInstance();
-  AsymmetriclyEncryptedMessage::default_instance_->InitAsDefaultInstance();
-  MessageReference::default_instance_->InitAsDefaultInstance();
-  SignedMessage::default_instance_->InitAsDefaultInstance();
-  ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_message_2eproto);
+  ::google::protobuf::internal::InitProtobufDefaults();
+  _Image_default_instance_.DefaultConstruct();
+  _Post_default_instance_.DefaultConstruct();
+  _Signature_default_instance_.DefaultConstruct();
+  _DistinguishedName_default_instance_.DefaultConstruct();
+  _KeyId_default_instance_.DefaultConstruct();
+  _PrivateKey_default_instance_.DefaultConstruct();
+  _PublicKey_default_instance_.DefaultConstruct();
+  _SymmetriclyEncryptedMessage_default_instance_.DefaultConstruct();
+  _AsymmetriclyEncryptedMessage_default_instance_.DefaultConstruct();
+  _MessageReference_default_instance_.DefaultConstruct();
+  _SignedMessage_default_instance_.DefaultConstruct();
+  _Post_default_instance_.get_mutable()->image_ = const_cast< ::Image*>(
+      ::Image::internal_default_instance());
+  _Signature_default_instance_.get_mutable()->key_id_ = const_cast< ::KeyId*>(
+      ::KeyId::internal_default_instance());
+  _KeyId_default_instance_.get_mutable()->dn_ = const_cast< ::DistinguishedName*>(
+      ::DistinguishedName::internal_default_instance());
+  _PrivateKey_default_instance_.get_mutable()->key_ = const_cast< ::SymmetriclyEncryptedMessage*>(
+      ::SymmetriclyEncryptedMessage::internal_default_instance());
+  _PrivateKey_default_instance_.get_mutable()->key_id_ = const_cast< ::KeyId*>(
+      ::KeyId::internal_default_instance());
+  _PublicKey_default_instance_.get_mutable()->key_id_ = const_cast< ::KeyId*>(
+      ::KeyId::internal_default_instance());
+  _AsymmetriclyEncryptedMessage_default_instance_.get_mutable()->dest_key_ = const_cast< ::KeyId*>(
+      ::KeyId::internal_default_instance());
+  _SignedMessage_default_instance_.post_ = const_cast< ::Post*>(
+      ::Post::internal_default_instance());
+  _SignedMessage_default_instance_.signedmessage_ = const_cast< ::Signature*>(
+      ::Signature::internal_default_instance());
+  _SignedMessage_default_instance_.privatekey_ = const_cast< ::PrivateKey*>(
+      ::PrivateKey::internal_default_instance());
+  _SignedMessage_default_instance_.publickey_ = const_cast< ::PublicKey*>(
+      ::PublicKey::internal_default_instance());
+  _SignedMessage_default_instance_.symmetriclyencryptedmessage_ = const_cast< ::SymmetriclyEncryptedMessage*>(
+      ::SymmetriclyEncryptedMessage::internal_default_instance());
+  _SignedMessage_default_instance_.asymmetriclyencryptedmessage_ = const_cast< ::AsymmetriclyEncryptedMessage*>(
+      ::AsymmetriclyEncryptedMessage::internal_default_instance());
+  _SignedMessage_default_instance_.reference_ = const_cast< ::MessageReference*>(
+      ::MessageReference::internal_default_instance());
+  _SignedMessage_default_instance_.get_mutable()->message_signature_ = const_cast< ::Signature*>(
+      ::Signature::internal_default_instance());
 }
 
+void InitDefaults() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &TableStruct::InitDefaultsImpl);
+}
+void AddDescriptorsImpl() {
+  InitDefaults();
+  static const char descriptor[] = {
+      "\n\rmessage.proto\"5\n\005Image\022\r\n\005image\030\001 \001(\014\022"
+      "\035\n\timageType\030\002 \001(\0162\n.ImageType\"\316\001\n\004Post\022"
+      "\n\n\002id\030\001 \001(\014\022\r\n\005title\030\002 \001(\t\022\023\n\013descriptio"
+      "n\030\003 \001(\t\022\020\n\010location\030\004 \001(\t\022\022\n\nstart_time\030"
+      "\005 \001(\006\022\017\n\007all_day\030\006 \001(\010\022\020\n\010end_time\030\007 \001(\006"
+      "\022\025\n\005image\030\010 \001(\0132\006.Image\022\017\n\007rsvp_by\030\t \001(\006"
+      "\022\022\n\nrsvp_email\030\n \001(\t\022\021\n\ttimestamp\030\013 \001(\006\""
+      "j\n\tSignature\022\021\n\tsignature\030\002 \001(\014\022&\n\016signa"
+      "ture_type\030\003 \001(\0162\016.SignatureType\022\n\n\002id\030\005 "
+      "\001(\014\022\026\n\006key_id\030\006 \001(\0132\006.KeyId\"\307\001\n\021Distingu"
+      "ishedName\022\017\n\007country\030\001 \001(\t\022\024\n\014organizati"
+      "on\030\002 \001(\t\022\033\n\023organizational_unit\030\003 \001(\t\022$\n"
+      "\034distinguished_name_qualifier\030\004 \001(\t\022\r\n\005s"
+      "tate\030\005 \001(\t\022\023\n\013common_name\030\006 \001(\t\022\025\n\rseria"
+      "l_number\030\007 \001(\t\022\r\n\005email\030\010 \001(\t\"e\n\005KeyId\022\032"
+      "\n\022fingerprint_sha512\030\001 \001(\014\022\036\n\002dn\030\002 \001(\0132\022"
+      ".DistinguishedName\022 \n\004type\030\003 \001(\0162\022.Asymm"
+      "etricKeyType\"\203\001\n\nPrivateKey\022)\n\003key\030\002 \001(\013"
+      "2\034.SymmetriclyEncryptedMessage\022&\n\014encodi"
+      "ngType\030\005 \001(\0162\020.KeyEncodingType\022\026\n\006key_id"
+      "\030\006 \001(\0132\006.KeyId\022\n\n\002id\030\007 \001(\014\"d\n\tPublicKey\022"
+      "\013\n\003key\030\002 \001(\014\022&\n\014encodingType\030\004 \001(\0162\020.Key"
+      "EncodingType\022\026\n\006key_id\030\005 \001(\0132\006.KeyId\022\n\n\002"
+      "id\030\006 \001(\014\"\240\001\n\033SymmetriclyEncryptedMessage"
+      "\022\"\n\014message_type\030\001 \001(\0162\014.MessageType\022*\n\017"
+      "encryption_type\030\002 \001(\0162\021.SymmetricKeyType"
+      "\022\013\n\003msg\030\003 \001(\014\022\n\n\002iv\030\004 \001(\014\022\014\n\004salt\030\005 \001(\014\022"
+      "\n\n\002id\030\006 \001(\014\"u\n\034AsymmetriclyEncryptedMess"
+      "age\022\"\n\014message_type\030\001 \001(\0162\014.MessageType\022"
+      "\030\n\010dest_key\030\002 \001(\0132\006.KeyId\022\013\n\003msg\030\004 \001(\014\022\n"
+      "\n\002id\030\005 \001(\014\":\n\020MessageReference\022\032\n\004type\030\001"
+      " \001(\0162\014.MessageType\022\n\n\002id\030\002 \001(\014\"\220\003\n\rSigne"
+      "dMessage\022\025\n\004post\030\001 \001(\0132\005.PostH\000\022#\n\rsigne"
+      "dMessage\030\002 \001(\0132\n.SignatureH\000\022!\n\nprivateK"
+      "ey\030\003 \001(\0132\013.PrivateKeyH\000\022\037\n\tpublicKey\030\004 \001"
+      "(\0132\n.PublicKeyH\000\022C\n\033symmetriclyEncrypted"
+      "Message\030\005 \001(\0132\034.SymmetriclyEncryptedMess"
+      "ageH\000\022E\n\034asymmetriclyEncryptedMessage\030\006 "
+      "\001(\0132\035.AsymmetriclyEncryptedMessageH\000\022&\n\t"
+      "reference\030\n \001(\0132\021.MessageReferenceH\000\022%\n\021"
+      "message_signature\030\010 \001(\0132\n.Signature\022\021\n\tt"
+      "imestamp\030\t \001(\006\022\n\n\002id\030\013 \001(\014B\005\n\003msg*;\n\rSig"
+      "natureType\022\023\n\017SHA512withECDSA\020\000\022\025\n\021SHA51"
+      "2withEd25519\020\001*@\n\021AsymmetricKeyType\022\r\n\ts"
+      "ecp384r1\020\000\022\r\n\tsecp521r1\020\001\022\r\n\tEdDSA_256\020\002"
+      "*B\n\020SymmetricKeyType\022.\n*AES_256_GCM_PBKD"
+      "F2WithHmacSHA256_65536_128\020\000*&\n\017KeyEncod"
+      "ingType\022\t\n\005pkcs8\020\000\022\010\n\004x509\020\001*\025\n\tImageTyp"
+      "e\022\010\n\004jpeg\020\000*\212\002\n\013MessageType\022\017\n\013MessagePo"
+      "st\020\000\022\024\n\020MessageSignature\020\001\022\025\n\021MessagePri"
+      "vateKey\020\002\022\024\n\020MessagePublicKey\020\003\022&\n\"Messa"
+      "geSymmetriclyEncryptedMessage\020\004\022\'\n#Messa"
+      "geAsymmetriclyEncryptedMessage\020\005\022!\n\035Mess"
+      "ageHybridEncryptedMessage\020\006\022\033\n\027MessageRe"
+      "ferenceMessage\020\007\022\026\n\022MessageSymetricKey\020d"
+      "B\"\n\027org.metamesh.chub.protoB\007Messageb\006pr"
+      "oto3"
+  };
+  ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
+      descriptor, 2244);
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
+    "message.proto", &protobuf_RegisterTypes);
+  ::google::protobuf::internal::OnShutdown(&TableStruct::Shutdown);
+}
+
+void AddDescriptors() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &AddDescriptorsImpl);
+}
 // Force AddDescriptors() to be called at static initialization time.
-struct StaticDescriptorInitializer_message_2eproto {
-  StaticDescriptorInitializer_message_2eproto() {
-    protobuf_AddDesc_message_2eproto();
+struct StaticDescriptorInitializer {
+  StaticDescriptorInitializer() {
+    AddDescriptors();
   }
-} static_descriptor_initializer_message_2eproto_;
+} static_descriptor_initializer;
+
+}  // namespace protobuf_message_2eproto
+
 const ::google::protobuf::EnumDescriptor* SignatureType_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return SignatureType_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_enum_descriptors[0];
 }
 bool SignatureType_IsValid(int value) {
-  switch(value) {
+  switch (value) {
     case 0:
     case 1:
       return true;
@@ -478,11 +386,11 @@ bool SignatureType_IsValid(int value) {
 }
 
 const ::google::protobuf::EnumDescriptor* AsymmetricKeyType_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return AsymmetricKeyType_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_enum_descriptors[1];
 }
 bool AsymmetricKeyType_IsValid(int value) {
-  switch(value) {
+  switch (value) {
     case 0:
     case 1:
     case 2:
@@ -493,11 +401,11 @@ bool AsymmetricKeyType_IsValid(int value) {
 }
 
 const ::google::protobuf::EnumDescriptor* SymmetricKeyType_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return SymmetricKeyType_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_enum_descriptors[2];
 }
 bool SymmetricKeyType_IsValid(int value) {
-  switch(value) {
+  switch (value) {
     case 0:
       return true;
     default:
@@ -506,11 +414,11 @@ bool SymmetricKeyType_IsValid(int value) {
 }
 
 const ::google::protobuf::EnumDescriptor* KeyEncodingType_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return KeyEncodingType_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_enum_descriptors[3];
 }
 bool KeyEncodingType_IsValid(int value) {
-  switch(value) {
+  switch (value) {
     case 0:
     case 1:
       return true;
@@ -520,11 +428,11 @@ bool KeyEncodingType_IsValid(int value) {
 }
 
 const ::google::protobuf::EnumDescriptor* ImageType_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return ImageType_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_enum_descriptors[4];
 }
 bool ImageType_IsValid(int value) {
-  switch(value) {
+  switch (value) {
     case 0:
       return true;
     default:
@@ -533,11 +441,11 @@ bool ImageType_IsValid(int value) {
 }
 
 const ::google::protobuf::EnumDescriptor* MessageType_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return MessageType_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_enum_descriptors[5];
 }
 bool MessageType_IsValid(int value) {
-  switch(value) {
+  switch (value) {
     case 0:
     case 1:
     case 2:
@@ -563,28 +471,29 @@ const int Image::kImageTypeFieldNumber;
 
 Image::Image()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_message_2eproto::InitDefaults();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:Image)
 }
-
-void Image::InitAsDefaultInstance() {
-  _is_default_instance_ = true;
-}
-
 Image::Image(const Image& from)
   : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  image_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.image().size() > 0) {
+    image_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.image_);
+  }
+  imagetype_ = from.imagetype_;
   // @@protoc_insertion_point(copy_constructor:Image)
 }
 
 void Image::SharedCtor() {
-    _is_default_instance_ = false;
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
   image_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   imagetype_ = 0;
+  _cached_size_ = 0;
 }
 
 Image::~Image() {
@@ -594,8 +503,6 @@ Image::~Image() {
 
 void Image::SharedDtor() {
   image_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != default_instance_) {
-  }
 }
 
 void Image::SetCachedSize(int size) const {
@@ -604,16 +511,14 @@ void Image::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* Image::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Image_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[0].descriptor;
 }
 
 const Image& Image::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
-  return *default_instance_;
+  protobuf_message_2eproto::InitDefaults();
+  return *internal_default_instance();
 }
-
-Image* Image::default_instance_ = NULL;
 
 Image* Image::New(::google::protobuf::Arena* arena) const {
   Image* n = new Image;
@@ -635,26 +540,24 @@ bool Image::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:Image)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional bytes image = 1;
+      // bytes image = 1;
       case 1: {
-        if (tag == 10) {
+        if (tag == 10u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_image()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_imageType;
         break;
       }
 
-      // optional .ImageType imageType = 2;
+      // .ImageType imageType = 2;
       case 2: {
-        if (tag == 16) {
-         parse_imageType:
+        if (tag == 16u) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
@@ -663,7 +566,6 @@ bool Image::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectAtEnd()) goto success;
         break;
       }
 
@@ -691,13 +593,13 @@ failure:
 void Image::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:Image)
-  // optional bytes image = 1;
+  // bytes image = 1;
   if (this->image().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       1, this->image(), output);
   }
 
-  // optional .ImageType imageType = 2;
+  // .ImageType imageType = 2;
   if (this->imagetype() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       2, this->imagetype(), output);
@@ -708,15 +610,16 @@ void Image::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Image::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
   // @@protoc_insertion_point(serialize_to_array_start:Image)
-  // optional bytes image = 1;
+  // bytes image = 1;
   if (this->image().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         1, this->image(), target);
   }
 
-  // optional .ImageType imageType = 2;
+  // .ImageType imageType = 2;
   if (this->imagetype() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       2, this->imagetype(), target);
@@ -726,35 +629,34 @@ void Image::SerializeWithCachedSizes(
   return target;
 }
 
-int Image::ByteSize() const {
+size_t Image::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:Image)
-  int total_size = 0;
+  size_t total_size = 0;
 
-  // optional bytes image = 1;
+  // bytes image = 1;
   if (this->image().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->image());
   }
 
-  // optional .ImageType imageType = 2;
+  // .ImageType imageType = 2;
   if (this->imagetype() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->imagetype());
   }
 
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
+  _cached_size_ = cached_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
 void Image::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:Image)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  const Image* source = 
+  GOOGLE_DCHECK_NE(&from, this);
+  const Image* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const Image>(
           &from);
   if (source == NULL) {
@@ -768,9 +670,8 @@ void Image::MergeFrom(const ::google::protobuf::Message& from) {
 
 void Image::MergeFrom(const Image& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:Image)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.image().size() > 0) {
 
     image_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.image_);
@@ -795,7 +696,6 @@ void Image::CopyFrom(const Image& from) {
 }
 
 bool Image::IsInitialized() const {
-
   return true;
 }
 
@@ -806,56 +706,60 @@ void Image::Swap(Image* other) {
 void Image::InternalSwap(Image* other) {
   image_.Swap(&other->image_);
   std::swap(imagetype_, other->imagetype_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata Image::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Image_descriptor_;
-  metadata.reflection = Image_reflection_;
-  return metadata;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[0];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // Image
 
-// optional bytes image = 1;
+// bytes image = 1;
 void Image::clear_image() {
   image_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& Image::image() const {
+const ::std::string& Image::image() const {
   // @@protoc_insertion_point(field_get:Image.image)
-  return image_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return image_.GetNoArena();
 }
- void Image::set_image(const ::std::string& value) {
+void Image::set_image(const ::std::string& value) {
   
   image_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:Image.image)
 }
- void Image::set_image(const char* value) {
+#if LANG_CXX11
+void Image::set_image(::std::string&& value) {
+  
+  image_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Image.image)
+}
+#endif
+void Image::set_image(const char* value) {
   
   image_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:Image.image)
 }
- void Image::set_image(const void* value, size_t size) {
+void Image::set_image(const void* value, size_t size) {
   
   image_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:Image.image)
 }
- ::std::string* Image::mutable_image() {
+::std::string* Image::mutable_image() {
   
   // @@protoc_insertion_point(field_mutable:Image.image)
   return image_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* Image::release_image() {
+::std::string* Image::release_image() {
   // @@protoc_insertion_point(field_release:Image.image)
   
   return image_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void Image::set_allocated_image(::std::string* image) {
+void Image::set_allocated_image(::std::string* image) {
   if (image != NULL) {
     
   } else {
@@ -865,15 +769,15 @@ void Image::clear_image() {
   // @@protoc_insertion_point(field_set_allocated:Image.image)
 }
 
-// optional .ImageType imageType = 2;
+// .ImageType imageType = 2;
 void Image::clear_imagetype() {
   imagetype_ = 0;
 }
- ::ImageType Image::imagetype() const {
+::ImageType Image::imagetype() const {
   // @@protoc_insertion_point(field_get:Image.imageType)
   return static_cast< ::ImageType >(imagetype_);
 }
- void Image::set_imagetype(::ImageType value) {
+void Image::set_imagetype(::ImageType value) {
   
   imagetype_ = value;
   // @@protoc_insertion_point(field_set:Image.imageType)
@@ -899,38 +803,57 @@ const int Post::kTimestampFieldNumber;
 
 Post::Post()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_message_2eproto::InitDefaults();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:Post)
 }
-
-void Post::InitAsDefaultInstance() {
-  _is_default_instance_ = true;
-  image_ = const_cast< ::Image*>(&::Image::default_instance());
-}
-
 Post::Post(const Post& from)
   : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  title_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.title().size() > 0) {
+    title_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.title_);
+  }
+  description_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.description().size() > 0) {
+    description_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.description_);
+  }
+  location_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.location().size() > 0) {
+    location_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.location_);
+  }
+  rsvp_email_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.rsvp_email().size() > 0) {
+    rsvp_email_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.rsvp_email_);
+  }
+  if (from.has_image()) {
+    image_ = new ::Image(*from.image_);
+  } else {
+    image_ = NULL;
+  }
+  ::memcpy(&start_time_, &from.start_time_,
+    reinterpret_cast<char*>(&all_day_) -
+    reinterpret_cast<char*>(&start_time_) + sizeof(all_day_));
   // @@protoc_insertion_point(copy_constructor:Post)
 }
 
 void Post::SharedCtor() {
-    _is_default_instance_ = false;
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
   id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   title_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   description_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   location_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  start_time_ = GOOGLE_ULONGLONG(0);
-  all_day_ = false;
-  end_time_ = GOOGLE_ULONGLONG(0);
-  image_ = NULL;
-  rsvp_by_ = GOOGLE_ULONGLONG(0);
   rsvp_email_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  timestamp_ = GOOGLE_ULONGLONG(0);
+  ::memset(&image_, 0, reinterpret_cast<char*>(&all_day_) -
+    reinterpret_cast<char*>(&image_) + sizeof(all_day_));
+  _cached_size_ = 0;
 }
 
 Post::~Post() {
@@ -944,7 +867,7 @@ void Post::SharedDtor() {
   description_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   location_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   rsvp_email_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != default_instance_) {
+  if (this != internal_default_instance()) {
     delete image_;
   }
 }
@@ -955,16 +878,14 @@ void Post::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* Post::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Post_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[1].descriptor;
 }
 
 const Post& Post::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
-  return *default_instance_;
+  protobuf_message_2eproto::InitDefaults();
+  return *internal_default_instance();
 }
-
-Post* Post::default_instance_ = NULL;
 
 Post* Post::New(::google::protobuf::Arena* arena) const {
   Post* n = new Post;
@@ -976,37 +897,17 @@ Post* Post::New(::google::protobuf::Arena* arena) const {
 
 void Post::Clear() {
 // @@protoc_insertion_point(message_clear_start:Post)
-#if defined(__clang__)
-#define ZR_HELPER_(f) \
-  _Pragma("clang diagnostic push") \
-  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
-  __builtin_offsetof(Post, f) \
-  _Pragma("clang diagnostic pop")
-#else
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<Post*>(16)->f)
-#endif
-
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
-
-  ZR_(start_time_, end_time_);
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   title_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   description_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   location_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  all_day_ = false;
-  if (GetArenaNoVirtual() == NULL && image_ != NULL) delete image_;
-  image_ = NULL;
-  rsvp_by_ = GOOGLE_ULONGLONG(0);
   rsvp_email_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  timestamp_ = GOOGLE_ULONGLONG(0);
-
-#undef ZR_HELPER_
-#undef ZR_
-
+  if (GetArenaNoVirtual() == NULL && image_ != NULL) {
+    delete image_;
+  }
+  image_ = NULL;
+  ::memset(&start_time_, 0, reinterpret_cast<char*>(&all_day_) -
+    reinterpret_cast<char*>(&start_time_) + sizeof(all_day_));
 }
 
 bool Post::MergePartialFromCodedStream(
@@ -1015,26 +916,24 @@ bool Post::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:Post)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional bytes id = 1;
+      // bytes id = 1;
       case 1: {
-        if (tag == 10) {
+        if (tag == 10u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_id()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_title;
         break;
       }
 
-      // optional string title = 2;
+      // string title = 2;
       case 2: {
-        if (tag == 18) {
-         parse_title:
+        if (tag == 18u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_title()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -1044,14 +943,12 @@ bool Post::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_description;
         break;
       }
 
-      // optional string description = 3;
+      // string description = 3;
       case 3: {
-        if (tag == 26) {
-         parse_description:
+        if (tag == 26u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_description()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -1061,14 +958,12 @@ bool Post::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_location;
         break;
       }
 
-      // optional string location = 4;
+      // string location = 4;
       case 4: {
-        if (tag == 34) {
-         parse_location:
+        if (tag == 34u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_location()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -1078,87 +973,75 @@ bool Post::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(41)) goto parse_start_time;
         break;
       }
 
-      // optional fixed64 start_time = 5;
+      // fixed64 start_time = 5;
       case 5: {
-        if (tag == 41) {
-         parse_start_time:
+        if (tag == 41u) {
+
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_FIXED64>(
                  input, &start_time_)));
-
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(48)) goto parse_all_day;
         break;
       }
 
-      // optional bool all_day = 6;
+      // bool all_day = 6;
       case 6: {
-        if (tag == 48) {
-         parse_all_day:
+        if (tag == 48u) {
+
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &all_day_)));
-
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(57)) goto parse_end_time;
         break;
       }
 
-      // optional fixed64 end_time = 7;
+      // fixed64 end_time = 7;
       case 7: {
-        if (tag == 57) {
-         parse_end_time:
+        if (tag == 57u) {
+
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_FIXED64>(
                  input, &end_time_)));
-
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(66)) goto parse_image;
         break;
       }
 
-      // optional .Image image = 8;
+      // .Image image = 8;
       case 8: {
-        if (tag == 66) {
-         parse_image:
+        if (tag == 66u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_image()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(73)) goto parse_rsvp_by;
         break;
       }
 
-      // optional fixed64 rsvp_by = 9;
+      // fixed64 rsvp_by = 9;
       case 9: {
-        if (tag == 73) {
-         parse_rsvp_by:
+        if (tag == 73u) {
+
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_FIXED64>(
                  input, &rsvp_by_)));
-
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(82)) goto parse_rsvp_email;
         break;
       }
 
-      // optional string rsvp_email = 10;
+      // string rsvp_email = 10;
       case 10: {
-        if (tag == 82) {
-         parse_rsvp_email:
+        if (tag == 82u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_rsvp_email()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -1168,22 +1051,19 @@ bool Post::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(89)) goto parse_timestamp;
         break;
       }
 
-      // optional fixed64 timestamp = 11;
+      // fixed64 timestamp = 11;
       case 11: {
-        if (tag == 89) {
-         parse_timestamp:
+        if (tag == 89u) {
+
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_FIXED64>(
                  input, &timestamp_)));
-
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectAtEnd()) goto success;
         break;
       }
 
@@ -1211,13 +1091,13 @@ failure:
 void Post::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:Post)
-  // optional bytes id = 1;
+  // bytes id = 1;
   if (this->id().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       1, this->id(), output);
   }
 
-  // optional string title = 2;
+  // string title = 2;
   if (this->title().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->title().data(), this->title().length(),
@@ -1227,7 +1107,7 @@ void Post::SerializeWithCachedSizes(
       2, this->title(), output);
   }
 
-  // optional string description = 3;
+  // string description = 3;
   if (this->description().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->description().data(), this->description().length(),
@@ -1237,7 +1117,7 @@ void Post::SerializeWithCachedSizes(
       3, this->description(), output);
   }
 
-  // optional string location = 4;
+  // string location = 4;
   if (this->location().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->location().data(), this->location().length(),
@@ -1247,33 +1127,33 @@ void Post::SerializeWithCachedSizes(
       4, this->location(), output);
   }
 
-  // optional fixed64 start_time = 5;
+  // fixed64 start_time = 5;
   if (this->start_time() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteFixed64(5, this->start_time(), output);
   }
 
-  // optional bool all_day = 6;
+  // bool all_day = 6;
   if (this->all_day() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->all_day(), output);
   }
 
-  // optional fixed64 end_time = 7;
+  // fixed64 end_time = 7;
   if (this->end_time() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteFixed64(7, this->end_time(), output);
   }
 
-  // optional .Image image = 8;
+  // .Image image = 8;
   if (this->has_image()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       8, *this->image_, output);
   }
 
-  // optional fixed64 rsvp_by = 9;
+  // fixed64 rsvp_by = 9;
   if (this->rsvp_by() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteFixed64(9, this->rsvp_by(), output);
   }
 
-  // optional string rsvp_email = 10;
+  // string rsvp_email = 10;
   if (this->rsvp_email().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->rsvp_email().data(), this->rsvp_email().length(),
@@ -1283,7 +1163,7 @@ void Post::SerializeWithCachedSizes(
       10, this->rsvp_email(), output);
   }
 
-  // optional fixed64 timestamp = 11;
+  // fixed64 timestamp = 11;
   if (this->timestamp() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteFixed64(11, this->timestamp(), output);
   }
@@ -1293,15 +1173,16 @@ void Post::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Post::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
   // @@protoc_insertion_point(serialize_to_array_start:Post)
-  // optional bytes id = 1;
+  // bytes id = 1;
   if (this->id().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         1, this->id(), target);
   }
 
-  // optional string title = 2;
+  // string title = 2;
   if (this->title().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->title().data(), this->title().length(),
@@ -1312,7 +1193,7 @@ void Post::SerializeWithCachedSizes(
         2, this->title(), target);
   }
 
-  // optional string description = 3;
+  // string description = 3;
   if (this->description().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->description().data(), this->description().length(),
@@ -1323,7 +1204,7 @@ void Post::SerializeWithCachedSizes(
         3, this->description(), target);
   }
 
-  // optional string location = 4;
+  // string location = 4;
   if (this->location().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->location().data(), this->location().length(),
@@ -1334,34 +1215,34 @@ void Post::SerializeWithCachedSizes(
         4, this->location(), target);
   }
 
-  // optional fixed64 start_time = 5;
+  // fixed64 start_time = 5;
   if (this->start_time() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFixed64ToArray(5, this->start_time(), target);
   }
 
-  // optional bool all_day = 6;
+  // bool all_day = 6;
   if (this->all_day() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->all_day(), target);
   }
 
-  // optional fixed64 end_time = 7;
+  // fixed64 end_time = 7;
   if (this->end_time() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFixed64ToArray(7, this->end_time(), target);
   }
 
-  // optional .Image image = 8;
+  // .Image image = 8;
   if (this->has_image()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         8, *this->image_, false, target);
   }
 
-  // optional fixed64 rsvp_by = 9;
+  // fixed64 rsvp_by = 9;
   if (this->rsvp_by() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFixed64ToArray(9, this->rsvp_by(), target);
   }
 
-  // optional string rsvp_email = 10;
+  // string rsvp_email = 10;
   if (this->rsvp_email().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->rsvp_email().data(), this->rsvp_email().length(),
@@ -1372,7 +1253,7 @@ void Post::SerializeWithCachedSizes(
         10, this->rsvp_email(), target);
   }
 
-  // optional fixed64 timestamp = 11;
+  // fixed64 timestamp = 11;
   if (this->timestamp() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFixed64ToArray(11, this->timestamp(), target);
   }
@@ -1381,89 +1262,88 @@ void Post::SerializeWithCachedSizes(
   return target;
 }
 
-int Post::ByteSize() const {
+size_t Post::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:Post)
-  int total_size = 0;
+  size_t total_size = 0;
 
-  // optional bytes id = 1;
+  // bytes id = 1;
   if (this->id().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->id());
   }
 
-  // optional string title = 2;
+  // string title = 2;
   if (this->title().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->title());
   }
 
-  // optional string description = 3;
+  // string description = 3;
   if (this->description().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->description());
   }
 
-  // optional string location = 4;
+  // string location = 4;
   if (this->location().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->location());
   }
 
-  // optional fixed64 start_time = 5;
-  if (this->start_time() != 0) {
-    total_size += 1 + 8;
-  }
-
-  // optional bool all_day = 6;
-  if (this->all_day() != 0) {
-    total_size += 1 + 1;
-  }
-
-  // optional fixed64 end_time = 7;
-  if (this->end_time() != 0) {
-    total_size += 1 + 8;
-  }
-
-  // optional .Image image = 8;
-  if (this->has_image()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->image_);
-  }
-
-  // optional fixed64 rsvp_by = 9;
-  if (this->rsvp_by() != 0) {
-    total_size += 1 + 8;
-  }
-
-  // optional string rsvp_email = 10;
+  // string rsvp_email = 10;
   if (this->rsvp_email().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->rsvp_email());
   }
 
-  // optional fixed64 timestamp = 11;
+  // .Image image = 8;
+  if (this->has_image()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->image_);
+  }
+
+  // fixed64 start_time = 5;
+  if (this->start_time() != 0) {
+    total_size += 1 + 8;
+  }
+
+  // fixed64 end_time = 7;
+  if (this->end_time() != 0) {
+    total_size += 1 + 8;
+  }
+
+  // fixed64 rsvp_by = 9;
+  if (this->rsvp_by() != 0) {
+    total_size += 1 + 8;
+  }
+
+  // fixed64 timestamp = 11;
   if (this->timestamp() != 0) {
     total_size += 1 + 8;
   }
 
+  // bool all_day = 6;
+  if (this->all_day() != 0) {
+    total_size += 1 + 1;
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
+  _cached_size_ = cached_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
 void Post::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:Post)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  const Post* source = 
+  GOOGLE_DCHECK_NE(&from, this);
+  const Post* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const Post>(
           &from);
   if (source == NULL) {
@@ -1477,9 +1357,8 @@ void Post::MergeFrom(const ::google::protobuf::Message& from) {
 
 void Post::MergeFrom(const Post& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:Post)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.id().size() > 0) {
 
     id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
@@ -1496,27 +1375,27 @@ void Post::MergeFrom(const Post& from) {
 
     location_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.location_);
   }
-  if (from.start_time() != 0) {
-    set_start_time(from.start_time());
-  }
-  if (from.all_day() != 0) {
-    set_all_day(from.all_day());
-  }
-  if (from.end_time() != 0) {
-    set_end_time(from.end_time());
-  }
-  if (from.has_image()) {
-    mutable_image()->::Image::MergeFrom(from.image());
-  }
-  if (from.rsvp_by() != 0) {
-    set_rsvp_by(from.rsvp_by());
-  }
   if (from.rsvp_email().size() > 0) {
 
     rsvp_email_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.rsvp_email_);
   }
+  if (from.has_image()) {
+    mutable_image()->::Image::MergeFrom(from.image());
+  }
+  if (from.start_time() != 0) {
+    set_start_time(from.start_time());
+  }
+  if (from.end_time() != 0) {
+    set_end_time(from.end_time());
+  }
+  if (from.rsvp_by() != 0) {
+    set_rsvp_by(from.rsvp_by());
+  }
   if (from.timestamp() != 0) {
     set_timestamp(from.timestamp());
+  }
+  if (from.all_day() != 0) {
+    set_all_day(from.all_day());
   }
 }
 
@@ -1535,7 +1414,6 @@ void Post::CopyFrom(const Post& from) {
 }
 
 bool Post::IsInitialized() const {
-
   return true;
 }
 
@@ -1548,63 +1426,67 @@ void Post::InternalSwap(Post* other) {
   title_.Swap(&other->title_);
   description_.Swap(&other->description_);
   location_.Swap(&other->location_);
-  std::swap(start_time_, other->start_time_);
-  std::swap(all_day_, other->all_day_);
-  std::swap(end_time_, other->end_time_);
-  std::swap(image_, other->image_);
-  std::swap(rsvp_by_, other->rsvp_by_);
   rsvp_email_.Swap(&other->rsvp_email_);
+  std::swap(image_, other->image_);
+  std::swap(start_time_, other->start_time_);
+  std::swap(end_time_, other->end_time_);
+  std::swap(rsvp_by_, other->rsvp_by_);
   std::swap(timestamp_, other->timestamp_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(all_day_, other->all_day_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata Post::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Post_descriptor_;
-  metadata.reflection = Post_reflection_;
-  return metadata;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[1];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // Post
 
-// optional bytes id = 1;
+// bytes id = 1;
 void Post::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& Post::id() const {
+const ::std::string& Post::id() const {
   // @@protoc_insertion_point(field_get:Post.id)
-  return id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return id_.GetNoArena();
 }
- void Post::set_id(const ::std::string& value) {
+void Post::set_id(const ::std::string& value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:Post.id)
 }
- void Post::set_id(const char* value) {
+#if LANG_CXX11
+void Post::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Post.id)
+}
+#endif
+void Post::set_id(const char* value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:Post.id)
 }
- void Post::set_id(const void* value, size_t size) {
+void Post::set_id(const void* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:Post.id)
 }
- ::std::string* Post::mutable_id() {
+::std::string* Post::mutable_id() {
   
   // @@protoc_insertion_point(field_mutable:Post.id)
   return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* Post::release_id() {
+::std::string* Post::release_id() {
   // @@protoc_insertion_point(field_release:Post.id)
   
   return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void Post::set_allocated_id(::std::string* id) {
+void Post::set_allocated_id(::std::string* id) {
   if (id != NULL) {
     
   } else {
@@ -1614,41 +1496,49 @@ void Post::clear_id() {
   // @@protoc_insertion_point(field_set_allocated:Post.id)
 }
 
-// optional string title = 2;
+// string title = 2;
 void Post::clear_title() {
   title_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& Post::title() const {
+const ::std::string& Post::title() const {
   // @@protoc_insertion_point(field_get:Post.title)
-  return title_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return title_.GetNoArena();
 }
- void Post::set_title(const ::std::string& value) {
+void Post::set_title(const ::std::string& value) {
   
   title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:Post.title)
 }
- void Post::set_title(const char* value) {
+#if LANG_CXX11
+void Post::set_title(::std::string&& value) {
+  
+  title_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Post.title)
+}
+#endif
+void Post::set_title(const char* value) {
   
   title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:Post.title)
 }
- void Post::set_title(const char* value, size_t size) {
+void Post::set_title(const char* value, size_t size) {
   
   title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:Post.title)
 }
- ::std::string* Post::mutable_title() {
+::std::string* Post::mutable_title() {
   
   // @@protoc_insertion_point(field_mutable:Post.title)
   return title_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* Post::release_title() {
+::std::string* Post::release_title() {
   // @@protoc_insertion_point(field_release:Post.title)
   
   return title_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void Post::set_allocated_title(::std::string* title) {
+void Post::set_allocated_title(::std::string* title) {
   if (title != NULL) {
     
   } else {
@@ -1658,41 +1548,49 @@ void Post::clear_title() {
   // @@protoc_insertion_point(field_set_allocated:Post.title)
 }
 
-// optional string description = 3;
+// string description = 3;
 void Post::clear_description() {
   description_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& Post::description() const {
+const ::std::string& Post::description() const {
   // @@protoc_insertion_point(field_get:Post.description)
-  return description_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return description_.GetNoArena();
 }
- void Post::set_description(const ::std::string& value) {
+void Post::set_description(const ::std::string& value) {
   
   description_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:Post.description)
 }
- void Post::set_description(const char* value) {
+#if LANG_CXX11
+void Post::set_description(::std::string&& value) {
+  
+  description_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Post.description)
+}
+#endif
+void Post::set_description(const char* value) {
   
   description_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:Post.description)
 }
- void Post::set_description(const char* value, size_t size) {
+void Post::set_description(const char* value, size_t size) {
   
   description_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:Post.description)
 }
- ::std::string* Post::mutable_description() {
+::std::string* Post::mutable_description() {
   
   // @@protoc_insertion_point(field_mutable:Post.description)
   return description_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* Post::release_description() {
+::std::string* Post::release_description() {
   // @@protoc_insertion_point(field_release:Post.description)
   
   return description_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void Post::set_allocated_description(::std::string* description) {
+void Post::set_allocated_description(::std::string* description) {
   if (description != NULL) {
     
   } else {
@@ -1702,41 +1600,49 @@ void Post::clear_description() {
   // @@protoc_insertion_point(field_set_allocated:Post.description)
 }
 
-// optional string location = 4;
+// string location = 4;
 void Post::clear_location() {
   location_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& Post::location() const {
+const ::std::string& Post::location() const {
   // @@protoc_insertion_point(field_get:Post.location)
-  return location_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return location_.GetNoArena();
 }
- void Post::set_location(const ::std::string& value) {
+void Post::set_location(const ::std::string& value) {
   
   location_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:Post.location)
 }
- void Post::set_location(const char* value) {
+#if LANG_CXX11
+void Post::set_location(::std::string&& value) {
+  
+  location_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Post.location)
+}
+#endif
+void Post::set_location(const char* value) {
   
   location_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:Post.location)
 }
- void Post::set_location(const char* value, size_t size) {
+void Post::set_location(const char* value, size_t size) {
   
   location_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:Post.location)
 }
- ::std::string* Post::mutable_location() {
+::std::string* Post::mutable_location() {
   
   // @@protoc_insertion_point(field_mutable:Post.location)
   return location_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* Post::release_location() {
+::std::string* Post::release_location() {
   // @@protoc_insertion_point(field_release:Post.location)
   
   return location_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void Post::set_allocated_location(::std::string* location) {
+void Post::set_allocated_location(::std::string* location) {
   if (location != NULL) {
     
   } else {
@@ -1746,51 +1652,51 @@ void Post::clear_location() {
   // @@protoc_insertion_point(field_set_allocated:Post.location)
 }
 
-// optional fixed64 start_time = 5;
+// fixed64 start_time = 5;
 void Post::clear_start_time() {
   start_time_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint64 Post::start_time() const {
+::google::protobuf::uint64 Post::start_time() const {
   // @@protoc_insertion_point(field_get:Post.start_time)
   return start_time_;
 }
- void Post::set_start_time(::google::protobuf::uint64 value) {
+void Post::set_start_time(::google::protobuf::uint64 value) {
   
   start_time_ = value;
   // @@protoc_insertion_point(field_set:Post.start_time)
 }
 
-// optional bool all_day = 6;
+// bool all_day = 6;
 void Post::clear_all_day() {
   all_day_ = false;
 }
- bool Post::all_day() const {
+bool Post::all_day() const {
   // @@protoc_insertion_point(field_get:Post.all_day)
   return all_day_;
 }
- void Post::set_all_day(bool value) {
+void Post::set_all_day(bool value) {
   
   all_day_ = value;
   // @@protoc_insertion_point(field_set:Post.all_day)
 }
 
-// optional fixed64 end_time = 7;
+// fixed64 end_time = 7;
 void Post::clear_end_time() {
   end_time_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint64 Post::end_time() const {
+::google::protobuf::uint64 Post::end_time() const {
   // @@protoc_insertion_point(field_get:Post.end_time)
   return end_time_;
 }
- void Post::set_end_time(::google::protobuf::uint64 value) {
+void Post::set_end_time(::google::protobuf::uint64 value) {
   
   end_time_ = value;
   // @@protoc_insertion_point(field_set:Post.end_time)
 }
 
-// optional .Image image = 8;
+// .Image image = 8;
 bool Post::has_image() const {
-  return !_is_default_instance_ && image_ != NULL;
+  return this != internal_default_instance() && image_ != NULL;
 }
 void Post::clear_image() {
   if (GetArenaNoVirtual() == NULL && image_ != NULL) delete image_;
@@ -1798,7 +1704,8 @@ void Post::clear_image() {
 }
 const ::Image& Post::image() const {
   // @@protoc_insertion_point(field_get:Post.image)
-  return image_ != NULL ? *image_ : *default_instance_->image_;
+  return image_ != NULL ? *image_
+                         : *::Image::internal_default_instance();
 }
 ::Image* Post::mutable_image() {
   
@@ -1826,55 +1733,63 @@ void Post::set_allocated_image(::Image* image) {
   // @@protoc_insertion_point(field_set_allocated:Post.image)
 }
 
-// optional fixed64 rsvp_by = 9;
+// fixed64 rsvp_by = 9;
 void Post::clear_rsvp_by() {
   rsvp_by_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint64 Post::rsvp_by() const {
+::google::protobuf::uint64 Post::rsvp_by() const {
   // @@protoc_insertion_point(field_get:Post.rsvp_by)
   return rsvp_by_;
 }
- void Post::set_rsvp_by(::google::protobuf::uint64 value) {
+void Post::set_rsvp_by(::google::protobuf::uint64 value) {
   
   rsvp_by_ = value;
   // @@protoc_insertion_point(field_set:Post.rsvp_by)
 }
 
-// optional string rsvp_email = 10;
+// string rsvp_email = 10;
 void Post::clear_rsvp_email() {
   rsvp_email_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& Post::rsvp_email() const {
+const ::std::string& Post::rsvp_email() const {
   // @@protoc_insertion_point(field_get:Post.rsvp_email)
-  return rsvp_email_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return rsvp_email_.GetNoArena();
 }
- void Post::set_rsvp_email(const ::std::string& value) {
+void Post::set_rsvp_email(const ::std::string& value) {
   
   rsvp_email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:Post.rsvp_email)
 }
- void Post::set_rsvp_email(const char* value) {
+#if LANG_CXX11
+void Post::set_rsvp_email(::std::string&& value) {
+  
+  rsvp_email_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Post.rsvp_email)
+}
+#endif
+void Post::set_rsvp_email(const char* value) {
   
   rsvp_email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:Post.rsvp_email)
 }
- void Post::set_rsvp_email(const char* value, size_t size) {
+void Post::set_rsvp_email(const char* value, size_t size) {
   
   rsvp_email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:Post.rsvp_email)
 }
- ::std::string* Post::mutable_rsvp_email() {
+::std::string* Post::mutable_rsvp_email() {
   
   // @@protoc_insertion_point(field_mutable:Post.rsvp_email)
   return rsvp_email_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* Post::release_rsvp_email() {
+::std::string* Post::release_rsvp_email() {
   // @@protoc_insertion_point(field_release:Post.rsvp_email)
   
   return rsvp_email_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void Post::set_allocated_rsvp_email(::std::string* rsvp_email) {
+void Post::set_allocated_rsvp_email(::std::string* rsvp_email) {
   if (rsvp_email != NULL) {
     
   } else {
@@ -1884,15 +1799,15 @@ void Post::clear_rsvp_email() {
   // @@protoc_insertion_point(field_set_allocated:Post.rsvp_email)
 }
 
-// optional fixed64 timestamp = 11;
+// fixed64 timestamp = 11;
 void Post::clear_timestamp() {
   timestamp_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint64 Post::timestamp() const {
+::google::protobuf::uint64 Post::timestamp() const {
   // @@protoc_insertion_point(field_get:Post.timestamp)
   return timestamp_;
 }
- void Post::set_timestamp(::google::protobuf::uint64 value) {
+void Post::set_timestamp(::google::protobuf::uint64 value) {
   
   timestamp_ = value;
   // @@protoc_insertion_point(field_set:Post.timestamp)
@@ -1911,31 +1826,40 @@ const int Signature::kKeyIdFieldNumber;
 
 Signature::Signature()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_message_2eproto::InitDefaults();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:Signature)
 }
-
-void Signature::InitAsDefaultInstance() {
-  _is_default_instance_ = true;
-  key_id_ = const_cast< ::KeyId*>(&::KeyId::default_instance());
-}
-
 Signature::Signature(const Signature& from)
   : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  signature_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.signature().size() > 0) {
+    signature_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.signature_);
+  }
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  if (from.has_key_id()) {
+    key_id_ = new ::KeyId(*from.key_id_);
+  } else {
+    key_id_ = NULL;
+  }
+  signature_type_ = from.signature_type_;
   // @@protoc_insertion_point(copy_constructor:Signature)
 }
 
 void Signature::SharedCtor() {
-    _is_default_instance_ = false;
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
   signature_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  signature_type_ = 0;
   id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  key_id_ = NULL;
+  ::memset(&key_id_, 0, reinterpret_cast<char*>(&signature_type_) -
+    reinterpret_cast<char*>(&key_id_) + sizeof(signature_type_));
+  _cached_size_ = 0;
 }
 
 Signature::~Signature() {
@@ -1946,7 +1870,7 @@ Signature::~Signature() {
 void Signature::SharedDtor() {
   signature_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != default_instance_) {
+  if (this != internal_default_instance()) {
     delete key_id_;
   }
 }
@@ -1957,16 +1881,14 @@ void Signature::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* Signature::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Signature_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[2].descriptor;
 }
 
 const Signature& Signature::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
-  return *default_instance_;
+  protobuf_message_2eproto::InitDefaults();
+  return *internal_default_instance();
 }
-
-Signature* Signature::default_instance_ = NULL;
 
 Signature* Signature::New(::google::protobuf::Arena* arena) const {
   Signature* n = new Signature;
@@ -1979,10 +1901,12 @@ Signature* Signature::New(::google::protobuf::Arena* arena) const {
 void Signature::Clear() {
 // @@protoc_insertion_point(message_clear_start:Signature)
   signature_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  signature_type_ = 0;
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (GetArenaNoVirtual() == NULL && key_id_ != NULL) delete key_id_;
+  if (GetArenaNoVirtual() == NULL && key_id_ != NULL) {
+    delete key_id_;
+  }
   key_id_ = NULL;
+  signature_type_ = 0;
 }
 
 bool Signature::MergePartialFromCodedStream(
@@ -1991,26 +1915,24 @@ bool Signature::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:Signature)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional bytes signature = 2;
+      // bytes signature = 2;
       case 2: {
-        if (tag == 18) {
+        if (tag == 18u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_signature()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(24)) goto parse_signature_type;
         break;
       }
 
-      // optional .SignatureType signature_type = 3;
+      // .SignatureType signature_type = 3;
       case 3: {
-        if (tag == 24) {
-         parse_signature_type:
+        if (tag == 24u) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
@@ -2019,33 +1941,28 @@ bool Signature::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_id;
         break;
       }
 
-      // optional bytes id = 5;
+      // bytes id = 5;
       case 5: {
-        if (tag == 42) {
-         parse_id:
+        if (tag == 42u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_id()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_key_id;
         break;
       }
 
-      // optional .KeyId key_id = 6;
+      // .KeyId key_id = 6;
       case 6: {
-        if (tag == 50) {
-         parse_key_id:
+        if (tag == 50u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_key_id()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectAtEnd()) goto success;
         break;
       }
 
@@ -2073,25 +1990,25 @@ failure:
 void Signature::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:Signature)
-  // optional bytes signature = 2;
+  // bytes signature = 2;
   if (this->signature().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       2, this->signature(), output);
   }
 
-  // optional .SignatureType signature_type = 3;
+  // .SignatureType signature_type = 3;
   if (this->signature_type() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       3, this->signature_type(), output);
   }
 
-  // optional bytes id = 5;
+  // bytes id = 5;
   if (this->id().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       5, this->id(), output);
   }
 
-  // optional .KeyId key_id = 6;
+  // .KeyId key_id = 6;
   if (this->has_key_id()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       6, *this->key_id_, output);
@@ -2102,28 +2019,29 @@ void Signature::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Signature::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
   // @@protoc_insertion_point(serialize_to_array_start:Signature)
-  // optional bytes signature = 2;
+  // bytes signature = 2;
   if (this->signature().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         2, this->signature(), target);
   }
 
-  // optional .SignatureType signature_type = 3;
+  // .SignatureType signature_type = 3;
   if (this->signature_type() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       3, this->signature_type(), target);
   }
 
-  // optional bytes id = 5;
+  // bytes id = 5;
   if (this->id().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         5, this->id(), target);
   }
 
-  // optional .KeyId key_id = 6;
+  // .KeyId key_id = 6;
   if (this->has_key_id()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
@@ -2134,49 +2052,48 @@ void Signature::SerializeWithCachedSizes(
   return target;
 }
 
-int Signature::ByteSize() const {
+size_t Signature::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:Signature)
-  int total_size = 0;
+  size_t total_size = 0;
 
-  // optional bytes signature = 2;
+  // bytes signature = 2;
   if (this->signature().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->signature());
   }
 
-  // optional .SignatureType signature_type = 3;
-  if (this->signature_type() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->signature_type());
-  }
-
-  // optional bytes id = 5;
+  // bytes id = 5;
   if (this->id().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->id());
   }
 
-  // optional .KeyId key_id = 6;
+  // .KeyId key_id = 6;
   if (this->has_key_id()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->key_id_);
   }
 
+  // .SignatureType signature_type = 3;
+  if (this->signature_type() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->signature_type());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
+  _cached_size_ = cached_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
 void Signature::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:Signature)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  const Signature* source = 
+  GOOGLE_DCHECK_NE(&from, this);
+  const Signature* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const Signature>(
           &from);
   if (source == NULL) {
@@ -2190,15 +2107,11 @@ void Signature::MergeFrom(const ::google::protobuf::Message& from) {
 
 void Signature::MergeFrom(const Signature& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:Signature)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.signature().size() > 0) {
 
     signature_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.signature_);
-  }
-  if (from.signature_type() != 0) {
-    set_signature_type(from.signature_type());
   }
   if (from.id().size() > 0) {
 
@@ -2206,6 +2119,9 @@ void Signature::MergeFrom(const Signature& from) {
   }
   if (from.has_key_id()) {
     mutable_key_id()->::KeyId::MergeFrom(from.key_id());
+  }
+  if (from.signature_type() != 0) {
+    set_signature_type(from.signature_type());
   }
 }
 
@@ -2224,7 +2140,6 @@ void Signature::CopyFrom(const Signature& from) {
 }
 
 bool Signature::IsInitialized() const {
-
   return true;
 }
 
@@ -2234,59 +2149,63 @@ void Signature::Swap(Signature* other) {
 }
 void Signature::InternalSwap(Signature* other) {
   signature_.Swap(&other->signature_);
-  std::swap(signature_type_, other->signature_type_);
   id_.Swap(&other->id_);
   std::swap(key_id_, other->key_id_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(signature_type_, other->signature_type_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata Signature::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Signature_descriptor_;
-  metadata.reflection = Signature_reflection_;
-  return metadata;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[2];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // Signature
 
-// optional bytes signature = 2;
+// bytes signature = 2;
 void Signature::clear_signature() {
   signature_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& Signature::signature() const {
+const ::std::string& Signature::signature() const {
   // @@protoc_insertion_point(field_get:Signature.signature)
-  return signature_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return signature_.GetNoArena();
 }
- void Signature::set_signature(const ::std::string& value) {
+void Signature::set_signature(const ::std::string& value) {
   
   signature_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:Signature.signature)
 }
- void Signature::set_signature(const char* value) {
+#if LANG_CXX11
+void Signature::set_signature(::std::string&& value) {
+  
+  signature_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Signature.signature)
+}
+#endif
+void Signature::set_signature(const char* value) {
   
   signature_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:Signature.signature)
 }
- void Signature::set_signature(const void* value, size_t size) {
+void Signature::set_signature(const void* value, size_t size) {
   
   signature_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:Signature.signature)
 }
- ::std::string* Signature::mutable_signature() {
+::std::string* Signature::mutable_signature() {
   
   // @@protoc_insertion_point(field_mutable:Signature.signature)
   return signature_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* Signature::release_signature() {
+::std::string* Signature::release_signature() {
   // @@protoc_insertion_point(field_release:Signature.signature)
   
   return signature_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void Signature::set_allocated_signature(::std::string* signature) {
+void Signature::set_allocated_signature(::std::string* signature) {
   if (signature != NULL) {
     
   } else {
@@ -2296,55 +2215,63 @@ void Signature::clear_signature() {
   // @@protoc_insertion_point(field_set_allocated:Signature.signature)
 }
 
-// optional .SignatureType signature_type = 3;
+// .SignatureType signature_type = 3;
 void Signature::clear_signature_type() {
   signature_type_ = 0;
 }
- ::SignatureType Signature::signature_type() const {
+::SignatureType Signature::signature_type() const {
   // @@protoc_insertion_point(field_get:Signature.signature_type)
   return static_cast< ::SignatureType >(signature_type_);
 }
- void Signature::set_signature_type(::SignatureType value) {
+void Signature::set_signature_type(::SignatureType value) {
   
   signature_type_ = value;
   // @@protoc_insertion_point(field_set:Signature.signature_type)
 }
 
-// optional bytes id = 5;
+// bytes id = 5;
 void Signature::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& Signature::id() const {
+const ::std::string& Signature::id() const {
   // @@protoc_insertion_point(field_get:Signature.id)
-  return id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return id_.GetNoArena();
 }
- void Signature::set_id(const ::std::string& value) {
+void Signature::set_id(const ::std::string& value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:Signature.id)
 }
- void Signature::set_id(const char* value) {
+#if LANG_CXX11
+void Signature::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Signature.id)
+}
+#endif
+void Signature::set_id(const char* value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:Signature.id)
 }
- void Signature::set_id(const void* value, size_t size) {
+void Signature::set_id(const void* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:Signature.id)
 }
- ::std::string* Signature::mutable_id() {
+::std::string* Signature::mutable_id() {
   
   // @@protoc_insertion_point(field_mutable:Signature.id)
   return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* Signature::release_id() {
+::std::string* Signature::release_id() {
   // @@protoc_insertion_point(field_release:Signature.id)
   
   return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void Signature::set_allocated_id(::std::string* id) {
+void Signature::set_allocated_id(::std::string* id) {
   if (id != NULL) {
     
   } else {
@@ -2354,9 +2281,9 @@ void Signature::clear_id() {
   // @@protoc_insertion_point(field_set_allocated:Signature.id)
 }
 
-// optional .KeyId key_id = 6;
+// .KeyId key_id = 6;
 bool Signature::has_key_id() const {
-  return !_is_default_instance_ && key_id_ != NULL;
+  return this != internal_default_instance() && key_id_ != NULL;
 }
 void Signature::clear_key_id() {
   if (GetArenaNoVirtual() == NULL && key_id_ != NULL) delete key_id_;
@@ -2364,7 +2291,8 @@ void Signature::clear_key_id() {
 }
 const ::KeyId& Signature::key_id() const {
   // @@protoc_insertion_point(field_get:Signature.key_id)
-  return key_id_ != NULL ? *key_id_ : *default_instance_->key_id_;
+  return key_id_ != NULL ? *key_id_
+                         : *::KeyId::internal_default_instance();
 }
 ::KeyId* Signature::mutable_key_id() {
   
@@ -2409,26 +2337,53 @@ const int DistinguishedName::kEmailFieldNumber;
 
 DistinguishedName::DistinguishedName()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_message_2eproto::InitDefaults();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:DistinguishedName)
 }
-
-void DistinguishedName::InitAsDefaultInstance() {
-  _is_default_instance_ = true;
-}
-
 DistinguishedName::DistinguishedName(const DistinguishedName& from)
   : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  country_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.country().size() > 0) {
+    country_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.country_);
+  }
+  organization_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.organization().size() > 0) {
+    organization_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.organization_);
+  }
+  organizational_unit_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.organizational_unit().size() > 0) {
+    organizational_unit_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.organizational_unit_);
+  }
+  distinguished_name_qualifier_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.distinguished_name_qualifier().size() > 0) {
+    distinguished_name_qualifier_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.distinguished_name_qualifier_);
+  }
+  state_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.state().size() > 0) {
+    state_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.state_);
+  }
+  common_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.common_name().size() > 0) {
+    common_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.common_name_);
+  }
+  serial_number_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.serial_number().size() > 0) {
+    serial_number_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.serial_number_);
+  }
+  email_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.email().size() > 0) {
+    email_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.email_);
+  }
   // @@protoc_insertion_point(copy_constructor:DistinguishedName)
 }
 
 void DistinguishedName::SharedCtor() {
-    _is_default_instance_ = false;
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
   country_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   organization_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   organizational_unit_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -2437,6 +2392,7 @@ void DistinguishedName::SharedCtor() {
   common_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   serial_number_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   email_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _cached_size_ = 0;
 }
 
 DistinguishedName::~DistinguishedName() {
@@ -2453,8 +2409,6 @@ void DistinguishedName::SharedDtor() {
   common_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   serial_number_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   email_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != default_instance_) {
-  }
 }
 
 void DistinguishedName::SetCachedSize(int size) const {
@@ -2463,16 +2417,14 @@ void DistinguishedName::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* DistinguishedName::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return DistinguishedName_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[3].descriptor;
 }
 
 const DistinguishedName& DistinguishedName::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
-  return *default_instance_;
+  protobuf_message_2eproto::InitDefaults();
+  return *internal_default_instance();
 }
-
-DistinguishedName* DistinguishedName::default_instance_ = NULL;
 
 DistinguishedName* DistinguishedName::New(::google::protobuf::Arena* arena) const {
   DistinguishedName* n = new DistinguishedName;
@@ -2500,13 +2452,13 @@ bool DistinguishedName::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:DistinguishedName)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string country = 1;
+      // string country = 1;
       case 1: {
-        if (tag == 10) {
+        if (tag == 10u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_country()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2516,14 +2468,12 @@ bool DistinguishedName::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_organization;
         break;
       }
 
-      // optional string organization = 2;
+      // string organization = 2;
       case 2: {
-        if (tag == 18) {
-         parse_organization:
+        if (tag == 18u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_organization()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2533,14 +2483,12 @@ bool DistinguishedName::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_organizational_unit;
         break;
       }
 
-      // optional string organizational_unit = 3;
+      // string organizational_unit = 3;
       case 3: {
-        if (tag == 26) {
-         parse_organizational_unit:
+        if (tag == 26u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_organizational_unit()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2550,14 +2498,12 @@ bool DistinguishedName::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_distinguished_name_qualifier;
         break;
       }
 
-      // optional string distinguished_name_qualifier = 4;
+      // string distinguished_name_qualifier = 4;
       case 4: {
-        if (tag == 34) {
-         parse_distinguished_name_qualifier:
+        if (tag == 34u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_distinguished_name_qualifier()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2567,14 +2513,12 @@ bool DistinguishedName::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_state;
         break;
       }
 
-      // optional string state = 5;
+      // string state = 5;
       case 5: {
-        if (tag == 42) {
-         parse_state:
+        if (tag == 42u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_state()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2584,14 +2528,12 @@ bool DistinguishedName::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_common_name;
         break;
       }
 
-      // optional string common_name = 6;
+      // string common_name = 6;
       case 6: {
-        if (tag == 50) {
-         parse_common_name:
+        if (tag == 50u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_common_name()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2601,14 +2543,12 @@ bool DistinguishedName::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(58)) goto parse_serial_number;
         break;
       }
 
-      // optional string serial_number = 7;
+      // string serial_number = 7;
       case 7: {
-        if (tag == 58) {
-         parse_serial_number:
+        if (tag == 58u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_serial_number()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2618,14 +2558,12 @@ bool DistinguishedName::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(66)) goto parse_email;
         break;
       }
 
-      // optional string email = 8;
+      // string email = 8;
       case 8: {
-        if (tag == 66) {
-         parse_email:
+        if (tag == 66u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_email()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2635,7 +2573,6 @@ bool DistinguishedName::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectAtEnd()) goto success;
         break;
       }
 
@@ -2663,7 +2600,7 @@ failure:
 void DistinguishedName::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:DistinguishedName)
-  // optional string country = 1;
+  // string country = 1;
   if (this->country().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->country().data(), this->country().length(),
@@ -2673,7 +2610,7 @@ void DistinguishedName::SerializeWithCachedSizes(
       1, this->country(), output);
   }
 
-  // optional string organization = 2;
+  // string organization = 2;
   if (this->organization().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->organization().data(), this->organization().length(),
@@ -2683,7 +2620,7 @@ void DistinguishedName::SerializeWithCachedSizes(
       2, this->organization(), output);
   }
 
-  // optional string organizational_unit = 3;
+  // string organizational_unit = 3;
   if (this->organizational_unit().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->organizational_unit().data(), this->organizational_unit().length(),
@@ -2693,7 +2630,7 @@ void DistinguishedName::SerializeWithCachedSizes(
       3, this->organizational_unit(), output);
   }
 
-  // optional string distinguished_name_qualifier = 4;
+  // string distinguished_name_qualifier = 4;
   if (this->distinguished_name_qualifier().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->distinguished_name_qualifier().data(), this->distinguished_name_qualifier().length(),
@@ -2703,7 +2640,7 @@ void DistinguishedName::SerializeWithCachedSizes(
       4, this->distinguished_name_qualifier(), output);
   }
 
-  // optional string state = 5;
+  // string state = 5;
   if (this->state().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->state().data(), this->state().length(),
@@ -2713,7 +2650,7 @@ void DistinguishedName::SerializeWithCachedSizes(
       5, this->state(), output);
   }
 
-  // optional string common_name = 6;
+  // string common_name = 6;
   if (this->common_name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->common_name().data(), this->common_name().length(),
@@ -2723,7 +2660,7 @@ void DistinguishedName::SerializeWithCachedSizes(
       6, this->common_name(), output);
   }
 
-  // optional string serial_number = 7;
+  // string serial_number = 7;
   if (this->serial_number().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->serial_number().data(), this->serial_number().length(),
@@ -2733,7 +2670,7 @@ void DistinguishedName::SerializeWithCachedSizes(
       7, this->serial_number(), output);
   }
 
-  // optional string email = 8;
+  // string email = 8;
   if (this->email().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->email().data(), this->email().length(),
@@ -2748,8 +2685,9 @@ void DistinguishedName::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* DistinguishedName::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
   // @@protoc_insertion_point(serialize_to_array_start:DistinguishedName)
-  // optional string country = 1;
+  // string country = 1;
   if (this->country().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->country().data(), this->country().length(),
@@ -2760,7 +2698,7 @@ void DistinguishedName::SerializeWithCachedSizes(
         1, this->country(), target);
   }
 
-  // optional string organization = 2;
+  // string organization = 2;
   if (this->organization().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->organization().data(), this->organization().length(),
@@ -2771,7 +2709,7 @@ void DistinguishedName::SerializeWithCachedSizes(
         2, this->organization(), target);
   }
 
-  // optional string organizational_unit = 3;
+  // string organizational_unit = 3;
   if (this->organizational_unit().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->organizational_unit().data(), this->organizational_unit().length(),
@@ -2782,7 +2720,7 @@ void DistinguishedName::SerializeWithCachedSizes(
         3, this->organizational_unit(), target);
   }
 
-  // optional string distinguished_name_qualifier = 4;
+  // string distinguished_name_qualifier = 4;
   if (this->distinguished_name_qualifier().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->distinguished_name_qualifier().data(), this->distinguished_name_qualifier().length(),
@@ -2793,7 +2731,7 @@ void DistinguishedName::SerializeWithCachedSizes(
         4, this->distinguished_name_qualifier(), target);
   }
 
-  // optional string state = 5;
+  // string state = 5;
   if (this->state().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->state().data(), this->state().length(),
@@ -2804,7 +2742,7 @@ void DistinguishedName::SerializeWithCachedSizes(
         5, this->state(), target);
   }
 
-  // optional string common_name = 6;
+  // string common_name = 6;
   if (this->common_name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->common_name().data(), this->common_name().length(),
@@ -2815,7 +2753,7 @@ void DistinguishedName::SerializeWithCachedSizes(
         6, this->common_name(), target);
   }
 
-  // optional string serial_number = 7;
+  // string serial_number = 7;
   if (this->serial_number().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->serial_number().data(), this->serial_number().length(),
@@ -2826,7 +2764,7 @@ void DistinguishedName::SerializeWithCachedSizes(
         7, this->serial_number(), target);
   }
 
-  // optional string email = 8;
+  // string email = 8;
   if (this->email().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->email().data(), this->email().length(),
@@ -2841,78 +2779,77 @@ void DistinguishedName::SerializeWithCachedSizes(
   return target;
 }
 
-int DistinguishedName::ByteSize() const {
+size_t DistinguishedName::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:DistinguishedName)
-  int total_size = 0;
+  size_t total_size = 0;
 
-  // optional string country = 1;
+  // string country = 1;
   if (this->country().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->country());
   }
 
-  // optional string organization = 2;
+  // string organization = 2;
   if (this->organization().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->organization());
   }
 
-  // optional string organizational_unit = 3;
+  // string organizational_unit = 3;
   if (this->organizational_unit().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->organizational_unit());
   }
 
-  // optional string distinguished_name_qualifier = 4;
+  // string distinguished_name_qualifier = 4;
   if (this->distinguished_name_qualifier().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->distinguished_name_qualifier());
   }
 
-  // optional string state = 5;
+  // string state = 5;
   if (this->state().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->state());
   }
 
-  // optional string common_name = 6;
+  // string common_name = 6;
   if (this->common_name().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->common_name());
   }
 
-  // optional string serial_number = 7;
+  // string serial_number = 7;
   if (this->serial_number().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->serial_number());
   }
 
-  // optional string email = 8;
+  // string email = 8;
   if (this->email().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->email());
   }
 
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
+  _cached_size_ = cached_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
 void DistinguishedName::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:DistinguishedName)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  const DistinguishedName* source = 
+  GOOGLE_DCHECK_NE(&from, this);
+  const DistinguishedName* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const DistinguishedName>(
           &from);
   if (source == NULL) {
@@ -2926,9 +2863,8 @@ void DistinguishedName::MergeFrom(const ::google::protobuf::Message& from) {
 
 void DistinguishedName::MergeFrom(const DistinguishedName& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:DistinguishedName)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.country().size() > 0) {
 
     country_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.country_);
@@ -2978,7 +2914,6 @@ void DistinguishedName::CopyFrom(const DistinguishedName& from) {
 }
 
 bool DistinguishedName::IsInitialized() const {
-
   return true;
 }
 
@@ -2995,56 +2930,60 @@ void DistinguishedName::InternalSwap(DistinguishedName* other) {
   common_name_.Swap(&other->common_name_);
   serial_number_.Swap(&other->serial_number_);
   email_.Swap(&other->email_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata DistinguishedName::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = DistinguishedName_descriptor_;
-  metadata.reflection = DistinguishedName_reflection_;
-  return metadata;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[3];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // DistinguishedName
 
-// optional string country = 1;
+// string country = 1;
 void DistinguishedName::clear_country() {
   country_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& DistinguishedName::country() const {
+const ::std::string& DistinguishedName::country() const {
   // @@protoc_insertion_point(field_get:DistinguishedName.country)
-  return country_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return country_.GetNoArena();
 }
- void DistinguishedName::set_country(const ::std::string& value) {
+void DistinguishedName::set_country(const ::std::string& value) {
   
   country_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:DistinguishedName.country)
 }
- void DistinguishedName::set_country(const char* value) {
+#if LANG_CXX11
+void DistinguishedName::set_country(::std::string&& value) {
+  
+  country_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:DistinguishedName.country)
+}
+#endif
+void DistinguishedName::set_country(const char* value) {
   
   country_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:DistinguishedName.country)
 }
- void DistinguishedName::set_country(const char* value, size_t size) {
+void DistinguishedName::set_country(const char* value, size_t size) {
   
   country_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:DistinguishedName.country)
 }
- ::std::string* DistinguishedName::mutable_country() {
+::std::string* DistinguishedName::mutable_country() {
   
   // @@protoc_insertion_point(field_mutable:DistinguishedName.country)
   return country_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* DistinguishedName::release_country() {
+::std::string* DistinguishedName::release_country() {
   // @@protoc_insertion_point(field_release:DistinguishedName.country)
   
   return country_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void DistinguishedName::set_allocated_country(::std::string* country) {
+void DistinguishedName::set_allocated_country(::std::string* country) {
   if (country != NULL) {
     
   } else {
@@ -3054,41 +2993,49 @@ void DistinguishedName::clear_country() {
   // @@protoc_insertion_point(field_set_allocated:DistinguishedName.country)
 }
 
-// optional string organization = 2;
+// string organization = 2;
 void DistinguishedName::clear_organization() {
   organization_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& DistinguishedName::organization() const {
+const ::std::string& DistinguishedName::organization() const {
   // @@protoc_insertion_point(field_get:DistinguishedName.organization)
-  return organization_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return organization_.GetNoArena();
 }
- void DistinguishedName::set_organization(const ::std::string& value) {
+void DistinguishedName::set_organization(const ::std::string& value) {
   
   organization_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:DistinguishedName.organization)
 }
- void DistinguishedName::set_organization(const char* value) {
+#if LANG_CXX11
+void DistinguishedName::set_organization(::std::string&& value) {
+  
+  organization_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:DistinguishedName.organization)
+}
+#endif
+void DistinguishedName::set_organization(const char* value) {
   
   organization_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:DistinguishedName.organization)
 }
- void DistinguishedName::set_organization(const char* value, size_t size) {
+void DistinguishedName::set_organization(const char* value, size_t size) {
   
   organization_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:DistinguishedName.organization)
 }
- ::std::string* DistinguishedName::mutable_organization() {
+::std::string* DistinguishedName::mutable_organization() {
   
   // @@protoc_insertion_point(field_mutable:DistinguishedName.organization)
   return organization_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* DistinguishedName::release_organization() {
+::std::string* DistinguishedName::release_organization() {
   // @@protoc_insertion_point(field_release:DistinguishedName.organization)
   
   return organization_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void DistinguishedName::set_allocated_organization(::std::string* organization) {
+void DistinguishedName::set_allocated_organization(::std::string* organization) {
   if (organization != NULL) {
     
   } else {
@@ -3098,41 +3045,49 @@ void DistinguishedName::clear_organization() {
   // @@protoc_insertion_point(field_set_allocated:DistinguishedName.organization)
 }
 
-// optional string organizational_unit = 3;
+// string organizational_unit = 3;
 void DistinguishedName::clear_organizational_unit() {
   organizational_unit_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& DistinguishedName::organizational_unit() const {
+const ::std::string& DistinguishedName::organizational_unit() const {
   // @@protoc_insertion_point(field_get:DistinguishedName.organizational_unit)
-  return organizational_unit_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return organizational_unit_.GetNoArena();
 }
- void DistinguishedName::set_organizational_unit(const ::std::string& value) {
+void DistinguishedName::set_organizational_unit(const ::std::string& value) {
   
   organizational_unit_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:DistinguishedName.organizational_unit)
 }
- void DistinguishedName::set_organizational_unit(const char* value) {
+#if LANG_CXX11
+void DistinguishedName::set_organizational_unit(::std::string&& value) {
+  
+  organizational_unit_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:DistinguishedName.organizational_unit)
+}
+#endif
+void DistinguishedName::set_organizational_unit(const char* value) {
   
   organizational_unit_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:DistinguishedName.organizational_unit)
 }
- void DistinguishedName::set_organizational_unit(const char* value, size_t size) {
+void DistinguishedName::set_organizational_unit(const char* value, size_t size) {
   
   organizational_unit_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:DistinguishedName.organizational_unit)
 }
- ::std::string* DistinguishedName::mutable_organizational_unit() {
+::std::string* DistinguishedName::mutable_organizational_unit() {
   
   // @@protoc_insertion_point(field_mutable:DistinguishedName.organizational_unit)
   return organizational_unit_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* DistinguishedName::release_organizational_unit() {
+::std::string* DistinguishedName::release_organizational_unit() {
   // @@protoc_insertion_point(field_release:DistinguishedName.organizational_unit)
   
   return organizational_unit_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void DistinguishedName::set_allocated_organizational_unit(::std::string* organizational_unit) {
+void DistinguishedName::set_allocated_organizational_unit(::std::string* organizational_unit) {
   if (organizational_unit != NULL) {
     
   } else {
@@ -3142,41 +3097,49 @@ void DistinguishedName::clear_organizational_unit() {
   // @@protoc_insertion_point(field_set_allocated:DistinguishedName.organizational_unit)
 }
 
-// optional string distinguished_name_qualifier = 4;
+// string distinguished_name_qualifier = 4;
 void DistinguishedName::clear_distinguished_name_qualifier() {
   distinguished_name_qualifier_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& DistinguishedName::distinguished_name_qualifier() const {
+const ::std::string& DistinguishedName::distinguished_name_qualifier() const {
   // @@protoc_insertion_point(field_get:DistinguishedName.distinguished_name_qualifier)
-  return distinguished_name_qualifier_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return distinguished_name_qualifier_.GetNoArena();
 }
- void DistinguishedName::set_distinguished_name_qualifier(const ::std::string& value) {
+void DistinguishedName::set_distinguished_name_qualifier(const ::std::string& value) {
   
   distinguished_name_qualifier_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:DistinguishedName.distinguished_name_qualifier)
 }
- void DistinguishedName::set_distinguished_name_qualifier(const char* value) {
+#if LANG_CXX11
+void DistinguishedName::set_distinguished_name_qualifier(::std::string&& value) {
+  
+  distinguished_name_qualifier_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:DistinguishedName.distinguished_name_qualifier)
+}
+#endif
+void DistinguishedName::set_distinguished_name_qualifier(const char* value) {
   
   distinguished_name_qualifier_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:DistinguishedName.distinguished_name_qualifier)
 }
- void DistinguishedName::set_distinguished_name_qualifier(const char* value, size_t size) {
+void DistinguishedName::set_distinguished_name_qualifier(const char* value, size_t size) {
   
   distinguished_name_qualifier_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:DistinguishedName.distinguished_name_qualifier)
 }
- ::std::string* DistinguishedName::mutable_distinguished_name_qualifier() {
+::std::string* DistinguishedName::mutable_distinguished_name_qualifier() {
   
   // @@protoc_insertion_point(field_mutable:DistinguishedName.distinguished_name_qualifier)
   return distinguished_name_qualifier_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* DistinguishedName::release_distinguished_name_qualifier() {
+::std::string* DistinguishedName::release_distinguished_name_qualifier() {
   // @@protoc_insertion_point(field_release:DistinguishedName.distinguished_name_qualifier)
   
   return distinguished_name_qualifier_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void DistinguishedName::set_allocated_distinguished_name_qualifier(::std::string* distinguished_name_qualifier) {
+void DistinguishedName::set_allocated_distinguished_name_qualifier(::std::string* distinguished_name_qualifier) {
   if (distinguished_name_qualifier != NULL) {
     
   } else {
@@ -3186,41 +3149,49 @@ void DistinguishedName::clear_distinguished_name_qualifier() {
   // @@protoc_insertion_point(field_set_allocated:DistinguishedName.distinguished_name_qualifier)
 }
 
-// optional string state = 5;
+// string state = 5;
 void DistinguishedName::clear_state() {
   state_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& DistinguishedName::state() const {
+const ::std::string& DistinguishedName::state() const {
   // @@protoc_insertion_point(field_get:DistinguishedName.state)
-  return state_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return state_.GetNoArena();
 }
- void DistinguishedName::set_state(const ::std::string& value) {
+void DistinguishedName::set_state(const ::std::string& value) {
   
   state_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:DistinguishedName.state)
 }
- void DistinguishedName::set_state(const char* value) {
+#if LANG_CXX11
+void DistinguishedName::set_state(::std::string&& value) {
+  
+  state_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:DistinguishedName.state)
+}
+#endif
+void DistinguishedName::set_state(const char* value) {
   
   state_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:DistinguishedName.state)
 }
- void DistinguishedName::set_state(const char* value, size_t size) {
+void DistinguishedName::set_state(const char* value, size_t size) {
   
   state_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:DistinguishedName.state)
 }
- ::std::string* DistinguishedName::mutable_state() {
+::std::string* DistinguishedName::mutable_state() {
   
   // @@protoc_insertion_point(field_mutable:DistinguishedName.state)
   return state_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* DistinguishedName::release_state() {
+::std::string* DistinguishedName::release_state() {
   // @@protoc_insertion_point(field_release:DistinguishedName.state)
   
   return state_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void DistinguishedName::set_allocated_state(::std::string* state) {
+void DistinguishedName::set_allocated_state(::std::string* state) {
   if (state != NULL) {
     
   } else {
@@ -3230,41 +3201,49 @@ void DistinguishedName::clear_state() {
   // @@protoc_insertion_point(field_set_allocated:DistinguishedName.state)
 }
 
-// optional string common_name = 6;
+// string common_name = 6;
 void DistinguishedName::clear_common_name() {
   common_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& DistinguishedName::common_name() const {
+const ::std::string& DistinguishedName::common_name() const {
   // @@protoc_insertion_point(field_get:DistinguishedName.common_name)
-  return common_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return common_name_.GetNoArena();
 }
- void DistinguishedName::set_common_name(const ::std::string& value) {
+void DistinguishedName::set_common_name(const ::std::string& value) {
   
   common_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:DistinguishedName.common_name)
 }
- void DistinguishedName::set_common_name(const char* value) {
+#if LANG_CXX11
+void DistinguishedName::set_common_name(::std::string&& value) {
+  
+  common_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:DistinguishedName.common_name)
+}
+#endif
+void DistinguishedName::set_common_name(const char* value) {
   
   common_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:DistinguishedName.common_name)
 }
- void DistinguishedName::set_common_name(const char* value, size_t size) {
+void DistinguishedName::set_common_name(const char* value, size_t size) {
   
   common_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:DistinguishedName.common_name)
 }
- ::std::string* DistinguishedName::mutable_common_name() {
+::std::string* DistinguishedName::mutable_common_name() {
   
   // @@protoc_insertion_point(field_mutable:DistinguishedName.common_name)
   return common_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* DistinguishedName::release_common_name() {
+::std::string* DistinguishedName::release_common_name() {
   // @@protoc_insertion_point(field_release:DistinguishedName.common_name)
   
   return common_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void DistinguishedName::set_allocated_common_name(::std::string* common_name) {
+void DistinguishedName::set_allocated_common_name(::std::string* common_name) {
   if (common_name != NULL) {
     
   } else {
@@ -3274,41 +3253,49 @@ void DistinguishedName::clear_common_name() {
   // @@protoc_insertion_point(field_set_allocated:DistinguishedName.common_name)
 }
 
-// optional string serial_number = 7;
+// string serial_number = 7;
 void DistinguishedName::clear_serial_number() {
   serial_number_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& DistinguishedName::serial_number() const {
+const ::std::string& DistinguishedName::serial_number() const {
   // @@protoc_insertion_point(field_get:DistinguishedName.serial_number)
-  return serial_number_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return serial_number_.GetNoArena();
 }
- void DistinguishedName::set_serial_number(const ::std::string& value) {
+void DistinguishedName::set_serial_number(const ::std::string& value) {
   
   serial_number_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:DistinguishedName.serial_number)
 }
- void DistinguishedName::set_serial_number(const char* value) {
+#if LANG_CXX11
+void DistinguishedName::set_serial_number(::std::string&& value) {
+  
+  serial_number_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:DistinguishedName.serial_number)
+}
+#endif
+void DistinguishedName::set_serial_number(const char* value) {
   
   serial_number_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:DistinguishedName.serial_number)
 }
- void DistinguishedName::set_serial_number(const char* value, size_t size) {
+void DistinguishedName::set_serial_number(const char* value, size_t size) {
   
   serial_number_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:DistinguishedName.serial_number)
 }
- ::std::string* DistinguishedName::mutable_serial_number() {
+::std::string* DistinguishedName::mutable_serial_number() {
   
   // @@protoc_insertion_point(field_mutable:DistinguishedName.serial_number)
   return serial_number_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* DistinguishedName::release_serial_number() {
+::std::string* DistinguishedName::release_serial_number() {
   // @@protoc_insertion_point(field_release:DistinguishedName.serial_number)
   
   return serial_number_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void DistinguishedName::set_allocated_serial_number(::std::string* serial_number) {
+void DistinguishedName::set_allocated_serial_number(::std::string* serial_number) {
   if (serial_number != NULL) {
     
   } else {
@@ -3318,41 +3305,49 @@ void DistinguishedName::clear_serial_number() {
   // @@protoc_insertion_point(field_set_allocated:DistinguishedName.serial_number)
 }
 
-// optional string email = 8;
+// string email = 8;
 void DistinguishedName::clear_email() {
   email_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& DistinguishedName::email() const {
+const ::std::string& DistinguishedName::email() const {
   // @@protoc_insertion_point(field_get:DistinguishedName.email)
-  return email_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return email_.GetNoArena();
 }
- void DistinguishedName::set_email(const ::std::string& value) {
+void DistinguishedName::set_email(const ::std::string& value) {
   
   email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:DistinguishedName.email)
 }
- void DistinguishedName::set_email(const char* value) {
+#if LANG_CXX11
+void DistinguishedName::set_email(::std::string&& value) {
+  
+  email_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:DistinguishedName.email)
+}
+#endif
+void DistinguishedName::set_email(const char* value) {
   
   email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:DistinguishedName.email)
 }
- void DistinguishedName::set_email(const char* value, size_t size) {
+void DistinguishedName::set_email(const char* value, size_t size) {
   
   email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:DistinguishedName.email)
 }
- ::std::string* DistinguishedName::mutable_email() {
+::std::string* DistinguishedName::mutable_email() {
   
   // @@protoc_insertion_point(field_mutable:DistinguishedName.email)
   return email_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* DistinguishedName::release_email() {
+::std::string* DistinguishedName::release_email() {
   // @@protoc_insertion_point(field_release:DistinguishedName.email)
   
   return email_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void DistinguishedName::set_allocated_email(::std::string* email) {
+void DistinguishedName::set_allocated_email(::std::string* email) {
   if (email != NULL) {
     
   } else {
@@ -3374,30 +3369,35 @@ const int KeyId::kTypeFieldNumber;
 
 KeyId::KeyId()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_message_2eproto::InitDefaults();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:KeyId)
 }
-
-void KeyId::InitAsDefaultInstance() {
-  _is_default_instance_ = true;
-  dn_ = const_cast< ::DistinguishedName*>(&::DistinguishedName::default_instance());
-}
-
 KeyId::KeyId(const KeyId& from)
   : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  fingerprint_sha512_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.fingerprint_sha512().size() > 0) {
+    fingerprint_sha512_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.fingerprint_sha512_);
+  }
+  if (from.has_dn()) {
+    dn_ = new ::DistinguishedName(*from.dn_);
+  } else {
+    dn_ = NULL;
+  }
+  type_ = from.type_;
   // @@protoc_insertion_point(copy_constructor:KeyId)
 }
 
 void KeyId::SharedCtor() {
-    _is_default_instance_ = false;
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
   fingerprint_sha512_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  dn_ = NULL;
-  type_ = 0;
+  ::memset(&dn_, 0, reinterpret_cast<char*>(&type_) -
+    reinterpret_cast<char*>(&dn_) + sizeof(type_));
+  _cached_size_ = 0;
 }
 
 KeyId::~KeyId() {
@@ -3407,7 +3407,7 @@ KeyId::~KeyId() {
 
 void KeyId::SharedDtor() {
   fingerprint_sha512_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != default_instance_) {
+  if (this != internal_default_instance()) {
     delete dn_;
   }
 }
@@ -3418,16 +3418,14 @@ void KeyId::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* KeyId::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return KeyId_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[4].descriptor;
 }
 
 const KeyId& KeyId::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
-  return *default_instance_;
+  protobuf_message_2eproto::InitDefaults();
+  return *internal_default_instance();
 }
-
-KeyId* KeyId::default_instance_ = NULL;
 
 KeyId* KeyId::New(::google::protobuf::Arena* arena) const {
   KeyId* n = new KeyId;
@@ -3440,7 +3438,9 @@ KeyId* KeyId::New(::google::protobuf::Arena* arena) const {
 void KeyId::Clear() {
 // @@protoc_insertion_point(message_clear_start:KeyId)
   fingerprint_sha512_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (GetArenaNoVirtual() == NULL && dn_ != NULL) delete dn_;
+  if (GetArenaNoVirtual() == NULL && dn_ != NULL) {
+    delete dn_;
+  }
   dn_ = NULL;
   type_ = 0;
 }
@@ -3451,39 +3451,35 @@ bool KeyId::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:KeyId)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional bytes fingerprint_sha512 = 1;
+      // bytes fingerprint_sha512 = 1;
       case 1: {
-        if (tag == 10) {
+        if (tag == 10u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_fingerprint_sha512()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_dn;
         break;
       }
 
-      // optional .DistinguishedName dn = 2;
+      // .DistinguishedName dn = 2;
       case 2: {
-        if (tag == 18) {
-         parse_dn:
+        if (tag == 18u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_dn()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(24)) goto parse_type;
         break;
       }
 
-      // optional .AsymmetricKeyType type = 3;
+      // .AsymmetricKeyType type = 3;
       case 3: {
-        if (tag == 24) {
-         parse_type:
+        if (tag == 24u) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
@@ -3492,7 +3488,6 @@ bool KeyId::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectAtEnd()) goto success;
         break;
       }
 
@@ -3520,19 +3515,19 @@ failure:
 void KeyId::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:KeyId)
-  // optional bytes fingerprint_sha512 = 1;
+  // bytes fingerprint_sha512 = 1;
   if (this->fingerprint_sha512().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       1, this->fingerprint_sha512(), output);
   }
 
-  // optional .DistinguishedName dn = 2;
+  // .DistinguishedName dn = 2;
   if (this->has_dn()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, *this->dn_, output);
   }
 
-  // optional .AsymmetricKeyType type = 3;
+  // .AsymmetricKeyType type = 3;
   if (this->type() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       3, this->type(), output);
@@ -3543,22 +3538,23 @@ void KeyId::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* KeyId::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
   // @@protoc_insertion_point(serialize_to_array_start:KeyId)
-  // optional bytes fingerprint_sha512 = 1;
+  // bytes fingerprint_sha512 = 1;
   if (this->fingerprint_sha512().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         1, this->fingerprint_sha512(), target);
   }
 
-  // optional .DistinguishedName dn = 2;
+  // .DistinguishedName dn = 2;
   if (this->has_dn()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         2, *this->dn_, false, target);
   }
 
-  // optional .AsymmetricKeyType type = 3;
+  // .AsymmetricKeyType type = 3;
   if (this->type() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       3, this->type(), target);
@@ -3568,42 +3564,41 @@ void KeyId::SerializeWithCachedSizes(
   return target;
 }
 
-int KeyId::ByteSize() const {
+size_t KeyId::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:KeyId)
-  int total_size = 0;
+  size_t total_size = 0;
 
-  // optional bytes fingerprint_sha512 = 1;
+  // bytes fingerprint_sha512 = 1;
   if (this->fingerprint_sha512().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->fingerprint_sha512());
   }
 
-  // optional .DistinguishedName dn = 2;
+  // .DistinguishedName dn = 2;
   if (this->has_dn()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->dn_);
   }
 
-  // optional .AsymmetricKeyType type = 3;
+  // .AsymmetricKeyType type = 3;
   if (this->type() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
   }
 
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
+  _cached_size_ = cached_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
 void KeyId::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:KeyId)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  const KeyId* source = 
+  GOOGLE_DCHECK_NE(&from, this);
+  const KeyId* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const KeyId>(
           &from);
   if (source == NULL) {
@@ -3617,9 +3612,8 @@ void KeyId::MergeFrom(const ::google::protobuf::Message& from) {
 
 void KeyId::MergeFrom(const KeyId& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:KeyId)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.fingerprint_sha512().size() > 0) {
 
     fingerprint_sha512_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.fingerprint_sha512_);
@@ -3647,7 +3641,6 @@ void KeyId::CopyFrom(const KeyId& from) {
 }
 
 bool KeyId::IsInitialized() const {
-
   return true;
 }
 
@@ -3659,56 +3652,60 @@ void KeyId::InternalSwap(KeyId* other) {
   fingerprint_sha512_.Swap(&other->fingerprint_sha512_);
   std::swap(dn_, other->dn_);
   std::swap(type_, other->type_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata KeyId::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = KeyId_descriptor_;
-  metadata.reflection = KeyId_reflection_;
-  return metadata;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[4];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // KeyId
 
-// optional bytes fingerprint_sha512 = 1;
+// bytes fingerprint_sha512 = 1;
 void KeyId::clear_fingerprint_sha512() {
   fingerprint_sha512_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& KeyId::fingerprint_sha512() const {
+const ::std::string& KeyId::fingerprint_sha512() const {
   // @@protoc_insertion_point(field_get:KeyId.fingerprint_sha512)
-  return fingerprint_sha512_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return fingerprint_sha512_.GetNoArena();
 }
- void KeyId::set_fingerprint_sha512(const ::std::string& value) {
+void KeyId::set_fingerprint_sha512(const ::std::string& value) {
   
   fingerprint_sha512_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:KeyId.fingerprint_sha512)
 }
- void KeyId::set_fingerprint_sha512(const char* value) {
+#if LANG_CXX11
+void KeyId::set_fingerprint_sha512(::std::string&& value) {
+  
+  fingerprint_sha512_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:KeyId.fingerprint_sha512)
+}
+#endif
+void KeyId::set_fingerprint_sha512(const char* value) {
   
   fingerprint_sha512_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:KeyId.fingerprint_sha512)
 }
- void KeyId::set_fingerprint_sha512(const void* value, size_t size) {
+void KeyId::set_fingerprint_sha512(const void* value, size_t size) {
   
   fingerprint_sha512_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:KeyId.fingerprint_sha512)
 }
- ::std::string* KeyId::mutable_fingerprint_sha512() {
+::std::string* KeyId::mutable_fingerprint_sha512() {
   
   // @@protoc_insertion_point(field_mutable:KeyId.fingerprint_sha512)
   return fingerprint_sha512_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* KeyId::release_fingerprint_sha512() {
+::std::string* KeyId::release_fingerprint_sha512() {
   // @@protoc_insertion_point(field_release:KeyId.fingerprint_sha512)
   
   return fingerprint_sha512_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void KeyId::set_allocated_fingerprint_sha512(::std::string* fingerprint_sha512) {
+void KeyId::set_allocated_fingerprint_sha512(::std::string* fingerprint_sha512) {
   if (fingerprint_sha512 != NULL) {
     
   } else {
@@ -3718,9 +3715,9 @@ void KeyId::clear_fingerprint_sha512() {
   // @@protoc_insertion_point(field_set_allocated:KeyId.fingerprint_sha512)
 }
 
-// optional .DistinguishedName dn = 2;
+// .DistinguishedName dn = 2;
 bool KeyId::has_dn() const {
-  return !_is_default_instance_ && dn_ != NULL;
+  return this != internal_default_instance() && dn_ != NULL;
 }
 void KeyId::clear_dn() {
   if (GetArenaNoVirtual() == NULL && dn_ != NULL) delete dn_;
@@ -3728,7 +3725,8 @@ void KeyId::clear_dn() {
 }
 const ::DistinguishedName& KeyId::dn() const {
   // @@protoc_insertion_point(field_get:KeyId.dn)
-  return dn_ != NULL ? *dn_ : *default_instance_->dn_;
+  return dn_ != NULL ? *dn_
+                         : *::DistinguishedName::internal_default_instance();
 }
 ::DistinguishedName* KeyId::mutable_dn() {
   
@@ -3756,15 +3754,15 @@ void KeyId::set_allocated_dn(::DistinguishedName* dn) {
   // @@protoc_insertion_point(field_set_allocated:KeyId.dn)
 }
 
-// optional .AsymmetricKeyType type = 3;
+// .AsymmetricKeyType type = 3;
 void KeyId::clear_type() {
   type_ = 0;
 }
- ::AsymmetricKeyType KeyId::type() const {
+::AsymmetricKeyType KeyId::type() const {
   // @@protoc_insertion_point(field_get:KeyId.type)
   return static_cast< ::AsymmetricKeyType >(type_);
 }
- void KeyId::set_type(::AsymmetricKeyType value) {
+void KeyId::set_type(::AsymmetricKeyType value) {
   
   type_ = value;
   // @@protoc_insertion_point(field_set:KeyId.type)
@@ -3783,32 +3781,40 @@ const int PrivateKey::kIdFieldNumber;
 
 PrivateKey::PrivateKey()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_message_2eproto::InitDefaults();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:PrivateKey)
 }
-
-void PrivateKey::InitAsDefaultInstance() {
-  _is_default_instance_ = true;
-  key_ = const_cast< ::SymmetriclyEncryptedMessage*>(&::SymmetriclyEncryptedMessage::default_instance());
-  key_id_ = const_cast< ::KeyId*>(&::KeyId::default_instance());
-}
-
 PrivateKey::PrivateKey(const PrivateKey& from)
   : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  if (from.has_key()) {
+    key_ = new ::SymmetriclyEncryptedMessage(*from.key_);
+  } else {
+    key_ = NULL;
+  }
+  if (from.has_key_id()) {
+    key_id_ = new ::KeyId(*from.key_id_);
+  } else {
+    key_id_ = NULL;
+  }
+  encodingtype_ = from.encodingtype_;
   // @@protoc_insertion_point(copy_constructor:PrivateKey)
 }
 
 void PrivateKey::SharedCtor() {
-    _is_default_instance_ = false;
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
-  key_ = NULL;
-  encodingtype_ = 0;
-  key_id_ = NULL;
   id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&key_, 0, reinterpret_cast<char*>(&encodingtype_) -
+    reinterpret_cast<char*>(&key_) + sizeof(encodingtype_));
+  _cached_size_ = 0;
 }
 
 PrivateKey::~PrivateKey() {
@@ -3818,8 +3824,10 @@ PrivateKey::~PrivateKey() {
 
 void PrivateKey::SharedDtor() {
   id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != default_instance_) {
+  if (this != internal_default_instance()) {
     delete key_;
+  }
+  if (this != internal_default_instance()) {
     delete key_id_;
   }
 }
@@ -3830,16 +3838,14 @@ void PrivateKey::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* PrivateKey::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return PrivateKey_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[5].descriptor;
 }
 
 const PrivateKey& PrivateKey::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
-  return *default_instance_;
+  protobuf_message_2eproto::InitDefaults();
+  return *internal_default_instance();
 }
-
-PrivateKey* PrivateKey::default_instance_ = NULL;
 
 PrivateKey* PrivateKey::New(::google::protobuf::Arena* arena) const {
   PrivateKey* n = new PrivateKey;
@@ -3851,12 +3857,16 @@ PrivateKey* PrivateKey::New(::google::protobuf::Arena* arena) const {
 
 void PrivateKey::Clear() {
 // @@protoc_insertion_point(message_clear_start:PrivateKey)
-  if (GetArenaNoVirtual() == NULL && key_ != NULL) delete key_;
-  key_ = NULL;
-  encodingtype_ = 0;
-  if (GetArenaNoVirtual() == NULL && key_id_ != NULL) delete key_id_;
-  key_id_ = NULL;
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == NULL && key_ != NULL) {
+    delete key_;
+  }
+  key_ = NULL;
+  if (GetArenaNoVirtual() == NULL && key_id_ != NULL) {
+    delete key_id_;
+  }
+  key_id_ = NULL;
+  encodingtype_ = 0;
 }
 
 bool PrivateKey::MergePartialFromCodedStream(
@@ -3865,26 +3875,24 @@ bool PrivateKey::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:PrivateKey)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .SymmetriclyEncryptedMessage key = 2;
+      // .SymmetriclyEncryptedMessage key = 2;
       case 2: {
-        if (tag == 18) {
+        if (tag == 18u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_key()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(40)) goto parse_encodingType;
         break;
       }
 
-      // optional .KeyEncodingType encodingType = 5;
+      // .KeyEncodingType encodingType = 5;
       case 5: {
-        if (tag == 40) {
-         parse_encodingType:
+        if (tag == 40u) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
@@ -3893,33 +3901,28 @@ bool PrivateKey::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_key_id;
         break;
       }
 
-      // optional .KeyId key_id = 6;
+      // .KeyId key_id = 6;
       case 6: {
-        if (tag == 50) {
-         parse_key_id:
+        if (tag == 50u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_key_id()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(58)) goto parse_id;
         break;
       }
 
-      // optional bytes id = 7;
+      // bytes id = 7;
       case 7: {
-        if (tag == 58) {
-         parse_id:
+        if (tag == 58u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_id()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectAtEnd()) goto success;
         break;
       }
 
@@ -3947,25 +3950,25 @@ failure:
 void PrivateKey::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:PrivateKey)
-  // optional .SymmetriclyEncryptedMessage key = 2;
+  // .SymmetriclyEncryptedMessage key = 2;
   if (this->has_key()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, *this->key_, output);
   }
 
-  // optional .KeyEncodingType encodingType = 5;
+  // .KeyEncodingType encodingType = 5;
   if (this->encodingtype() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       5, this->encodingtype(), output);
   }
 
-  // optional .KeyId key_id = 6;
+  // .KeyId key_id = 6;
   if (this->has_key_id()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       6, *this->key_id_, output);
   }
 
-  // optional bytes id = 7;
+  // bytes id = 7;
   if (this->id().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       7, this->id(), output);
@@ -3976,28 +3979,29 @@ void PrivateKey::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* PrivateKey::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
   // @@protoc_insertion_point(serialize_to_array_start:PrivateKey)
-  // optional .SymmetriclyEncryptedMessage key = 2;
+  // .SymmetriclyEncryptedMessage key = 2;
   if (this->has_key()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         2, *this->key_, false, target);
   }
 
-  // optional .KeyEncodingType encodingType = 5;
+  // .KeyEncodingType encodingType = 5;
   if (this->encodingtype() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       5, this->encodingtype(), target);
   }
 
-  // optional .KeyId key_id = 6;
+  // .KeyId key_id = 6;
   if (this->has_key_id()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         6, *this->key_id_, false, target);
   }
 
-  // optional bytes id = 7;
+  // bytes id = 7;
   if (this->id().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
@@ -4008,49 +4012,48 @@ void PrivateKey::SerializeWithCachedSizes(
   return target;
 }
 
-int PrivateKey::ByteSize() const {
+size_t PrivateKey::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:PrivateKey)
-  int total_size = 0;
+  size_t total_size = 0;
 
-  // optional .SymmetriclyEncryptedMessage key = 2;
-  if (this->has_key()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->key_);
-  }
-
-  // optional .KeyEncodingType encodingType = 5;
-  if (this->encodingtype() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->encodingtype());
-  }
-
-  // optional .KeyId key_id = 6;
-  if (this->has_key_id()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->key_id_);
-  }
-
-  // optional bytes id = 7;
+  // bytes id = 7;
   if (this->id().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->id());
   }
 
+  // .SymmetriclyEncryptedMessage key = 2;
+  if (this->has_key()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->key_);
+  }
+
+  // .KeyId key_id = 6;
+  if (this->has_key_id()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->key_id_);
+  }
+
+  // .KeyEncodingType encodingType = 5;
+  if (this->encodingtype() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->encodingtype());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
+  _cached_size_ = cached_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
 void PrivateKey::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:PrivateKey)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  const PrivateKey* source = 
+  GOOGLE_DCHECK_NE(&from, this);
+  const PrivateKey* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const PrivateKey>(
           &from);
   if (source == NULL) {
@@ -4064,21 +4067,20 @@ void PrivateKey::MergeFrom(const ::google::protobuf::Message& from) {
 
 void PrivateKey::MergeFrom(const PrivateKey& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:PrivateKey)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.id().size() > 0) {
+
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
   }
   if (from.has_key()) {
     mutable_key()->::SymmetriclyEncryptedMessage::MergeFrom(from.key());
   }
-  if (from.encodingtype() != 0) {
-    set_encodingtype(from.encodingtype());
-  }
   if (from.has_key_id()) {
     mutable_key_id()->::KeyId::MergeFrom(from.key_id());
   }
-  if (from.id().size() > 0) {
-
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  if (from.encodingtype() != 0) {
+    set_encodingtype(from.encodingtype());
   }
 }
 
@@ -4097,7 +4099,6 @@ void PrivateKey::CopyFrom(const PrivateKey& from) {
 }
 
 bool PrivateKey::IsInitialized() const {
-
   return true;
 }
 
@@ -4106,28 +4107,24 @@ void PrivateKey::Swap(PrivateKey* other) {
   InternalSwap(other);
 }
 void PrivateKey::InternalSwap(PrivateKey* other) {
-  std::swap(key_, other->key_);
-  std::swap(encodingtype_, other->encodingtype_);
-  std::swap(key_id_, other->key_id_);
   id_.Swap(&other->id_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(key_, other->key_);
+  std::swap(key_id_, other->key_id_);
+  std::swap(encodingtype_, other->encodingtype_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata PrivateKey::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = PrivateKey_descriptor_;
-  metadata.reflection = PrivateKey_reflection_;
-  return metadata;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[5];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // PrivateKey
 
-// optional .SymmetriclyEncryptedMessage key = 2;
+// .SymmetriclyEncryptedMessage key = 2;
 bool PrivateKey::has_key() const {
-  return !_is_default_instance_ && key_ != NULL;
+  return this != internal_default_instance() && key_ != NULL;
 }
 void PrivateKey::clear_key() {
   if (GetArenaNoVirtual() == NULL && key_ != NULL) delete key_;
@@ -4135,7 +4132,8 @@ void PrivateKey::clear_key() {
 }
 const ::SymmetriclyEncryptedMessage& PrivateKey::key() const {
   // @@protoc_insertion_point(field_get:PrivateKey.key)
-  return key_ != NULL ? *key_ : *default_instance_->key_;
+  return key_ != NULL ? *key_
+                         : *::SymmetriclyEncryptedMessage::internal_default_instance();
 }
 ::SymmetriclyEncryptedMessage* PrivateKey::mutable_key() {
   
@@ -4163,23 +4161,23 @@ void PrivateKey::set_allocated_key(::SymmetriclyEncryptedMessage* key) {
   // @@protoc_insertion_point(field_set_allocated:PrivateKey.key)
 }
 
-// optional .KeyEncodingType encodingType = 5;
+// .KeyEncodingType encodingType = 5;
 void PrivateKey::clear_encodingtype() {
   encodingtype_ = 0;
 }
- ::KeyEncodingType PrivateKey::encodingtype() const {
+::KeyEncodingType PrivateKey::encodingtype() const {
   // @@protoc_insertion_point(field_get:PrivateKey.encodingType)
   return static_cast< ::KeyEncodingType >(encodingtype_);
 }
- void PrivateKey::set_encodingtype(::KeyEncodingType value) {
+void PrivateKey::set_encodingtype(::KeyEncodingType value) {
   
   encodingtype_ = value;
   // @@protoc_insertion_point(field_set:PrivateKey.encodingType)
 }
 
-// optional .KeyId key_id = 6;
+// .KeyId key_id = 6;
 bool PrivateKey::has_key_id() const {
-  return !_is_default_instance_ && key_id_ != NULL;
+  return this != internal_default_instance() && key_id_ != NULL;
 }
 void PrivateKey::clear_key_id() {
   if (GetArenaNoVirtual() == NULL && key_id_ != NULL) delete key_id_;
@@ -4187,7 +4185,8 @@ void PrivateKey::clear_key_id() {
 }
 const ::KeyId& PrivateKey::key_id() const {
   // @@protoc_insertion_point(field_get:PrivateKey.key_id)
-  return key_id_ != NULL ? *key_id_ : *default_instance_->key_id_;
+  return key_id_ != NULL ? *key_id_
+                         : *::KeyId::internal_default_instance();
 }
 ::KeyId* PrivateKey::mutable_key_id() {
   
@@ -4215,41 +4214,49 @@ void PrivateKey::set_allocated_key_id(::KeyId* key_id) {
   // @@protoc_insertion_point(field_set_allocated:PrivateKey.key_id)
 }
 
-// optional bytes id = 7;
+// bytes id = 7;
 void PrivateKey::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& PrivateKey::id() const {
+const ::std::string& PrivateKey::id() const {
   // @@protoc_insertion_point(field_get:PrivateKey.id)
-  return id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return id_.GetNoArena();
 }
- void PrivateKey::set_id(const ::std::string& value) {
+void PrivateKey::set_id(const ::std::string& value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:PrivateKey.id)
 }
- void PrivateKey::set_id(const char* value) {
+#if LANG_CXX11
+void PrivateKey::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:PrivateKey.id)
+}
+#endif
+void PrivateKey::set_id(const char* value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:PrivateKey.id)
 }
- void PrivateKey::set_id(const void* value, size_t size) {
+void PrivateKey::set_id(const void* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:PrivateKey.id)
 }
- ::std::string* PrivateKey::mutable_id() {
+::std::string* PrivateKey::mutable_id() {
   
   // @@protoc_insertion_point(field_mutable:PrivateKey.id)
   return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* PrivateKey::release_id() {
+::std::string* PrivateKey::release_id() {
   // @@protoc_insertion_point(field_release:PrivateKey.id)
   
   return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void PrivateKey::set_allocated_id(::std::string* id) {
+void PrivateKey::set_allocated_id(::std::string* id) {
   if (id != NULL) {
     
   } else {
@@ -4272,31 +4279,40 @@ const int PublicKey::kIdFieldNumber;
 
 PublicKey::PublicKey()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_message_2eproto::InitDefaults();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:PublicKey)
 }
-
-void PublicKey::InitAsDefaultInstance() {
-  _is_default_instance_ = true;
-  key_id_ = const_cast< ::KeyId*>(&::KeyId::default_instance());
-}
-
 PublicKey::PublicKey(const PublicKey& from)
   : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  key_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.key().size() > 0) {
+    key_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.key_);
+  }
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  if (from.has_key_id()) {
+    key_id_ = new ::KeyId(*from.key_id_);
+  } else {
+    key_id_ = NULL;
+  }
+  encodingtype_ = from.encodingtype_;
   // @@protoc_insertion_point(copy_constructor:PublicKey)
 }
 
 void PublicKey::SharedCtor() {
-    _is_default_instance_ = false;
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
   key_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  encodingtype_ = 0;
-  key_id_ = NULL;
   id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&key_id_, 0, reinterpret_cast<char*>(&encodingtype_) -
+    reinterpret_cast<char*>(&key_id_) + sizeof(encodingtype_));
+  _cached_size_ = 0;
 }
 
 PublicKey::~PublicKey() {
@@ -4307,7 +4323,7 @@ PublicKey::~PublicKey() {
 void PublicKey::SharedDtor() {
   key_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != default_instance_) {
+  if (this != internal_default_instance()) {
     delete key_id_;
   }
 }
@@ -4318,16 +4334,14 @@ void PublicKey::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* PublicKey::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return PublicKey_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[6].descriptor;
 }
 
 const PublicKey& PublicKey::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
-  return *default_instance_;
+  protobuf_message_2eproto::InitDefaults();
+  return *internal_default_instance();
 }
-
-PublicKey* PublicKey::default_instance_ = NULL;
 
 PublicKey* PublicKey::New(::google::protobuf::Arena* arena) const {
   PublicKey* n = new PublicKey;
@@ -4340,10 +4354,12 @@ PublicKey* PublicKey::New(::google::protobuf::Arena* arena) const {
 void PublicKey::Clear() {
 // @@protoc_insertion_point(message_clear_start:PublicKey)
   key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  encodingtype_ = 0;
-  if (GetArenaNoVirtual() == NULL && key_id_ != NULL) delete key_id_;
-  key_id_ = NULL;
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == NULL && key_id_ != NULL) {
+    delete key_id_;
+  }
+  key_id_ = NULL;
+  encodingtype_ = 0;
 }
 
 bool PublicKey::MergePartialFromCodedStream(
@@ -4352,26 +4368,24 @@ bool PublicKey::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:PublicKey)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional bytes key = 2;
+      // bytes key = 2;
       case 2: {
-        if (tag == 18) {
+        if (tag == 18u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_key()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(32)) goto parse_encodingType;
         break;
       }
 
-      // optional .KeyEncodingType encodingType = 4;
+      // .KeyEncodingType encodingType = 4;
       case 4: {
-        if (tag == 32) {
-         parse_encodingType:
+        if (tag == 32u) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
@@ -4380,33 +4394,28 @@ bool PublicKey::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_key_id;
         break;
       }
 
-      // optional .KeyId key_id = 5;
+      // .KeyId key_id = 5;
       case 5: {
-        if (tag == 42) {
-         parse_key_id:
+        if (tag == 42u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_key_id()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_id;
         break;
       }
 
-      // optional bytes id = 6;
+      // bytes id = 6;
       case 6: {
-        if (tag == 50) {
-         parse_id:
+        if (tag == 50u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_id()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectAtEnd()) goto success;
         break;
       }
 
@@ -4434,25 +4443,25 @@ failure:
 void PublicKey::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:PublicKey)
-  // optional bytes key = 2;
+  // bytes key = 2;
   if (this->key().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       2, this->key(), output);
   }
 
-  // optional .KeyEncodingType encodingType = 4;
+  // .KeyEncodingType encodingType = 4;
   if (this->encodingtype() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       4, this->encodingtype(), output);
   }
 
-  // optional .KeyId key_id = 5;
+  // .KeyId key_id = 5;
   if (this->has_key_id()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       5, *this->key_id_, output);
   }
 
-  // optional bytes id = 6;
+  // bytes id = 6;
   if (this->id().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       6, this->id(), output);
@@ -4463,28 +4472,29 @@ void PublicKey::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* PublicKey::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
   // @@protoc_insertion_point(serialize_to_array_start:PublicKey)
-  // optional bytes key = 2;
+  // bytes key = 2;
   if (this->key().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         2, this->key(), target);
   }
 
-  // optional .KeyEncodingType encodingType = 4;
+  // .KeyEncodingType encodingType = 4;
   if (this->encodingtype() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       4, this->encodingtype(), target);
   }
 
-  // optional .KeyId key_id = 5;
+  // .KeyId key_id = 5;
   if (this->has_key_id()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         5, *this->key_id_, false, target);
   }
 
-  // optional bytes id = 6;
+  // bytes id = 6;
   if (this->id().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
@@ -4495,49 +4505,48 @@ void PublicKey::SerializeWithCachedSizes(
   return target;
 }
 
-int PublicKey::ByteSize() const {
+size_t PublicKey::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:PublicKey)
-  int total_size = 0;
+  size_t total_size = 0;
 
-  // optional bytes key = 2;
+  // bytes key = 2;
   if (this->key().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->key());
   }
 
-  // optional .KeyEncodingType encodingType = 4;
-  if (this->encodingtype() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->encodingtype());
-  }
-
-  // optional .KeyId key_id = 5;
-  if (this->has_key_id()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->key_id_);
-  }
-
-  // optional bytes id = 6;
+  // bytes id = 6;
   if (this->id().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->id());
   }
 
+  // .KeyId key_id = 5;
+  if (this->has_key_id()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->key_id_);
+  }
+
+  // .KeyEncodingType encodingType = 4;
+  if (this->encodingtype() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->encodingtype());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
+  _cached_size_ = cached_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
 void PublicKey::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:PublicKey)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  const PublicKey* source = 
+  GOOGLE_DCHECK_NE(&from, this);
+  const PublicKey* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const PublicKey>(
           &from);
   if (source == NULL) {
@@ -4551,22 +4560,21 @@ void PublicKey::MergeFrom(const ::google::protobuf::Message& from) {
 
 void PublicKey::MergeFrom(const PublicKey& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:PublicKey)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.key().size() > 0) {
 
     key_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.key_);
   }
-  if (from.encodingtype() != 0) {
-    set_encodingtype(from.encodingtype());
+  if (from.id().size() > 0) {
+
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
   }
   if (from.has_key_id()) {
     mutable_key_id()->::KeyId::MergeFrom(from.key_id());
   }
-  if (from.id().size() > 0) {
-
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  if (from.encodingtype() != 0) {
+    set_encodingtype(from.encodingtype());
   }
 }
 
@@ -4585,7 +4593,6 @@ void PublicKey::CopyFrom(const PublicKey& from) {
 }
 
 bool PublicKey::IsInitialized() const {
-
   return true;
 }
 
@@ -4595,59 +4602,63 @@ void PublicKey::Swap(PublicKey* other) {
 }
 void PublicKey::InternalSwap(PublicKey* other) {
   key_.Swap(&other->key_);
-  std::swap(encodingtype_, other->encodingtype_);
-  std::swap(key_id_, other->key_id_);
   id_.Swap(&other->id_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(key_id_, other->key_id_);
+  std::swap(encodingtype_, other->encodingtype_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata PublicKey::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = PublicKey_descriptor_;
-  metadata.reflection = PublicKey_reflection_;
-  return metadata;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[6];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // PublicKey
 
-// optional bytes key = 2;
+// bytes key = 2;
 void PublicKey::clear_key() {
   key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& PublicKey::key() const {
+const ::std::string& PublicKey::key() const {
   // @@protoc_insertion_point(field_get:PublicKey.key)
-  return key_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return key_.GetNoArena();
 }
- void PublicKey::set_key(const ::std::string& value) {
+void PublicKey::set_key(const ::std::string& value) {
   
   key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:PublicKey.key)
 }
- void PublicKey::set_key(const char* value) {
+#if LANG_CXX11
+void PublicKey::set_key(::std::string&& value) {
+  
+  key_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:PublicKey.key)
+}
+#endif
+void PublicKey::set_key(const char* value) {
   
   key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:PublicKey.key)
 }
- void PublicKey::set_key(const void* value, size_t size) {
+void PublicKey::set_key(const void* value, size_t size) {
   
   key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:PublicKey.key)
 }
- ::std::string* PublicKey::mutable_key() {
+::std::string* PublicKey::mutable_key() {
   
   // @@protoc_insertion_point(field_mutable:PublicKey.key)
   return key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* PublicKey::release_key() {
+::std::string* PublicKey::release_key() {
   // @@protoc_insertion_point(field_release:PublicKey.key)
   
   return key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void PublicKey::set_allocated_key(::std::string* key) {
+void PublicKey::set_allocated_key(::std::string* key) {
   if (key != NULL) {
     
   } else {
@@ -4657,23 +4668,23 @@ void PublicKey::clear_key() {
   // @@protoc_insertion_point(field_set_allocated:PublicKey.key)
 }
 
-// optional .KeyEncodingType encodingType = 4;
+// .KeyEncodingType encodingType = 4;
 void PublicKey::clear_encodingtype() {
   encodingtype_ = 0;
 }
- ::KeyEncodingType PublicKey::encodingtype() const {
+::KeyEncodingType PublicKey::encodingtype() const {
   // @@protoc_insertion_point(field_get:PublicKey.encodingType)
   return static_cast< ::KeyEncodingType >(encodingtype_);
 }
- void PublicKey::set_encodingtype(::KeyEncodingType value) {
+void PublicKey::set_encodingtype(::KeyEncodingType value) {
   
   encodingtype_ = value;
   // @@protoc_insertion_point(field_set:PublicKey.encodingType)
 }
 
-// optional .KeyId key_id = 5;
+// .KeyId key_id = 5;
 bool PublicKey::has_key_id() const {
-  return !_is_default_instance_ && key_id_ != NULL;
+  return this != internal_default_instance() && key_id_ != NULL;
 }
 void PublicKey::clear_key_id() {
   if (GetArenaNoVirtual() == NULL && key_id_ != NULL) delete key_id_;
@@ -4681,7 +4692,8 @@ void PublicKey::clear_key_id() {
 }
 const ::KeyId& PublicKey::key_id() const {
   // @@protoc_insertion_point(field_get:PublicKey.key_id)
-  return key_id_ != NULL ? *key_id_ : *default_instance_->key_id_;
+  return key_id_ != NULL ? *key_id_
+                         : *::KeyId::internal_default_instance();
 }
 ::KeyId* PublicKey::mutable_key_id() {
   
@@ -4709,41 +4721,49 @@ void PublicKey::set_allocated_key_id(::KeyId* key_id) {
   // @@protoc_insertion_point(field_set_allocated:PublicKey.key_id)
 }
 
-// optional bytes id = 6;
+// bytes id = 6;
 void PublicKey::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& PublicKey::id() const {
+const ::std::string& PublicKey::id() const {
   // @@protoc_insertion_point(field_get:PublicKey.id)
-  return id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return id_.GetNoArena();
 }
- void PublicKey::set_id(const ::std::string& value) {
+void PublicKey::set_id(const ::std::string& value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:PublicKey.id)
 }
- void PublicKey::set_id(const char* value) {
+#if LANG_CXX11
+void PublicKey::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:PublicKey.id)
+}
+#endif
+void PublicKey::set_id(const char* value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:PublicKey.id)
 }
- void PublicKey::set_id(const void* value, size_t size) {
+void PublicKey::set_id(const void* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:PublicKey.id)
 }
- ::std::string* PublicKey::mutable_id() {
+::std::string* PublicKey::mutable_id() {
   
   // @@protoc_insertion_point(field_mutable:PublicKey.id)
   return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* PublicKey::release_id() {
+::std::string* PublicKey::release_id() {
   // @@protoc_insertion_point(field_release:PublicKey.id)
   
   return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void PublicKey::set_allocated_id(::std::string* id) {
+void PublicKey::set_allocated_id(::std::string* id) {
   if (id != NULL) {
     
   } else {
@@ -4768,32 +4788,47 @@ const int SymmetriclyEncryptedMessage::kIdFieldNumber;
 
 SymmetriclyEncryptedMessage::SymmetriclyEncryptedMessage()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_message_2eproto::InitDefaults();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:SymmetriclyEncryptedMessage)
 }
-
-void SymmetriclyEncryptedMessage::InitAsDefaultInstance() {
-  _is_default_instance_ = true;
-}
-
 SymmetriclyEncryptedMessage::SymmetriclyEncryptedMessage(const SymmetriclyEncryptedMessage& from)
   : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  msg_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.msg().size() > 0) {
+    msg_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.msg_);
+  }
+  iv_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.iv().size() > 0) {
+    iv_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.iv_);
+  }
+  salt_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.salt().size() > 0) {
+    salt_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.salt_);
+  }
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  ::memcpy(&message_type_, &from.message_type_,
+    reinterpret_cast<char*>(&encryption_type_) -
+    reinterpret_cast<char*>(&message_type_) + sizeof(encryption_type_));
   // @@protoc_insertion_point(copy_constructor:SymmetriclyEncryptedMessage)
 }
 
 void SymmetriclyEncryptedMessage::SharedCtor() {
-    _is_default_instance_ = false;
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
-  message_type_ = 0;
-  encryption_type_ = 0;
   msg_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   iv_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   salt_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&message_type_, 0, reinterpret_cast<char*>(&encryption_type_) -
+    reinterpret_cast<char*>(&message_type_) + sizeof(encryption_type_));
+  _cached_size_ = 0;
 }
 
 SymmetriclyEncryptedMessage::~SymmetriclyEncryptedMessage() {
@@ -4806,8 +4841,6 @@ void SymmetriclyEncryptedMessage::SharedDtor() {
   iv_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   salt_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != default_instance_) {
-  }
 }
 
 void SymmetriclyEncryptedMessage::SetCachedSize(int size) const {
@@ -4816,16 +4849,14 @@ void SymmetriclyEncryptedMessage::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* SymmetriclyEncryptedMessage::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return SymmetriclyEncryptedMessage_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[7].descriptor;
 }
 
 const SymmetriclyEncryptedMessage& SymmetriclyEncryptedMessage::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
-  return *default_instance_;
+  protobuf_message_2eproto::InitDefaults();
+  return *internal_default_instance();
 }
-
-SymmetriclyEncryptedMessage* SymmetriclyEncryptedMessage::default_instance_ = NULL;
 
 SymmetriclyEncryptedMessage* SymmetriclyEncryptedMessage::New(::google::protobuf::Arena* arena) const {
   SymmetriclyEncryptedMessage* n = new SymmetriclyEncryptedMessage;
@@ -4837,31 +4868,12 @@ SymmetriclyEncryptedMessage* SymmetriclyEncryptedMessage::New(::google::protobuf
 
 void SymmetriclyEncryptedMessage::Clear() {
 // @@protoc_insertion_point(message_clear_start:SymmetriclyEncryptedMessage)
-#if defined(__clang__)
-#define ZR_HELPER_(f) \
-  _Pragma("clang diagnostic push") \
-  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
-  __builtin_offsetof(SymmetriclyEncryptedMessage, f) \
-  _Pragma("clang diagnostic pop")
-#else
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<SymmetriclyEncryptedMessage*>(16)->f)
-#endif
-
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
-
-  ZR_(message_type_, encryption_type_);
   msg_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   iv_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   salt_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-
-#undef ZR_HELPER_
-#undef ZR_
-
+  ::memset(&message_type_, 0, reinterpret_cast<char*>(&encryption_type_) -
+    reinterpret_cast<char*>(&message_type_) + sizeof(encryption_type_));
 }
 
 bool SymmetriclyEncryptedMessage::MergePartialFromCodedStream(
@@ -4870,13 +4882,13 @@ bool SymmetriclyEncryptedMessage::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:SymmetriclyEncryptedMessage)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .MessageType message_type = 1;
+      // .MessageType message_type = 1;
       case 1: {
-        if (tag == 8) {
+        if (tag == 8u) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
@@ -4885,14 +4897,12 @@ bool SymmetriclyEncryptedMessage::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_encryption_type;
         break;
       }
 
-      // optional .SymmetricKeyType encryption_type = 2;
+      // .SymmetricKeyType encryption_type = 2;
       case 2: {
-        if (tag == 16) {
-         parse_encryption_type:
+        if (tag == 16u) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
@@ -4901,59 +4911,50 @@ bool SymmetriclyEncryptedMessage::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_msg;
         break;
       }
 
-      // optional bytes msg = 3;
+      // bytes msg = 3;
       case 3: {
-        if (tag == 26) {
-         parse_msg:
+        if (tag == 26u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_msg()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_iv;
         break;
       }
 
-      // optional bytes iv = 4;
+      // bytes iv = 4;
       case 4: {
-        if (tag == 34) {
-         parse_iv:
+        if (tag == 34u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_iv()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_salt;
         break;
       }
 
-      // optional bytes salt = 5;
+      // bytes salt = 5;
       case 5: {
-        if (tag == 42) {
-         parse_salt:
+        if (tag == 42u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_salt()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_id;
         break;
       }
 
-      // optional bytes id = 6;
+      // bytes id = 6;
       case 6: {
-        if (tag == 50) {
-         parse_id:
+        if (tag == 50u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_id()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectAtEnd()) goto success;
         break;
       }
 
@@ -4981,37 +4982,37 @@ failure:
 void SymmetriclyEncryptedMessage::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:SymmetriclyEncryptedMessage)
-  // optional .MessageType message_type = 1;
+  // .MessageType message_type = 1;
   if (this->message_type() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->message_type(), output);
   }
 
-  // optional .SymmetricKeyType encryption_type = 2;
+  // .SymmetricKeyType encryption_type = 2;
   if (this->encryption_type() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       2, this->encryption_type(), output);
   }
 
-  // optional bytes msg = 3;
+  // bytes msg = 3;
   if (this->msg().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       3, this->msg(), output);
   }
 
-  // optional bytes iv = 4;
+  // bytes iv = 4;
   if (this->iv().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       4, this->iv(), output);
   }
 
-  // optional bytes salt = 5;
+  // bytes salt = 5;
   if (this->salt().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       5, this->salt(), output);
   }
 
-  // optional bytes id = 6;
+  // bytes id = 6;
   if (this->id().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       6, this->id(), output);
@@ -5022,41 +5023,42 @@ void SymmetriclyEncryptedMessage::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* SymmetriclyEncryptedMessage::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
   // @@protoc_insertion_point(serialize_to_array_start:SymmetriclyEncryptedMessage)
-  // optional .MessageType message_type = 1;
+  // .MessageType message_type = 1;
   if (this->message_type() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->message_type(), target);
   }
 
-  // optional .SymmetricKeyType encryption_type = 2;
+  // .SymmetricKeyType encryption_type = 2;
   if (this->encryption_type() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       2, this->encryption_type(), target);
   }
 
-  // optional bytes msg = 3;
+  // bytes msg = 3;
   if (this->msg().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         3, this->msg(), target);
   }
 
-  // optional bytes iv = 4;
+  // bytes iv = 4;
   if (this->iv().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         4, this->iv(), target);
   }
 
-  // optional bytes salt = 5;
+  // bytes salt = 5;
   if (this->salt().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         5, this->salt(), target);
   }
 
-  // optional bytes id = 6;
+  // bytes id = 6;
   if (this->id().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
@@ -5067,62 +5069,61 @@ void SymmetriclyEncryptedMessage::SerializeWithCachedSizes(
   return target;
 }
 
-int SymmetriclyEncryptedMessage::ByteSize() const {
+size_t SymmetriclyEncryptedMessage::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SymmetriclyEncryptedMessage)
-  int total_size = 0;
+  size_t total_size = 0;
 
-  // optional .MessageType message_type = 1;
-  if (this->message_type() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->message_type());
-  }
-
-  // optional .SymmetricKeyType encryption_type = 2;
-  if (this->encryption_type() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->encryption_type());
-  }
-
-  // optional bytes msg = 3;
+  // bytes msg = 3;
   if (this->msg().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->msg());
   }
 
-  // optional bytes iv = 4;
+  // bytes iv = 4;
   if (this->iv().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->iv());
   }
 
-  // optional bytes salt = 5;
+  // bytes salt = 5;
   if (this->salt().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->salt());
   }
 
-  // optional bytes id = 6;
+  // bytes id = 6;
   if (this->id().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->id());
   }
 
+  // .MessageType message_type = 1;
+  if (this->message_type() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->message_type());
+  }
+
+  // .SymmetricKeyType encryption_type = 2;
+  if (this->encryption_type() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->encryption_type());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
+  _cached_size_ = cached_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
 void SymmetriclyEncryptedMessage::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:SymmetriclyEncryptedMessage)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  const SymmetriclyEncryptedMessage* source = 
+  GOOGLE_DCHECK_NE(&from, this);
+  const SymmetriclyEncryptedMessage* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const SymmetriclyEncryptedMessage>(
           &from);
   if (source == NULL) {
@@ -5136,15 +5137,8 @@ void SymmetriclyEncryptedMessage::MergeFrom(const ::google::protobuf::Message& f
 
 void SymmetriclyEncryptedMessage::MergeFrom(const SymmetriclyEncryptedMessage& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:SymmetriclyEncryptedMessage)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  if (from.message_type() != 0) {
-    set_message_type(from.message_type());
-  }
-  if (from.encryption_type() != 0) {
-    set_encryption_type(from.encryption_type());
-  }
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.msg().size() > 0) {
 
     msg_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.msg_);
@@ -5160,6 +5154,12 @@ void SymmetriclyEncryptedMessage::MergeFrom(const SymmetriclyEncryptedMessage& f
   if (from.id().size() > 0) {
 
     id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  if (from.message_type() != 0) {
+    set_message_type(from.message_type());
+  }
+  if (from.encryption_type() != 0) {
+    set_encryption_type(from.encryption_type());
   }
 }
 
@@ -5178,7 +5178,6 @@ void SymmetriclyEncryptedMessage::CopyFrom(const SymmetriclyEncryptedMessage& fr
 }
 
 bool SymmetriclyEncryptedMessage::IsInitialized() const {
-
   return true;
 }
 
@@ -5187,90 +5186,94 @@ void SymmetriclyEncryptedMessage::Swap(SymmetriclyEncryptedMessage* other) {
   InternalSwap(other);
 }
 void SymmetriclyEncryptedMessage::InternalSwap(SymmetriclyEncryptedMessage* other) {
-  std::swap(message_type_, other->message_type_);
-  std::swap(encryption_type_, other->encryption_type_);
   msg_.Swap(&other->msg_);
   iv_.Swap(&other->iv_);
   salt_.Swap(&other->salt_);
   id_.Swap(&other->id_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(message_type_, other->message_type_);
+  std::swap(encryption_type_, other->encryption_type_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata SymmetriclyEncryptedMessage::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = SymmetriclyEncryptedMessage_descriptor_;
-  metadata.reflection = SymmetriclyEncryptedMessage_reflection_;
-  return metadata;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[7];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // SymmetriclyEncryptedMessage
 
-// optional .MessageType message_type = 1;
+// .MessageType message_type = 1;
 void SymmetriclyEncryptedMessage::clear_message_type() {
   message_type_ = 0;
 }
- ::MessageType SymmetriclyEncryptedMessage::message_type() const {
+::MessageType SymmetriclyEncryptedMessage::message_type() const {
   // @@protoc_insertion_point(field_get:SymmetriclyEncryptedMessage.message_type)
   return static_cast< ::MessageType >(message_type_);
 }
- void SymmetriclyEncryptedMessage::set_message_type(::MessageType value) {
+void SymmetriclyEncryptedMessage::set_message_type(::MessageType value) {
   
   message_type_ = value;
   // @@protoc_insertion_point(field_set:SymmetriclyEncryptedMessage.message_type)
 }
 
-// optional .SymmetricKeyType encryption_type = 2;
+// .SymmetricKeyType encryption_type = 2;
 void SymmetriclyEncryptedMessage::clear_encryption_type() {
   encryption_type_ = 0;
 }
- ::SymmetricKeyType SymmetriclyEncryptedMessage::encryption_type() const {
+::SymmetricKeyType SymmetriclyEncryptedMessage::encryption_type() const {
   // @@protoc_insertion_point(field_get:SymmetriclyEncryptedMessage.encryption_type)
   return static_cast< ::SymmetricKeyType >(encryption_type_);
 }
- void SymmetriclyEncryptedMessage::set_encryption_type(::SymmetricKeyType value) {
+void SymmetriclyEncryptedMessage::set_encryption_type(::SymmetricKeyType value) {
   
   encryption_type_ = value;
   // @@protoc_insertion_point(field_set:SymmetriclyEncryptedMessage.encryption_type)
 }
 
-// optional bytes msg = 3;
+// bytes msg = 3;
 void SymmetriclyEncryptedMessage::clear_msg() {
   msg_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& SymmetriclyEncryptedMessage::msg() const {
+const ::std::string& SymmetriclyEncryptedMessage::msg() const {
   // @@protoc_insertion_point(field_get:SymmetriclyEncryptedMessage.msg)
-  return msg_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return msg_.GetNoArena();
 }
- void SymmetriclyEncryptedMessage::set_msg(const ::std::string& value) {
+void SymmetriclyEncryptedMessage::set_msg(const ::std::string& value) {
   
   msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:SymmetriclyEncryptedMessage.msg)
 }
- void SymmetriclyEncryptedMessage::set_msg(const char* value) {
+#if LANG_CXX11
+void SymmetriclyEncryptedMessage::set_msg(::std::string&& value) {
+  
+  msg_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:SymmetriclyEncryptedMessage.msg)
+}
+#endif
+void SymmetriclyEncryptedMessage::set_msg(const char* value) {
   
   msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:SymmetriclyEncryptedMessage.msg)
 }
- void SymmetriclyEncryptedMessage::set_msg(const void* value, size_t size) {
+void SymmetriclyEncryptedMessage::set_msg(const void* value, size_t size) {
   
   msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:SymmetriclyEncryptedMessage.msg)
 }
- ::std::string* SymmetriclyEncryptedMessage::mutable_msg() {
+::std::string* SymmetriclyEncryptedMessage::mutable_msg() {
   
   // @@protoc_insertion_point(field_mutable:SymmetriclyEncryptedMessage.msg)
   return msg_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* SymmetriclyEncryptedMessage::release_msg() {
+::std::string* SymmetriclyEncryptedMessage::release_msg() {
   // @@protoc_insertion_point(field_release:SymmetriclyEncryptedMessage.msg)
   
   return msg_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void SymmetriclyEncryptedMessage::set_allocated_msg(::std::string* msg) {
+void SymmetriclyEncryptedMessage::set_allocated_msg(::std::string* msg) {
   if (msg != NULL) {
     
   } else {
@@ -5280,41 +5283,49 @@ void SymmetriclyEncryptedMessage::clear_msg() {
   // @@protoc_insertion_point(field_set_allocated:SymmetriclyEncryptedMessage.msg)
 }
 
-// optional bytes iv = 4;
+// bytes iv = 4;
 void SymmetriclyEncryptedMessage::clear_iv() {
   iv_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& SymmetriclyEncryptedMessage::iv() const {
+const ::std::string& SymmetriclyEncryptedMessage::iv() const {
   // @@protoc_insertion_point(field_get:SymmetriclyEncryptedMessage.iv)
-  return iv_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return iv_.GetNoArena();
 }
- void SymmetriclyEncryptedMessage::set_iv(const ::std::string& value) {
+void SymmetriclyEncryptedMessage::set_iv(const ::std::string& value) {
   
   iv_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:SymmetriclyEncryptedMessage.iv)
 }
- void SymmetriclyEncryptedMessage::set_iv(const char* value) {
+#if LANG_CXX11
+void SymmetriclyEncryptedMessage::set_iv(::std::string&& value) {
+  
+  iv_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:SymmetriclyEncryptedMessage.iv)
+}
+#endif
+void SymmetriclyEncryptedMessage::set_iv(const char* value) {
   
   iv_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:SymmetriclyEncryptedMessage.iv)
 }
- void SymmetriclyEncryptedMessage::set_iv(const void* value, size_t size) {
+void SymmetriclyEncryptedMessage::set_iv(const void* value, size_t size) {
   
   iv_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:SymmetriclyEncryptedMessage.iv)
 }
- ::std::string* SymmetriclyEncryptedMessage::mutable_iv() {
+::std::string* SymmetriclyEncryptedMessage::mutable_iv() {
   
   // @@protoc_insertion_point(field_mutable:SymmetriclyEncryptedMessage.iv)
   return iv_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* SymmetriclyEncryptedMessage::release_iv() {
+::std::string* SymmetriclyEncryptedMessage::release_iv() {
   // @@protoc_insertion_point(field_release:SymmetriclyEncryptedMessage.iv)
   
   return iv_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void SymmetriclyEncryptedMessage::set_allocated_iv(::std::string* iv) {
+void SymmetriclyEncryptedMessage::set_allocated_iv(::std::string* iv) {
   if (iv != NULL) {
     
   } else {
@@ -5324,41 +5335,49 @@ void SymmetriclyEncryptedMessage::clear_iv() {
   // @@protoc_insertion_point(field_set_allocated:SymmetriclyEncryptedMessage.iv)
 }
 
-// optional bytes salt = 5;
+// bytes salt = 5;
 void SymmetriclyEncryptedMessage::clear_salt() {
   salt_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& SymmetriclyEncryptedMessage::salt() const {
+const ::std::string& SymmetriclyEncryptedMessage::salt() const {
   // @@protoc_insertion_point(field_get:SymmetriclyEncryptedMessage.salt)
-  return salt_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return salt_.GetNoArena();
 }
- void SymmetriclyEncryptedMessage::set_salt(const ::std::string& value) {
+void SymmetriclyEncryptedMessage::set_salt(const ::std::string& value) {
   
   salt_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:SymmetriclyEncryptedMessage.salt)
 }
- void SymmetriclyEncryptedMessage::set_salt(const char* value) {
+#if LANG_CXX11
+void SymmetriclyEncryptedMessage::set_salt(::std::string&& value) {
+  
+  salt_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:SymmetriclyEncryptedMessage.salt)
+}
+#endif
+void SymmetriclyEncryptedMessage::set_salt(const char* value) {
   
   salt_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:SymmetriclyEncryptedMessage.salt)
 }
- void SymmetriclyEncryptedMessage::set_salt(const void* value, size_t size) {
+void SymmetriclyEncryptedMessage::set_salt(const void* value, size_t size) {
   
   salt_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:SymmetriclyEncryptedMessage.salt)
 }
- ::std::string* SymmetriclyEncryptedMessage::mutable_salt() {
+::std::string* SymmetriclyEncryptedMessage::mutable_salt() {
   
   // @@protoc_insertion_point(field_mutable:SymmetriclyEncryptedMessage.salt)
   return salt_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* SymmetriclyEncryptedMessage::release_salt() {
+::std::string* SymmetriclyEncryptedMessage::release_salt() {
   // @@protoc_insertion_point(field_release:SymmetriclyEncryptedMessage.salt)
   
   return salt_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void SymmetriclyEncryptedMessage::set_allocated_salt(::std::string* salt) {
+void SymmetriclyEncryptedMessage::set_allocated_salt(::std::string* salt) {
   if (salt != NULL) {
     
   } else {
@@ -5368,41 +5387,49 @@ void SymmetriclyEncryptedMessage::clear_salt() {
   // @@protoc_insertion_point(field_set_allocated:SymmetriclyEncryptedMessage.salt)
 }
 
-// optional bytes id = 6;
+// bytes id = 6;
 void SymmetriclyEncryptedMessage::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& SymmetriclyEncryptedMessage::id() const {
+const ::std::string& SymmetriclyEncryptedMessage::id() const {
   // @@protoc_insertion_point(field_get:SymmetriclyEncryptedMessage.id)
-  return id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return id_.GetNoArena();
 }
- void SymmetriclyEncryptedMessage::set_id(const ::std::string& value) {
+void SymmetriclyEncryptedMessage::set_id(const ::std::string& value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:SymmetriclyEncryptedMessage.id)
 }
- void SymmetriclyEncryptedMessage::set_id(const char* value) {
+#if LANG_CXX11
+void SymmetriclyEncryptedMessage::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:SymmetriclyEncryptedMessage.id)
+}
+#endif
+void SymmetriclyEncryptedMessage::set_id(const char* value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:SymmetriclyEncryptedMessage.id)
 }
- void SymmetriclyEncryptedMessage::set_id(const void* value, size_t size) {
+void SymmetriclyEncryptedMessage::set_id(const void* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:SymmetriclyEncryptedMessage.id)
 }
- ::std::string* SymmetriclyEncryptedMessage::mutable_id() {
+::std::string* SymmetriclyEncryptedMessage::mutable_id() {
   
   // @@protoc_insertion_point(field_mutable:SymmetriclyEncryptedMessage.id)
   return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* SymmetriclyEncryptedMessage::release_id() {
+::std::string* SymmetriclyEncryptedMessage::release_id() {
   // @@protoc_insertion_point(field_release:SymmetriclyEncryptedMessage.id)
   
   return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void SymmetriclyEncryptedMessage::set_allocated_id(::std::string* id) {
+void SymmetriclyEncryptedMessage::set_allocated_id(::std::string* id) {
   if (id != NULL) {
     
   } else {
@@ -5425,31 +5452,40 @@ const int AsymmetriclyEncryptedMessage::kIdFieldNumber;
 
 AsymmetriclyEncryptedMessage::AsymmetriclyEncryptedMessage()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_message_2eproto::InitDefaults();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:AsymmetriclyEncryptedMessage)
 }
-
-void AsymmetriclyEncryptedMessage::InitAsDefaultInstance() {
-  _is_default_instance_ = true;
-  dest_key_ = const_cast< ::KeyId*>(&::KeyId::default_instance());
-}
-
 AsymmetriclyEncryptedMessage::AsymmetriclyEncryptedMessage(const AsymmetriclyEncryptedMessage& from)
   : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  msg_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.msg().size() > 0) {
+    msg_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.msg_);
+  }
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  if (from.has_dest_key()) {
+    dest_key_ = new ::KeyId(*from.dest_key_);
+  } else {
+    dest_key_ = NULL;
+  }
+  message_type_ = from.message_type_;
   // @@protoc_insertion_point(copy_constructor:AsymmetriclyEncryptedMessage)
 }
 
 void AsymmetriclyEncryptedMessage::SharedCtor() {
-    _is_default_instance_ = false;
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
-  message_type_ = 0;
-  dest_key_ = NULL;
   msg_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&dest_key_, 0, reinterpret_cast<char*>(&message_type_) -
+    reinterpret_cast<char*>(&dest_key_) + sizeof(message_type_));
+  _cached_size_ = 0;
 }
 
 AsymmetriclyEncryptedMessage::~AsymmetriclyEncryptedMessage() {
@@ -5460,7 +5496,7 @@ AsymmetriclyEncryptedMessage::~AsymmetriclyEncryptedMessage() {
 void AsymmetriclyEncryptedMessage::SharedDtor() {
   msg_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != default_instance_) {
+  if (this != internal_default_instance()) {
     delete dest_key_;
   }
 }
@@ -5471,16 +5507,14 @@ void AsymmetriclyEncryptedMessage::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* AsymmetriclyEncryptedMessage::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return AsymmetriclyEncryptedMessage_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[8].descriptor;
 }
 
 const AsymmetriclyEncryptedMessage& AsymmetriclyEncryptedMessage::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
-  return *default_instance_;
+  protobuf_message_2eproto::InitDefaults();
+  return *internal_default_instance();
 }
-
-AsymmetriclyEncryptedMessage* AsymmetriclyEncryptedMessage::default_instance_ = NULL;
 
 AsymmetriclyEncryptedMessage* AsymmetriclyEncryptedMessage::New(::google::protobuf::Arena* arena) const {
   AsymmetriclyEncryptedMessage* n = new AsymmetriclyEncryptedMessage;
@@ -5492,11 +5526,13 @@ AsymmetriclyEncryptedMessage* AsymmetriclyEncryptedMessage::New(::google::protob
 
 void AsymmetriclyEncryptedMessage::Clear() {
 // @@protoc_insertion_point(message_clear_start:AsymmetriclyEncryptedMessage)
-  message_type_ = 0;
-  if (GetArenaNoVirtual() == NULL && dest_key_ != NULL) delete dest_key_;
-  dest_key_ = NULL;
   msg_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == NULL && dest_key_ != NULL) {
+    delete dest_key_;
+  }
+  dest_key_ = NULL;
+  message_type_ = 0;
 }
 
 bool AsymmetriclyEncryptedMessage::MergePartialFromCodedStream(
@@ -5505,13 +5541,13 @@ bool AsymmetriclyEncryptedMessage::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:AsymmetriclyEncryptedMessage)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .MessageType message_type = 1;
+      // .MessageType message_type = 1;
       case 1: {
-        if (tag == 8) {
+        if (tag == 8u) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
@@ -5520,46 +5556,39 @@ bool AsymmetriclyEncryptedMessage::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_dest_key;
         break;
       }
 
-      // optional .KeyId dest_key = 2;
+      // .KeyId dest_key = 2;
       case 2: {
-        if (tag == 18) {
-         parse_dest_key:
+        if (tag == 18u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_dest_key()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_msg;
         break;
       }
 
-      // optional bytes msg = 4;
+      // bytes msg = 4;
       case 4: {
-        if (tag == 34) {
-         parse_msg:
+        if (tag == 34u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_msg()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_id;
         break;
       }
 
-      // optional bytes id = 5;
+      // bytes id = 5;
       case 5: {
-        if (tag == 42) {
-         parse_id:
+        if (tag == 42u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_id()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectAtEnd()) goto success;
         break;
       }
 
@@ -5587,25 +5616,25 @@ failure:
 void AsymmetriclyEncryptedMessage::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:AsymmetriclyEncryptedMessage)
-  // optional .MessageType message_type = 1;
+  // .MessageType message_type = 1;
   if (this->message_type() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->message_type(), output);
   }
 
-  // optional .KeyId dest_key = 2;
+  // .KeyId dest_key = 2;
   if (this->has_dest_key()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, *this->dest_key_, output);
   }
 
-  // optional bytes msg = 4;
+  // bytes msg = 4;
   if (this->msg().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       4, this->msg(), output);
   }
 
-  // optional bytes id = 5;
+  // bytes id = 5;
   if (this->id().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       5, this->id(), output);
@@ -5616,28 +5645,29 @@ void AsymmetriclyEncryptedMessage::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* AsymmetriclyEncryptedMessage::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
   // @@protoc_insertion_point(serialize_to_array_start:AsymmetriclyEncryptedMessage)
-  // optional .MessageType message_type = 1;
+  // .MessageType message_type = 1;
   if (this->message_type() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->message_type(), target);
   }
 
-  // optional .KeyId dest_key = 2;
+  // .KeyId dest_key = 2;
   if (this->has_dest_key()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         2, *this->dest_key_, false, target);
   }
 
-  // optional bytes msg = 4;
+  // bytes msg = 4;
   if (this->msg().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         4, this->msg(), target);
   }
 
-  // optional bytes id = 5;
+  // bytes id = 5;
   if (this->id().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
@@ -5648,49 +5678,48 @@ void AsymmetriclyEncryptedMessage::SerializeWithCachedSizes(
   return target;
 }
 
-int AsymmetriclyEncryptedMessage::ByteSize() const {
+size_t AsymmetriclyEncryptedMessage::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:AsymmetriclyEncryptedMessage)
-  int total_size = 0;
+  size_t total_size = 0;
 
-  // optional .MessageType message_type = 1;
-  if (this->message_type() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->message_type());
-  }
-
-  // optional .KeyId dest_key = 2;
-  if (this->has_dest_key()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->dest_key_);
-  }
-
-  // optional bytes msg = 4;
+  // bytes msg = 4;
   if (this->msg().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->msg());
   }
 
-  // optional bytes id = 5;
+  // bytes id = 5;
   if (this->id().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->id());
   }
 
+  // .KeyId dest_key = 2;
+  if (this->has_dest_key()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->dest_key_);
+  }
+
+  // .MessageType message_type = 1;
+  if (this->message_type() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->message_type());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
+  _cached_size_ = cached_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
 void AsymmetriclyEncryptedMessage::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:AsymmetriclyEncryptedMessage)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  const AsymmetriclyEncryptedMessage* source = 
+  GOOGLE_DCHECK_NE(&from, this);
+  const AsymmetriclyEncryptedMessage* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const AsymmetriclyEncryptedMessage>(
           &from);
   if (source == NULL) {
@@ -5704,15 +5733,8 @@ void AsymmetriclyEncryptedMessage::MergeFrom(const ::google::protobuf::Message& 
 
 void AsymmetriclyEncryptedMessage::MergeFrom(const AsymmetriclyEncryptedMessage& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:AsymmetriclyEncryptedMessage)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  if (from.message_type() != 0) {
-    set_message_type(from.message_type());
-  }
-  if (from.has_dest_key()) {
-    mutable_dest_key()->::KeyId::MergeFrom(from.dest_key());
-  }
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.msg().size() > 0) {
 
     msg_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.msg_);
@@ -5720,6 +5742,12 @@ void AsymmetriclyEncryptedMessage::MergeFrom(const AsymmetriclyEncryptedMessage&
   if (from.id().size() > 0) {
 
     id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  if (from.has_dest_key()) {
+    mutable_dest_key()->::KeyId::MergeFrom(from.dest_key());
+  }
+  if (from.message_type() != 0) {
+    set_message_type(from.message_type());
   }
 }
 
@@ -5738,7 +5766,6 @@ void AsymmetriclyEncryptedMessage::CopyFrom(const AsymmetriclyEncryptedMessage& 
 }
 
 bool AsymmetriclyEncryptedMessage::IsInitialized() const {
-
   return true;
 }
 
@@ -5747,42 +5774,38 @@ void AsymmetriclyEncryptedMessage::Swap(AsymmetriclyEncryptedMessage* other) {
   InternalSwap(other);
 }
 void AsymmetriclyEncryptedMessage::InternalSwap(AsymmetriclyEncryptedMessage* other) {
-  std::swap(message_type_, other->message_type_);
-  std::swap(dest_key_, other->dest_key_);
   msg_.Swap(&other->msg_);
   id_.Swap(&other->id_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(dest_key_, other->dest_key_);
+  std::swap(message_type_, other->message_type_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata AsymmetriclyEncryptedMessage::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = AsymmetriclyEncryptedMessage_descriptor_;
-  metadata.reflection = AsymmetriclyEncryptedMessage_reflection_;
-  return metadata;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[8];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // AsymmetriclyEncryptedMessage
 
-// optional .MessageType message_type = 1;
+// .MessageType message_type = 1;
 void AsymmetriclyEncryptedMessage::clear_message_type() {
   message_type_ = 0;
 }
- ::MessageType AsymmetriclyEncryptedMessage::message_type() const {
+::MessageType AsymmetriclyEncryptedMessage::message_type() const {
   // @@protoc_insertion_point(field_get:AsymmetriclyEncryptedMessage.message_type)
   return static_cast< ::MessageType >(message_type_);
 }
- void AsymmetriclyEncryptedMessage::set_message_type(::MessageType value) {
+void AsymmetriclyEncryptedMessage::set_message_type(::MessageType value) {
   
   message_type_ = value;
   // @@protoc_insertion_point(field_set:AsymmetriclyEncryptedMessage.message_type)
 }
 
-// optional .KeyId dest_key = 2;
+// .KeyId dest_key = 2;
 bool AsymmetriclyEncryptedMessage::has_dest_key() const {
-  return !_is_default_instance_ && dest_key_ != NULL;
+  return this != internal_default_instance() && dest_key_ != NULL;
 }
 void AsymmetriclyEncryptedMessage::clear_dest_key() {
   if (GetArenaNoVirtual() == NULL && dest_key_ != NULL) delete dest_key_;
@@ -5790,7 +5813,8 @@ void AsymmetriclyEncryptedMessage::clear_dest_key() {
 }
 const ::KeyId& AsymmetriclyEncryptedMessage::dest_key() const {
   // @@protoc_insertion_point(field_get:AsymmetriclyEncryptedMessage.dest_key)
-  return dest_key_ != NULL ? *dest_key_ : *default_instance_->dest_key_;
+  return dest_key_ != NULL ? *dest_key_
+                         : *::KeyId::internal_default_instance();
 }
 ::KeyId* AsymmetriclyEncryptedMessage::mutable_dest_key() {
   
@@ -5818,41 +5842,49 @@ void AsymmetriclyEncryptedMessage::set_allocated_dest_key(::KeyId* dest_key) {
   // @@protoc_insertion_point(field_set_allocated:AsymmetriclyEncryptedMessage.dest_key)
 }
 
-// optional bytes msg = 4;
+// bytes msg = 4;
 void AsymmetriclyEncryptedMessage::clear_msg() {
   msg_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& AsymmetriclyEncryptedMessage::msg() const {
+const ::std::string& AsymmetriclyEncryptedMessage::msg() const {
   // @@protoc_insertion_point(field_get:AsymmetriclyEncryptedMessage.msg)
-  return msg_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return msg_.GetNoArena();
 }
- void AsymmetriclyEncryptedMessage::set_msg(const ::std::string& value) {
+void AsymmetriclyEncryptedMessage::set_msg(const ::std::string& value) {
   
   msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:AsymmetriclyEncryptedMessage.msg)
 }
- void AsymmetriclyEncryptedMessage::set_msg(const char* value) {
+#if LANG_CXX11
+void AsymmetriclyEncryptedMessage::set_msg(::std::string&& value) {
+  
+  msg_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:AsymmetriclyEncryptedMessage.msg)
+}
+#endif
+void AsymmetriclyEncryptedMessage::set_msg(const char* value) {
   
   msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:AsymmetriclyEncryptedMessage.msg)
 }
- void AsymmetriclyEncryptedMessage::set_msg(const void* value, size_t size) {
+void AsymmetriclyEncryptedMessage::set_msg(const void* value, size_t size) {
   
   msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:AsymmetriclyEncryptedMessage.msg)
 }
- ::std::string* AsymmetriclyEncryptedMessage::mutable_msg() {
+::std::string* AsymmetriclyEncryptedMessage::mutable_msg() {
   
   // @@protoc_insertion_point(field_mutable:AsymmetriclyEncryptedMessage.msg)
   return msg_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* AsymmetriclyEncryptedMessage::release_msg() {
+::std::string* AsymmetriclyEncryptedMessage::release_msg() {
   // @@protoc_insertion_point(field_release:AsymmetriclyEncryptedMessage.msg)
   
   return msg_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void AsymmetriclyEncryptedMessage::set_allocated_msg(::std::string* msg) {
+void AsymmetriclyEncryptedMessage::set_allocated_msg(::std::string* msg) {
   if (msg != NULL) {
     
   } else {
@@ -5862,41 +5894,49 @@ void AsymmetriclyEncryptedMessage::clear_msg() {
   // @@protoc_insertion_point(field_set_allocated:AsymmetriclyEncryptedMessage.msg)
 }
 
-// optional bytes id = 5;
+// bytes id = 5;
 void AsymmetriclyEncryptedMessage::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& AsymmetriclyEncryptedMessage::id() const {
+const ::std::string& AsymmetriclyEncryptedMessage::id() const {
   // @@protoc_insertion_point(field_get:AsymmetriclyEncryptedMessage.id)
-  return id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return id_.GetNoArena();
 }
- void AsymmetriclyEncryptedMessage::set_id(const ::std::string& value) {
+void AsymmetriclyEncryptedMessage::set_id(const ::std::string& value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:AsymmetriclyEncryptedMessage.id)
 }
- void AsymmetriclyEncryptedMessage::set_id(const char* value) {
+#if LANG_CXX11
+void AsymmetriclyEncryptedMessage::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:AsymmetriclyEncryptedMessage.id)
+}
+#endif
+void AsymmetriclyEncryptedMessage::set_id(const char* value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:AsymmetriclyEncryptedMessage.id)
 }
- void AsymmetriclyEncryptedMessage::set_id(const void* value, size_t size) {
+void AsymmetriclyEncryptedMessage::set_id(const void* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:AsymmetriclyEncryptedMessage.id)
 }
- ::std::string* AsymmetriclyEncryptedMessage::mutable_id() {
+::std::string* AsymmetriclyEncryptedMessage::mutable_id() {
   
   // @@protoc_insertion_point(field_mutable:AsymmetriclyEncryptedMessage.id)
   return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* AsymmetriclyEncryptedMessage::release_id() {
+::std::string* AsymmetriclyEncryptedMessage::release_id() {
   // @@protoc_insertion_point(field_release:AsymmetriclyEncryptedMessage.id)
   
   return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void AsymmetriclyEncryptedMessage::set_allocated_id(::std::string* id) {
+void AsymmetriclyEncryptedMessage::set_allocated_id(::std::string* id) {
   if (id != NULL) {
     
   } else {
@@ -5917,28 +5957,29 @@ const int MessageReference::kIdFieldNumber;
 
 MessageReference::MessageReference()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_message_2eproto::InitDefaults();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:MessageReference)
 }
-
-void MessageReference::InitAsDefaultInstance() {
-  _is_default_instance_ = true;
-}
-
 MessageReference::MessageReference(const MessageReference& from)
   : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  type_ = from.type_;
   // @@protoc_insertion_point(copy_constructor:MessageReference)
 }
 
 void MessageReference::SharedCtor() {
-    _is_default_instance_ = false;
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
-  type_ = 0;
   id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  type_ = 0;
+  _cached_size_ = 0;
 }
 
 MessageReference::~MessageReference() {
@@ -5948,8 +5989,6 @@ MessageReference::~MessageReference() {
 
 void MessageReference::SharedDtor() {
   id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != default_instance_) {
-  }
 }
 
 void MessageReference::SetCachedSize(int size) const {
@@ -5958,16 +5997,14 @@ void MessageReference::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* MessageReference::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return MessageReference_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[9].descriptor;
 }
 
 const MessageReference& MessageReference::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
-  return *default_instance_;
+  protobuf_message_2eproto::InitDefaults();
+  return *internal_default_instance();
 }
-
-MessageReference* MessageReference::default_instance_ = NULL;
 
 MessageReference* MessageReference::New(::google::protobuf::Arena* arena) const {
   MessageReference* n = new MessageReference;
@@ -5979,8 +6016,8 @@ MessageReference* MessageReference::New(::google::protobuf::Arena* arena) const 
 
 void MessageReference::Clear() {
 // @@protoc_insertion_point(message_clear_start:MessageReference)
-  type_ = 0;
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  type_ = 0;
 }
 
 bool MessageReference::MergePartialFromCodedStream(
@@ -5989,13 +6026,13 @@ bool MessageReference::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:MessageReference)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .MessageType type = 1;
+      // .MessageType type = 1;
       case 1: {
-        if (tag == 8) {
+        if (tag == 8u) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
@@ -6004,20 +6041,17 @@ bool MessageReference::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_id;
         break;
       }
 
-      // optional bytes id = 2;
+      // bytes id = 2;
       case 2: {
-        if (tag == 18) {
-         parse_id:
+        if (tag == 18u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_id()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectAtEnd()) goto success;
         break;
       }
 
@@ -6045,13 +6079,13 @@ failure:
 void MessageReference::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:MessageReference)
-  // optional .MessageType type = 1;
+  // .MessageType type = 1;
   if (this->type() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->type(), output);
   }
 
-  // optional bytes id = 2;
+  // bytes id = 2;
   if (this->id().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       2, this->id(), output);
@@ -6062,14 +6096,15 @@ void MessageReference::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* MessageReference::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
   // @@protoc_insertion_point(serialize_to_array_start:MessageReference)
-  // optional .MessageType type = 1;
+  // .MessageType type = 1;
   if (this->type() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->type(), target);
   }
 
-  // optional bytes id = 2;
+  // bytes id = 2;
   if (this->id().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
@@ -6080,35 +6115,34 @@ void MessageReference::SerializeWithCachedSizes(
   return target;
 }
 
-int MessageReference::ByteSize() const {
+size_t MessageReference::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:MessageReference)
-  int total_size = 0;
+  size_t total_size = 0;
 
-  // optional .MessageType type = 1;
-  if (this->type() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
-  }
-
-  // optional bytes id = 2;
+  // bytes id = 2;
   if (this->id().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->id());
   }
 
+  // .MessageType type = 1;
+  if (this->type() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
+  _cached_size_ = cached_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
 void MessageReference::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:MessageReference)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  const MessageReference* source = 
+  GOOGLE_DCHECK_NE(&from, this);
+  const MessageReference* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const MessageReference>(
           &from);
   if (source == NULL) {
@@ -6122,15 +6156,14 @@ void MessageReference::MergeFrom(const ::google::protobuf::Message& from) {
 
 void MessageReference::MergeFrom(const MessageReference& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:MessageReference)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  if (from.type() != 0) {
-    set_type(from.type());
-  }
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.id().size() > 0) {
 
     id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  if (from.type() != 0) {
+    set_type(from.type());
   }
 }
 
@@ -6149,7 +6182,6 @@ void MessageReference::CopyFrom(const MessageReference& from) {
 }
 
 bool MessageReference::IsInitialized() const {
-
   return true;
 }
 
@@ -6158,72 +6190,76 @@ void MessageReference::Swap(MessageReference* other) {
   InternalSwap(other);
 }
 void MessageReference::InternalSwap(MessageReference* other) {
-  std::swap(type_, other->type_);
   id_.Swap(&other->id_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(type_, other->type_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata MessageReference::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = MessageReference_descriptor_;
-  metadata.reflection = MessageReference_reflection_;
-  return metadata;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[9];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // MessageReference
 
-// optional .MessageType type = 1;
+// .MessageType type = 1;
 void MessageReference::clear_type() {
   type_ = 0;
 }
- ::MessageType MessageReference::type() const {
+::MessageType MessageReference::type() const {
   // @@protoc_insertion_point(field_get:MessageReference.type)
   return static_cast< ::MessageType >(type_);
 }
- void MessageReference::set_type(::MessageType value) {
+void MessageReference::set_type(::MessageType value) {
   
   type_ = value;
   // @@protoc_insertion_point(field_set:MessageReference.type)
 }
 
-// optional bytes id = 2;
+// bytes id = 2;
 void MessageReference::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& MessageReference::id() const {
+const ::std::string& MessageReference::id() const {
   // @@protoc_insertion_point(field_get:MessageReference.id)
-  return id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return id_.GetNoArena();
 }
- void MessageReference::set_id(const ::std::string& value) {
+void MessageReference::set_id(const ::std::string& value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:MessageReference.id)
 }
- void MessageReference::set_id(const char* value) {
+#if LANG_CXX11
+void MessageReference::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:MessageReference.id)
+}
+#endif
+void MessageReference::set_id(const char* value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:MessageReference.id)
 }
- void MessageReference::set_id(const void* value, size_t size) {
+void MessageReference::set_id(const void* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:MessageReference.id)
 }
- ::std::string* MessageReference::mutable_id() {
+::std::string* MessageReference::mutable_id() {
   
   // @@protoc_insertion_point(field_mutable:MessageReference.id)
   return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* MessageReference::release_id() {
+::std::string* MessageReference::release_id() {
   // @@protoc_insertion_point(field_release:MessageReference.id)
   
   return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void MessageReference::set_allocated_id(::std::string* id) {
+void MessageReference::set_allocated_id(::std::string* id) {
   if (id != NULL) {
     
   } else {
@@ -6252,38 +6288,70 @@ const int SignedMessage::kIdFieldNumber;
 
 SignedMessage::SignedMessage()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_message_2eproto::InitDefaults();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:SignedMessage)
 }
-
-void SignedMessage::InitAsDefaultInstance() {
-  _is_default_instance_ = true;
-  SignedMessage_default_oneof_instance_->post_ = const_cast< ::Post*>(&::Post::default_instance());
-  SignedMessage_default_oneof_instance_->signedmessage_ = const_cast< ::Signature*>(&::Signature::default_instance());
-  SignedMessage_default_oneof_instance_->privatekey_ = const_cast< ::PrivateKey*>(&::PrivateKey::default_instance());
-  SignedMessage_default_oneof_instance_->publickey_ = const_cast< ::PublicKey*>(&::PublicKey::default_instance());
-  SignedMessage_default_oneof_instance_->symmetriclyencryptedmessage_ = const_cast< ::SymmetriclyEncryptedMessage*>(&::SymmetriclyEncryptedMessage::default_instance());
-  SignedMessage_default_oneof_instance_->asymmetriclyencryptedmessage_ = const_cast< ::AsymmetriclyEncryptedMessage*>(&::AsymmetriclyEncryptedMessage::default_instance());
-  SignedMessage_default_oneof_instance_->reference_ = const_cast< ::MessageReference*>(&::MessageReference::default_instance());
-  message_signature_ = const_cast< ::Signature*>(&::Signature::default_instance());
-}
-
 SignedMessage::SignedMessage(const SignedMessage& from)
   : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  if (from.has_message_signature()) {
+    message_signature_ = new ::Signature(*from.message_signature_);
+  } else {
+    message_signature_ = NULL;
+  }
+  timestamp_ = from.timestamp_;
+  clear_has_msg();
+  switch (from.msg_case()) {
+    case kPost: {
+      mutable_post()->::Post::MergeFrom(from.post());
+      break;
+    }
+    case kSignedMessage: {
+      mutable_signedmessage()->::Signature::MergeFrom(from.signedmessage());
+      break;
+    }
+    case kPrivateKey: {
+      mutable_privatekey()->::PrivateKey::MergeFrom(from.privatekey());
+      break;
+    }
+    case kPublicKey: {
+      mutable_publickey()->::PublicKey::MergeFrom(from.publickey());
+      break;
+    }
+    case kSymmetriclyEncryptedMessage: {
+      mutable_symmetriclyencryptedmessage()->::SymmetriclyEncryptedMessage::MergeFrom(from.symmetriclyencryptedmessage());
+      break;
+    }
+    case kAsymmetriclyEncryptedMessage: {
+      mutable_asymmetriclyencryptedmessage()->::AsymmetriclyEncryptedMessage::MergeFrom(from.asymmetriclyencryptedmessage());
+      break;
+    }
+    case kReference: {
+      mutable_reference()->::MessageReference::MergeFrom(from.reference());
+      break;
+    }
+    case MSG_NOT_SET: {
+      break;
+    }
+  }
   // @@protoc_insertion_point(copy_constructor:SignedMessage)
 }
 
 void SignedMessage::SharedCtor() {
-    _is_default_instance_ = false;
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
-  message_signature_ = NULL;
-  timestamp_ = GOOGLE_ULONGLONG(0);
   id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&message_signature_, 0, reinterpret_cast<char*>(&timestamp_) -
+    reinterpret_cast<char*>(&message_signature_) + sizeof(timestamp_));
   clear_has_msg();
+  _cached_size_ = 0;
 }
 
 SignedMessage::~SignedMessage() {
@@ -6293,11 +6361,11 @@ SignedMessage::~SignedMessage() {
 
 void SignedMessage::SharedDtor() {
   id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) {
+    delete message_signature_;
+  }
   if (has_msg()) {
     clear_msg();
-  }
-  if (this != default_instance_) {
-    delete message_signature_;
   }
 }
 
@@ -6307,16 +6375,14 @@ void SignedMessage::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* SignedMessage::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return SignedMessage_descriptor_;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[10].descriptor;
 }
 
 const SignedMessage& SignedMessage::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
-  return *default_instance_;
+  protobuf_message_2eproto::InitDefaults();
+  return *internal_default_instance();
 }
-
-SignedMessage* SignedMessage::default_instance_ = NULL;
 
 SignedMessage* SignedMessage::New(::google::protobuf::Arena* arena) const {
   SignedMessage* n = new SignedMessage;
@@ -6328,7 +6394,7 @@ SignedMessage* SignedMessage::New(::google::protobuf::Arena* arena) const {
 
 void SignedMessage::clear_msg() {
 // @@protoc_insertion_point(one_of_clear_start:SignedMessage)
-  switch(msg_case()) {
+  switch (msg_case()) {
     case kPost: {
       delete msg_.post_;
       break;
@@ -6367,10 +6433,12 @@ void SignedMessage::clear_msg() {
 
 void SignedMessage::Clear() {
 // @@protoc_insertion_point(message_clear_start:SignedMessage)
-  if (GetArenaNoVirtual() == NULL && message_signature_ != NULL) delete message_signature_;
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == NULL && message_signature_ != NULL) {
+    delete message_signature_;
+  }
   message_signature_ = NULL;
   timestamp_ = GOOGLE_ULONGLONG(0);
-  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   clear_msg();
 }
 
@@ -6380,138 +6448,119 @@ bool SignedMessage::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:SignedMessage)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .Post post = 1;
+      // .Post post = 1;
       case 1: {
-        if (tag == 10) {
+        if (tag == 10u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_post()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_signedMessage;
         break;
       }
 
-      // optional .Signature signedMessage = 2;
+      // .Signature signedMessage = 2;
       case 2: {
-        if (tag == 18) {
-         parse_signedMessage:
+        if (tag == 18u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_signedmessage()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_privateKey;
         break;
       }
 
-      // optional .PrivateKey privateKey = 3;
+      // .PrivateKey privateKey = 3;
       case 3: {
-        if (tag == 26) {
-         parse_privateKey:
+        if (tag == 26u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_privatekey()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_publicKey;
         break;
       }
 
-      // optional .PublicKey publicKey = 4;
+      // .PublicKey publicKey = 4;
       case 4: {
-        if (tag == 34) {
-         parse_publicKey:
+        if (tag == 34u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_publickey()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_symmetriclyEncryptedMessage;
         break;
       }
 
-      // optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;
+      // .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;
       case 5: {
-        if (tag == 42) {
-         parse_symmetriclyEncryptedMessage:
+        if (tag == 42u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_symmetriclyencryptedmessage()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_asymmetriclyEncryptedMessage;
         break;
       }
 
-      // optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;
+      // .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;
       case 6: {
-        if (tag == 50) {
-         parse_asymmetriclyEncryptedMessage:
+        if (tag == 50u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_asymmetriclyencryptedmessage()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(66)) goto parse_message_signature;
         break;
       }
 
-      // optional .Signature message_signature = 8;
+      // .Signature message_signature = 8;
       case 8: {
-        if (tag == 66) {
-         parse_message_signature:
+        if (tag == 66u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_message_signature()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(73)) goto parse_timestamp;
         break;
       }
 
-      // optional fixed64 timestamp = 9;
+      // fixed64 timestamp = 9;
       case 9: {
-        if (tag == 73) {
-         parse_timestamp:
+        if (tag == 73u) {
+
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_FIXED64>(
                  input, &timestamp_)));
-
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(82)) goto parse_reference;
         break;
       }
 
-      // optional .MessageReference reference = 10;
+      // .MessageReference reference = 10;
       case 10: {
-        if (tag == 82) {
-         parse_reference:
+        if (tag == 82u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_reference()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(90)) goto parse_id;
         break;
       }
 
-      // optional bytes id = 11;
+      // bytes id = 11;
       case 11: {
-        if (tag == 90) {
-         parse_id:
+        if (tag == 90u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_id()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectAtEnd()) goto success;
         break;
       }
 
@@ -6539,60 +6588,60 @@ failure:
 void SignedMessage::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:SignedMessage)
-  // optional .Post post = 1;
+  // .Post post = 1;
   if (has_post()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, *msg_.post_, output);
   }
 
-  // optional .Signature signedMessage = 2;
+  // .Signature signedMessage = 2;
   if (has_signedmessage()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, *msg_.signedmessage_, output);
   }
 
-  // optional .PrivateKey privateKey = 3;
+  // .PrivateKey privateKey = 3;
   if (has_privatekey()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, *msg_.privatekey_, output);
   }
 
-  // optional .PublicKey publicKey = 4;
+  // .PublicKey publicKey = 4;
   if (has_publickey()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       4, *msg_.publickey_, output);
   }
 
-  // optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;
+  // .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;
   if (has_symmetriclyencryptedmessage()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       5, *msg_.symmetriclyencryptedmessage_, output);
   }
 
-  // optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;
+  // .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;
   if (has_asymmetriclyencryptedmessage()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       6, *msg_.asymmetriclyencryptedmessage_, output);
   }
 
-  // optional .Signature message_signature = 8;
+  // .Signature message_signature = 8;
   if (this->has_message_signature()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       8, *this->message_signature_, output);
   }
 
-  // optional fixed64 timestamp = 9;
+  // fixed64 timestamp = 9;
   if (this->timestamp() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteFixed64(9, this->timestamp(), output);
   }
 
-  // optional .MessageReference reference = 10;
+  // .MessageReference reference = 10;
   if (has_reference()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       10, *msg_.reference_, output);
   }
 
-  // optional bytes id = 11;
+  // bytes id = 11;
   if (this->id().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       11, this->id(), output);
@@ -6603,69 +6652,70 @@ void SignedMessage::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* SignedMessage::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
   // @@protoc_insertion_point(serialize_to_array_start:SignedMessage)
-  // optional .Post post = 1;
+  // .Post post = 1;
   if (has_post()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         1, *msg_.post_, false, target);
   }
 
-  // optional .Signature signedMessage = 2;
+  // .Signature signedMessage = 2;
   if (has_signedmessage()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         2, *msg_.signedmessage_, false, target);
   }
 
-  // optional .PrivateKey privateKey = 3;
+  // .PrivateKey privateKey = 3;
   if (has_privatekey()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         3, *msg_.privatekey_, false, target);
   }
 
-  // optional .PublicKey publicKey = 4;
+  // .PublicKey publicKey = 4;
   if (has_publickey()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         4, *msg_.publickey_, false, target);
   }
 
-  // optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;
+  // .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;
   if (has_symmetriclyencryptedmessage()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         5, *msg_.symmetriclyencryptedmessage_, false, target);
   }
 
-  // optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;
+  // .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;
   if (has_asymmetriclyencryptedmessage()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         6, *msg_.asymmetriclyencryptedmessage_, false, target);
   }
 
-  // optional .Signature message_signature = 8;
+  // .Signature message_signature = 8;
   if (this->has_message_signature()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         8, *this->message_signature_, false, target);
   }
 
-  // optional fixed64 timestamp = 9;
+  // fixed64 timestamp = 9;
   if (this->timestamp() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFixed64ToArray(9, this->timestamp(), target);
   }
 
-  // optional .MessageReference reference = 10;
+  // .MessageReference reference = 10;
   if (has_reference()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         10, *msg_.reference_, false, target);
   }
 
-  // optional bytes id = 11;
+  // bytes id = 11;
   if (this->id().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
@@ -6676,73 +6726,73 @@ void SignedMessage::SerializeWithCachedSizes(
   return target;
 }
 
-int SignedMessage::ByteSize() const {
+size_t SignedMessage::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SignedMessage)
-  int total_size = 0;
+  size_t total_size = 0;
 
-  // optional .Signature message_signature = 8;
-  if (this->has_message_signature()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->message_signature_);
-  }
-
-  // optional fixed64 timestamp = 9;
-  if (this->timestamp() != 0) {
-    total_size += 1 + 8;
-  }
-
-  // optional bytes id = 11;
+  // bytes id = 11;
   if (this->id().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->id());
   }
 
+  // .Signature message_signature = 8;
+  if (this->has_message_signature()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->message_signature_);
+  }
+
+  // fixed64 timestamp = 9;
+  if (this->timestamp() != 0) {
+    total_size += 1 + 8;
+  }
+
   switch (msg_case()) {
-    // optional .Post post = 1;
+    // .Post post = 1;
     case kPost: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *msg_.post_);
       break;
     }
-    // optional .Signature signedMessage = 2;
+    // .Signature signedMessage = 2;
     case kSignedMessage: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *msg_.signedmessage_);
       break;
     }
-    // optional .PrivateKey privateKey = 3;
+    // .PrivateKey privateKey = 3;
     case kPrivateKey: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *msg_.privatekey_);
       break;
     }
-    // optional .PublicKey publicKey = 4;
+    // .PublicKey publicKey = 4;
     case kPublicKey: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *msg_.publickey_);
       break;
     }
-    // optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;
+    // .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;
     case kSymmetriclyEncryptedMessage: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *msg_.symmetriclyencryptedmessage_);
       break;
     }
-    // optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;
+    // .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;
     case kAsymmetriclyEncryptedMessage: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *msg_.asymmetriclyencryptedmessage_);
       break;
     }
-    // optional .MessageReference reference = 10;
+    // .MessageReference reference = 10;
     case kReference: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -6753,18 +6803,17 @@ int SignedMessage::ByteSize() const {
       break;
     }
   }
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
+  _cached_size_ = cached_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
 void SignedMessage::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:SignedMessage)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  const SignedMessage* source = 
+  GOOGLE_DCHECK_NE(&from, this);
+  const SignedMessage* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const SignedMessage>(
           &from);
   if (source == NULL) {
@@ -6778,8 +6827,17 @@ void SignedMessage::MergeFrom(const ::google::protobuf::Message& from) {
 
 void SignedMessage::MergeFrom(const SignedMessage& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:SignedMessage)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.id().size() > 0) {
+
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  if (from.has_message_signature()) {
+    mutable_message_signature()->::Signature::MergeFrom(from.message_signature());
+  }
+  if (from.timestamp() != 0) {
+    set_timestamp(from.timestamp());
   }
   switch (from.msg_case()) {
     case kPost: {
@@ -6814,16 +6872,6 @@ void SignedMessage::MergeFrom(const SignedMessage& from) {
       break;
     }
   }
-  if (from.has_message_signature()) {
-    mutable_message_signature()->::Signature::MergeFrom(from.message_signature());
-  }
-  if (from.timestamp() != 0) {
-    set_timestamp(from.timestamp());
-  }
-  if (from.id().size() > 0) {
-
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
-  }
 }
 
 void SignedMessage::CopyFrom(const ::google::protobuf::Message& from) {
@@ -6841,7 +6889,6 @@ void SignedMessage::CopyFrom(const SignedMessage& from) {
 }
 
 bool SignedMessage::IsInitialized() const {
-
   return true;
 }
 
@@ -6850,27 +6897,23 @@ void SignedMessage::Swap(SignedMessage* other) {
   InternalSwap(other);
 }
 void SignedMessage::InternalSwap(SignedMessage* other) {
+  id_.Swap(&other->id_);
   std::swap(message_signature_, other->message_signature_);
   std::swap(timestamp_, other->timestamp_);
-  id_.Swap(&other->id_);
   std::swap(msg_, other->msg_);
   std::swap(_oneof_case_[0], other->_oneof_case_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata SignedMessage::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = SignedMessage_descriptor_;
-  metadata.reflection = SignedMessage_reflection_;
-  return metadata;
+  protobuf_message_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_message_2eproto::file_level_metadata[10];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // SignedMessage
 
-// optional .Post post = 1;
+// .Post post = 1;
 bool SignedMessage::has_post() const {
   return msg_case() == kPost;
 }
@@ -6918,7 +6961,7 @@ void SignedMessage::set_allocated_post(::Post* post) {
   // @@protoc_insertion_point(field_set_allocated:SignedMessage.post)
 }
 
-// optional .Signature signedMessage = 2;
+// .Signature signedMessage = 2;
 bool SignedMessage::has_signedmessage() const {
   return msg_case() == kSignedMessage;
 }
@@ -6966,7 +7009,7 @@ void SignedMessage::set_allocated_signedmessage(::Signature* signedmessage) {
   // @@protoc_insertion_point(field_set_allocated:SignedMessage.signedMessage)
 }
 
-// optional .PrivateKey privateKey = 3;
+// .PrivateKey privateKey = 3;
 bool SignedMessage::has_privatekey() const {
   return msg_case() == kPrivateKey;
 }
@@ -7014,7 +7057,7 @@ void SignedMessage::set_allocated_privatekey(::PrivateKey* privatekey) {
   // @@protoc_insertion_point(field_set_allocated:SignedMessage.privateKey)
 }
 
-// optional .PublicKey publicKey = 4;
+// .PublicKey publicKey = 4;
 bool SignedMessage::has_publickey() const {
   return msg_case() == kPublicKey;
 }
@@ -7062,7 +7105,7 @@ void SignedMessage::set_allocated_publickey(::PublicKey* publickey) {
   // @@protoc_insertion_point(field_set_allocated:SignedMessage.publicKey)
 }
 
-// optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;
+// .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;
 bool SignedMessage::has_symmetriclyencryptedmessage() const {
   return msg_case() == kSymmetriclyEncryptedMessage;
 }
@@ -7110,7 +7153,7 @@ void SignedMessage::set_allocated_symmetriclyencryptedmessage(::SymmetriclyEncry
   // @@protoc_insertion_point(field_set_allocated:SignedMessage.symmetriclyEncryptedMessage)
 }
 
-// optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;
+// .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;
 bool SignedMessage::has_asymmetriclyencryptedmessage() const {
   return msg_case() == kAsymmetriclyEncryptedMessage;
 }
@@ -7158,7 +7201,7 @@ void SignedMessage::set_allocated_asymmetriclyencryptedmessage(::AsymmetriclyEnc
   // @@protoc_insertion_point(field_set_allocated:SignedMessage.asymmetriclyEncryptedMessage)
 }
 
-// optional .MessageReference reference = 10;
+// .MessageReference reference = 10;
 bool SignedMessage::has_reference() const {
   return msg_case() == kReference;
 }
@@ -7206,9 +7249,9 @@ void SignedMessage::set_allocated_reference(::MessageReference* reference) {
   // @@protoc_insertion_point(field_set_allocated:SignedMessage.reference)
 }
 
-// optional .Signature message_signature = 8;
+// .Signature message_signature = 8;
 bool SignedMessage::has_message_signature() const {
-  return !_is_default_instance_ && message_signature_ != NULL;
+  return this != internal_default_instance() && message_signature_ != NULL;
 }
 void SignedMessage::clear_message_signature() {
   if (GetArenaNoVirtual() == NULL && message_signature_ != NULL) delete message_signature_;
@@ -7216,7 +7259,8 @@ void SignedMessage::clear_message_signature() {
 }
 const ::Signature& SignedMessage::message_signature() const {
   // @@protoc_insertion_point(field_get:SignedMessage.message_signature)
-  return message_signature_ != NULL ? *message_signature_ : *default_instance_->message_signature_;
+  return message_signature_ != NULL ? *message_signature_
+                         : *::Signature::internal_default_instance();
 }
 ::Signature* SignedMessage::mutable_message_signature() {
   
@@ -7244,55 +7288,63 @@ void SignedMessage::set_allocated_message_signature(::Signature* message_signatu
   // @@protoc_insertion_point(field_set_allocated:SignedMessage.message_signature)
 }
 
-// optional fixed64 timestamp = 9;
+// fixed64 timestamp = 9;
 void SignedMessage::clear_timestamp() {
   timestamp_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint64 SignedMessage::timestamp() const {
+::google::protobuf::uint64 SignedMessage::timestamp() const {
   // @@protoc_insertion_point(field_get:SignedMessage.timestamp)
   return timestamp_;
 }
- void SignedMessage::set_timestamp(::google::protobuf::uint64 value) {
+void SignedMessage::set_timestamp(::google::protobuf::uint64 value) {
   
   timestamp_ = value;
   // @@protoc_insertion_point(field_set:SignedMessage.timestamp)
 }
 
-// optional bytes id = 11;
+// bytes id = 11;
 void SignedMessage::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& SignedMessage::id() const {
+const ::std::string& SignedMessage::id() const {
   // @@protoc_insertion_point(field_get:SignedMessage.id)
-  return id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return id_.GetNoArena();
 }
- void SignedMessage::set_id(const ::std::string& value) {
+void SignedMessage::set_id(const ::std::string& value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:SignedMessage.id)
 }
- void SignedMessage::set_id(const char* value) {
+#if LANG_CXX11
+void SignedMessage::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:SignedMessage.id)
+}
+#endif
+void SignedMessage::set_id(const char* value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:SignedMessage.id)
 }
- void SignedMessage::set_id(const void* value, size_t size) {
+void SignedMessage::set_id(const void* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:SignedMessage.id)
 }
- ::std::string* SignedMessage::mutable_id() {
+::std::string* SignedMessage::mutable_id() {
   
   // @@protoc_insertion_point(field_mutable:SignedMessage.id)
   return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* SignedMessage::release_id() {
+::std::string* SignedMessage::release_id() {
   // @@protoc_insertion_point(field_release:SignedMessage.id)
   
   return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void SignedMessage::set_allocated_id(::std::string* id) {
+void SignedMessage::set_allocated_id(::std::string* id) {
   if (id != NULL) {
     
   } else {

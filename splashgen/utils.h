@@ -18,9 +18,6 @@ using namespace boost::archive::iterators;
 #include "exceptions.h"
 
 
-#include <template.hpp>
-using PlustacheTypes::ObjectType;
-
 namespace org {
     namespace metamesh {
         namespace chub {
@@ -86,37 +83,37 @@ namespace org {
                 };
             }
 
-            ObjectType postToObjectType(Post p) {
-                ObjectType c;
-                c["title"] = p.title();
-                c["description"] = p.description();
-                c["has_image"] = "false";
-                c["test"] = "test";
-                if (p.has_image()) {
-                    std::stringstream os;
-                    typedef
-                    insert_linebreaks< // insert line breaks every 72 characters
-                            base64_from_binary< // convert binary values to base64 characters
-                            transform_width< // retrieve 6 bit integers from a sequence of 8 bit bytes
-                            const char *,
-                            6,
-                            8
-                            >
-                            >
-                            , INT_MAX
-                            >
-                            base64_text; // compose all the above operations in to a new iterator
-                    std::string s = p.image().image();
-                    std::copy(
-                            base64_text(s.c_str()),
-                            base64_text(s.c_str() + s.size()),
-                            ostream_iterator<char>(os)
-                    );
-                    c["has_image"] = "true";
-                    c["image"] = std::string("data:image/jpeg;base64,") + os.str();
-                }
-                return c;
+            auto postToObjectType(Post p) {
+              std::map<std::string, std::string> data = { 
+                { "title"  , p.title() },
+                { "description"   , p.description()     },
+                { "test", "test"},
+                { "image", ""}
+              };
+              if (p.has_image()) {
+                  std::stringstream os;
+                  typedef
+                  insert_linebreaks< // insert line breaks every 72 characters
+                          base64_from_binary< // convert binary values to base64 characters
+                          transform_width< // retrieve 6 bit integers from a sequence of 8 bit bytes
+                          const char *,
+                          6,
+                          8
+                          >
+                          >
+                          , INT_MAX
+                          >
+                          base64_text; // compose all the above operations in to a new iterator
+                  std::string s = p.image().image();
+                  std::copy(
+                          base64_text(s.c_str()),
+                          base64_text(s.c_str() + s.size()),
+                          ostream_iterator<char>(os)
+                  );
+                  data["image"] = std::string("data:image/jpeg;base64,") + os.str();
             }
+            return data;
+          }
         }
     }
 }

@@ -6,16 +6,17 @@
 #include <boost/optional.hpp>
 using boost::optional;
 
-#include <plustache_types.hpp>
-#include <template.hpp>
-#include <context.hpp>
-using PlustacheTypes::ObjectType;
-using PlustacheTypes::CollectionType;
-using Plustache::template_t;
-using Plustache::Context;
-
 #include <boost/filesystem.hpp>
 namespace fs = boost::filesystem;
+
+#include <boost/boostache/boostache.hpp>
+#include <boost/boostache/frontend/stache/grammar_def.hpp> // need to work out header only syntax
+#include <boost/boostache/stache.hpp>
+#include <boost/boostache/model/helper.hpp>
+#include <iostream>
+#include <sstream>
+
+namespace boostache = boost::boostache;
 
 
 #include "ed25519/src/ed25519.h"
@@ -54,10 +55,10 @@ int main(int argc, char** argv) {
     
     std::vector<SignedMessage> sms;
 
-//    std::cout << "Difference:" << std::endl;
-//    for (auto d : diff) {
-//        std::cout << d.filename << std::endl;
-//    }
+    //std::cout << "Difference:" << std::endl;
+    //for (auto d : diff) {
+    //    std::cout << d.filename << std::endl;
+    //}
 
     std::vector<optional < SignedMessage>> osms;
     std::transform(diff.begin(), diff.end(), std::back_inserter(osms), [](const auto & mi) {
@@ -110,8 +111,8 @@ int main(int argc, char** argv) {
     });
 
     for (auto sm : sms) {
-//        std::cout << bytes2uuid2string(sm.id()) << '\t' << sm.post().title() << '\t'
-//                << (verify(sm, pk) ? "" : "in") << "valid-message" << std::endl;
+        //std::cout << bytes2uuid2string(sm.id()) << '\t' << sm.post().title() << '\t' << std::endl;
+                //<< (verify(sm, pk) ? "" : "in") << "valid-message" << std::endl;
 
         if (sm.has_post()) {
 
@@ -122,25 +123,20 @@ int main(int argc, char** argv) {
 
 
 
-    CollectionType c;
+    std::vector<std::map<std::string, std::string>> c;
     std::transform(sms.begin(), sms.end(), std::back_inserter(c), [](const auto & sm) {
         return postToObjectType(sm.post()); 
     });
 
-    Context ctx;
-    ctx.add("posts", c);
-
-    template_t t;
-//    std::cout << ctx.get("posts")[0]["title"] << std::endl;
-
     std::ifstream template_file("splash.mustache");
-    std::string tplate((std::istreambuf_iterator<char>(template_file)),
-            std::istreambuf_iterator<char>());
-    
-//    std::cout << tplate << std::endl << std::endl;
-    
-    std::string result = t.render(tplate, ctx);
+    std::string tplate((std::istreambuf_iterator<char>(template_file)), std::istreambuf_iterator<char>());
 
-    std::cout << result << std::endl;
+    auto iter = tplate.begin();
+    auto templ = boostache::load_template<boostache::format::stache>(iter, tplate.end());
+    
+    std::stringstream stream;
+    boostache::generate(stream, templ, c);
+
+    std::cout << stream.str() << std::endl;
     return 0;
 }

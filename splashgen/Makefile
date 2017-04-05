@@ -4,14 +4,12 @@ CXXFLAG = -std=c++14 -Wall -Wextra -Wpedantic -Wsign-conversion \
 	  -Weffc++ -Wshadow -Wno-missing-braces -g \
 	  -I /usr/local/include \
 	  -L /usr/local/lib \
-	  -I /usr/local/Cellar/plustache/0.3.0/include \
-	  -I /usr/local/Cellar/plustache/0.3.0/ \
-	  -L /usr/local/Cellar/plustache/0.3.0/lib \
-	  -lprotobuf -lstdc++ -lplustache -lboost_regex -lboost_filesystem \
+	  -I /home/jim/projects/boostache/include \
+	  -lprotobuf -lstdc++ -lboost_regex -lboost_filesystem \
 	  -lboost_system -lboost_program_options
 
 CC = clang
-CFLAG = -std=c11 -Wall -Wextra -Wpedantic -Wsign-conversion \
+CFLAG = -std=c14 -Wall -Wextra -Wpedantic -Wsign-conversion \
 	  -Wold-style-cast -Wsign-promo -Wsign-promo -Wswitch-enum \
 	  -Wshadow -Wno-missing-braces -g
 
@@ -20,8 +18,11 @@ build: splashgen.exe
 splashgen.exe: main.o message.pb.o ed25519.a
 	${CXX} ${CXXFLAG} -o splashgen.exe $?
 
+main.o: main.cc message.pb.h utils.h manifest.h
+	${CXX} ${CXXFLAG} -c -o main.o main.cc
+
 %.o: %.c
-	${CC} ${CFLAGS} -c -o $@ $?
+	${CC} ${CFLAG} -c -o $@ $?
 
 %.o: %.cc
 	${CXX} ${CXXFLAG} -c -o $@ $?
