@@ -28,6 +28,11 @@ namespace boostache = boost::boostache;
 #include "progoptions.h"
 #include "manifest.h"
 
+#include <webdav/client.hpp>
+
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/ini_parser.hpp>
+
 using namespace org::metamesh::chub;
 
 /*
@@ -47,6 +52,38 @@ int main(int argc, char** argv) {
     //    auto sm = loadProtoBufFromFile<SignedMessage>(test_post);
     //    std::cout << bytes2uuid2string(sm.id()) << '\t' << sm.post().title() << '\t';
     //    std::cout << (verify(sm, pk) ? "" : "in") << "valid-message" << std::endl;
+
+		std::ifstream s("config.ini");
+    if(!s)
+    {
+        std::cerr<<"error"<<std::endl;
+        return 1;
+    }
+
+    boost::property_tree::ptree pt;
+    boost::property_tree::ini_parser::read_ini("config.ini", pt);
+
+    std::map<std::string, std::string> options = {
+          {"webdav_hostname", "http://localhost"},
+          {"webdav_username", "test"},
+          {"webdav_password", "test"},
+          {"webdav_root", "/webdav"}
+    };
+
+    std::shared_ptr<WebDAV::Client> client(WebDAV::Client::Init(options));
+    auto check_connection = client->check("/posts");
+		if (!check_connection) {
+			return 2;
+		}
+    std::cout << "SDSDSDSD" << std::endl;
+    for(auto filename : client->list("/posts/")) {
+      auto path = vm.msg_dir + "/" + filename;
+      std::cout << "Checking " << filename << std::endl;
+      if (!fs::is_regular_file(path)) {
+        std::cout << "Downloading to " << path << std::endl;
+        client->download("/posts/" + filename, path);
+      }
+    }
 
     std::ifstream manifest(vm.work_dir + "/manifest");
     auto old_manifest = Manifest::fromStream(manifest);

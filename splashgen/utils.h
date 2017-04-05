@@ -85,6 +85,7 @@ namespace org {
 
             auto postToObjectType(Post p) {
               std::map<std::string, std::string> data = { 
+                { "id", bytes2uuid2string(p.id()) },
                 { "title"  , p.title() },
                 { "description"   , p.description()     },
                 { "test", "test"},
