@@ -51,7 +51,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.metamesh.chub.keygen.GenerateKeyForm</mainClass>
+                            <mainClass>org.metamesh.chub.apps.PostGenerator</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -61,7 +61,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.metamesh.chub.keygen.GenerateKeyForm</mainClass>
+                            <mainClass>org.metamesh.chub.apps.PostGenerator</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

@@ -279,9 +279,10 @@ public class PostForm extends javax.swing.JPanel {
             }
             Message.Post post = pb.build();
             Message.SignedMessage sm = PBSerialize.sign(post, cpk);
-            String davPrefix = "http://localhost/webdav/posts/";
+            String davPrefix = "http://192.168.42.125/webdav/posts/";
 
             Sardine sardine = SardineFactory.begin();
+            sardine.setCredentials("test", "test");
             String base_name = UUIDHelper.bytes2UUID(sm.getId().toByteArray()) + ".post.pb";
             String postFilePath = Settings.base_dir + File.separator + base_name;
             try (FileOutputStream out = new FileOutputStream(postFilePath)) {

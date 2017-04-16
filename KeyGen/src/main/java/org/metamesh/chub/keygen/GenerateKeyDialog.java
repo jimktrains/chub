@@ -16,7 +16,7 @@ public class GenerateKeyDialog extends JDialog {
     public GenerateKeyDialog() {
         generateKeyForm = new GenerateKeyForm();
         add(generateKeyForm);
-        setSize(400, 330);
-        setTitle("Generate a Key to Submit With");
+        setSize(600, 200);
+        setTitle("Create Community Hub User Account");
     }
 }
