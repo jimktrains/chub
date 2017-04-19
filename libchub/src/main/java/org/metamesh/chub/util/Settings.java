@@ -19,18 +19,24 @@ import java.util.logging.Logger;
  */
 public class Settings {
 
-    public static final String base_dir;
-    public static final File base_dir_file;
-    public static final String prop_file_path;
-    public static final File props_file;
+    public static String base_dir;
+    public static File base_dir_file;
+    public static String prop_file_path;
+    public static File props_file;
+    private static boolean hasInited = false;
+
     static {
+        init();
+    }
+
+    public static void init() {
         base_dir = System.getProperty("user.home") + File.separator + "chub";
         base_dir_file = new File(base_dir);
-        if (!base_dir_file.exists()) {
-            base_dir_file.mkdir();
-        }
+        initDir();
         prop_file_path = base_dir + File.separator + "chub.ini";
         props_file = new File(prop_file_path);
+        loadProperties();
+        hasInited = true;
     }
 
     public static void initDir() {
@@ -48,7 +54,7 @@ public class Settings {
         }
     }
 
-    private static Properties props = null;
+    public static Properties props = null;
 
     public static Properties loadProperties() {
         if (props == null) {
@@ -65,12 +71,12 @@ public class Settings {
         }
         return props;
     }
-    
+
     public static void storeProps() {
         try {
             props.store(new FileOutputStream(props_file), "");
         } catch (IOException ex) {
-            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, "Could not save to "  + prop_file_path, ex);
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, "Could not save to " + prop_file_path, ex);
             throw new RuntimeException(ex);
         }
     }

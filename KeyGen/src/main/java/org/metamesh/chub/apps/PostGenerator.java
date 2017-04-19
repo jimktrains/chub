@@ -24,7 +24,8 @@ public class PostGenerator {
             
             
         } else {
-            PostTabbedFrame.load();
+            PostTabbedFrame x = PostTabbedFrame.load();
+            x.setSize(930,730);
         }
     }
 }

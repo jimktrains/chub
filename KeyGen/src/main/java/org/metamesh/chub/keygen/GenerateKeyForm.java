@@ -206,7 +206,7 @@ public class GenerateKeyForm extends javax.swing.JPanel {
                     bytes = pub_key_enc.toByteArray();
                     pubout.write(bytes);
                     sardine.put(davPrefix + pubFilePathbase, bytes);
-                    Alert.warning("Wrote key to " + privFilePath + " and " + pubFilePath);
+                    Logger.getLogger(GenerateKeyForm.class.getName()).log(Level.INFO, "Wrote key to " + privFilePath + " and " + pubFilePath);
                     triggerGenerated();
                 }
             } catch (IOException ex) {

@@ -10,18 +10,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StoredKeys {
-    
+
+    final String filename;
+
+    public StoredKeys(String filename) {
+        this.filename = filename;
+    }
+
     public static File openKey(String f) {
         return new File(Settings.base_dir + File.separator + f);
     }
-    
-    public static List<String> listKeys() {
-        List<String> keyList = new ArrayList<>();
-        for(String f : Settings.base_dir_file.list()) {
+
+    public static List<StoredKeys> listKeys() {
+        List<StoredKeys> keyList = new ArrayList<>();
+        for (String f : Settings.base_dir_file.list()) {
             if (f.endsWith(".priv.pb")) {
-                keyList.add(f);
+                keyList.add(new StoredKeys(f));
             }
         }
         return keyList;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public String toString() {
+        return filename.split("-")[0];
     }
 }
