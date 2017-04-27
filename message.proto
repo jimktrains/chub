@@ -13,6 +13,7 @@ enum AsymmetricKeyType {
 }
 enum SymmetricKeyType {
   AES_256_GCM_PBKDF2WithHmacSHA256_65536_128 = 0;
+  AES_128_GCM_PBKDF2WithHmacSHA256_65536_128 = 1;
 }
 
 enum KeyEncodingType {

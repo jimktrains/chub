@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.metamesh.chub.crypto.serialize;
 
 import com.google.protobuf.ByteString;
@@ -101,7 +96,8 @@ public class PBSerialize {
         try {
             byte[] key = pk.getKey().toByteArray();
             KeySpec kspec = PBSerialize.getKeySpec(pk, key);
-            PublicKey pubkey = ECC_Crypto.KEY_FACTORY.generatePublic(kspec);
+            
+            PublicKey pubkey = ECC_Crypto.generatePublic(kspec);
             return new ChubPubKey(pk.getKeyId(), pubkey);
 
         } catch (GeneralSecurityException ex) {
@@ -115,7 +111,7 @@ public class PBSerialize {
         try {
             byte[] key = SymmetricCrypto.decrypt(password, pk.getKey());
             KeySpec kspec = getKeySpec(pk, key);
-            PrivateKey priv_key = ECC_Crypto.KEY_FACTORY.generatePrivate(kspec);
+            PrivateKey priv_key = ECC_Crypto.generatePrivate(kspec);
             return new ChubPrivKey(pk.getKeyId(), priv_key);
         } catch (GeneralSecurityException ex) {
             Logger.getLogger(PBSerialize.class.getName()).log(Level.SEVERE, null, ex);

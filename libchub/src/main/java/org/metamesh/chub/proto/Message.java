@@ -228,6 +228,10 @@ public final class Message {
      * <code>AES_256_GCM_PBKDF2WithHmacSHA256_65536_128 = 0;</code>
      */
     AES_256_GCM_PBKDF2WithHmacSHA256_65536_128(0),
+    /**
+     * <code>AES_128_GCM_PBKDF2WithHmacSHA256_65536_128 = 1;</code>
+     */
+    AES_128_GCM_PBKDF2WithHmacSHA256_65536_128(1),
     UNRECOGNIZED(-1),
     ;
 
@@ -235,6 +239,10 @@ public final class Message {
      * <code>AES_256_GCM_PBKDF2WithHmacSHA256_65536_128 = 0;</code>
      */
     public static final int AES_256_GCM_PBKDF2WithHmacSHA256_65536_128_VALUE = 0;
+    /**
+     * <code>AES_128_GCM_PBKDF2WithHmacSHA256_65536_128 = 1;</code>
+     */
+    public static final int AES_128_GCM_PBKDF2WithHmacSHA256_65536_128_VALUE = 1;
 
 
     public final int getNumber() {
@@ -256,6 +264,7 @@ public final class Message {
     public static SymmetricKeyType forNumber(int value) {
       switch (value) {
         case 0: return AES_256_GCM_PBKDF2WithHmacSHA256_65536_128;
+        case 1: return AES_128_GCM_PBKDF2WithHmacSHA256_65536_128;
         default: return null;
       }
     }
@@ -661,16 +670,16 @@ public final class Message {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional bytes image = 1;</code>
+     * <code>bytes image = 1;</code>
      */
     com.google.protobuf.ByteString getImage();
 
     /**
-     * <code>optional .ImageType imageType = 2;</code>
+     * <code>.ImageType imageType = 2;</code>
      */
     int getImageTypeValue();
     /**
-     * <code>optional .ImageType imageType = 2;</code>
+     * <code>.ImageType imageType = 2;</code>
      */
     org.metamesh.chub.proto.Message.ImageType getImageType();
   }
@@ -752,7 +761,7 @@ public final class Message {
     public static final int IMAGE_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString image_;
     /**
-     * <code>optional bytes image = 1;</code>
+     * <code>bytes image = 1;</code>
      */
     public com.google.protobuf.ByteString getImage() {
       return image_;
@@ -761,13 +770,13 @@ public final class Message {
     public static final int IMAGETYPE_FIELD_NUMBER = 2;
     private int imageType_;
     /**
-     * <code>optional .ImageType imageType = 2;</code>
+     * <code>.ImageType imageType = 2;</code>
      */
     public int getImageTypeValue() {
       return imageType_;
     }
     /**
-     * <code>optional .ImageType imageType = 2;</code>
+     * <code>.ImageType imageType = 2;</code>
      */
     public org.metamesh.chub.proto.Message.ImageType getImageType() {
       org.metamesh.chub.proto.Message.ImageType result = org.metamesh.chub.proto.Message.ImageType.valueOf(imageType_);
@@ -835,7 +844,7 @@ public final class Message {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + IMAGE_FIELD_NUMBER;
       hash = (53 * hash) + getImage().hashCode();
       hash = (37 * hash) + IMAGETYPE_FIELD_NUMBER;
@@ -1061,13 +1070,13 @@ public final class Message {
 
       private com.google.protobuf.ByteString image_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes image = 1;</code>
+       * <code>bytes image = 1;</code>
        */
       public com.google.protobuf.ByteString getImage() {
         return image_;
       }
       /**
-       * <code>optional bytes image = 1;</code>
+       * <code>bytes image = 1;</code>
        */
       public Builder setImage(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -1079,7 +1088,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bytes image = 1;</code>
+       * <code>bytes image = 1;</code>
        */
       public Builder clearImage() {
         
@@ -1090,13 +1099,13 @@ public final class Message {
 
       private int imageType_ = 0;
       /**
-       * <code>optional .ImageType imageType = 2;</code>
+       * <code>.ImageType imageType = 2;</code>
        */
       public int getImageTypeValue() {
         return imageType_;
       }
       /**
-       * <code>optional .ImageType imageType = 2;</code>
+       * <code>.ImageType imageType = 2;</code>
        */
       public Builder setImageTypeValue(int value) {
         imageType_ = value;
@@ -1104,14 +1113,14 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .ImageType imageType = 2;</code>
+       * <code>.ImageType imageType = 2;</code>
        */
       public org.metamesh.chub.proto.Message.ImageType getImageType() {
         org.metamesh.chub.proto.Message.ImageType result = org.metamesh.chub.proto.Message.ImageType.valueOf(imageType_);
         return result == null ? org.metamesh.chub.proto.Message.ImageType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .ImageType imageType = 2;</code>
+       * <code>.ImageType imageType = 2;</code>
        */
       public Builder setImageType(org.metamesh.chub.proto.Message.ImageType value) {
         if (value == null) {
@@ -1123,7 +1132,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .ImageType imageType = 2;</code>
+       * <code>.ImageType imageType = 2;</code>
        */
       public Builder clearImageType() {
         
@@ -1185,85 +1194,85 @@ public final class Message {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional bytes id = 1;</code>
+     * <code>bytes id = 1;</code>
      */
     com.google.protobuf.ByteString getId();
 
     /**
-     * <code>optional string title = 2;</code>
+     * <code>string title = 2;</code>
      */
     java.lang.String getTitle();
     /**
-     * <code>optional string title = 2;</code>
+     * <code>string title = 2;</code>
      */
     com.google.protobuf.ByteString
         getTitleBytes();
 
     /**
-     * <code>optional string description = 3;</code>
+     * <code>string description = 3;</code>
      */
     java.lang.String getDescription();
     /**
-     * <code>optional string description = 3;</code>
+     * <code>string description = 3;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
 
     /**
-     * <code>optional string location = 4;</code>
+     * <code>string location = 4;</code>
      */
     java.lang.String getLocation();
     /**
-     * <code>optional string location = 4;</code>
+     * <code>string location = 4;</code>
      */
     com.google.protobuf.ByteString
         getLocationBytes();
 
     /**
-     * <code>optional fixed64 start_time = 5;</code>
+     * <code>fixed64 start_time = 5;</code>
      */
     long getStartTime();
 
     /**
-     * <code>optional bool all_day = 6;</code>
+     * <code>bool all_day = 6;</code>
      */
     boolean getAllDay();
 
     /**
-     * <code>optional fixed64 end_time = 7;</code>
+     * <code>fixed64 end_time = 7;</code>
      */
     long getEndTime();
 
     /**
-     * <code>optional .Image image = 8;</code>
+     * <code>.Image image = 8;</code>
      */
     boolean hasImage();
     /**
-     * <code>optional .Image image = 8;</code>
+     * <code>.Image image = 8;</code>
      */
     org.metamesh.chub.proto.Message.Image getImage();
     /**
-     * <code>optional .Image image = 8;</code>
+     * <code>.Image image = 8;</code>
      */
     org.metamesh.chub.proto.Message.ImageOrBuilder getImageOrBuilder();
 
     /**
-     * <code>optional fixed64 rsvp_by = 9;</code>
+     * <code>fixed64 rsvp_by = 9;</code>
      */
     long getRsvpBy();
 
     /**
-     * <code>optional string rsvp_email = 10;</code>
+     * <code>string rsvp_email = 10;</code>
      */
     java.lang.String getRsvpEmail();
     /**
-     * <code>optional string rsvp_email = 10;</code>
+     * <code>string rsvp_email = 10;</code>
      */
     com.google.protobuf.ByteString
         getRsvpEmailBytes();
 
     /**
-     * <code>optional fixed64 timestamp = 11;</code>
+     * <code>fixed64 timestamp = 11;</code>
      */
     long getTimestamp();
   }
@@ -1409,7 +1418,7 @@ public final class Message {
     public static final int ID_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString id_;
     /**
-     * <code>optional bytes id = 1;</code>
+     * <code>bytes id = 1;</code>
      */
     public com.google.protobuf.ByteString getId() {
       return id_;
@@ -1418,7 +1427,7 @@ public final class Message {
     public static final int TITLE_FIELD_NUMBER = 2;
     private volatile java.lang.Object title_;
     /**
-     * <code>optional string title = 2;</code>
+     * <code>string title = 2;</code>
      */
     public java.lang.String getTitle() {
       java.lang.Object ref = title_;
@@ -1433,7 +1442,7 @@ public final class Message {
       }
     }
     /**
-     * <code>optional string title = 2;</code>
+     * <code>string title = 2;</code>
      */
     public com.google.protobuf.ByteString
         getTitleBytes() {
@@ -1452,7 +1461,7 @@ public final class Message {
     public static final int DESCRIPTION_FIELD_NUMBER = 3;
     private volatile java.lang.Object description_;
     /**
-     * <code>optional string description = 3;</code>
+     * <code>string description = 3;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -1467,7 +1476,7 @@ public final class Message {
       }
     }
     /**
-     * <code>optional string description = 3;</code>
+     * <code>string description = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -1486,7 +1495,7 @@ public final class Message {
     public static final int LOCATION_FIELD_NUMBER = 4;
     private volatile java.lang.Object location_;
     /**
-     * <code>optional string location = 4;</code>
+     * <code>string location = 4;</code>
      */
     public java.lang.String getLocation() {
       java.lang.Object ref = location_;
@@ -1501,7 +1510,7 @@ public final class Message {
       }
     }
     /**
-     * <code>optional string location = 4;</code>
+     * <code>string location = 4;</code>
      */
     public com.google.protobuf.ByteString
         getLocationBytes() {
@@ -1520,7 +1529,7 @@ public final class Message {
     public static final int START_TIME_FIELD_NUMBER = 5;
     private long startTime_;
     /**
-     * <code>optional fixed64 start_time = 5;</code>
+     * <code>fixed64 start_time = 5;</code>
      */
     public long getStartTime() {
       return startTime_;
@@ -1529,7 +1538,7 @@ public final class Message {
     public static final int ALL_DAY_FIELD_NUMBER = 6;
     private boolean allDay_;
     /**
-     * <code>optional bool all_day = 6;</code>
+     * <code>bool all_day = 6;</code>
      */
     public boolean getAllDay() {
       return allDay_;
@@ -1538,7 +1547,7 @@ public final class Message {
     public static final int END_TIME_FIELD_NUMBER = 7;
     private long endTime_;
     /**
-     * <code>optional fixed64 end_time = 7;</code>
+     * <code>fixed64 end_time = 7;</code>
      */
     public long getEndTime() {
       return endTime_;
@@ -1547,19 +1556,19 @@ public final class Message {
     public static final int IMAGE_FIELD_NUMBER = 8;
     private org.metamesh.chub.proto.Message.Image image_;
     /**
-     * <code>optional .Image image = 8;</code>
+     * <code>.Image image = 8;</code>
      */
     public boolean hasImage() {
       return image_ != null;
     }
     /**
-     * <code>optional .Image image = 8;</code>
+     * <code>.Image image = 8;</code>
      */
     public org.metamesh.chub.proto.Message.Image getImage() {
       return image_ == null ? org.metamesh.chub.proto.Message.Image.getDefaultInstance() : image_;
     }
     /**
-     * <code>optional .Image image = 8;</code>
+     * <code>.Image image = 8;</code>
      */
     public org.metamesh.chub.proto.Message.ImageOrBuilder getImageOrBuilder() {
       return getImage();
@@ -1568,7 +1577,7 @@ public final class Message {
     public static final int RSVP_BY_FIELD_NUMBER = 9;
     private long rsvpBy_;
     /**
-     * <code>optional fixed64 rsvp_by = 9;</code>
+     * <code>fixed64 rsvp_by = 9;</code>
      */
     public long getRsvpBy() {
       return rsvpBy_;
@@ -1577,7 +1586,7 @@ public final class Message {
     public static final int RSVP_EMAIL_FIELD_NUMBER = 10;
     private volatile java.lang.Object rsvpEmail_;
     /**
-     * <code>optional string rsvp_email = 10;</code>
+     * <code>string rsvp_email = 10;</code>
      */
     public java.lang.String getRsvpEmail() {
       java.lang.Object ref = rsvpEmail_;
@@ -1592,7 +1601,7 @@ public final class Message {
       }
     }
     /**
-     * <code>optional string rsvp_email = 10;</code>
+     * <code>string rsvp_email = 10;</code>
      */
     public com.google.protobuf.ByteString
         getRsvpEmailBytes() {
@@ -1611,7 +1620,7 @@ public final class Message {
     public static final int TIMESTAMP_FIELD_NUMBER = 11;
     private long timestamp_;
     /**
-     * <code>optional fixed64 timestamp = 11;</code>
+     * <code>fixed64 timestamp = 11;</code>
      */
     public long getTimestamp() {
       return timestamp_;
@@ -1759,7 +1768,7 @@ public final class Message {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + TITLE_FIELD_NUMBER;
@@ -2076,13 +2085,13 @@ public final class Message {
 
       private com.google.protobuf.ByteString id_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes id = 1;</code>
+       * <code>bytes id = 1;</code>
        */
       public com.google.protobuf.ByteString getId() {
         return id_;
       }
       /**
-       * <code>optional bytes id = 1;</code>
+       * <code>bytes id = 1;</code>
        */
       public Builder setId(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -2094,7 +2103,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bytes id = 1;</code>
+       * <code>bytes id = 1;</code>
        */
       public Builder clearId() {
         
@@ -2105,7 +2114,7 @@ public final class Message {
 
       private java.lang.Object title_ = "";
       /**
-       * <code>optional string title = 2;</code>
+       * <code>string title = 2;</code>
        */
       public java.lang.String getTitle() {
         java.lang.Object ref = title_;
@@ -2120,7 +2129,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string title = 2;</code>
+       * <code>string title = 2;</code>
        */
       public com.google.protobuf.ByteString
           getTitleBytes() {
@@ -2136,7 +2145,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string title = 2;</code>
+       * <code>string title = 2;</code>
        */
       public Builder setTitle(
           java.lang.String value) {
@@ -2149,7 +2158,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string title = 2;</code>
+       * <code>string title = 2;</code>
        */
       public Builder clearTitle() {
         
@@ -2158,7 +2167,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string title = 2;</code>
+       * <code>string title = 2;</code>
        */
       public Builder setTitleBytes(
           com.google.protobuf.ByteString value) {
@@ -2174,7 +2183,7 @@ public final class Message {
 
       private java.lang.Object description_ = "";
       /**
-       * <code>optional string description = 3;</code>
+       * <code>string description = 3;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -2189,7 +2198,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string description = 3;</code>
+       * <code>string description = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -2205,7 +2214,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string description = 3;</code>
+       * <code>string description = 3;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
@@ -2218,7 +2227,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string description = 3;</code>
+       * <code>string description = 3;</code>
        */
       public Builder clearDescription() {
         
@@ -2227,7 +2236,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string description = 3;</code>
+       * <code>string description = 3;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -2243,7 +2252,7 @@ public final class Message {
 
       private java.lang.Object location_ = "";
       /**
-       * <code>optional string location = 4;</code>
+       * <code>string location = 4;</code>
        */
       public java.lang.String getLocation() {
         java.lang.Object ref = location_;
@@ -2258,7 +2267,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string location = 4;</code>
+       * <code>string location = 4;</code>
        */
       public com.google.protobuf.ByteString
           getLocationBytes() {
@@ -2274,7 +2283,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string location = 4;</code>
+       * <code>string location = 4;</code>
        */
       public Builder setLocation(
           java.lang.String value) {
@@ -2287,7 +2296,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string location = 4;</code>
+       * <code>string location = 4;</code>
        */
       public Builder clearLocation() {
         
@@ -2296,7 +2305,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string location = 4;</code>
+       * <code>string location = 4;</code>
        */
       public Builder setLocationBytes(
           com.google.protobuf.ByteString value) {
@@ -2312,13 +2321,13 @@ public final class Message {
 
       private long startTime_ ;
       /**
-       * <code>optional fixed64 start_time = 5;</code>
+       * <code>fixed64 start_time = 5;</code>
        */
       public long getStartTime() {
         return startTime_;
       }
       /**
-       * <code>optional fixed64 start_time = 5;</code>
+       * <code>fixed64 start_time = 5;</code>
        */
       public Builder setStartTime(long value) {
         
@@ -2327,7 +2336,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional fixed64 start_time = 5;</code>
+       * <code>fixed64 start_time = 5;</code>
        */
       public Builder clearStartTime() {
         
@@ -2338,13 +2347,13 @@ public final class Message {
 
       private boolean allDay_ ;
       /**
-       * <code>optional bool all_day = 6;</code>
+       * <code>bool all_day = 6;</code>
        */
       public boolean getAllDay() {
         return allDay_;
       }
       /**
-       * <code>optional bool all_day = 6;</code>
+       * <code>bool all_day = 6;</code>
        */
       public Builder setAllDay(boolean value) {
         
@@ -2353,7 +2362,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bool all_day = 6;</code>
+       * <code>bool all_day = 6;</code>
        */
       public Builder clearAllDay() {
         
@@ -2364,13 +2373,13 @@ public final class Message {
 
       private long endTime_ ;
       /**
-       * <code>optional fixed64 end_time = 7;</code>
+       * <code>fixed64 end_time = 7;</code>
        */
       public long getEndTime() {
         return endTime_;
       }
       /**
-       * <code>optional fixed64 end_time = 7;</code>
+       * <code>fixed64 end_time = 7;</code>
        */
       public Builder setEndTime(long value) {
         
@@ -2379,7 +2388,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional fixed64 end_time = 7;</code>
+       * <code>fixed64 end_time = 7;</code>
        */
       public Builder clearEndTime() {
         
@@ -2392,13 +2401,13 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.Image, org.metamesh.chub.proto.Message.Image.Builder, org.metamesh.chub.proto.Message.ImageOrBuilder> imageBuilder_;
       /**
-       * <code>optional .Image image = 8;</code>
+       * <code>.Image image = 8;</code>
        */
       public boolean hasImage() {
         return imageBuilder_ != null || image_ != null;
       }
       /**
-       * <code>optional .Image image = 8;</code>
+       * <code>.Image image = 8;</code>
        */
       public org.metamesh.chub.proto.Message.Image getImage() {
         if (imageBuilder_ == null) {
@@ -2408,7 +2417,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .Image image = 8;</code>
+       * <code>.Image image = 8;</code>
        */
       public Builder setImage(org.metamesh.chub.proto.Message.Image value) {
         if (imageBuilder_ == null) {
@@ -2424,7 +2433,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Image image = 8;</code>
+       * <code>.Image image = 8;</code>
        */
       public Builder setImage(
           org.metamesh.chub.proto.Message.Image.Builder builderForValue) {
@@ -2438,7 +2447,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Image image = 8;</code>
+       * <code>.Image image = 8;</code>
        */
       public Builder mergeImage(org.metamesh.chub.proto.Message.Image value) {
         if (imageBuilder_ == null) {
@@ -2456,7 +2465,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Image image = 8;</code>
+       * <code>.Image image = 8;</code>
        */
       public Builder clearImage() {
         if (imageBuilder_ == null) {
@@ -2470,7 +2479,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Image image = 8;</code>
+       * <code>.Image image = 8;</code>
        */
       public org.metamesh.chub.proto.Message.Image.Builder getImageBuilder() {
         
@@ -2478,7 +2487,7 @@ public final class Message {
         return getImageFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .Image image = 8;</code>
+       * <code>.Image image = 8;</code>
        */
       public org.metamesh.chub.proto.Message.ImageOrBuilder getImageOrBuilder() {
         if (imageBuilder_ != null) {
@@ -2489,7 +2498,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .Image image = 8;</code>
+       * <code>.Image image = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.Image, org.metamesh.chub.proto.Message.Image.Builder, org.metamesh.chub.proto.Message.ImageOrBuilder> 
@@ -2507,13 +2516,13 @@ public final class Message {
 
       private long rsvpBy_ ;
       /**
-       * <code>optional fixed64 rsvp_by = 9;</code>
+       * <code>fixed64 rsvp_by = 9;</code>
        */
       public long getRsvpBy() {
         return rsvpBy_;
       }
       /**
-       * <code>optional fixed64 rsvp_by = 9;</code>
+       * <code>fixed64 rsvp_by = 9;</code>
        */
       public Builder setRsvpBy(long value) {
         
@@ -2522,7 +2531,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional fixed64 rsvp_by = 9;</code>
+       * <code>fixed64 rsvp_by = 9;</code>
        */
       public Builder clearRsvpBy() {
         
@@ -2533,7 +2542,7 @@ public final class Message {
 
       private java.lang.Object rsvpEmail_ = "";
       /**
-       * <code>optional string rsvp_email = 10;</code>
+       * <code>string rsvp_email = 10;</code>
        */
       public java.lang.String getRsvpEmail() {
         java.lang.Object ref = rsvpEmail_;
@@ -2548,7 +2557,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string rsvp_email = 10;</code>
+       * <code>string rsvp_email = 10;</code>
        */
       public com.google.protobuf.ByteString
           getRsvpEmailBytes() {
@@ -2564,7 +2573,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string rsvp_email = 10;</code>
+       * <code>string rsvp_email = 10;</code>
        */
       public Builder setRsvpEmail(
           java.lang.String value) {
@@ -2577,7 +2586,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string rsvp_email = 10;</code>
+       * <code>string rsvp_email = 10;</code>
        */
       public Builder clearRsvpEmail() {
         
@@ -2586,7 +2595,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string rsvp_email = 10;</code>
+       * <code>string rsvp_email = 10;</code>
        */
       public Builder setRsvpEmailBytes(
           com.google.protobuf.ByteString value) {
@@ -2602,13 +2611,13 @@ public final class Message {
 
       private long timestamp_ ;
       /**
-       * <code>optional fixed64 timestamp = 11;</code>
+       * <code>fixed64 timestamp = 11;</code>
        */
       public long getTimestamp() {
         return timestamp_;
       }
       /**
-       * <code>optional fixed64 timestamp = 11;</code>
+       * <code>fixed64 timestamp = 11;</code>
        */
       public Builder setTimestamp(long value) {
         
@@ -2617,7 +2626,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional fixed64 timestamp = 11;</code>
+       * <code>fixed64 timestamp = 11;</code>
        */
       public Builder clearTimestamp() {
         
@@ -2683,16 +2692,16 @@ public final class Message {
      *string cn = 1;
      * </pre>
      *
-     * <code>optional bytes signature = 2;</code>
+     * <code>bytes signature = 2;</code>
      */
     com.google.protobuf.ByteString getSignature();
 
     /**
-     * <code>optional .SignatureType signature_type = 3;</code>
+     * <code>.SignatureType signature_type = 3;</code>
      */
     int getSignatureTypeValue();
     /**
-     * <code>optional .SignatureType signature_type = 3;</code>
+     * <code>.SignatureType signature_type = 3;</code>
      */
     org.metamesh.chub.proto.Message.SignatureType getSignatureType();
 
@@ -2701,20 +2710,20 @@ public final class Message {
      *bytes fingerprint = 4;
      * </pre>
      *
-     * <code>optional bytes id = 5;</code>
+     * <code>bytes id = 5;</code>
      */
     com.google.protobuf.ByteString getId();
 
     /**
-     * <code>optional .KeyId key_id = 6;</code>
+     * <code>.KeyId key_id = 6;</code>
      */
     boolean hasKeyId();
     /**
-     * <code>optional .KeyId key_id = 6;</code>
+     * <code>.KeyId key_id = 6;</code>
      */
     org.metamesh.chub.proto.Message.KeyId getKeyId();
     /**
-     * <code>optional .KeyId key_id = 6;</code>
+     * <code>.KeyId key_id = 6;</code>
      */
     org.metamesh.chub.proto.Message.KeyIdOrBuilder getKeyIdOrBuilder();
   }
@@ -2819,7 +2828,7 @@ public final class Message {
      *string cn = 1;
      * </pre>
      *
-     * <code>optional bytes signature = 2;</code>
+     * <code>bytes signature = 2;</code>
      */
     public com.google.protobuf.ByteString getSignature() {
       return signature_;
@@ -2828,13 +2837,13 @@ public final class Message {
     public static final int SIGNATURE_TYPE_FIELD_NUMBER = 3;
     private int signatureType_;
     /**
-     * <code>optional .SignatureType signature_type = 3;</code>
+     * <code>.SignatureType signature_type = 3;</code>
      */
     public int getSignatureTypeValue() {
       return signatureType_;
     }
     /**
-     * <code>optional .SignatureType signature_type = 3;</code>
+     * <code>.SignatureType signature_type = 3;</code>
      */
     public org.metamesh.chub.proto.Message.SignatureType getSignatureType() {
       org.metamesh.chub.proto.Message.SignatureType result = org.metamesh.chub.proto.Message.SignatureType.valueOf(signatureType_);
@@ -2848,7 +2857,7 @@ public final class Message {
      *bytes fingerprint = 4;
      * </pre>
      *
-     * <code>optional bytes id = 5;</code>
+     * <code>bytes id = 5;</code>
      */
     public com.google.protobuf.ByteString getId() {
       return id_;
@@ -2857,19 +2866,19 @@ public final class Message {
     public static final int KEY_ID_FIELD_NUMBER = 6;
     private org.metamesh.chub.proto.Message.KeyId keyId_;
     /**
-     * <code>optional .KeyId key_id = 6;</code>
+     * <code>.KeyId key_id = 6;</code>
      */
     public boolean hasKeyId() {
       return keyId_ != null;
     }
     /**
-     * <code>optional .KeyId key_id = 6;</code>
+     * <code>.KeyId key_id = 6;</code>
      */
     public org.metamesh.chub.proto.Message.KeyId getKeyId() {
       return keyId_ == null ? org.metamesh.chub.proto.Message.KeyId.getDefaultInstance() : keyId_;
     }
     /**
-     * <code>optional .KeyId key_id = 6;</code>
+     * <code>.KeyId key_id = 6;</code>
      */
     public org.metamesh.chub.proto.Message.KeyIdOrBuilder getKeyIdOrBuilder() {
       return getKeyId();
@@ -2957,7 +2966,7 @@ public final class Message {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
       hash = (53 * hash) + getSignature().hashCode();
       hash = (37 * hash) + SIGNATURE_TYPE_FIELD_NUMBER;
@@ -3213,7 +3222,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional bytes signature = 2;</code>
+       * <code>bytes signature = 2;</code>
        */
       public com.google.protobuf.ByteString getSignature() {
         return signature_;
@@ -3223,7 +3232,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional bytes signature = 2;</code>
+       * <code>bytes signature = 2;</code>
        */
       public Builder setSignature(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -3239,7 +3248,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional bytes signature = 2;</code>
+       * <code>bytes signature = 2;</code>
        */
       public Builder clearSignature() {
         
@@ -3250,13 +3259,13 @@ public final class Message {
 
       private int signatureType_ = 0;
       /**
-       * <code>optional .SignatureType signature_type = 3;</code>
+       * <code>.SignatureType signature_type = 3;</code>
        */
       public int getSignatureTypeValue() {
         return signatureType_;
       }
       /**
-       * <code>optional .SignatureType signature_type = 3;</code>
+       * <code>.SignatureType signature_type = 3;</code>
        */
       public Builder setSignatureTypeValue(int value) {
         signatureType_ = value;
@@ -3264,14 +3273,14 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .SignatureType signature_type = 3;</code>
+       * <code>.SignatureType signature_type = 3;</code>
        */
       public org.metamesh.chub.proto.Message.SignatureType getSignatureType() {
         org.metamesh.chub.proto.Message.SignatureType result = org.metamesh.chub.proto.Message.SignatureType.valueOf(signatureType_);
         return result == null ? org.metamesh.chub.proto.Message.SignatureType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .SignatureType signature_type = 3;</code>
+       * <code>.SignatureType signature_type = 3;</code>
        */
       public Builder setSignatureType(org.metamesh.chub.proto.Message.SignatureType value) {
         if (value == null) {
@@ -3283,7 +3292,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .SignatureType signature_type = 3;</code>
+       * <code>.SignatureType signature_type = 3;</code>
        */
       public Builder clearSignatureType() {
         
@@ -3298,7 +3307,7 @@ public final class Message {
        *bytes fingerprint = 4;
        * </pre>
        *
-       * <code>optional bytes id = 5;</code>
+       * <code>bytes id = 5;</code>
        */
       public com.google.protobuf.ByteString getId() {
         return id_;
@@ -3308,7 +3317,7 @@ public final class Message {
        *bytes fingerprint = 4;
        * </pre>
        *
-       * <code>optional bytes id = 5;</code>
+       * <code>bytes id = 5;</code>
        */
       public Builder setId(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -3324,7 +3333,7 @@ public final class Message {
        *bytes fingerprint = 4;
        * </pre>
        *
-       * <code>optional bytes id = 5;</code>
+       * <code>bytes id = 5;</code>
        */
       public Builder clearId() {
         
@@ -3337,13 +3346,13 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.KeyId, org.metamesh.chub.proto.Message.KeyId.Builder, org.metamesh.chub.proto.Message.KeyIdOrBuilder> keyIdBuilder_;
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public boolean hasKeyId() {
         return keyIdBuilder_ != null || keyId_ != null;
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public org.metamesh.chub.proto.Message.KeyId getKeyId() {
         if (keyIdBuilder_ == null) {
@@ -3353,7 +3362,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public Builder setKeyId(org.metamesh.chub.proto.Message.KeyId value) {
         if (keyIdBuilder_ == null) {
@@ -3369,7 +3378,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public Builder setKeyId(
           org.metamesh.chub.proto.Message.KeyId.Builder builderForValue) {
@@ -3383,7 +3392,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public Builder mergeKeyId(org.metamesh.chub.proto.Message.KeyId value) {
         if (keyIdBuilder_ == null) {
@@ -3401,7 +3410,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public Builder clearKeyId() {
         if (keyIdBuilder_ == null) {
@@ -3415,7 +3424,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public org.metamesh.chub.proto.Message.KeyId.Builder getKeyIdBuilder() {
         
@@ -3423,7 +3432,7 @@ public final class Message {
         return getKeyIdFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public org.metamesh.chub.proto.Message.KeyIdOrBuilder getKeyIdOrBuilder() {
         if (keyIdBuilder_ != null) {
@@ -3434,7 +3443,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.KeyId, org.metamesh.chub.proto.Message.KeyId.Builder, org.metamesh.chub.proto.Message.KeyIdOrBuilder> 
@@ -3503,81 +3512,81 @@ public final class Message {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string country = 1;</code>
+     * <code>string country = 1;</code>
      */
     java.lang.String getCountry();
     /**
-     * <code>optional string country = 1;</code>
+     * <code>string country = 1;</code>
      */
     com.google.protobuf.ByteString
         getCountryBytes();
 
     /**
-     * <code>optional string organization = 2;</code>
+     * <code>string organization = 2;</code>
      */
     java.lang.String getOrganization();
     /**
-     * <code>optional string organization = 2;</code>
+     * <code>string organization = 2;</code>
      */
     com.google.protobuf.ByteString
         getOrganizationBytes();
 
     /**
-     * <code>optional string organizational_unit = 3;</code>
+     * <code>string organizational_unit = 3;</code>
      */
     java.lang.String getOrganizationalUnit();
     /**
-     * <code>optional string organizational_unit = 3;</code>
+     * <code>string organizational_unit = 3;</code>
      */
     com.google.protobuf.ByteString
         getOrganizationalUnitBytes();
 
     /**
-     * <code>optional string distinguished_name_qualifier = 4;</code>
+     * <code>string distinguished_name_qualifier = 4;</code>
      */
     java.lang.String getDistinguishedNameQualifier();
     /**
-     * <code>optional string distinguished_name_qualifier = 4;</code>
+     * <code>string distinguished_name_qualifier = 4;</code>
      */
     com.google.protobuf.ByteString
         getDistinguishedNameQualifierBytes();
 
     /**
-     * <code>optional string state = 5;</code>
+     * <code>string state = 5;</code>
      */
     java.lang.String getState();
     /**
-     * <code>optional string state = 5;</code>
+     * <code>string state = 5;</code>
      */
     com.google.protobuf.ByteString
         getStateBytes();
 
     /**
-     * <code>optional string common_name = 6;</code>
+     * <code>string common_name = 6;</code>
      */
     java.lang.String getCommonName();
     /**
-     * <code>optional string common_name = 6;</code>
+     * <code>string common_name = 6;</code>
      */
     com.google.protobuf.ByteString
         getCommonNameBytes();
 
     /**
-     * <code>optional string serial_number = 7;</code>
+     * <code>string serial_number = 7;</code>
      */
     java.lang.String getSerialNumber();
     /**
-     * <code>optional string serial_number = 7;</code>
+     * <code>string serial_number = 7;</code>
      */
     com.google.protobuf.ByteString
         getSerialNumberBytes();
 
     /**
-     * <code>optional string email = 8;</code>
+     * <code>string email = 8;</code>
      */
     java.lang.String getEmail();
     /**
-     * <code>optional string email = 8;</code>
+     * <code>string email = 8;</code>
      */
     com.google.protobuf.ByteString
         getEmailBytes();
@@ -3703,7 +3712,7 @@ public final class Message {
     public static final int COUNTRY_FIELD_NUMBER = 1;
     private volatile java.lang.Object country_;
     /**
-     * <code>optional string country = 1;</code>
+     * <code>string country = 1;</code>
      */
     public java.lang.String getCountry() {
       java.lang.Object ref = country_;
@@ -3718,7 +3727,7 @@ public final class Message {
       }
     }
     /**
-     * <code>optional string country = 1;</code>
+     * <code>string country = 1;</code>
      */
     public com.google.protobuf.ByteString
         getCountryBytes() {
@@ -3737,7 +3746,7 @@ public final class Message {
     public static final int ORGANIZATION_FIELD_NUMBER = 2;
     private volatile java.lang.Object organization_;
     /**
-     * <code>optional string organization = 2;</code>
+     * <code>string organization = 2;</code>
      */
     public java.lang.String getOrganization() {
       java.lang.Object ref = organization_;
@@ -3752,7 +3761,7 @@ public final class Message {
       }
     }
     /**
-     * <code>optional string organization = 2;</code>
+     * <code>string organization = 2;</code>
      */
     public com.google.protobuf.ByteString
         getOrganizationBytes() {
@@ -3771,7 +3780,7 @@ public final class Message {
     public static final int ORGANIZATIONAL_UNIT_FIELD_NUMBER = 3;
     private volatile java.lang.Object organizationalUnit_;
     /**
-     * <code>optional string organizational_unit = 3;</code>
+     * <code>string organizational_unit = 3;</code>
      */
     public java.lang.String getOrganizationalUnit() {
       java.lang.Object ref = organizationalUnit_;
@@ -3786,7 +3795,7 @@ public final class Message {
       }
     }
     /**
-     * <code>optional string organizational_unit = 3;</code>
+     * <code>string organizational_unit = 3;</code>
      */
     public com.google.protobuf.ByteString
         getOrganizationalUnitBytes() {
@@ -3805,7 +3814,7 @@ public final class Message {
     public static final int DISTINGUISHED_NAME_QUALIFIER_FIELD_NUMBER = 4;
     private volatile java.lang.Object distinguishedNameQualifier_;
     /**
-     * <code>optional string distinguished_name_qualifier = 4;</code>
+     * <code>string distinguished_name_qualifier = 4;</code>
      */
     public java.lang.String getDistinguishedNameQualifier() {
       java.lang.Object ref = distinguishedNameQualifier_;
@@ -3820,7 +3829,7 @@ public final class Message {
       }
     }
     /**
-     * <code>optional string distinguished_name_qualifier = 4;</code>
+     * <code>string distinguished_name_qualifier = 4;</code>
      */
     public com.google.protobuf.ByteString
         getDistinguishedNameQualifierBytes() {
@@ -3839,7 +3848,7 @@ public final class Message {
     public static final int STATE_FIELD_NUMBER = 5;
     private volatile java.lang.Object state_;
     /**
-     * <code>optional string state = 5;</code>
+     * <code>string state = 5;</code>
      */
     public java.lang.String getState() {
       java.lang.Object ref = state_;
@@ -3854,7 +3863,7 @@ public final class Message {
       }
     }
     /**
-     * <code>optional string state = 5;</code>
+     * <code>string state = 5;</code>
      */
     public com.google.protobuf.ByteString
         getStateBytes() {
@@ -3873,7 +3882,7 @@ public final class Message {
     public static final int COMMON_NAME_FIELD_NUMBER = 6;
     private volatile java.lang.Object commonName_;
     /**
-     * <code>optional string common_name = 6;</code>
+     * <code>string common_name = 6;</code>
      */
     public java.lang.String getCommonName() {
       java.lang.Object ref = commonName_;
@@ -3888,7 +3897,7 @@ public final class Message {
       }
     }
     /**
-     * <code>optional string common_name = 6;</code>
+     * <code>string common_name = 6;</code>
      */
     public com.google.protobuf.ByteString
         getCommonNameBytes() {
@@ -3907,7 +3916,7 @@ public final class Message {
     public static final int SERIAL_NUMBER_FIELD_NUMBER = 7;
     private volatile java.lang.Object serialNumber_;
     /**
-     * <code>optional string serial_number = 7;</code>
+     * <code>string serial_number = 7;</code>
      */
     public java.lang.String getSerialNumber() {
       java.lang.Object ref = serialNumber_;
@@ -3922,7 +3931,7 @@ public final class Message {
       }
     }
     /**
-     * <code>optional string serial_number = 7;</code>
+     * <code>string serial_number = 7;</code>
      */
     public com.google.protobuf.ByteString
         getSerialNumberBytes() {
@@ -3941,7 +3950,7 @@ public final class Message {
     public static final int EMAIL_FIELD_NUMBER = 8;
     private volatile java.lang.Object email_;
     /**
-     * <code>optional string email = 8;</code>
+     * <code>string email = 8;</code>
      */
     public java.lang.String getEmail() {
       java.lang.Object ref = email_;
@@ -3956,7 +3965,7 @@ public final class Message {
       }
     }
     /**
-     * <code>optional string email = 8;</code>
+     * <code>string email = 8;</code>
      */
     public com.google.protobuf.ByteString
         getEmailBytes() {
@@ -4080,7 +4089,7 @@ public final class Message {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + COUNTRY_FIELD_NUMBER;
       hash = (53 * hash) + getCountry().hashCode();
       hash = (37 * hash) + ORGANIZATION_FIELD_NUMBER;
@@ -4362,7 +4371,7 @@ public final class Message {
 
       private java.lang.Object country_ = "";
       /**
-       * <code>optional string country = 1;</code>
+       * <code>string country = 1;</code>
        */
       public java.lang.String getCountry() {
         java.lang.Object ref = country_;
@@ -4377,7 +4386,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string country = 1;</code>
+       * <code>string country = 1;</code>
        */
       public com.google.protobuf.ByteString
           getCountryBytes() {
@@ -4393,7 +4402,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string country = 1;</code>
+       * <code>string country = 1;</code>
        */
       public Builder setCountry(
           java.lang.String value) {
@@ -4406,7 +4415,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string country = 1;</code>
+       * <code>string country = 1;</code>
        */
       public Builder clearCountry() {
         
@@ -4415,7 +4424,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string country = 1;</code>
+       * <code>string country = 1;</code>
        */
       public Builder setCountryBytes(
           com.google.protobuf.ByteString value) {
@@ -4431,7 +4440,7 @@ public final class Message {
 
       private java.lang.Object organization_ = "";
       /**
-       * <code>optional string organization = 2;</code>
+       * <code>string organization = 2;</code>
        */
       public java.lang.String getOrganization() {
         java.lang.Object ref = organization_;
@@ -4446,7 +4455,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string organization = 2;</code>
+       * <code>string organization = 2;</code>
        */
       public com.google.protobuf.ByteString
           getOrganizationBytes() {
@@ -4462,7 +4471,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string organization = 2;</code>
+       * <code>string organization = 2;</code>
        */
       public Builder setOrganization(
           java.lang.String value) {
@@ -4475,7 +4484,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string organization = 2;</code>
+       * <code>string organization = 2;</code>
        */
       public Builder clearOrganization() {
         
@@ -4484,7 +4493,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string organization = 2;</code>
+       * <code>string organization = 2;</code>
        */
       public Builder setOrganizationBytes(
           com.google.protobuf.ByteString value) {
@@ -4500,7 +4509,7 @@ public final class Message {
 
       private java.lang.Object organizationalUnit_ = "";
       /**
-       * <code>optional string organizational_unit = 3;</code>
+       * <code>string organizational_unit = 3;</code>
        */
       public java.lang.String getOrganizationalUnit() {
         java.lang.Object ref = organizationalUnit_;
@@ -4515,7 +4524,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string organizational_unit = 3;</code>
+       * <code>string organizational_unit = 3;</code>
        */
       public com.google.protobuf.ByteString
           getOrganizationalUnitBytes() {
@@ -4531,7 +4540,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string organizational_unit = 3;</code>
+       * <code>string organizational_unit = 3;</code>
        */
       public Builder setOrganizationalUnit(
           java.lang.String value) {
@@ -4544,7 +4553,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string organizational_unit = 3;</code>
+       * <code>string organizational_unit = 3;</code>
        */
       public Builder clearOrganizationalUnit() {
         
@@ -4553,7 +4562,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string organizational_unit = 3;</code>
+       * <code>string organizational_unit = 3;</code>
        */
       public Builder setOrganizationalUnitBytes(
           com.google.protobuf.ByteString value) {
@@ -4569,7 +4578,7 @@ public final class Message {
 
       private java.lang.Object distinguishedNameQualifier_ = "";
       /**
-       * <code>optional string distinguished_name_qualifier = 4;</code>
+       * <code>string distinguished_name_qualifier = 4;</code>
        */
       public java.lang.String getDistinguishedNameQualifier() {
         java.lang.Object ref = distinguishedNameQualifier_;
@@ -4584,7 +4593,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string distinguished_name_qualifier = 4;</code>
+       * <code>string distinguished_name_qualifier = 4;</code>
        */
       public com.google.protobuf.ByteString
           getDistinguishedNameQualifierBytes() {
@@ -4600,7 +4609,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string distinguished_name_qualifier = 4;</code>
+       * <code>string distinguished_name_qualifier = 4;</code>
        */
       public Builder setDistinguishedNameQualifier(
           java.lang.String value) {
@@ -4613,7 +4622,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string distinguished_name_qualifier = 4;</code>
+       * <code>string distinguished_name_qualifier = 4;</code>
        */
       public Builder clearDistinguishedNameQualifier() {
         
@@ -4622,7 +4631,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string distinguished_name_qualifier = 4;</code>
+       * <code>string distinguished_name_qualifier = 4;</code>
        */
       public Builder setDistinguishedNameQualifierBytes(
           com.google.protobuf.ByteString value) {
@@ -4638,7 +4647,7 @@ public final class Message {
 
       private java.lang.Object state_ = "";
       /**
-       * <code>optional string state = 5;</code>
+       * <code>string state = 5;</code>
        */
       public java.lang.String getState() {
         java.lang.Object ref = state_;
@@ -4653,7 +4662,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string state = 5;</code>
+       * <code>string state = 5;</code>
        */
       public com.google.protobuf.ByteString
           getStateBytes() {
@@ -4669,7 +4678,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string state = 5;</code>
+       * <code>string state = 5;</code>
        */
       public Builder setState(
           java.lang.String value) {
@@ -4682,7 +4691,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string state = 5;</code>
+       * <code>string state = 5;</code>
        */
       public Builder clearState() {
         
@@ -4691,7 +4700,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string state = 5;</code>
+       * <code>string state = 5;</code>
        */
       public Builder setStateBytes(
           com.google.protobuf.ByteString value) {
@@ -4707,7 +4716,7 @@ public final class Message {
 
       private java.lang.Object commonName_ = "";
       /**
-       * <code>optional string common_name = 6;</code>
+       * <code>string common_name = 6;</code>
        */
       public java.lang.String getCommonName() {
         java.lang.Object ref = commonName_;
@@ -4722,7 +4731,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string common_name = 6;</code>
+       * <code>string common_name = 6;</code>
        */
       public com.google.protobuf.ByteString
           getCommonNameBytes() {
@@ -4738,7 +4747,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string common_name = 6;</code>
+       * <code>string common_name = 6;</code>
        */
       public Builder setCommonName(
           java.lang.String value) {
@@ -4751,7 +4760,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string common_name = 6;</code>
+       * <code>string common_name = 6;</code>
        */
       public Builder clearCommonName() {
         
@@ -4760,7 +4769,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string common_name = 6;</code>
+       * <code>string common_name = 6;</code>
        */
       public Builder setCommonNameBytes(
           com.google.protobuf.ByteString value) {
@@ -4776,7 +4785,7 @@ public final class Message {
 
       private java.lang.Object serialNumber_ = "";
       /**
-       * <code>optional string serial_number = 7;</code>
+       * <code>string serial_number = 7;</code>
        */
       public java.lang.String getSerialNumber() {
         java.lang.Object ref = serialNumber_;
@@ -4791,7 +4800,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string serial_number = 7;</code>
+       * <code>string serial_number = 7;</code>
        */
       public com.google.protobuf.ByteString
           getSerialNumberBytes() {
@@ -4807,7 +4816,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string serial_number = 7;</code>
+       * <code>string serial_number = 7;</code>
        */
       public Builder setSerialNumber(
           java.lang.String value) {
@@ -4820,7 +4829,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string serial_number = 7;</code>
+       * <code>string serial_number = 7;</code>
        */
       public Builder clearSerialNumber() {
         
@@ -4829,7 +4838,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string serial_number = 7;</code>
+       * <code>string serial_number = 7;</code>
        */
       public Builder setSerialNumberBytes(
           com.google.protobuf.ByteString value) {
@@ -4845,7 +4854,7 @@ public final class Message {
 
       private java.lang.Object email_ = "";
       /**
-       * <code>optional string email = 8;</code>
+       * <code>string email = 8;</code>
        */
       public java.lang.String getEmail() {
         java.lang.Object ref = email_;
@@ -4860,7 +4869,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string email = 8;</code>
+       * <code>string email = 8;</code>
        */
       public com.google.protobuf.ByteString
           getEmailBytes() {
@@ -4876,7 +4885,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional string email = 8;</code>
+       * <code>string email = 8;</code>
        */
       public Builder setEmail(
           java.lang.String value) {
@@ -4889,7 +4898,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string email = 8;</code>
+       * <code>string email = 8;</code>
        */
       public Builder clearEmail() {
         
@@ -4898,7 +4907,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional string email = 8;</code>
+       * <code>string email = 8;</code>
        */
       public Builder setEmailBytes(
           com.google.protobuf.ByteString value) {
@@ -4965,29 +4974,29 @@ public final class Message {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional bytes fingerprint_sha512 = 1;</code>
+     * <code>bytes fingerprint_sha512 = 1;</code>
      */
     com.google.protobuf.ByteString getFingerprintSha512();
 
     /**
-     * <code>optional .DistinguishedName dn = 2;</code>
+     * <code>.DistinguishedName dn = 2;</code>
      */
     boolean hasDn();
     /**
-     * <code>optional .DistinguishedName dn = 2;</code>
+     * <code>.DistinguishedName dn = 2;</code>
      */
     org.metamesh.chub.proto.Message.DistinguishedName getDn();
     /**
-     * <code>optional .DistinguishedName dn = 2;</code>
+     * <code>.DistinguishedName dn = 2;</code>
      */
     org.metamesh.chub.proto.Message.DistinguishedNameOrBuilder getDnOrBuilder();
 
     /**
-     * <code>optional .AsymmetricKeyType type = 3;</code>
+     * <code>.AsymmetricKeyType type = 3;</code>
      */
     int getTypeValue();
     /**
-     * <code>optional .AsymmetricKeyType type = 3;</code>
+     * <code>.AsymmetricKeyType type = 3;</code>
      */
     org.metamesh.chub.proto.Message.AsymmetricKeyType getType();
   }
@@ -5082,7 +5091,7 @@ public final class Message {
     public static final int FINGERPRINT_SHA512_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString fingerprintSha512_;
     /**
-     * <code>optional bytes fingerprint_sha512 = 1;</code>
+     * <code>bytes fingerprint_sha512 = 1;</code>
      */
     public com.google.protobuf.ByteString getFingerprintSha512() {
       return fingerprintSha512_;
@@ -5091,19 +5100,19 @@ public final class Message {
     public static final int DN_FIELD_NUMBER = 2;
     private org.metamesh.chub.proto.Message.DistinguishedName dn_;
     /**
-     * <code>optional .DistinguishedName dn = 2;</code>
+     * <code>.DistinguishedName dn = 2;</code>
      */
     public boolean hasDn() {
       return dn_ != null;
     }
     /**
-     * <code>optional .DistinguishedName dn = 2;</code>
+     * <code>.DistinguishedName dn = 2;</code>
      */
     public org.metamesh.chub.proto.Message.DistinguishedName getDn() {
       return dn_ == null ? org.metamesh.chub.proto.Message.DistinguishedName.getDefaultInstance() : dn_;
     }
     /**
-     * <code>optional .DistinguishedName dn = 2;</code>
+     * <code>.DistinguishedName dn = 2;</code>
      */
     public org.metamesh.chub.proto.Message.DistinguishedNameOrBuilder getDnOrBuilder() {
       return getDn();
@@ -5112,13 +5121,13 @@ public final class Message {
     public static final int TYPE_FIELD_NUMBER = 3;
     private int type_;
     /**
-     * <code>optional .AsymmetricKeyType type = 3;</code>
+     * <code>.AsymmetricKeyType type = 3;</code>
      */
     public int getTypeValue() {
       return type_;
     }
     /**
-     * <code>optional .AsymmetricKeyType type = 3;</code>
+     * <code>.AsymmetricKeyType type = 3;</code>
      */
     public org.metamesh.chub.proto.Message.AsymmetricKeyType getType() {
       org.metamesh.chub.proto.Message.AsymmetricKeyType result = org.metamesh.chub.proto.Message.AsymmetricKeyType.valueOf(type_);
@@ -5198,7 +5207,7 @@ public final class Message {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + FINGERPRINT_SHA512_FIELD_NUMBER;
       hash = (53 * hash) + getFingerprintSha512().hashCode();
       if (hasDn()) {
@@ -5442,13 +5451,13 @@ public final class Message {
 
       private com.google.protobuf.ByteString fingerprintSha512_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes fingerprint_sha512 = 1;</code>
+       * <code>bytes fingerprint_sha512 = 1;</code>
        */
       public com.google.protobuf.ByteString getFingerprintSha512() {
         return fingerprintSha512_;
       }
       /**
-       * <code>optional bytes fingerprint_sha512 = 1;</code>
+       * <code>bytes fingerprint_sha512 = 1;</code>
        */
       public Builder setFingerprintSha512(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -5460,7 +5469,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bytes fingerprint_sha512 = 1;</code>
+       * <code>bytes fingerprint_sha512 = 1;</code>
        */
       public Builder clearFingerprintSha512() {
         
@@ -5473,13 +5482,13 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.DistinguishedName, org.metamesh.chub.proto.Message.DistinguishedName.Builder, org.metamesh.chub.proto.Message.DistinguishedNameOrBuilder> dnBuilder_;
       /**
-       * <code>optional .DistinguishedName dn = 2;</code>
+       * <code>.DistinguishedName dn = 2;</code>
        */
       public boolean hasDn() {
         return dnBuilder_ != null || dn_ != null;
       }
       /**
-       * <code>optional .DistinguishedName dn = 2;</code>
+       * <code>.DistinguishedName dn = 2;</code>
        */
       public org.metamesh.chub.proto.Message.DistinguishedName getDn() {
         if (dnBuilder_ == null) {
@@ -5489,7 +5498,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .DistinguishedName dn = 2;</code>
+       * <code>.DistinguishedName dn = 2;</code>
        */
       public Builder setDn(org.metamesh.chub.proto.Message.DistinguishedName value) {
         if (dnBuilder_ == null) {
@@ -5505,7 +5514,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .DistinguishedName dn = 2;</code>
+       * <code>.DistinguishedName dn = 2;</code>
        */
       public Builder setDn(
           org.metamesh.chub.proto.Message.DistinguishedName.Builder builderForValue) {
@@ -5519,7 +5528,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .DistinguishedName dn = 2;</code>
+       * <code>.DistinguishedName dn = 2;</code>
        */
       public Builder mergeDn(org.metamesh.chub.proto.Message.DistinguishedName value) {
         if (dnBuilder_ == null) {
@@ -5537,7 +5546,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .DistinguishedName dn = 2;</code>
+       * <code>.DistinguishedName dn = 2;</code>
        */
       public Builder clearDn() {
         if (dnBuilder_ == null) {
@@ -5551,7 +5560,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .DistinguishedName dn = 2;</code>
+       * <code>.DistinguishedName dn = 2;</code>
        */
       public org.metamesh.chub.proto.Message.DistinguishedName.Builder getDnBuilder() {
         
@@ -5559,7 +5568,7 @@ public final class Message {
         return getDnFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .DistinguishedName dn = 2;</code>
+       * <code>.DistinguishedName dn = 2;</code>
        */
       public org.metamesh.chub.proto.Message.DistinguishedNameOrBuilder getDnOrBuilder() {
         if (dnBuilder_ != null) {
@@ -5570,7 +5579,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .DistinguishedName dn = 2;</code>
+       * <code>.DistinguishedName dn = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.DistinguishedName, org.metamesh.chub.proto.Message.DistinguishedName.Builder, org.metamesh.chub.proto.Message.DistinguishedNameOrBuilder> 
@@ -5588,13 +5597,13 @@ public final class Message {
 
       private int type_ = 0;
       /**
-       * <code>optional .AsymmetricKeyType type = 3;</code>
+       * <code>.AsymmetricKeyType type = 3;</code>
        */
       public int getTypeValue() {
         return type_;
       }
       /**
-       * <code>optional .AsymmetricKeyType type = 3;</code>
+       * <code>.AsymmetricKeyType type = 3;</code>
        */
       public Builder setTypeValue(int value) {
         type_ = value;
@@ -5602,14 +5611,14 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .AsymmetricKeyType type = 3;</code>
+       * <code>.AsymmetricKeyType type = 3;</code>
        */
       public org.metamesh.chub.proto.Message.AsymmetricKeyType getType() {
         org.metamesh.chub.proto.Message.AsymmetricKeyType result = org.metamesh.chub.proto.Message.AsymmetricKeyType.valueOf(type_);
         return result == null ? org.metamesh.chub.proto.Message.AsymmetricKeyType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .AsymmetricKeyType type = 3;</code>
+       * <code>.AsymmetricKeyType type = 3;</code>
        */
       public Builder setType(org.metamesh.chub.proto.Message.AsymmetricKeyType value) {
         if (value == null) {
@@ -5621,7 +5630,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .AsymmetricKeyType type = 3;</code>
+       * <code>.AsymmetricKeyType type = 3;</code>
        */
       public Builder clearType() {
         
@@ -5687,7 +5696,7 @@ public final class Message {
      *string cn = 1;
      * </pre>
      *
-     * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+     * <code>.SymmetriclyEncryptedMessage key = 2;</code>
      */
     boolean hasKey();
     /**
@@ -5695,7 +5704,7 @@ public final class Message {
      *string cn = 1;
      * </pre>
      *
-     * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+     * <code>.SymmetriclyEncryptedMessage key = 2;</code>
      */
     org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage getKey();
     /**
@@ -5703,7 +5712,7 @@ public final class Message {
      *string cn = 1;
      * </pre>
      *
-     * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+     * <code>.SymmetriclyEncryptedMessage key = 2;</code>
      */
     org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessageOrBuilder getKeyOrBuilder();
 
@@ -5713,7 +5722,7 @@ public final class Message {
      *SymmetricKeyType encryption_type = 4;
      * </pre>
      *
-     * <code>optional .KeyEncodingType encodingType = 5;</code>
+     * <code>.KeyEncodingType encodingType = 5;</code>
      */
     int getEncodingTypeValue();
     /**
@@ -5722,25 +5731,25 @@ public final class Message {
      *SymmetricKeyType encryption_type = 4;
      * </pre>
      *
-     * <code>optional .KeyEncodingType encodingType = 5;</code>
+     * <code>.KeyEncodingType encodingType = 5;</code>
      */
     org.metamesh.chub.proto.Message.KeyEncodingType getEncodingType();
 
     /**
-     * <code>optional .KeyId key_id = 6;</code>
+     * <code>.KeyId key_id = 6;</code>
      */
     boolean hasKeyId();
     /**
-     * <code>optional .KeyId key_id = 6;</code>
+     * <code>.KeyId key_id = 6;</code>
      */
     org.metamesh.chub.proto.Message.KeyId getKeyId();
     /**
-     * <code>optional .KeyId key_id = 6;</code>
+     * <code>.KeyId key_id = 6;</code>
      */
     org.metamesh.chub.proto.Message.KeyIdOrBuilder getKeyIdOrBuilder();
 
     /**
-     * <code>optional bytes id = 7;</code>
+     * <code>bytes id = 7;</code>
      */
     com.google.protobuf.ByteString getId();
   }
@@ -5852,7 +5861,7 @@ public final class Message {
      *string cn = 1;
      * </pre>
      *
-     * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+     * <code>.SymmetriclyEncryptedMessage key = 2;</code>
      */
     public boolean hasKey() {
       return key_ != null;
@@ -5862,7 +5871,7 @@ public final class Message {
      *string cn = 1;
      * </pre>
      *
-     * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+     * <code>.SymmetriclyEncryptedMessage key = 2;</code>
      */
     public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage getKey() {
       return key_ == null ? org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage.getDefaultInstance() : key_;
@@ -5872,7 +5881,7 @@ public final class Message {
      *string cn = 1;
      * </pre>
      *
-     * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+     * <code>.SymmetriclyEncryptedMessage key = 2;</code>
      */
     public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessageOrBuilder getKeyOrBuilder() {
       return getKey();
@@ -5886,7 +5895,7 @@ public final class Message {
      *SymmetricKeyType encryption_type = 4;
      * </pre>
      *
-     * <code>optional .KeyEncodingType encodingType = 5;</code>
+     * <code>.KeyEncodingType encodingType = 5;</code>
      */
     public int getEncodingTypeValue() {
       return encodingType_;
@@ -5897,7 +5906,7 @@ public final class Message {
      *SymmetricKeyType encryption_type = 4;
      * </pre>
      *
-     * <code>optional .KeyEncodingType encodingType = 5;</code>
+     * <code>.KeyEncodingType encodingType = 5;</code>
      */
     public org.metamesh.chub.proto.Message.KeyEncodingType getEncodingType() {
       org.metamesh.chub.proto.Message.KeyEncodingType result = org.metamesh.chub.proto.Message.KeyEncodingType.valueOf(encodingType_);
@@ -5907,19 +5916,19 @@ public final class Message {
     public static final int KEY_ID_FIELD_NUMBER = 6;
     private org.metamesh.chub.proto.Message.KeyId keyId_;
     /**
-     * <code>optional .KeyId key_id = 6;</code>
+     * <code>.KeyId key_id = 6;</code>
      */
     public boolean hasKeyId() {
       return keyId_ != null;
     }
     /**
-     * <code>optional .KeyId key_id = 6;</code>
+     * <code>.KeyId key_id = 6;</code>
      */
     public org.metamesh.chub.proto.Message.KeyId getKeyId() {
       return keyId_ == null ? org.metamesh.chub.proto.Message.KeyId.getDefaultInstance() : keyId_;
     }
     /**
-     * <code>optional .KeyId key_id = 6;</code>
+     * <code>.KeyId key_id = 6;</code>
      */
     public org.metamesh.chub.proto.Message.KeyIdOrBuilder getKeyIdOrBuilder() {
       return getKeyId();
@@ -5928,7 +5937,7 @@ public final class Message {
     public static final int ID_FIELD_NUMBER = 7;
     private com.google.protobuf.ByteString id_;
     /**
-     * <code>optional bytes id = 7;</code>
+     * <code>bytes id = 7;</code>
      */
     public com.google.protobuf.ByteString getId() {
       return id_;
@@ -6019,7 +6028,7 @@ public final class Message {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasKey()) {
         hash = (37 * hash) + KEY_FIELD_NUMBER;
         hash = (53 * hash) + getKey().hashCode();
@@ -6287,7 +6296,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+       * <code>.SymmetriclyEncryptedMessage key = 2;</code>
        */
       public boolean hasKey() {
         return keyBuilder_ != null || key_ != null;
@@ -6297,7 +6306,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+       * <code>.SymmetriclyEncryptedMessage key = 2;</code>
        */
       public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage getKey() {
         if (keyBuilder_ == null) {
@@ -6311,7 +6320,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+       * <code>.SymmetriclyEncryptedMessage key = 2;</code>
        */
       public Builder setKey(org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage value) {
         if (keyBuilder_ == null) {
@@ -6331,7 +6340,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+       * <code>.SymmetriclyEncryptedMessage key = 2;</code>
        */
       public Builder setKey(
           org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage.Builder builderForValue) {
@@ -6349,7 +6358,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+       * <code>.SymmetriclyEncryptedMessage key = 2;</code>
        */
       public Builder mergeKey(org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage value) {
         if (keyBuilder_ == null) {
@@ -6371,7 +6380,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+       * <code>.SymmetriclyEncryptedMessage key = 2;</code>
        */
       public Builder clearKey() {
         if (keyBuilder_ == null) {
@@ -6389,7 +6398,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+       * <code>.SymmetriclyEncryptedMessage key = 2;</code>
        */
       public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage.Builder getKeyBuilder() {
         
@@ -6401,7 +6410,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+       * <code>.SymmetriclyEncryptedMessage key = 2;</code>
        */
       public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessageOrBuilder getKeyOrBuilder() {
         if (keyBuilder_ != null) {
@@ -6416,7 +6425,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional .SymmetriclyEncryptedMessage key = 2;</code>
+       * <code>.SymmetriclyEncryptedMessage key = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage, org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage.Builder, org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessageOrBuilder> 
@@ -6439,7 +6448,7 @@ public final class Message {
        *SymmetricKeyType encryption_type = 4;
        * </pre>
        *
-       * <code>optional .KeyEncodingType encodingType = 5;</code>
+       * <code>.KeyEncodingType encodingType = 5;</code>
        */
       public int getEncodingTypeValue() {
         return encodingType_;
@@ -6450,7 +6459,7 @@ public final class Message {
        *SymmetricKeyType encryption_type = 4;
        * </pre>
        *
-       * <code>optional .KeyEncodingType encodingType = 5;</code>
+       * <code>.KeyEncodingType encodingType = 5;</code>
        */
       public Builder setEncodingTypeValue(int value) {
         encodingType_ = value;
@@ -6463,7 +6472,7 @@ public final class Message {
        *SymmetricKeyType encryption_type = 4;
        * </pre>
        *
-       * <code>optional .KeyEncodingType encodingType = 5;</code>
+       * <code>.KeyEncodingType encodingType = 5;</code>
        */
       public org.metamesh.chub.proto.Message.KeyEncodingType getEncodingType() {
         org.metamesh.chub.proto.Message.KeyEncodingType result = org.metamesh.chub.proto.Message.KeyEncodingType.valueOf(encodingType_);
@@ -6475,7 +6484,7 @@ public final class Message {
        *SymmetricKeyType encryption_type = 4;
        * </pre>
        *
-       * <code>optional .KeyEncodingType encodingType = 5;</code>
+       * <code>.KeyEncodingType encodingType = 5;</code>
        */
       public Builder setEncodingType(org.metamesh.chub.proto.Message.KeyEncodingType value) {
         if (value == null) {
@@ -6492,7 +6501,7 @@ public final class Message {
        *SymmetricKeyType encryption_type = 4;
        * </pre>
        *
-       * <code>optional .KeyEncodingType encodingType = 5;</code>
+       * <code>.KeyEncodingType encodingType = 5;</code>
        */
       public Builder clearEncodingType() {
         
@@ -6505,13 +6514,13 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.KeyId, org.metamesh.chub.proto.Message.KeyId.Builder, org.metamesh.chub.proto.Message.KeyIdOrBuilder> keyIdBuilder_;
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public boolean hasKeyId() {
         return keyIdBuilder_ != null || keyId_ != null;
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public org.metamesh.chub.proto.Message.KeyId getKeyId() {
         if (keyIdBuilder_ == null) {
@@ -6521,7 +6530,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public Builder setKeyId(org.metamesh.chub.proto.Message.KeyId value) {
         if (keyIdBuilder_ == null) {
@@ -6537,7 +6546,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public Builder setKeyId(
           org.metamesh.chub.proto.Message.KeyId.Builder builderForValue) {
@@ -6551,7 +6560,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public Builder mergeKeyId(org.metamesh.chub.proto.Message.KeyId value) {
         if (keyIdBuilder_ == null) {
@@ -6569,7 +6578,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public Builder clearKeyId() {
         if (keyIdBuilder_ == null) {
@@ -6583,7 +6592,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public org.metamesh.chub.proto.Message.KeyId.Builder getKeyIdBuilder() {
         
@@ -6591,7 +6600,7 @@ public final class Message {
         return getKeyIdFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       public org.metamesh.chub.proto.Message.KeyIdOrBuilder getKeyIdOrBuilder() {
         if (keyIdBuilder_ != null) {
@@ -6602,7 +6611,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .KeyId key_id = 6;</code>
+       * <code>.KeyId key_id = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.KeyId, org.metamesh.chub.proto.Message.KeyId.Builder, org.metamesh.chub.proto.Message.KeyIdOrBuilder> 
@@ -6620,13 +6629,13 @@ public final class Message {
 
       private com.google.protobuf.ByteString id_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes id = 7;</code>
+       * <code>bytes id = 7;</code>
        */
       public com.google.protobuf.ByteString getId() {
         return id_;
       }
       /**
-       * <code>optional bytes id = 7;</code>
+       * <code>bytes id = 7;</code>
        */
       public Builder setId(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -6638,7 +6647,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bytes id = 7;</code>
+       * <code>bytes id = 7;</code>
        */
       public Builder clearId() {
         
@@ -6704,7 +6713,7 @@ public final class Message {
      *string cn = 1;
      * </pre>
      *
-     * <code>optional bytes key = 2;</code>
+     * <code>bytes key = 2;</code>
      */
     com.google.protobuf.ByteString getKey();
 
@@ -6713,7 +6722,7 @@ public final class Message {
      *AsymmetricKeyType type = 3;
      * </pre>
      *
-     * <code>optional .KeyEncodingType encodingType = 4;</code>
+     * <code>.KeyEncodingType encodingType = 4;</code>
      */
     int getEncodingTypeValue();
     /**
@@ -6721,25 +6730,25 @@ public final class Message {
      *AsymmetricKeyType type = 3;
      * </pre>
      *
-     * <code>optional .KeyEncodingType encodingType = 4;</code>
+     * <code>.KeyEncodingType encodingType = 4;</code>
      */
     org.metamesh.chub.proto.Message.KeyEncodingType getEncodingType();
 
     /**
-     * <code>optional .KeyId key_id = 5;</code>
+     * <code>.KeyId key_id = 5;</code>
      */
     boolean hasKeyId();
     /**
-     * <code>optional .KeyId key_id = 5;</code>
+     * <code>.KeyId key_id = 5;</code>
      */
     org.metamesh.chub.proto.Message.KeyId getKeyId();
     /**
-     * <code>optional .KeyId key_id = 5;</code>
+     * <code>.KeyId key_id = 5;</code>
      */
     org.metamesh.chub.proto.Message.KeyIdOrBuilder getKeyIdOrBuilder();
 
     /**
-     * <code>optional bytes id = 6;</code>
+     * <code>bytes id = 6;</code>
      */
     com.google.protobuf.ByteString getId();
   }
@@ -6844,7 +6853,7 @@ public final class Message {
      *string cn = 1;
      * </pre>
      *
-     * <code>optional bytes key = 2;</code>
+     * <code>bytes key = 2;</code>
      */
     public com.google.protobuf.ByteString getKey() {
       return key_;
@@ -6857,7 +6866,7 @@ public final class Message {
      *AsymmetricKeyType type = 3;
      * </pre>
      *
-     * <code>optional .KeyEncodingType encodingType = 4;</code>
+     * <code>.KeyEncodingType encodingType = 4;</code>
      */
     public int getEncodingTypeValue() {
       return encodingType_;
@@ -6867,7 +6876,7 @@ public final class Message {
      *AsymmetricKeyType type = 3;
      * </pre>
      *
-     * <code>optional .KeyEncodingType encodingType = 4;</code>
+     * <code>.KeyEncodingType encodingType = 4;</code>
      */
     public org.metamesh.chub.proto.Message.KeyEncodingType getEncodingType() {
       org.metamesh.chub.proto.Message.KeyEncodingType result = org.metamesh.chub.proto.Message.KeyEncodingType.valueOf(encodingType_);
@@ -6877,19 +6886,19 @@ public final class Message {
     public static final int KEY_ID_FIELD_NUMBER = 5;
     private org.metamesh.chub.proto.Message.KeyId keyId_;
     /**
-     * <code>optional .KeyId key_id = 5;</code>
+     * <code>.KeyId key_id = 5;</code>
      */
     public boolean hasKeyId() {
       return keyId_ != null;
     }
     /**
-     * <code>optional .KeyId key_id = 5;</code>
+     * <code>.KeyId key_id = 5;</code>
      */
     public org.metamesh.chub.proto.Message.KeyId getKeyId() {
       return keyId_ == null ? org.metamesh.chub.proto.Message.KeyId.getDefaultInstance() : keyId_;
     }
     /**
-     * <code>optional .KeyId key_id = 5;</code>
+     * <code>.KeyId key_id = 5;</code>
      */
     public org.metamesh.chub.proto.Message.KeyIdOrBuilder getKeyIdOrBuilder() {
       return getKeyId();
@@ -6898,7 +6907,7 @@ public final class Message {
     public static final int ID_FIELD_NUMBER = 6;
     private com.google.protobuf.ByteString id_;
     /**
-     * <code>optional bytes id = 6;</code>
+     * <code>bytes id = 6;</code>
      */
     public com.google.protobuf.ByteString getId() {
       return id_;
@@ -6986,7 +6995,7 @@ public final class Message {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + KEY_FIELD_NUMBER;
       hash = (53 * hash) + getKey().hashCode();
       hash = (37 * hash) + ENCODINGTYPE_FIELD_NUMBER;
@@ -7242,7 +7251,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional bytes key = 2;</code>
+       * <code>bytes key = 2;</code>
        */
       public com.google.protobuf.ByteString getKey() {
         return key_;
@@ -7252,7 +7261,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional bytes key = 2;</code>
+       * <code>bytes key = 2;</code>
        */
       public Builder setKey(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -7268,7 +7277,7 @@ public final class Message {
        *string cn = 1;
        * </pre>
        *
-       * <code>optional bytes key = 2;</code>
+       * <code>bytes key = 2;</code>
        */
       public Builder clearKey() {
         
@@ -7283,7 +7292,7 @@ public final class Message {
        *AsymmetricKeyType type = 3;
        * </pre>
        *
-       * <code>optional .KeyEncodingType encodingType = 4;</code>
+       * <code>.KeyEncodingType encodingType = 4;</code>
        */
       public int getEncodingTypeValue() {
         return encodingType_;
@@ -7293,7 +7302,7 @@ public final class Message {
        *AsymmetricKeyType type = 3;
        * </pre>
        *
-       * <code>optional .KeyEncodingType encodingType = 4;</code>
+       * <code>.KeyEncodingType encodingType = 4;</code>
        */
       public Builder setEncodingTypeValue(int value) {
         encodingType_ = value;
@@ -7305,7 +7314,7 @@ public final class Message {
        *AsymmetricKeyType type = 3;
        * </pre>
        *
-       * <code>optional .KeyEncodingType encodingType = 4;</code>
+       * <code>.KeyEncodingType encodingType = 4;</code>
        */
       public org.metamesh.chub.proto.Message.KeyEncodingType getEncodingType() {
         org.metamesh.chub.proto.Message.KeyEncodingType result = org.metamesh.chub.proto.Message.KeyEncodingType.valueOf(encodingType_);
@@ -7316,7 +7325,7 @@ public final class Message {
        *AsymmetricKeyType type = 3;
        * </pre>
        *
-       * <code>optional .KeyEncodingType encodingType = 4;</code>
+       * <code>.KeyEncodingType encodingType = 4;</code>
        */
       public Builder setEncodingType(org.metamesh.chub.proto.Message.KeyEncodingType value) {
         if (value == null) {
@@ -7332,7 +7341,7 @@ public final class Message {
        *AsymmetricKeyType type = 3;
        * </pre>
        *
-       * <code>optional .KeyEncodingType encodingType = 4;</code>
+       * <code>.KeyEncodingType encodingType = 4;</code>
        */
       public Builder clearEncodingType() {
         
@@ -7345,13 +7354,13 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.KeyId, org.metamesh.chub.proto.Message.KeyId.Builder, org.metamesh.chub.proto.Message.KeyIdOrBuilder> keyIdBuilder_;
       /**
-       * <code>optional .KeyId key_id = 5;</code>
+       * <code>.KeyId key_id = 5;</code>
        */
       public boolean hasKeyId() {
         return keyIdBuilder_ != null || keyId_ != null;
       }
       /**
-       * <code>optional .KeyId key_id = 5;</code>
+       * <code>.KeyId key_id = 5;</code>
        */
       public org.metamesh.chub.proto.Message.KeyId getKeyId() {
         if (keyIdBuilder_ == null) {
@@ -7361,7 +7370,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .KeyId key_id = 5;</code>
+       * <code>.KeyId key_id = 5;</code>
        */
       public Builder setKeyId(org.metamesh.chub.proto.Message.KeyId value) {
         if (keyIdBuilder_ == null) {
@@ -7377,7 +7386,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId key_id = 5;</code>
+       * <code>.KeyId key_id = 5;</code>
        */
       public Builder setKeyId(
           org.metamesh.chub.proto.Message.KeyId.Builder builderForValue) {
@@ -7391,7 +7400,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId key_id = 5;</code>
+       * <code>.KeyId key_id = 5;</code>
        */
       public Builder mergeKeyId(org.metamesh.chub.proto.Message.KeyId value) {
         if (keyIdBuilder_ == null) {
@@ -7409,7 +7418,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId key_id = 5;</code>
+       * <code>.KeyId key_id = 5;</code>
        */
       public Builder clearKeyId() {
         if (keyIdBuilder_ == null) {
@@ -7423,7 +7432,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId key_id = 5;</code>
+       * <code>.KeyId key_id = 5;</code>
        */
       public org.metamesh.chub.proto.Message.KeyId.Builder getKeyIdBuilder() {
         
@@ -7431,7 +7440,7 @@ public final class Message {
         return getKeyIdFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .KeyId key_id = 5;</code>
+       * <code>.KeyId key_id = 5;</code>
        */
       public org.metamesh.chub.proto.Message.KeyIdOrBuilder getKeyIdOrBuilder() {
         if (keyIdBuilder_ != null) {
@@ -7442,7 +7451,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .KeyId key_id = 5;</code>
+       * <code>.KeyId key_id = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.KeyId, org.metamesh.chub.proto.Message.KeyId.Builder, org.metamesh.chub.proto.Message.KeyIdOrBuilder> 
@@ -7460,13 +7469,13 @@ public final class Message {
 
       private com.google.protobuf.ByteString id_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes id = 6;</code>
+       * <code>bytes id = 6;</code>
        */
       public com.google.protobuf.ByteString getId() {
         return id_;
       }
       /**
-       * <code>optional bytes id = 6;</code>
+       * <code>bytes id = 6;</code>
        */
       public Builder setId(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -7478,7 +7487,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bytes id = 6;</code>
+       * <code>bytes id = 6;</code>
        */
       public Builder clearId() {
         
@@ -7540,40 +7549,40 @@ public final class Message {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .MessageType message_type = 1;</code>
+     * <code>.MessageType message_type = 1;</code>
      */
     int getMessageTypeValue();
     /**
-     * <code>optional .MessageType message_type = 1;</code>
+     * <code>.MessageType message_type = 1;</code>
      */
     org.metamesh.chub.proto.Message.MessageType getMessageType();
 
     /**
-     * <code>optional .SymmetricKeyType encryption_type = 2;</code>
+     * <code>.SymmetricKeyType encryption_type = 2;</code>
      */
     int getEncryptionTypeValue();
     /**
-     * <code>optional .SymmetricKeyType encryption_type = 2;</code>
+     * <code>.SymmetricKeyType encryption_type = 2;</code>
      */
     org.metamesh.chub.proto.Message.SymmetricKeyType getEncryptionType();
 
     /**
-     * <code>optional bytes msg = 3;</code>
+     * <code>bytes msg = 3;</code>
      */
     com.google.protobuf.ByteString getMsg();
 
     /**
-     * <code>optional bytes iv = 4;</code>
+     * <code>bytes iv = 4;</code>
      */
     com.google.protobuf.ByteString getIv();
 
     /**
-     * <code>optional bytes salt = 5;</code>
+     * <code>bytes salt = 5;</code>
      */
     com.google.protobuf.ByteString getSalt();
 
     /**
-     * <code>optional bytes id = 6;</code>
+     * <code>bytes id = 6;</code>
      */
     com.google.protobuf.ByteString getId();
   }
@@ -7680,13 +7689,13 @@ public final class Message {
     public static final int MESSAGE_TYPE_FIELD_NUMBER = 1;
     private int messageType_;
     /**
-     * <code>optional .MessageType message_type = 1;</code>
+     * <code>.MessageType message_type = 1;</code>
      */
     public int getMessageTypeValue() {
       return messageType_;
     }
     /**
-     * <code>optional .MessageType message_type = 1;</code>
+     * <code>.MessageType message_type = 1;</code>
      */
     public org.metamesh.chub.proto.Message.MessageType getMessageType() {
       org.metamesh.chub.proto.Message.MessageType result = org.metamesh.chub.proto.Message.MessageType.valueOf(messageType_);
@@ -7696,13 +7705,13 @@ public final class Message {
     public static final int ENCRYPTION_TYPE_FIELD_NUMBER = 2;
     private int encryptionType_;
     /**
-     * <code>optional .SymmetricKeyType encryption_type = 2;</code>
+     * <code>.SymmetricKeyType encryption_type = 2;</code>
      */
     public int getEncryptionTypeValue() {
       return encryptionType_;
     }
     /**
-     * <code>optional .SymmetricKeyType encryption_type = 2;</code>
+     * <code>.SymmetricKeyType encryption_type = 2;</code>
      */
     public org.metamesh.chub.proto.Message.SymmetricKeyType getEncryptionType() {
       org.metamesh.chub.proto.Message.SymmetricKeyType result = org.metamesh.chub.proto.Message.SymmetricKeyType.valueOf(encryptionType_);
@@ -7712,7 +7721,7 @@ public final class Message {
     public static final int MSG_FIELD_NUMBER = 3;
     private com.google.protobuf.ByteString msg_;
     /**
-     * <code>optional bytes msg = 3;</code>
+     * <code>bytes msg = 3;</code>
      */
     public com.google.protobuf.ByteString getMsg() {
       return msg_;
@@ -7721,7 +7730,7 @@ public final class Message {
     public static final int IV_FIELD_NUMBER = 4;
     private com.google.protobuf.ByteString iv_;
     /**
-     * <code>optional bytes iv = 4;</code>
+     * <code>bytes iv = 4;</code>
      */
     public com.google.protobuf.ByteString getIv() {
       return iv_;
@@ -7730,7 +7739,7 @@ public final class Message {
     public static final int SALT_FIELD_NUMBER = 5;
     private com.google.protobuf.ByteString salt_;
     /**
-     * <code>optional bytes salt = 5;</code>
+     * <code>bytes salt = 5;</code>
      */
     public com.google.protobuf.ByteString getSalt() {
       return salt_;
@@ -7739,7 +7748,7 @@ public final class Message {
     public static final int ID_FIELD_NUMBER = 6;
     private com.google.protobuf.ByteString id_;
     /**
-     * <code>optional bytes id = 6;</code>
+     * <code>bytes id = 6;</code>
      */
     public com.google.protobuf.ByteString getId() {
       return id_;
@@ -7841,7 +7850,7 @@ public final class Message {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + MESSAGE_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + messageType_;
       hash = (37 * hash) + ENCRYPTION_TYPE_FIELD_NUMBER;
@@ -8099,13 +8108,13 @@ public final class Message {
 
       private int messageType_ = 0;
       /**
-       * <code>optional .MessageType message_type = 1;</code>
+       * <code>.MessageType message_type = 1;</code>
        */
       public int getMessageTypeValue() {
         return messageType_;
       }
       /**
-       * <code>optional .MessageType message_type = 1;</code>
+       * <code>.MessageType message_type = 1;</code>
        */
       public Builder setMessageTypeValue(int value) {
         messageType_ = value;
@@ -8113,14 +8122,14 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .MessageType message_type = 1;</code>
+       * <code>.MessageType message_type = 1;</code>
        */
       public org.metamesh.chub.proto.Message.MessageType getMessageType() {
         org.metamesh.chub.proto.Message.MessageType result = org.metamesh.chub.proto.Message.MessageType.valueOf(messageType_);
         return result == null ? org.metamesh.chub.proto.Message.MessageType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .MessageType message_type = 1;</code>
+       * <code>.MessageType message_type = 1;</code>
        */
       public Builder setMessageType(org.metamesh.chub.proto.Message.MessageType value) {
         if (value == null) {
@@ -8132,7 +8141,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .MessageType message_type = 1;</code>
+       * <code>.MessageType message_type = 1;</code>
        */
       public Builder clearMessageType() {
         
@@ -8143,13 +8152,13 @@ public final class Message {
 
       private int encryptionType_ = 0;
       /**
-       * <code>optional .SymmetricKeyType encryption_type = 2;</code>
+       * <code>.SymmetricKeyType encryption_type = 2;</code>
        */
       public int getEncryptionTypeValue() {
         return encryptionType_;
       }
       /**
-       * <code>optional .SymmetricKeyType encryption_type = 2;</code>
+       * <code>.SymmetricKeyType encryption_type = 2;</code>
        */
       public Builder setEncryptionTypeValue(int value) {
         encryptionType_ = value;
@@ -8157,14 +8166,14 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .SymmetricKeyType encryption_type = 2;</code>
+       * <code>.SymmetricKeyType encryption_type = 2;</code>
        */
       public org.metamesh.chub.proto.Message.SymmetricKeyType getEncryptionType() {
         org.metamesh.chub.proto.Message.SymmetricKeyType result = org.metamesh.chub.proto.Message.SymmetricKeyType.valueOf(encryptionType_);
         return result == null ? org.metamesh.chub.proto.Message.SymmetricKeyType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .SymmetricKeyType encryption_type = 2;</code>
+       * <code>.SymmetricKeyType encryption_type = 2;</code>
        */
       public Builder setEncryptionType(org.metamesh.chub.proto.Message.SymmetricKeyType value) {
         if (value == null) {
@@ -8176,7 +8185,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .SymmetricKeyType encryption_type = 2;</code>
+       * <code>.SymmetricKeyType encryption_type = 2;</code>
        */
       public Builder clearEncryptionType() {
         
@@ -8187,13 +8196,13 @@ public final class Message {
 
       private com.google.protobuf.ByteString msg_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes msg = 3;</code>
+       * <code>bytes msg = 3;</code>
        */
       public com.google.protobuf.ByteString getMsg() {
         return msg_;
       }
       /**
-       * <code>optional bytes msg = 3;</code>
+       * <code>bytes msg = 3;</code>
        */
       public Builder setMsg(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -8205,7 +8214,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bytes msg = 3;</code>
+       * <code>bytes msg = 3;</code>
        */
       public Builder clearMsg() {
         
@@ -8216,13 +8225,13 @@ public final class Message {
 
       private com.google.protobuf.ByteString iv_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes iv = 4;</code>
+       * <code>bytes iv = 4;</code>
        */
       public com.google.protobuf.ByteString getIv() {
         return iv_;
       }
       /**
-       * <code>optional bytes iv = 4;</code>
+       * <code>bytes iv = 4;</code>
        */
       public Builder setIv(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -8234,7 +8243,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bytes iv = 4;</code>
+       * <code>bytes iv = 4;</code>
        */
       public Builder clearIv() {
         
@@ -8245,13 +8254,13 @@ public final class Message {
 
       private com.google.protobuf.ByteString salt_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes salt = 5;</code>
+       * <code>bytes salt = 5;</code>
        */
       public com.google.protobuf.ByteString getSalt() {
         return salt_;
       }
       /**
-       * <code>optional bytes salt = 5;</code>
+       * <code>bytes salt = 5;</code>
        */
       public Builder setSalt(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -8263,7 +8272,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bytes salt = 5;</code>
+       * <code>bytes salt = 5;</code>
        */
       public Builder clearSalt() {
         
@@ -8274,13 +8283,13 @@ public final class Message {
 
       private com.google.protobuf.ByteString id_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes id = 6;</code>
+       * <code>bytes id = 6;</code>
        */
       public com.google.protobuf.ByteString getId() {
         return id_;
       }
       /**
-       * <code>optional bytes id = 6;</code>
+       * <code>bytes id = 6;</code>
        */
       public Builder setId(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -8292,7 +8301,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bytes id = 6;</code>
+       * <code>bytes id = 6;</code>
        */
       public Builder clearId() {
         
@@ -8354,34 +8363,34 @@ public final class Message {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .MessageType message_type = 1;</code>
+     * <code>.MessageType message_type = 1;</code>
      */
     int getMessageTypeValue();
     /**
-     * <code>optional .MessageType message_type = 1;</code>
+     * <code>.MessageType message_type = 1;</code>
      */
     org.metamesh.chub.proto.Message.MessageType getMessageType();
 
     /**
-     * <code>optional .KeyId dest_key = 2;</code>
+     * <code>.KeyId dest_key = 2;</code>
      */
     boolean hasDestKey();
     /**
-     * <code>optional .KeyId dest_key = 2;</code>
+     * <code>.KeyId dest_key = 2;</code>
      */
     org.metamesh.chub.proto.Message.KeyId getDestKey();
     /**
-     * <code>optional .KeyId dest_key = 2;</code>
+     * <code>.KeyId dest_key = 2;</code>
      */
     org.metamesh.chub.proto.Message.KeyIdOrBuilder getDestKeyOrBuilder();
 
     /**
-     * <code>optional bytes msg = 4;</code>
+     * <code>bytes msg = 4;</code>
      */
     com.google.protobuf.ByteString getMsg();
 
     /**
-     * <code>optional bytes id = 5;</code>
+     * <code>bytes id = 5;</code>
      */
     com.google.protobuf.ByteString getId();
   }
@@ -8482,13 +8491,13 @@ public final class Message {
     public static final int MESSAGE_TYPE_FIELD_NUMBER = 1;
     private int messageType_;
     /**
-     * <code>optional .MessageType message_type = 1;</code>
+     * <code>.MessageType message_type = 1;</code>
      */
     public int getMessageTypeValue() {
       return messageType_;
     }
     /**
-     * <code>optional .MessageType message_type = 1;</code>
+     * <code>.MessageType message_type = 1;</code>
      */
     public org.metamesh.chub.proto.Message.MessageType getMessageType() {
       org.metamesh.chub.proto.Message.MessageType result = org.metamesh.chub.proto.Message.MessageType.valueOf(messageType_);
@@ -8498,19 +8507,19 @@ public final class Message {
     public static final int DEST_KEY_FIELD_NUMBER = 2;
     private org.metamesh.chub.proto.Message.KeyId destKey_;
     /**
-     * <code>optional .KeyId dest_key = 2;</code>
+     * <code>.KeyId dest_key = 2;</code>
      */
     public boolean hasDestKey() {
       return destKey_ != null;
     }
     /**
-     * <code>optional .KeyId dest_key = 2;</code>
+     * <code>.KeyId dest_key = 2;</code>
      */
     public org.metamesh.chub.proto.Message.KeyId getDestKey() {
       return destKey_ == null ? org.metamesh.chub.proto.Message.KeyId.getDefaultInstance() : destKey_;
     }
     /**
-     * <code>optional .KeyId dest_key = 2;</code>
+     * <code>.KeyId dest_key = 2;</code>
      */
     public org.metamesh.chub.proto.Message.KeyIdOrBuilder getDestKeyOrBuilder() {
       return getDestKey();
@@ -8519,7 +8528,7 @@ public final class Message {
     public static final int MSG_FIELD_NUMBER = 4;
     private com.google.protobuf.ByteString msg_;
     /**
-     * <code>optional bytes msg = 4;</code>
+     * <code>bytes msg = 4;</code>
      */
     public com.google.protobuf.ByteString getMsg() {
       return msg_;
@@ -8528,7 +8537,7 @@ public final class Message {
     public static final int ID_FIELD_NUMBER = 5;
     private com.google.protobuf.ByteString id_;
     /**
-     * <code>optional bytes id = 5;</code>
+     * <code>bytes id = 5;</code>
      */
     public com.google.protobuf.ByteString getId() {
       return id_;
@@ -8616,7 +8625,7 @@ public final class Message {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + MESSAGE_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + messageType_;
       if (hasDestKey()) {
@@ -8868,13 +8877,13 @@ public final class Message {
 
       private int messageType_ = 0;
       /**
-       * <code>optional .MessageType message_type = 1;</code>
+       * <code>.MessageType message_type = 1;</code>
        */
       public int getMessageTypeValue() {
         return messageType_;
       }
       /**
-       * <code>optional .MessageType message_type = 1;</code>
+       * <code>.MessageType message_type = 1;</code>
        */
       public Builder setMessageTypeValue(int value) {
         messageType_ = value;
@@ -8882,14 +8891,14 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .MessageType message_type = 1;</code>
+       * <code>.MessageType message_type = 1;</code>
        */
       public org.metamesh.chub.proto.Message.MessageType getMessageType() {
         org.metamesh.chub.proto.Message.MessageType result = org.metamesh.chub.proto.Message.MessageType.valueOf(messageType_);
         return result == null ? org.metamesh.chub.proto.Message.MessageType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .MessageType message_type = 1;</code>
+       * <code>.MessageType message_type = 1;</code>
        */
       public Builder setMessageType(org.metamesh.chub.proto.Message.MessageType value) {
         if (value == null) {
@@ -8901,7 +8910,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .MessageType message_type = 1;</code>
+       * <code>.MessageType message_type = 1;</code>
        */
       public Builder clearMessageType() {
         
@@ -8914,13 +8923,13 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.KeyId, org.metamesh.chub.proto.Message.KeyId.Builder, org.metamesh.chub.proto.Message.KeyIdOrBuilder> destKeyBuilder_;
       /**
-       * <code>optional .KeyId dest_key = 2;</code>
+       * <code>.KeyId dest_key = 2;</code>
        */
       public boolean hasDestKey() {
         return destKeyBuilder_ != null || destKey_ != null;
       }
       /**
-       * <code>optional .KeyId dest_key = 2;</code>
+       * <code>.KeyId dest_key = 2;</code>
        */
       public org.metamesh.chub.proto.Message.KeyId getDestKey() {
         if (destKeyBuilder_ == null) {
@@ -8930,7 +8939,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .KeyId dest_key = 2;</code>
+       * <code>.KeyId dest_key = 2;</code>
        */
       public Builder setDestKey(org.metamesh.chub.proto.Message.KeyId value) {
         if (destKeyBuilder_ == null) {
@@ -8946,7 +8955,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId dest_key = 2;</code>
+       * <code>.KeyId dest_key = 2;</code>
        */
       public Builder setDestKey(
           org.metamesh.chub.proto.Message.KeyId.Builder builderForValue) {
@@ -8960,7 +8969,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId dest_key = 2;</code>
+       * <code>.KeyId dest_key = 2;</code>
        */
       public Builder mergeDestKey(org.metamesh.chub.proto.Message.KeyId value) {
         if (destKeyBuilder_ == null) {
@@ -8978,7 +8987,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId dest_key = 2;</code>
+       * <code>.KeyId dest_key = 2;</code>
        */
       public Builder clearDestKey() {
         if (destKeyBuilder_ == null) {
@@ -8992,7 +9001,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .KeyId dest_key = 2;</code>
+       * <code>.KeyId dest_key = 2;</code>
        */
       public org.metamesh.chub.proto.Message.KeyId.Builder getDestKeyBuilder() {
         
@@ -9000,7 +9009,7 @@ public final class Message {
         return getDestKeyFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .KeyId dest_key = 2;</code>
+       * <code>.KeyId dest_key = 2;</code>
        */
       public org.metamesh.chub.proto.Message.KeyIdOrBuilder getDestKeyOrBuilder() {
         if (destKeyBuilder_ != null) {
@@ -9011,7 +9020,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .KeyId dest_key = 2;</code>
+       * <code>.KeyId dest_key = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.KeyId, org.metamesh.chub.proto.Message.KeyId.Builder, org.metamesh.chub.proto.Message.KeyIdOrBuilder> 
@@ -9029,13 +9038,13 @@ public final class Message {
 
       private com.google.protobuf.ByteString msg_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes msg = 4;</code>
+       * <code>bytes msg = 4;</code>
        */
       public com.google.protobuf.ByteString getMsg() {
         return msg_;
       }
       /**
-       * <code>optional bytes msg = 4;</code>
+       * <code>bytes msg = 4;</code>
        */
       public Builder setMsg(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -9047,7 +9056,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bytes msg = 4;</code>
+       * <code>bytes msg = 4;</code>
        */
       public Builder clearMsg() {
         
@@ -9058,13 +9067,13 @@ public final class Message {
 
       private com.google.protobuf.ByteString id_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes id = 5;</code>
+       * <code>bytes id = 5;</code>
        */
       public com.google.protobuf.ByteString getId() {
         return id_;
       }
       /**
-       * <code>optional bytes id = 5;</code>
+       * <code>bytes id = 5;</code>
        */
       public Builder setId(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -9076,7 +9085,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bytes id = 5;</code>
+       * <code>bytes id = 5;</code>
        */
       public Builder clearId() {
         
@@ -9138,16 +9147,16 @@ public final class Message {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .MessageType type = 1;</code>
+     * <code>.MessageType type = 1;</code>
      */
     int getTypeValue();
     /**
-     * <code>optional .MessageType type = 1;</code>
+     * <code>.MessageType type = 1;</code>
      */
     org.metamesh.chub.proto.Message.MessageType getType();
 
     /**
-     * <code>optional bytes id = 2;</code>
+     * <code>bytes id = 2;</code>
      */
     com.google.protobuf.ByteString getId();
   }
@@ -9229,13 +9238,13 @@ public final class Message {
     public static final int TYPE_FIELD_NUMBER = 1;
     private int type_;
     /**
-     * <code>optional .MessageType type = 1;</code>
+     * <code>.MessageType type = 1;</code>
      */
     public int getTypeValue() {
       return type_;
     }
     /**
-     * <code>optional .MessageType type = 1;</code>
+     * <code>.MessageType type = 1;</code>
      */
     public org.metamesh.chub.proto.Message.MessageType getType() {
       org.metamesh.chub.proto.Message.MessageType result = org.metamesh.chub.proto.Message.MessageType.valueOf(type_);
@@ -9245,7 +9254,7 @@ public final class Message {
     public static final int ID_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString id_;
     /**
-     * <code>optional bytes id = 2;</code>
+     * <code>bytes id = 2;</code>
      */
     public com.google.protobuf.ByteString getId() {
       return id_;
@@ -9312,7 +9321,7 @@ public final class Message {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TYPE_FIELD_NUMBER;
       hash = (53 * hash) + type_;
       hash = (37 * hash) + ID_FIELD_NUMBER;
@@ -9538,13 +9547,13 @@ public final class Message {
 
       private int type_ = 0;
       /**
-       * <code>optional .MessageType type = 1;</code>
+       * <code>.MessageType type = 1;</code>
        */
       public int getTypeValue() {
         return type_;
       }
       /**
-       * <code>optional .MessageType type = 1;</code>
+       * <code>.MessageType type = 1;</code>
        */
       public Builder setTypeValue(int value) {
         type_ = value;
@@ -9552,14 +9561,14 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .MessageType type = 1;</code>
+       * <code>.MessageType type = 1;</code>
        */
       public org.metamesh.chub.proto.Message.MessageType getType() {
         org.metamesh.chub.proto.Message.MessageType result = org.metamesh.chub.proto.Message.MessageType.valueOf(type_);
         return result == null ? org.metamesh.chub.proto.Message.MessageType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .MessageType type = 1;</code>
+       * <code>.MessageType type = 1;</code>
        */
       public Builder setType(org.metamesh.chub.proto.Message.MessageType value) {
         if (value == null) {
@@ -9571,7 +9580,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .MessageType type = 1;</code>
+       * <code>.MessageType type = 1;</code>
        */
       public Builder clearType() {
         
@@ -9582,13 +9591,13 @@ public final class Message {
 
       private com.google.protobuf.ByteString id_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes id = 2;</code>
+       * <code>bytes id = 2;</code>
        */
       public com.google.protobuf.ByteString getId() {
         return id_;
       }
       /**
-       * <code>optional bytes id = 2;</code>
+       * <code>bytes id = 2;</code>
        */
       public Builder setId(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -9600,7 +9609,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bytes id = 2;</code>
+       * <code>bytes id = 2;</code>
        */
       public Builder clearId() {
         
@@ -9662,56 +9671,56 @@ public final class Message {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .Post post = 1;</code>
+     * <code>.Post post = 1;</code>
      */
     org.metamesh.chub.proto.Message.Post getPost();
     /**
-     * <code>optional .Post post = 1;</code>
+     * <code>.Post post = 1;</code>
      */
     org.metamesh.chub.proto.Message.PostOrBuilder getPostOrBuilder();
 
     /**
-     * <code>optional .Signature signedMessage = 2;</code>
+     * <code>.Signature signedMessage = 2;</code>
      */
     org.metamesh.chub.proto.Message.Signature getSignedMessage();
     /**
-     * <code>optional .Signature signedMessage = 2;</code>
+     * <code>.Signature signedMessage = 2;</code>
      */
     org.metamesh.chub.proto.Message.SignatureOrBuilder getSignedMessageOrBuilder();
 
     /**
-     * <code>optional .PrivateKey privateKey = 3;</code>
+     * <code>.PrivateKey privateKey = 3;</code>
      */
     org.metamesh.chub.proto.Message.PrivateKey getPrivateKey();
     /**
-     * <code>optional .PrivateKey privateKey = 3;</code>
+     * <code>.PrivateKey privateKey = 3;</code>
      */
     org.metamesh.chub.proto.Message.PrivateKeyOrBuilder getPrivateKeyOrBuilder();
 
     /**
-     * <code>optional .PublicKey publicKey = 4;</code>
+     * <code>.PublicKey publicKey = 4;</code>
      */
     org.metamesh.chub.proto.Message.PublicKey getPublicKey();
     /**
-     * <code>optional .PublicKey publicKey = 4;</code>
+     * <code>.PublicKey publicKey = 4;</code>
      */
     org.metamesh.chub.proto.Message.PublicKeyOrBuilder getPublicKeyOrBuilder();
 
     /**
-     * <code>optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
+     * <code>.SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
      */
     org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage getSymmetriclyEncryptedMessage();
     /**
-     * <code>optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
+     * <code>.SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
      */
     org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessageOrBuilder getSymmetriclyEncryptedMessageOrBuilder();
 
     /**
-     * <code>optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
+     * <code>.AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
      */
     org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessage getAsymmetriclyEncryptedMessage();
     /**
-     * <code>optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
+     * <code>.AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
      */
     org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessageOrBuilder getAsymmetriclyEncryptedMessageOrBuilder();
 
@@ -9720,7 +9729,7 @@ public final class Message {
      *    HybridEncryptedMessage hybridEncryptedMessage = 7;
      * </pre>
      *
-     * <code>optional .MessageReference reference = 10;</code>
+     * <code>.MessageReference reference = 10;</code>
      */
     org.metamesh.chub.proto.Message.MessageReference getReference();
     /**
@@ -9728,30 +9737,30 @@ public final class Message {
      *    HybridEncryptedMessage hybridEncryptedMessage = 7;
      * </pre>
      *
-     * <code>optional .MessageReference reference = 10;</code>
+     * <code>.MessageReference reference = 10;</code>
      */
     org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getReferenceOrBuilder();
 
     /**
-     * <code>optional .Signature message_signature = 8;</code>
+     * <code>.Signature message_signature = 8;</code>
      */
     boolean hasMessageSignature();
     /**
-     * <code>optional .Signature message_signature = 8;</code>
+     * <code>.Signature message_signature = 8;</code>
      */
     org.metamesh.chub.proto.Message.Signature getMessageSignature();
     /**
-     * <code>optional .Signature message_signature = 8;</code>
+     * <code>.Signature message_signature = 8;</code>
      */
     org.metamesh.chub.proto.Message.SignatureOrBuilder getMessageSignatureOrBuilder();
 
     /**
-     * <code>optional fixed64 timestamp = 9;</code>
+     * <code>fixed64 timestamp = 9;</code>
      */
     long getTimestamp();
 
     /**
-     * <code>optional bytes id = 11;</code>
+     * <code>bytes id = 11;</code>
      */
     com.google.protobuf.ByteString getId();
 
@@ -9992,7 +10001,7 @@ public final class Message {
 
     public static final int POST_FIELD_NUMBER = 1;
     /**
-     * <code>optional .Post post = 1;</code>
+     * <code>.Post post = 1;</code>
      */
     public org.metamesh.chub.proto.Message.Post getPost() {
       if (msgCase_ == 1) {
@@ -10001,7 +10010,7 @@ public final class Message {
       return org.metamesh.chub.proto.Message.Post.getDefaultInstance();
     }
     /**
-     * <code>optional .Post post = 1;</code>
+     * <code>.Post post = 1;</code>
      */
     public org.metamesh.chub.proto.Message.PostOrBuilder getPostOrBuilder() {
       if (msgCase_ == 1) {
@@ -10012,7 +10021,7 @@ public final class Message {
 
     public static final int SIGNEDMESSAGE_FIELD_NUMBER = 2;
     /**
-     * <code>optional .Signature signedMessage = 2;</code>
+     * <code>.Signature signedMessage = 2;</code>
      */
     public org.metamesh.chub.proto.Message.Signature getSignedMessage() {
       if (msgCase_ == 2) {
@@ -10021,7 +10030,7 @@ public final class Message {
       return org.metamesh.chub.proto.Message.Signature.getDefaultInstance();
     }
     /**
-     * <code>optional .Signature signedMessage = 2;</code>
+     * <code>.Signature signedMessage = 2;</code>
      */
     public org.metamesh.chub.proto.Message.SignatureOrBuilder getSignedMessageOrBuilder() {
       if (msgCase_ == 2) {
@@ -10032,7 +10041,7 @@ public final class Message {
 
     public static final int PRIVATEKEY_FIELD_NUMBER = 3;
     /**
-     * <code>optional .PrivateKey privateKey = 3;</code>
+     * <code>.PrivateKey privateKey = 3;</code>
      */
     public org.metamesh.chub.proto.Message.PrivateKey getPrivateKey() {
       if (msgCase_ == 3) {
@@ -10041,7 +10050,7 @@ public final class Message {
       return org.metamesh.chub.proto.Message.PrivateKey.getDefaultInstance();
     }
     /**
-     * <code>optional .PrivateKey privateKey = 3;</code>
+     * <code>.PrivateKey privateKey = 3;</code>
      */
     public org.metamesh.chub.proto.Message.PrivateKeyOrBuilder getPrivateKeyOrBuilder() {
       if (msgCase_ == 3) {
@@ -10052,7 +10061,7 @@ public final class Message {
 
     public static final int PUBLICKEY_FIELD_NUMBER = 4;
     /**
-     * <code>optional .PublicKey publicKey = 4;</code>
+     * <code>.PublicKey publicKey = 4;</code>
      */
     public org.metamesh.chub.proto.Message.PublicKey getPublicKey() {
       if (msgCase_ == 4) {
@@ -10061,7 +10070,7 @@ public final class Message {
       return org.metamesh.chub.proto.Message.PublicKey.getDefaultInstance();
     }
     /**
-     * <code>optional .PublicKey publicKey = 4;</code>
+     * <code>.PublicKey publicKey = 4;</code>
      */
     public org.metamesh.chub.proto.Message.PublicKeyOrBuilder getPublicKeyOrBuilder() {
       if (msgCase_ == 4) {
@@ -10072,7 +10081,7 @@ public final class Message {
 
     public static final int SYMMETRICLYENCRYPTEDMESSAGE_FIELD_NUMBER = 5;
     /**
-     * <code>optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
+     * <code>.SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
      */
     public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage getSymmetriclyEncryptedMessage() {
       if (msgCase_ == 5) {
@@ -10081,7 +10090,7 @@ public final class Message {
       return org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage.getDefaultInstance();
     }
     /**
-     * <code>optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
+     * <code>.SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
      */
     public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessageOrBuilder getSymmetriclyEncryptedMessageOrBuilder() {
       if (msgCase_ == 5) {
@@ -10092,7 +10101,7 @@ public final class Message {
 
     public static final int ASYMMETRICLYENCRYPTEDMESSAGE_FIELD_NUMBER = 6;
     /**
-     * <code>optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
+     * <code>.AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
      */
     public org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessage getAsymmetriclyEncryptedMessage() {
       if (msgCase_ == 6) {
@@ -10101,7 +10110,7 @@ public final class Message {
       return org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessage.getDefaultInstance();
     }
     /**
-     * <code>optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
+     * <code>.AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
      */
     public org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessageOrBuilder getAsymmetriclyEncryptedMessageOrBuilder() {
       if (msgCase_ == 6) {
@@ -10116,7 +10125,7 @@ public final class Message {
      *    HybridEncryptedMessage hybridEncryptedMessage = 7;
      * </pre>
      *
-     * <code>optional .MessageReference reference = 10;</code>
+     * <code>.MessageReference reference = 10;</code>
      */
     public org.metamesh.chub.proto.Message.MessageReference getReference() {
       if (msgCase_ == 10) {
@@ -10129,7 +10138,7 @@ public final class Message {
      *    HybridEncryptedMessage hybridEncryptedMessage = 7;
      * </pre>
      *
-     * <code>optional .MessageReference reference = 10;</code>
+     * <code>.MessageReference reference = 10;</code>
      */
     public org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getReferenceOrBuilder() {
       if (msgCase_ == 10) {
@@ -10141,19 +10150,19 @@ public final class Message {
     public static final int MESSAGE_SIGNATURE_FIELD_NUMBER = 8;
     private org.metamesh.chub.proto.Message.Signature messageSignature_;
     /**
-     * <code>optional .Signature message_signature = 8;</code>
+     * <code>.Signature message_signature = 8;</code>
      */
     public boolean hasMessageSignature() {
       return messageSignature_ != null;
     }
     /**
-     * <code>optional .Signature message_signature = 8;</code>
+     * <code>.Signature message_signature = 8;</code>
      */
     public org.metamesh.chub.proto.Message.Signature getMessageSignature() {
       return messageSignature_ == null ? org.metamesh.chub.proto.Message.Signature.getDefaultInstance() : messageSignature_;
     }
     /**
-     * <code>optional .Signature message_signature = 8;</code>
+     * <code>.Signature message_signature = 8;</code>
      */
     public org.metamesh.chub.proto.Message.SignatureOrBuilder getMessageSignatureOrBuilder() {
       return getMessageSignature();
@@ -10162,7 +10171,7 @@ public final class Message {
     public static final int TIMESTAMP_FIELD_NUMBER = 9;
     private long timestamp_;
     /**
-     * <code>optional fixed64 timestamp = 9;</code>
+     * <code>fixed64 timestamp = 9;</code>
      */
     public long getTimestamp() {
       return timestamp_;
@@ -10171,7 +10180,7 @@ public final class Message {
     public static final int ID_FIELD_NUMBER = 11;
     private com.google.protobuf.ByteString id_;
     /**
-     * <code>optional bytes id = 11;</code>
+     * <code>bytes id = 11;</code>
      */
     public com.google.protobuf.ByteString getId() {
       return id_;
@@ -10335,7 +10344,7 @@ public final class Message {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasMessageSignature()) {
         hash = (37 * hash) + MESSAGE_SIGNATURE_FIELD_NUMBER;
         hash = (53 * hash) + getMessageSignature().hashCode();
@@ -10713,7 +10722,7 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.Post, org.metamesh.chub.proto.Message.Post.Builder, org.metamesh.chub.proto.Message.PostOrBuilder> postBuilder_;
       /**
-       * <code>optional .Post post = 1;</code>
+       * <code>.Post post = 1;</code>
        */
       public org.metamesh.chub.proto.Message.Post getPost() {
         if (postBuilder_ == null) {
@@ -10729,7 +10738,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .Post post = 1;</code>
+       * <code>.Post post = 1;</code>
        */
       public Builder setPost(org.metamesh.chub.proto.Message.Post value) {
         if (postBuilder_ == null) {
@@ -10745,7 +10754,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Post post = 1;</code>
+       * <code>.Post post = 1;</code>
        */
       public Builder setPost(
           org.metamesh.chub.proto.Message.Post.Builder builderForValue) {
@@ -10759,7 +10768,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Post post = 1;</code>
+       * <code>.Post post = 1;</code>
        */
       public Builder mergePost(org.metamesh.chub.proto.Message.Post value) {
         if (postBuilder_ == null) {
@@ -10781,7 +10790,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Post post = 1;</code>
+       * <code>.Post post = 1;</code>
        */
       public Builder clearPost() {
         if (postBuilder_ == null) {
@@ -10800,13 +10809,13 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Post post = 1;</code>
+       * <code>.Post post = 1;</code>
        */
       public org.metamesh.chub.proto.Message.Post.Builder getPostBuilder() {
         return getPostFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .Post post = 1;</code>
+       * <code>.Post post = 1;</code>
        */
       public org.metamesh.chub.proto.Message.PostOrBuilder getPostOrBuilder() {
         if ((msgCase_ == 1) && (postBuilder_ != null)) {
@@ -10819,7 +10828,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .Post post = 1;</code>
+       * <code>.Post post = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.Post, org.metamesh.chub.proto.Message.Post.Builder, org.metamesh.chub.proto.Message.PostOrBuilder> 
@@ -10843,7 +10852,7 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.Signature, org.metamesh.chub.proto.Message.Signature.Builder, org.metamesh.chub.proto.Message.SignatureOrBuilder> signedMessageBuilder_;
       /**
-       * <code>optional .Signature signedMessage = 2;</code>
+       * <code>.Signature signedMessage = 2;</code>
        */
       public org.metamesh.chub.proto.Message.Signature getSignedMessage() {
         if (signedMessageBuilder_ == null) {
@@ -10859,7 +10868,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .Signature signedMessage = 2;</code>
+       * <code>.Signature signedMessage = 2;</code>
        */
       public Builder setSignedMessage(org.metamesh.chub.proto.Message.Signature value) {
         if (signedMessageBuilder_ == null) {
@@ -10875,7 +10884,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Signature signedMessage = 2;</code>
+       * <code>.Signature signedMessage = 2;</code>
        */
       public Builder setSignedMessage(
           org.metamesh.chub.proto.Message.Signature.Builder builderForValue) {
@@ -10889,7 +10898,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Signature signedMessage = 2;</code>
+       * <code>.Signature signedMessage = 2;</code>
        */
       public Builder mergeSignedMessage(org.metamesh.chub.proto.Message.Signature value) {
         if (signedMessageBuilder_ == null) {
@@ -10911,7 +10920,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Signature signedMessage = 2;</code>
+       * <code>.Signature signedMessage = 2;</code>
        */
       public Builder clearSignedMessage() {
         if (signedMessageBuilder_ == null) {
@@ -10930,13 +10939,13 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Signature signedMessage = 2;</code>
+       * <code>.Signature signedMessage = 2;</code>
        */
       public org.metamesh.chub.proto.Message.Signature.Builder getSignedMessageBuilder() {
         return getSignedMessageFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .Signature signedMessage = 2;</code>
+       * <code>.Signature signedMessage = 2;</code>
        */
       public org.metamesh.chub.proto.Message.SignatureOrBuilder getSignedMessageOrBuilder() {
         if ((msgCase_ == 2) && (signedMessageBuilder_ != null)) {
@@ -10949,7 +10958,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .Signature signedMessage = 2;</code>
+       * <code>.Signature signedMessage = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.Signature, org.metamesh.chub.proto.Message.Signature.Builder, org.metamesh.chub.proto.Message.SignatureOrBuilder> 
@@ -10973,7 +10982,7 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.PrivateKey, org.metamesh.chub.proto.Message.PrivateKey.Builder, org.metamesh.chub.proto.Message.PrivateKeyOrBuilder> privateKeyBuilder_;
       /**
-       * <code>optional .PrivateKey privateKey = 3;</code>
+       * <code>.PrivateKey privateKey = 3;</code>
        */
       public org.metamesh.chub.proto.Message.PrivateKey getPrivateKey() {
         if (privateKeyBuilder_ == null) {
@@ -10989,7 +10998,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .PrivateKey privateKey = 3;</code>
+       * <code>.PrivateKey privateKey = 3;</code>
        */
       public Builder setPrivateKey(org.metamesh.chub.proto.Message.PrivateKey value) {
         if (privateKeyBuilder_ == null) {
@@ -11005,7 +11014,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .PrivateKey privateKey = 3;</code>
+       * <code>.PrivateKey privateKey = 3;</code>
        */
       public Builder setPrivateKey(
           org.metamesh.chub.proto.Message.PrivateKey.Builder builderForValue) {
@@ -11019,7 +11028,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .PrivateKey privateKey = 3;</code>
+       * <code>.PrivateKey privateKey = 3;</code>
        */
       public Builder mergePrivateKey(org.metamesh.chub.proto.Message.PrivateKey value) {
         if (privateKeyBuilder_ == null) {
@@ -11041,7 +11050,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .PrivateKey privateKey = 3;</code>
+       * <code>.PrivateKey privateKey = 3;</code>
        */
       public Builder clearPrivateKey() {
         if (privateKeyBuilder_ == null) {
@@ -11060,13 +11069,13 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .PrivateKey privateKey = 3;</code>
+       * <code>.PrivateKey privateKey = 3;</code>
        */
       public org.metamesh.chub.proto.Message.PrivateKey.Builder getPrivateKeyBuilder() {
         return getPrivateKeyFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .PrivateKey privateKey = 3;</code>
+       * <code>.PrivateKey privateKey = 3;</code>
        */
       public org.metamesh.chub.proto.Message.PrivateKeyOrBuilder getPrivateKeyOrBuilder() {
         if ((msgCase_ == 3) && (privateKeyBuilder_ != null)) {
@@ -11079,7 +11088,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .PrivateKey privateKey = 3;</code>
+       * <code>.PrivateKey privateKey = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.PrivateKey, org.metamesh.chub.proto.Message.PrivateKey.Builder, org.metamesh.chub.proto.Message.PrivateKeyOrBuilder> 
@@ -11103,7 +11112,7 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.PublicKey, org.metamesh.chub.proto.Message.PublicKey.Builder, org.metamesh.chub.proto.Message.PublicKeyOrBuilder> publicKeyBuilder_;
       /**
-       * <code>optional .PublicKey publicKey = 4;</code>
+       * <code>.PublicKey publicKey = 4;</code>
        */
       public org.metamesh.chub.proto.Message.PublicKey getPublicKey() {
         if (publicKeyBuilder_ == null) {
@@ -11119,7 +11128,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .PublicKey publicKey = 4;</code>
+       * <code>.PublicKey publicKey = 4;</code>
        */
       public Builder setPublicKey(org.metamesh.chub.proto.Message.PublicKey value) {
         if (publicKeyBuilder_ == null) {
@@ -11135,7 +11144,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .PublicKey publicKey = 4;</code>
+       * <code>.PublicKey publicKey = 4;</code>
        */
       public Builder setPublicKey(
           org.metamesh.chub.proto.Message.PublicKey.Builder builderForValue) {
@@ -11149,7 +11158,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .PublicKey publicKey = 4;</code>
+       * <code>.PublicKey publicKey = 4;</code>
        */
       public Builder mergePublicKey(org.metamesh.chub.proto.Message.PublicKey value) {
         if (publicKeyBuilder_ == null) {
@@ -11171,7 +11180,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .PublicKey publicKey = 4;</code>
+       * <code>.PublicKey publicKey = 4;</code>
        */
       public Builder clearPublicKey() {
         if (publicKeyBuilder_ == null) {
@@ -11190,13 +11199,13 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .PublicKey publicKey = 4;</code>
+       * <code>.PublicKey publicKey = 4;</code>
        */
       public org.metamesh.chub.proto.Message.PublicKey.Builder getPublicKeyBuilder() {
         return getPublicKeyFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .PublicKey publicKey = 4;</code>
+       * <code>.PublicKey publicKey = 4;</code>
        */
       public org.metamesh.chub.proto.Message.PublicKeyOrBuilder getPublicKeyOrBuilder() {
         if ((msgCase_ == 4) && (publicKeyBuilder_ != null)) {
@@ -11209,7 +11218,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .PublicKey publicKey = 4;</code>
+       * <code>.PublicKey publicKey = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.PublicKey, org.metamesh.chub.proto.Message.PublicKey.Builder, org.metamesh.chub.proto.Message.PublicKeyOrBuilder> 
@@ -11233,7 +11242,7 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage, org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage.Builder, org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessageOrBuilder> symmetriclyEncryptedMessageBuilder_;
       /**
-       * <code>optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
+       * <code>.SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
        */
       public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage getSymmetriclyEncryptedMessage() {
         if (symmetriclyEncryptedMessageBuilder_ == null) {
@@ -11249,7 +11258,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
+       * <code>.SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
        */
       public Builder setSymmetriclyEncryptedMessage(org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage value) {
         if (symmetriclyEncryptedMessageBuilder_ == null) {
@@ -11265,7 +11274,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
+       * <code>.SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
        */
       public Builder setSymmetriclyEncryptedMessage(
           org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage.Builder builderForValue) {
@@ -11279,7 +11288,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
+       * <code>.SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
        */
       public Builder mergeSymmetriclyEncryptedMessage(org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage value) {
         if (symmetriclyEncryptedMessageBuilder_ == null) {
@@ -11301,7 +11310,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
+       * <code>.SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
        */
       public Builder clearSymmetriclyEncryptedMessage() {
         if (symmetriclyEncryptedMessageBuilder_ == null) {
@@ -11320,13 +11329,13 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
+       * <code>.SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
        */
       public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage.Builder getSymmetriclyEncryptedMessageBuilder() {
         return getSymmetriclyEncryptedMessageFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
+       * <code>.SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
        */
       public org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessageOrBuilder getSymmetriclyEncryptedMessageOrBuilder() {
         if ((msgCase_ == 5) && (symmetriclyEncryptedMessageBuilder_ != null)) {
@@ -11339,7 +11348,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
+       * <code>.SymmetriclyEncryptedMessage symmetriclyEncryptedMessage = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage, org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessage.Builder, org.metamesh.chub.proto.Message.SymmetriclyEncryptedMessageOrBuilder> 
@@ -11363,7 +11372,7 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessage, org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessage.Builder, org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessageOrBuilder> asymmetriclyEncryptedMessageBuilder_;
       /**
-       * <code>optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
+       * <code>.AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
        */
       public org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessage getAsymmetriclyEncryptedMessage() {
         if (asymmetriclyEncryptedMessageBuilder_ == null) {
@@ -11379,7 +11388,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
+       * <code>.AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
        */
       public Builder setAsymmetriclyEncryptedMessage(org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessage value) {
         if (asymmetriclyEncryptedMessageBuilder_ == null) {
@@ -11395,7 +11404,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
+       * <code>.AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
        */
       public Builder setAsymmetriclyEncryptedMessage(
           org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessage.Builder builderForValue) {
@@ -11409,7 +11418,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
+       * <code>.AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
        */
       public Builder mergeAsymmetriclyEncryptedMessage(org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessage value) {
         if (asymmetriclyEncryptedMessageBuilder_ == null) {
@@ -11431,7 +11440,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
+       * <code>.AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
        */
       public Builder clearAsymmetriclyEncryptedMessage() {
         if (asymmetriclyEncryptedMessageBuilder_ == null) {
@@ -11450,13 +11459,13 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
+       * <code>.AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
        */
       public org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessage.Builder getAsymmetriclyEncryptedMessageBuilder() {
         return getAsymmetriclyEncryptedMessageFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
+       * <code>.AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
        */
       public org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessageOrBuilder getAsymmetriclyEncryptedMessageOrBuilder() {
         if ((msgCase_ == 6) && (asymmetriclyEncryptedMessageBuilder_ != null)) {
@@ -11469,7 +11478,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
+       * <code>.AsymmetriclyEncryptedMessage asymmetriclyEncryptedMessage = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessage, org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessage.Builder, org.metamesh.chub.proto.Message.AsymmetriclyEncryptedMessageOrBuilder> 
@@ -11497,7 +11506,7 @@ public final class Message {
        *    HybridEncryptedMessage hybridEncryptedMessage = 7;
        * </pre>
        *
-       * <code>optional .MessageReference reference = 10;</code>
+       * <code>.MessageReference reference = 10;</code>
        */
       public org.metamesh.chub.proto.Message.MessageReference getReference() {
         if (referenceBuilder_ == null) {
@@ -11517,7 +11526,7 @@ public final class Message {
        *    HybridEncryptedMessage hybridEncryptedMessage = 7;
        * </pre>
        *
-       * <code>optional .MessageReference reference = 10;</code>
+       * <code>.MessageReference reference = 10;</code>
        */
       public Builder setReference(org.metamesh.chub.proto.Message.MessageReference value) {
         if (referenceBuilder_ == null) {
@@ -11537,7 +11546,7 @@ public final class Message {
        *    HybridEncryptedMessage hybridEncryptedMessage = 7;
        * </pre>
        *
-       * <code>optional .MessageReference reference = 10;</code>
+       * <code>.MessageReference reference = 10;</code>
        */
       public Builder setReference(
           org.metamesh.chub.proto.Message.MessageReference.Builder builderForValue) {
@@ -11555,7 +11564,7 @@ public final class Message {
        *    HybridEncryptedMessage hybridEncryptedMessage = 7;
        * </pre>
        *
-       * <code>optional .MessageReference reference = 10;</code>
+       * <code>.MessageReference reference = 10;</code>
        */
       public Builder mergeReference(org.metamesh.chub.proto.Message.MessageReference value) {
         if (referenceBuilder_ == null) {
@@ -11581,7 +11590,7 @@ public final class Message {
        *    HybridEncryptedMessage hybridEncryptedMessage = 7;
        * </pre>
        *
-       * <code>optional .MessageReference reference = 10;</code>
+       * <code>.MessageReference reference = 10;</code>
        */
       public Builder clearReference() {
         if (referenceBuilder_ == null) {
@@ -11604,7 +11613,7 @@ public final class Message {
        *    HybridEncryptedMessage hybridEncryptedMessage = 7;
        * </pre>
        *
-       * <code>optional .MessageReference reference = 10;</code>
+       * <code>.MessageReference reference = 10;</code>
        */
       public org.metamesh.chub.proto.Message.MessageReference.Builder getReferenceBuilder() {
         return getReferenceFieldBuilder().getBuilder();
@@ -11614,7 +11623,7 @@ public final class Message {
        *    HybridEncryptedMessage hybridEncryptedMessage = 7;
        * </pre>
        *
-       * <code>optional .MessageReference reference = 10;</code>
+       * <code>.MessageReference reference = 10;</code>
        */
       public org.metamesh.chub.proto.Message.MessageReferenceOrBuilder getReferenceOrBuilder() {
         if ((msgCase_ == 10) && (referenceBuilder_ != null)) {
@@ -11631,7 +11640,7 @@ public final class Message {
        *    HybridEncryptedMessage hybridEncryptedMessage = 7;
        * </pre>
        *
-       * <code>optional .MessageReference reference = 10;</code>
+       * <code>.MessageReference reference = 10;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.MessageReference, org.metamesh.chub.proto.Message.MessageReference.Builder, org.metamesh.chub.proto.Message.MessageReferenceOrBuilder> 
@@ -11656,13 +11665,13 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.Signature, org.metamesh.chub.proto.Message.Signature.Builder, org.metamesh.chub.proto.Message.SignatureOrBuilder> messageSignatureBuilder_;
       /**
-       * <code>optional .Signature message_signature = 8;</code>
+       * <code>.Signature message_signature = 8;</code>
        */
       public boolean hasMessageSignature() {
         return messageSignatureBuilder_ != null || messageSignature_ != null;
       }
       /**
-       * <code>optional .Signature message_signature = 8;</code>
+       * <code>.Signature message_signature = 8;</code>
        */
       public org.metamesh.chub.proto.Message.Signature getMessageSignature() {
         if (messageSignatureBuilder_ == null) {
@@ -11672,7 +11681,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .Signature message_signature = 8;</code>
+       * <code>.Signature message_signature = 8;</code>
        */
       public Builder setMessageSignature(org.metamesh.chub.proto.Message.Signature value) {
         if (messageSignatureBuilder_ == null) {
@@ -11688,7 +11697,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Signature message_signature = 8;</code>
+       * <code>.Signature message_signature = 8;</code>
        */
       public Builder setMessageSignature(
           org.metamesh.chub.proto.Message.Signature.Builder builderForValue) {
@@ -11702,7 +11711,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Signature message_signature = 8;</code>
+       * <code>.Signature message_signature = 8;</code>
        */
       public Builder mergeMessageSignature(org.metamesh.chub.proto.Message.Signature value) {
         if (messageSignatureBuilder_ == null) {
@@ -11720,7 +11729,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Signature message_signature = 8;</code>
+       * <code>.Signature message_signature = 8;</code>
        */
       public Builder clearMessageSignature() {
         if (messageSignatureBuilder_ == null) {
@@ -11734,7 +11743,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional .Signature message_signature = 8;</code>
+       * <code>.Signature message_signature = 8;</code>
        */
       public org.metamesh.chub.proto.Message.Signature.Builder getMessageSignatureBuilder() {
         
@@ -11742,7 +11751,7 @@ public final class Message {
         return getMessageSignatureFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .Signature message_signature = 8;</code>
+       * <code>.Signature message_signature = 8;</code>
        */
       public org.metamesh.chub.proto.Message.SignatureOrBuilder getMessageSignatureOrBuilder() {
         if (messageSignatureBuilder_ != null) {
@@ -11753,7 +11762,7 @@ public final class Message {
         }
       }
       /**
-       * <code>optional .Signature message_signature = 8;</code>
+       * <code>.Signature message_signature = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.metamesh.chub.proto.Message.Signature, org.metamesh.chub.proto.Message.Signature.Builder, org.metamesh.chub.proto.Message.SignatureOrBuilder> 
@@ -11771,13 +11780,13 @@ public final class Message {
 
       private long timestamp_ ;
       /**
-       * <code>optional fixed64 timestamp = 9;</code>
+       * <code>fixed64 timestamp = 9;</code>
        */
       public long getTimestamp() {
         return timestamp_;
       }
       /**
-       * <code>optional fixed64 timestamp = 9;</code>
+       * <code>fixed64 timestamp = 9;</code>
        */
       public Builder setTimestamp(long value) {
         
@@ -11786,7 +11795,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional fixed64 timestamp = 9;</code>
+       * <code>fixed64 timestamp = 9;</code>
        */
       public Builder clearTimestamp() {
         
@@ -11797,13 +11806,13 @@ public final class Message {
 
       private com.google.protobuf.ByteString id_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes id = 11;</code>
+       * <code>bytes id = 11;</code>
        */
       public com.google.protobuf.ByteString getId() {
         return id_;
       }
       /**
-       * <code>optional bytes id = 11;</code>
+       * <code>bytes id = 11;</code>
        */
       public Builder setId(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -11815,7 +11824,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>optional bytes id = 11;</code>
+       * <code>bytes id = 11;</code>
        */
       public Builder clearId() {
         
@@ -11981,18 +11990,19 @@ public final class Message {
       "natureType\022\023\n\017SHA512withECDSA\020\000\022\025\n\021SHA51" +
       "2withEd25519\020\001*@\n\021AsymmetricKeyType\022\r\n\ts" +
       "ecp384r1\020\000\022\r\n\tsecp521r1\020\001\022\r\n\tEdDSA_256\020\002" +
-      "*B\n\020SymmetricKeyType\022.\n*AES_256_GCM_PBKD" +
-      "F2WithHmacSHA256_65536_128\020\000*&\n\017KeyEncod" +
-      "ingType\022\t\n\005pkcs8\020\000\022\010\n\004x509\020\001*\025\n\tImageTyp" +
-      "e\022\010\n\004jpeg\020\000*\212\002\n\013MessageType\022\017\n\013MessagePo" +
-      "st\020\000\022\024\n\020MessageSignature\020\001\022\025\n\021MessagePri",
-      "vateKey\020\002\022\024\n\020MessagePublicKey\020\003\022&\n\"Messa" +
-      "geSymmetriclyEncryptedMessage\020\004\022\'\n#Messa" +
-      "geAsymmetriclyEncryptedMessage\020\005\022!\n\035Mess" +
-      "ageHybridEncryptedMessage\020\006\022\033\n\027MessageRe" +
-      "ferenceMessage\020\007\022\026\n\022MessageSymetricKey\020d" +
-      "B\"\n\027org.metamesh.chub.protoB\007Messageb\006pr" +
-      "oto3"
+      "*r\n\020SymmetricKeyType\022.\n*AES_256_GCM_PBKD" +
+      "F2WithHmacSHA256_65536_128\020\000\022.\n*AES_128_" +
+      "GCM_PBKDF2WithHmacSHA256_65536_128\020\001*&\n\017" +
+      "KeyEncodingType\022\t\n\005pkcs8\020\000\022\010\n\004x509\020\001*\025\n\t" +
+      "ImageType\022\010\n\004jpeg\020\000*\212\002\n\013MessageType\022\017\n\013M",
+      "essagePost\020\000\022\024\n\020MessageSignature\020\001\022\025\n\021Me" +
+      "ssagePrivateKey\020\002\022\024\n\020MessagePublicKey\020\003\022" +
+      "&\n\"MessageSymmetriclyEncryptedMessage\020\004\022" +
+      "\'\n#MessageAsymmetriclyEncryptedMessage\020\005" +
+      "\022!\n\035MessageHybridEncryptedMessage\020\006\022\033\n\027M" +
+      "essageReferenceMessage\020\007\022\026\n\022MessageSymet" +
+      "ricKey\020dB\"\n\027org.metamesh.chub.protoB\007Mes" +
+      "sageb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

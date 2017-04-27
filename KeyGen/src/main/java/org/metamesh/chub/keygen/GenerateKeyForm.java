@@ -174,7 +174,7 @@ public class GenerateKeyForm extends javax.swing.JPanel {
                 }
             }
 
-            Message.PrivateKey priv_key_enc = PBSerialize.serialize(priv, Message.SymmetricKeyType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128, Password.getPassword());
+            Message.PrivateKey priv_key_enc = PBSerialize.serialize(priv, Message.SymmetricKeyType.AES_128_GCM_PBKDF2WithHmacSHA256_65536_128, Password.getPassword());
             Message.PublicKey pub_key_enc = PBSerialize.serialize(pub);
 
             String base_filename = email.getText()

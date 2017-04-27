@@ -49,7 +49,7 @@ class TimeComboValue {
         }
         DecimalFormat df2 = new DecimalFormat("00");
 
-        String time = df2.format(h) + ":" + df2.format(m) + " " + ampm;
+        String time = df2.format(h2) + ":" + df2.format(m) + " " + ampm;
         return time;
     }
 }
@@ -320,6 +320,7 @@ public class PostForm extends javax.swing.JPanel {
 
 //            Date start = ((GregorianCalendar) (startDatePicker.getJDateInstantPanel().getModel().getValue())).getTime();
 //            Date end = ((GregorianCalendar) (endDatePicker.getJDateInstantPanel().getModel().getValue())).getTime();
+            // The document needs to have the contents of <body> extracted
             System.out.println(metaphaseEditor1.getDocument());
             Message.Post.Builder pb = Message.Post.newBuilder()
                     .setId(ByteString.copyFrom(UUIDHelper.randomUUID()))

@@ -16,8 +16,9 @@ import org.metamesh.chub.proto.Message;
 public enum SymmetricEncryptionType {
 
     None,
-    AES_256_GCM_PBKDF2WithHmacSHA256_65536_128("AES", 256, "GCM", "NoPadding", "PBKDF2WithHmacSHA256", 65536, 128);
-
+    AES_256_GCM_PBKDF2WithHmacSHA256_65536_128("AES", 256, "GCM", "NoPadding", "PBKDF2WithHmacSHA256", 65536, 128),
+    AES_128_GCM_PBKDF2WithHmacSHA256_65536_128("AES", 128, "GCM", "NoPadding", "PBKDF2WithHmacSHA256", 65536, 128);
+    
     public final boolean isEncrypted;
     public final String enc_algorithm;
     public final int key_length;
@@ -26,10 +27,6 @@ public enum SymmetricEncryptionType {
     public final String kdf_algorithm;
     public final int kdf_iterations;
     public final int tag_length;
-
-    static {
-        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
-    }
 
     private SymmetricEncryptionType(String enc_algorithm, int key_length, String mode, String padding, String kdf_algorithm, int kdf_iterations, int tag_length) {
         this.enc_algorithm = enc_algorithm;
@@ -57,7 +54,7 @@ public enum SymmetricEncryptionType {
         if (!isEncrypted) {
             return new NullCipher();
         }
-        return Cipher.getInstance(enc_algorithm + "/" + mode + "/" + padding, "BC");
+        return Cipher.getInstance(enc_algorithm + "/" + mode + "/" + padding);
     }
 
     public SecretKeyAndSalt keyFromPassword(char password[]) throws GeneralSecurityException {
@@ -86,6 +83,8 @@ public enum SymmetricEncryptionType {
         switch (et) {
             case AES_256_GCM_PBKDF2WithHmacSHA256_65536_128:
                 return SymmetricEncryptionType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128;
+            case AES_128_GCM_PBKDF2WithHmacSHA256_65536_128:
+                return SymmetricEncryptionType.AES_128_GCM_PBKDF2WithHmacSHA256_65536_128;
             case UNRECOGNIZED:
             default:
                 throw new AssertionError(et);
@@ -96,6 +95,8 @@ public enum SymmetricEncryptionType {
         switch (this) {
             case AES_256_GCM_PBKDF2WithHmacSHA256_65536_128:
                 return Message.SymmetricKeyType.AES_256_GCM_PBKDF2WithHmacSHA256_65536_128;
+            case AES_128_GCM_PBKDF2WithHmacSHA256_65536_128:
+                return Message.SymmetricKeyType.AES_128_GCM_PBKDF2WithHmacSHA256_65536_128;
             case None:
             default:
                 throw new AssertionError(this.name());

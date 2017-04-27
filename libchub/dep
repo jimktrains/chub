@@ -1,0 +1,11 @@
+mvn install:install-file -Dfile=C:\Users\AdamL\Downloads\eddsa-0.1.2-jce.jar -DgeneratePom=true -Dpackaging=jar -Dversion=0.1.2-jce -DartifactId=eddsa -DgroupId=net.i2p.crypto
+
+mvn install:install-file -Dfile=C:\Users\AdamL\Downloads\jazzy-core-1.jar -DgeneratePom=true -Dpackaging=jar -Dversion=1 -DartifactId=jazzy-core -DgroupId=com.kenai
+
+mvn install:install-file -Dfile=C:\Users\AdamL\Downloads\jazzy-swing-1.jar -DgeneratePom=true -Dpackaging=jar -Dversion=1 -DartifactId=jazzy-swing -DgroupId=com.kenai
+
+mvn install:install-file -Dfile=C:\Users\AdamL\Downloads\metaphaseeditor-1.jar -DgeneratePom=true -Dpackaging=jar -Dversion=1 -DartifactId=metaphaseeditor -DgroupId=com.kenai
+
+mvn install:install-file -Dfile=C:\Users\AdamL\Downloads\jdatepicker-2.0.0-SNAPSHOT.jar -DgeneratePom=true -Dpackaging=jar -Dversion=2.0.0-SNAPSHOT -DartifactId=jdatepicker -DgroupId=org.jdatepicker
+
+mvn install:install-file -Dfile=C:\Users\AdamL\Downloads\bcprov-jdk15on-156.jar -DgeneratePom=true -Dpackaging=jar -Dversion=1.55 -DartifactId=bcprov-jdk15on -DgroupId=org.bouncycastle
