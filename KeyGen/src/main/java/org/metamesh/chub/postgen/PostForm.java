@@ -14,12 +14,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import org.jdatepicker.DateModel;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.metamesh.chub.crypto.keys.ChubPrivKey;
 import org.metamesh.chub.crypto.serialize.PBSerialize;
 import org.metamesh.chub.proto.Message;
@@ -37,8 +40,15 @@ class TimeComboValue {
         this.m = m;
     }
 
+    public int getSecOffset() {
+        return (3600 * h) + (60 * m);
+    }
+
+    @Override
     public String toString() {
-        if (h < 0) { return "No Specific Time"; }
+        if (h < 0) {
+            return "No Specific Time";
+        }
         String ampm = h < 12 ? "AM" : "PM";
         int h2 = h;
         if (h2 > 12) {
@@ -66,16 +76,16 @@ public class PostForm extends javax.swing.JPanel {
         initComponents();
         Settings.initDir();
 
-        jComboBox1.removeAllItems();
-        jComboBox2.removeAllItems();
-        jComboBox1.addItem(new TimeComboValue(-1, 0));
-        jComboBox2.addItem(new TimeComboValue(-1, 0));
+        startTimeCombo.removeAllItems();
+        endTimeCombo.removeAllItems();
+        startTimeCombo.addItem(new TimeComboValue(-1, 0));
+        endTimeCombo.addItem(new TimeComboValue(-1, 0));
 
         for (int i = 0; i < 24; i++) {
-            
+
             for (int j = 0; j < 60; j += 15) {
-                jComboBox1.addItem(new TimeComboValue(i, j));
-                jComboBox2.addItem(new TimeComboValue(i, j));
+                startTimeCombo.addItem(new TimeComboValue(i, j));
+                endTimeCombo.addItem(new TimeComboValue(i, j));
             }
         }
 
@@ -149,11 +159,9 @@ public class PostForm extends javax.swing.JPanel {
         ImagePreview = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        startTimeCombo = new javax.swing.JComboBox<>();
+        endTimeCombo = new javax.swing.JComboBox<>();
         metaphaseEditor1 = new com.metaphaseeditor.MetaphaseEditor();
-
-        ComboKeys.setModel(new javax.swing.DefaultComboBoxModel<>());
 
         jLabel4.setText("User Account:");
 
@@ -204,10 +212,6 @@ public class PostForm extends javax.swing.JPanel {
 
         jLabel8.setText("Still having trouble? Contact CHUB@metamesh.org");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>());
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>());
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -234,13 +238,13 @@ public class PostForm extends javax.swing.JPanel {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(startDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(startTimeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(endDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(endTimeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,15 +297,13 @@ public class PostForm extends javax.swing.JPanel {
                                     .addComponent(jLabel1)
                                     .addComponent(startDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(startTimeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(ImageSelectionBtn)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(endDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(10, 10, 10)))
+                                    .addComponent(endTimeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel6)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -312,63 +314,59 @@ public class PostForm extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SignButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignButtonMouseClicked
+    public String getBody() {
+        // The document needs to have the contents of <body> extracted
+        String doc = metaphaseEditor1.getDocument();
+        Document j = Jsoup.parse(doc);
+        String html = j.select("body").html();
+        return html;
+    }
 
-        try (FileInputStream priv_key_file = new FileInputStream(StoredKeys.openKey(((StoredKeys)ComboKeys.getSelectedItem()).getFilename()))) {
-            Message.PrivateKey pk = Message.PrivateKey.parseFrom(priv_key_file);
-            ChubPrivKey cpk = PBSerialize.deserialize(pk, TextPassword.getPassword());
+    public String getTitle() {
+        return TextTitle.getText();
+    }
 
-//            Date start = ((GregorianCalendar) (startDatePicker.getJDateInstantPanel().getModel().getValue())).getTime();
-//            Date end = ((GregorianCalendar) (endDatePicker.getJDateInstantPanel().getModel().getValue())).getTime();
-            // The document needs to have the contents of <body> extracted
-            System.out.println(metaphaseEditor1.getDocument());
-            Message.Post.Builder pb = Message.Post.newBuilder()
-                    .setId(ByteString.copyFrom(UUIDHelper.randomUUID()))
-                    .setTitle(TextTitle.getText())
-                    .setDescription(metaphaseEditor1.getDocument())
-                    //                    .setStartTime(start.getTime())
-                    //                    .setStartTime(end.getTime())
-                    .setTimestamp(new Date().getTime());
-            if (image != null) {
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                ImageIO.write(image, "jpg", baos);
-                baos.flush();
-
-                ByteString bs = ByteString.copyFrom(baos.toByteArray());
-
-                pb.setImage(Message.Image.newBuilder()
-                        .setImage(bs)
-                        .setImageType(Message.ImageType.jpeg)
-                );
+    public Date getStart() {
+        Date start = new Date(0);
+        Object startValue = startDatePicker.getJDateInstantPanel().getModel().getValue();
+        if (startValue != null) {
+            start = ((GregorianCalendar) (startValue)).getTime();
+            int secOffset = ((TimeComboValue) startTimeCombo.getSelectedItem()).getSecOffset();
+            if (secOffset > 0) {
+                start = new Date(start.getTime() + secOffset);
             }
-            Message.Post post = pb.build();
-            Message.SignedMessage sm = PBSerialize.sign(post, cpk);
-            
-            String host = Settings.props.getProperty("host");
-            String path_prefix = Settings.props.getProperty("path_prefix");
-
-            String davPrefix = "http://" + host + "/" + path_prefix + "/posts/";
-
-            Sardine sardine = SardineFactory.begin();
-            sardine.setCredentials("test", "test");
-            String base_name = UUIDHelper.bytes2UUID(sm.getId().toByteArray()) + ".post.pb";
-            String postFilePath = Settings.base_dir + File.separator + base_name;
-            try (FileOutputStream out = new FileOutputStream(postFilePath)) {
-                byte a[] = sm.toByteArray();
-
-//                sardine.createDirectory(davPrefix);
-                System.out.println(davPrefix + base_name);
-                sardine.put(davPrefix + base_name, a);
-                out.write(a);
-                //Alert.info("Written to: " + postFilePath);
-            } catch (IOException ex) {
-                Logger.getLogger(PostForm.class.getName()).log(Level.SEVERE, null, ex);
-                Alert.warning(ex.getMessage());
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(PostForm.class.getName()).log(Level.SEVERE, null, ex);
-            Alert.warning(ex.getLocalizedMessage());
         }
+        return start;
+    }
+
+    public Date getEnd() {
+        Date end = new Date(0);
+        Object endValue = endDatePicker.getJDateInstantPanel().getModel().getValue();
+        if (endValue != null) {
+            end = ((GregorianCalendar) (endValue)).getTime();
+            int secOffset = ((TimeComboValue) startTimeCombo.getSelectedItem()).getSecOffset();
+            if (secOffset > 0) {
+                end = new Date(end.getTime() + secOffset);
+            }
+        }
+        return end;
+    }
+
+    public char[] getPassword() {
+        return TextPassword.getPassword();
+    }
+
+    public File getKeyFile() {
+        return StoredKeys.openKey(((StoredKeys) ComboKeys.getSelectedItem()).getFilename());
+    }
+
+    public BufferedImage getImage() {
+        return image;
+    }
+    private void SignButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignButtonMouseClicked
+        PreviewFrame previewFrame = new PreviewFrame(this);
+        previewFrame.setVisible(true);
+
     }//GEN-LAST:event_SignButtonMouseClicked
 
     private void SignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignButtonActionPerformed
@@ -397,8 +395,7 @@ public class PostForm extends javax.swing.JPanel {
     private javax.swing.JPasswordField TextPassword;
     private javax.swing.JTextField TextTitle;
     private org.jdatepicker.JDatePicker endDatePicker;
-    private javax.swing.JComboBox<TimeComboValue> jComboBox1;
-    private javax.swing.JComboBox<TimeComboValue> jComboBox2;
+    private javax.swing.JComboBox<TimeComboValue> endTimeCombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -410,6 +407,7 @@ public class PostForm extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private com.metaphaseeditor.MetaphaseEditor metaphaseEditor1;
     private org.jdatepicker.JDatePicker startDatePicker;
+    private javax.swing.JComboBox<TimeComboValue> startTimeCombo;
     // End of variables declaration//GEN-END:variables
 
 }
